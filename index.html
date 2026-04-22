@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Deeptanshu Devatha | Personal Website</title>
+	<meta
+		name="description"
+		content="Personal website for Deeptanshu Devatha featuring resume, interests, research, and blog."
+	/>
+	<style>
+		:root {
+			--bg: #f6efe8;
+			--surface: rgba(255, 255, 255, 0.68);
+			--surface-strong: rgba(255, 255, 255, 0.9);
+			--text: #1d1a17;
+			--muted: #62574d;
+			--line: rgba(29, 26, 23, 0.1);
+			--accent: #b86d4a;
+			--accent-dark: #8f4e31;
+			--accent-soft: #ead2c4;
+			--shadow: 0 20px 60px rgba(52, 36, 28, 0.12);
+			--radius-xl: 32px;
+			--radius-lg: 24px;
+			--radius-md: 18px;
+			--content: 1180px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(circle at top left, rgba(184, 109, 74, 0.12), transparent 28%),
+				radial-gradient(circle at 85% 15%, rgba(234, 210, 196, 0.65), transparent 22%),
+				linear-gradient(180deg, #fcf8f4 0%, var(--bg) 48%, #f3ebe3 100%);
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		body::before,
+		body::after {
+			content: "";
+			position: fixed;
+			inset: auto;
+			width: 32rem;
+			height: 32rem;
+			border-radius: 50%;
+			filter: blur(70px);
+			opacity: 0.35;
+			pointer-events: none;
+			z-index: 0;
+			animation: floatGlow 12s ease-in-out infinite;
+		}
+
+		body::before {
+			background: rgba(184, 109, 74, 0.16);
+			top: -10rem;
+			right: -8rem;
+		}
+
+		body::after {
+			background: rgba(234, 210, 196, 0.8);
+			left: -12rem;
+			bottom: 10rem;
+			animation-delay: -5s;
+		}
+
+		@keyframes floatGlow {
+			0%,
+			100% {
+				transform: translate3d(0, 0, 0) scale(1);
+			}
+			50% {
+				transform: translate3d(0, 26px, 0) scale(1.06);
+			}
+		}
+
+		.progress-bar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			z-index: 50;
+			background: rgba(255, 255, 255, 0.35);
+			backdrop-filter: blur(10px);
+		}
+
+		.progress-bar span {
+			display: block;
+			height: 100%;
+			width: 0;
+			background: linear-gradient(90deg, var(--accent), #d48f6d);
+			transform-origin: left center;
+			transition: width 0.12s linear;
+		}
+
+		.site-shell {
+			position: relative;
+			z-index: 1;
+		}
+
+		.navbar {
+			position: sticky;
+			top: 0;
+			z-index: 40;
+			width: min(calc(100% - 28px), var(--content));
+			margin: 16px auto 0;
+			padding: 14px 18px;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+			border-radius: 999px;
+			background: rgba(255, 250, 245, 0.72);
+			backdrop-filter: blur(18px);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+			box-shadow: 0 18px 45px rgba(51, 31, 24, 0.08);
+		}
+
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			text-decoration: none;
+			color: var(--text);
+			min-width: 0;
+		}
+
+		.brand-mark {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			display: grid;
+			place-items: center;
+			background: linear-gradient(145deg, var(--accent), var(--accent-dark));
+			color: #fff;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			box-shadow: 0 14px 28px rgba(184, 109, 74, 0.28);
+		}
+
+		.brand-copy {
+			display: flex;
+			flex-direction: column;
+			min-width: 0;
+		}
+
+		.brand-copy strong {
+			font-size: 0.95rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.brand-copy span {
+			color: var(--muted);
+			font-size: 0.82rem;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.nav-links {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+
+		.nav-links a {
+			text-decoration: none;
+			color: var(--text);
+			padding: 10px 14px;
+			border-radius: 999px;
+			font-size: 0.95rem;
+			transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+		}
+
+		.nav-links a:hover,
+		.nav-links a.active {
+			background: rgba(184, 109, 74, 0.12);
+			color: var(--accent-dark);
+			transform: translateY(-1px);
+		}
+
+		.container {
+			width: min(calc(100% - 28px), var(--content));
+			margin: 0 auto;
+		}
+
+		.hero {
+			min-height: calc(100vh - 90px);
+			display: grid;
+			align-items: center;
+			padding: 56px 0 24px;
+		}
+
+		.hero-grid {
+			display: grid;
+			grid-template-columns: 1.08fr 0.92fr;
+			gap: 30px;
+			align-items: stretch;
+		}
+
+		.panel {
+			border-radius: var(--radius-xl);
+			background: var(--surface);
+			border: 1px solid rgba(255, 255, 255, 0.6);
+			box-shadow: var(--shadow);
+			backdrop-filter: blur(18px);
+		}
+
+		.hero-copy {
+			padding: 52px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 640px;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 8px 14px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.7);
+			border: 1px solid rgba(29, 26, 23, 0.08);
+			color: var(--muted);
+			font-size: 0.82rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			width: fit-content;
+		}
+
+		h1,
+		h2,
+		h3,
+		p {
+			margin: 0;
+		}
+
+		h1 {
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(3.2rem, 7vw, 6.2rem);
+			line-height: 0.95;
+			letter-spacing: -0.05em;
+			margin-top: 24px;
+			max-width: 10ch;
+		}
+
+		.hero-copy p.lead {
+			margin-top: 22px;
+			max-width: 34rem;
+			font-size: 1.06rem;
+			line-height: 1.85;
+			color: var(--muted);
+		}
+
+		.cta-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 14px;
+			margin-top: 34px;
+		}
+
+		.button,
+		.chip-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			text-decoration: none;
+			border-radius: 999px;
+			transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease, color 0.24s ease;
+		}
+
+		.button {
+			padding: 14px 22px;
+			font-weight: 600;
+		}
+
+		.button.primary {
+			background: linear-gradient(145deg, var(--accent), var(--accent-dark));
+			color: #fff;
+			box-shadow: 0 18px 30px rgba(143, 78, 49, 0.24);
+		}
+
+		.button.secondary {
+			color: var(--text);
+			background: rgba(255, 255, 255, 0.72);
+			border: 1px solid rgba(29, 26, 23, 0.08);
+		}
+
+		.button:hover,
+		.chip-link:hover,
+		.overview-card:hover,
+		.detail-card:hover,
+		.blog-card:hover,
+		.resume-card:hover {
+			transform: translateY(-4px);
+		}
+
+		.hero-meta {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 16px;
+			margin-top: 36px;
+		}
+
+		.stat {
+			padding: 18px;
+			border-radius: var(--radius-md);
+			background: rgba(255, 255, 255, 0.72);
+			border: 1px solid rgba(29, 26, 23, 0.08);
+		}
+
+		.stat strong {
+			display: block;
+			font-size: 1.3rem;
+			margin-bottom: 4px;
+		}
+
+		.stat span {
+			font-size: 0.9rem;
+			color: var(--muted);
+			line-height: 1.5;
+		}
+
+		.hero-visual {
+			position: relative;
+			overflow: hidden;
+			min-height: 640px;
+			padding: 28px;
+			display: grid;
+			align-items: stretch;
+		}
+
+		.hero-visual::before {
+			content: "";
+			position: absolute;
+			inset: 18px;
+			border-radius: calc(var(--radius-xl) - 10px);
+			background:
+				linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02)),
+				linear-gradient(150deg, #4f3428 0%, #6f4637 35%, #9c684e 100%);
+			z-index: 0;
+		}
+
+		.hero-overlay {
+			position: relative;
+			z-index: 1;
+			display: grid;
+			gap: 18px;
+			height: 100%;
+			grid-template-rows: auto 1fr auto;
+		}
+
+		.floating-note,
+		.quick-panel,
+		.photo-placeholder {
+			border-radius: var(--radius-lg);
+			background: rgba(255, 249, 244, 0.16);
+			border: 1px solid rgba(255, 255, 255, 0.22);
+			backdrop-filter: blur(16px);
+			color: #fff;
+		}
+
+		.floating-note {
+			width: fit-content;
+			padding: 14px 18px;
+			margin-left: auto;
+			animation: drift 7s ease-in-out infinite;
+		}
+
+		.floating-note small,
+		.quick-panel small {
+			display: block;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			opacity: 0.76;
+			font-size: 0.72rem;
+			margin-bottom: 6px;
+		}
+
+		.floating-note strong,
+		.quick-panel strong {
+			font-size: 1rem;
+			font-weight: 600;
+			line-height: 1.4;
+		}
+
+		@keyframes drift {
+			0%,
+			100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+
+		.photo-placeholder {
+			position: relative;
+			overflow: hidden;
+			min-height: 360px;
+			display: grid;
+			place-items: center;
+			padding: 28px;
+			text-align: center;
+			background:
+				linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)),
+				repeating-linear-gradient(
+					135deg,
+					rgba(255, 255, 255, 0.1) 0,
+					rgba(255, 255, 255, 0.1) 12px,
+					rgba(255, 255, 255, 0.04) 12px,
+					rgba(255, 255, 255, 0.04) 24px
+				);
+		}
+
+		.photo-placeholder::before,
+		.media-placeholder::before {
+			content: "Add your photo here";
+			display: block;
+			font-size: 1rem;
+			font-weight: 600;
+			letter-spacing: 0.02em;
+		}
+
+		.photo-placeholder::after,
+		.media-placeholder::after {
+			content: "Use your portrait, campus shot, project image, or publication visual";
+			display: block;
+			font-size: 0.92rem;
+			margin-top: 10px;
+			opacity: 0.8;
+			max-width: 18rem;
+			line-height: 1.65;
+		}
+
+		.quick-panel {
+			padding: 20px;
+			display: grid;
+			gap: 12px;
+			align-self: end;
+			animation: drift 8s ease-in-out infinite;
+			animation-delay: -3s;
+		}
+
+		.quick-links {
+			display: grid;
+			gap: 10px;
+		}
+
+		.chip-link {
+			justify-content: space-between;
+			padding: 14px 16px;
+			color: #fff;
+			border: 1px solid rgba(255, 255, 255, 0.18);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		section {
+			padding: 84px 0;
+		}
+
+		.section-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: end;
+			gap: 20px;
+			margin-bottom: 28px;
+		}
+
+		.section-head h2 {
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: clamp(2.3rem, 5vw, 4rem);
+			line-height: 1;
+			letter-spacing: -0.04em;
+		}
+
+		.section-head p {
+			max-width: 34rem;
+			color: var(--muted);
+			line-height: 1.8;
+		}
+
+		.overview-grid,
+		.details-grid,
+		.blog-grid,
+		.interest-grid,
+		.research-grid {
+			display: grid;
+			gap: 18px;
+		}
+
+		.overview-grid {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.overview-card,
+		.detail-card,
+		.blog-card,
+		.resume-card,
+		.timeline,
+		.interest-card,
+		.research-card {
+			border-radius: var(--radius-lg);
+			background: var(--surface-strong);
+			border: 1px solid rgba(29, 26, 23, 0.08);
+			box-shadow: var(--shadow);
+			transition: transform 0.24s ease, box-shadow 0.24s ease;
+		}
+
+		.overview-card {
+			padding: 26px;
+			text-decoration: none;
+			color: inherit;
+			display: grid;
+			gap: 16px;
+			min-height: 220px;
+		}
+
+		.index-number {
+			font-size: 0.84rem;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			color: var(--accent-dark);
+		}
+
+		.overview-card h3,
+		.detail-card h3,
+		.resume-card h3,
+		.blog-card h3,
+		.interest-card h3,
+		.research-card h3 {
+			font-size: 1.4rem;
+			font-family: Georgia, "Times New Roman", serif;
+			letter-spacing: -0.02em;
+		}
+
+		.overview-card p,
+		.detail-card p,
+		.resume-card p,
+		.blog-card p,
+		.interest-card p,
+		.research-card p,
+		.timeline p,
+		.resume-actions p {
+			color: var(--muted);
+			line-height: 1.75;
+		}
+
+		.arrow {
+			margin-top: auto;
+			color: var(--accent-dark);
+			font-weight: 700;
+		}
+
+		.resume-layout,
+		.blog-layout,
+		.interest-layout,
+		.research-layout {
+			display: grid;
+			grid-template-columns: 0.95fr 1.05fr;
+			gap: 18px;
+			align-items: start;
+		}
+
+		.details-grid,
+		.research-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.detail-card,
+		.resume-card,
+		.timeline,
+		.blog-card,
+		.interest-card,
+		.research-card {
+			padding: 28px;
+		}
+
+		.media-placeholder {
+			min-height: 220px;
+			border-radius: var(--radius-md);
+			border: 1px dashed rgba(29, 26, 23, 0.18);
+			background:
+				linear-gradient(180deg, rgba(184, 109, 74, 0.07), rgba(184, 109, 74, 0.02)),
+				rgba(255, 255, 255, 0.55);
+			display: grid;
+			place-items: center;
+			text-align: center;
+			padding: 20px;
+			margin-top: 18px;
+		}
+
+		.resume-stack,
+		.blog-stack,
+		.interest-stack {
+			display: grid;
+			gap: 18px;
+		}
+
+		.resume-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin-top: 22px;
+		}
+
+		.tag-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 16px;
+		}
+
+		.tag {
+			padding: 9px 14px;
+			border-radius: 999px;
+			background: rgba(184, 109, 74, 0.1);
+			color: var(--accent-dark);
+			font-size: 0.88rem;
+			font-weight: 600;
+		}
+
+		.timeline {
+			display: grid;
+			gap: 16px;
+		}
+
+		.timeline-item {
+			padding-left: 24px;
+			border-left: 2px solid rgba(184, 109, 74, 0.22);
+			position: relative;
+		}
+
+		.timeline-item::before {
+			content: "";
+			position: absolute;
+			left: -7px;
+			top: 4px;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: var(--accent);
+			box-shadow: 0 0 0 8px rgba(184, 109, 74, 0.12);
+		}
+
+		.timeline-item strong {
+			display: block;
+			margin-bottom: 6px;
+			font-size: 1rem;
+		}
+
+		.research-card .meta,
+		.blog-card .meta,
+		.interest-card .meta,
+		.resume-card .meta,
+		.detail-card .meta {
+			margin-bottom: 10px;
+			font-size: 0.82rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--accent-dark);
+		}
+
+		.blog-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.blog-card.featured {
+			grid-column: span 2;
+			min-height: 100%;
+		}
+
+		.interest-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.interest-card ul,
+		.research-card ul {
+			margin: 16px 0 0;
+			padding-left: 18px;
+			color: var(--muted);
+			line-height: 1.8;
+		}
+
+		.interest-card li,
+		.research-card li {
+			margin-bottom: 4px;
+		}
+
+		.footer {
+			padding: 32px 0 60px;
+		}
+
+		.footer-card {
+			padding: 26px 30px;
+			border-radius: var(--radius-xl);
+			background: rgba(29, 26, 23, 0.94);
+			color: rgba(255, 255, 255, 0.84);
+			display: flex;
+			justify-content: space-between;
+			gap: 24px;
+			align-items: center;
+			box-shadow: var(--shadow);
+			flex-wrap: wrap;
+		}
+
+		.footer-card strong {
+			color: #fff;
+			display: block;
+			margin-bottom: 8px;
+			font-size: 1.15rem;
+		}
+
+		.footer-links {
+			display: flex;
+			gap: 12px;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: #fff;
+			text-decoration: none;
+			padding: 11px 16px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.reveal {
+			opacity: 0;
+			transform: translate3d(0, 34px, 0);
+			transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+		}
+
+		.reveal.visible {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+
+		.parallax {
+			will-change: transform;
+			transition: transform 0.12s linear;
+		}
+
+		@media (max-width: 1100px) {
+			.hero-grid,
+			.resume-layout,
+			.blog-layout,
+			.interest-layout,
+			.research-layout,
+			.overview-grid,
+			.blog-grid,
+			.interest-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.details-grid,
+			.research-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.hero-copy,
+			.hero-visual {
+				min-height: auto;
+			}
+		}
+
+		@media (max-width: 780px) {
+			.navbar {
+				border-radius: 28px;
+				padding: 16px;
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.nav-links {
+				width: 100%;
+				justify-content: flex-start;
+			}
+
+			.hero {
+				padding-top: 28px;
+			}
+
+			.hero-copy,
+			.hero-visual,
+			.detail-card,
+			.resume-card,
+			.timeline,
+			.blog-card,
+			.interest-card,
+			.research-card,
+			.overview-card {
+				padding: 22px;
+			}
+
+			.hero-meta {
+				grid-template-columns: 1fr;
+			}
+
+			.section-head {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			h1 {
+				font-size: clamp(2.6rem, 12vw, 4rem);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="progress-bar" aria-hidden="true"><span id="progress"></span></div>
+
+	<div class="site-shell">
+		<nav class="navbar">
+			<a class="brand" href="#home" aria-label="Go to home">
+				<div class="brand-mark">DD</div>
+				<div class="brand-copy">
+					<strong>Deeptanshu Devatha</strong>
+					<span>Resume • Interests • Research • Blog</span>
+				</div>
+			</a>
+
+			<div class="nav-links">
+				<a href="#home" class="active">Home</a>
+				<a href="#resume">Resume</a>
+				<a href="#interests">Interests</a>
+				<a href="#research">Research</a>
+				<a href="#blog">Blog</a>
+			</div>
+		</nav>
+
+		<main>
+			<section class="hero container" id="home">
+				<div class="hero-grid">
+					<div class="hero-copy panel reveal">
+						<div>
+							<span class="eyebrow">Personal Website</span>
+							<h1>Deeptanshu Devatha</h1>
+							<p class="lead">
+								A clean portfolio-style home page with direct access to resume, interests, research, and blog content.
+								This layout includes image placeholders, layered motion, and smooth scroll reveals so you can keep
+								the structure polished while adding your own details over time.
+							</p>
+
+							<div class="cta-row">
+								<a class="button primary" href="#resume">View Resume</a>
+								<a class="button secondary" href="#research">Explore Research</a>
+							</div>
+
+							<div class="hero-meta">
+								<div class="stat">
+									<strong>01</strong>
+									<span>Resume section linked to your file for quick access.</span>
+								</div>
+								<div class="stat">
+									<strong>02</strong>
+									<span>Dedicated areas for interests, research highlights, and blog writing.</span>
+								</div>
+								<div class="stat">
+									<strong>03</strong>
+									<span>Photo-ready placeholders across the site for future customization.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="hero-visual panel parallax reveal" data-speed="0.06">
+						<div class="hero-overlay">
+							<div class="floating-note">
+								<small>Portfolio Flow</small>
+								<strong>Elegant motion, warm neutrals, and section-based storytelling.</strong>
+							</div>
+
+							<div class="photo-placeholder" aria-label="Photo placeholder"></div>
+
+							<div class="quick-panel">
+								<small>Quick Access</small>
+								<div class="quick-links">
+									<a class="chip-link" href="#resume"><span>Resume</span><span>↗</span></a>
+									<a class="chip-link" href="#interests"><span>Interests</span><span>↗</span></a>
+									<a class="chip-link" href="#research"><span>Research</span><span>↗</span></a>
+									<a class="chip-link" href="#blog"><span>Blog</span><span>↗</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="container reveal" aria-labelledby="overview-title">
+				<div class="section-head">
+					<div>
+						<span class="eyebrow">Overview</span>
+						<h2 id="overview-title">Everything from the home page</h2>
+					</div>
+					<p>
+						Each card below jumps directly to a main section so visitors can immediately browse your academic profile,
+						current interests, research direction, and writing.
+					</p>
+				</div>
+
+				<div class="overview-grid">
+					<a class="overview-card" href="#resume">
+						<span class="index-number">01 / Resume</span>
+						<h3>Professional snapshot</h3>
+						<p>Keep your experience, education, achievements, and downloadable resume in one structured place.</p>
+						<span class="arrow">Open section →</span>
+					</a>
+
+					<a class="overview-card" href="#interests">
+						<span class="index-number">02 / Interests</span>
+						<h3>What drives you</h3>
+						<p>Highlight favorite topics, communities, skills, and extracurricular activities.</p>
+						<span class="arrow">Open section →</span>
+					</a>
+
+					<a class="overview-card" href="#research">
+						<span class="index-number">03 / Research</span>
+						<h3>Current work</h3>
+						<p>Showcase themes, papers, experiments, labs, or long-form ideas with room for visuals.</p>
+						<span class="arrow">Open section →</span>
+					</a>
+
+					<a class="overview-card" href="#blog">
+						<span class="index-number">04 / Blog</span>
+						<h3>Writing and reflections</h3>
+						<p>Create a home for essays, updates, notes, and future posts with a magazine-style layout.</p>
+						<span class="arrow">Open section →</span>
+					</a>
+				</div>
+			</section>
+
+			<section class="container" id="resume">
+				<div class="section-head reveal">
+					<div>
+						<span class="eyebrow">Resume</span>
+						<h2>Background at a glance</h2>
+					</div>
+					<p>
+						This area is ready for your formal achievements and also links directly to the resume file already placed in the folder.
+					</p>
+				</div>
+
+				<div class="resume-layout">
+					<div class="resume-stack">
+						<article class="resume-card reveal">
+							<div class="meta">Resume File</div>
+							<h3>Open or download your current resume</h3>
+							<p>
+								The site includes your uploaded document so visitors can access it immediately while browsing your page.
+							</p>
+							<div class="resume-actions">
+								<a class="button primary" href="./Deeptanshu_Devatha_Resume.docx" target="_blank" rel="noreferrer">Open Resume</a>
+								<a class="button secondary" href="./Deeptanshu_Devatha_Resume.docx" download>Download Copy</a>
+							</div>
+							<div class="tag-list">
+								<span class="tag">Education</span>
+								<span class="tag">Experience</span>
+								<span class="tag">Projects</span>
+								<span class="tag">Achievements</span>
+							</div>
+						</article>
+
+						<article class="timeline reveal">
+							<div class="meta">Suggested Highlights</div>
+							<div class="timeline-item">
+								<strong>Academic profile</strong>
+								<p>Add degree information, institution, coursework, and milestones here.</p>
+							</div>
+							<div class="timeline-item">
+								<strong>Research and projects</strong>
+								<p>Summarize impactful technical work, publications, or thesis directions in concise language.</p>
+							</div>
+							<div class="timeline-item">
+								<strong>Leadership and service</strong>
+								<p>Include organizations, mentoring, student communities, or outreach contributions.</p>
+							</div>
+						</article>
+					</div>
+
+					<div class="details-grid">
+						<article class="detail-card reveal">
+							<div class="meta">Experience</div>
+							<h3>Feature your strongest work</h3>
+							<p>Use this card to describe the role, scope, methods used, and measurable outcomes.</p>
+							<div class="media-placeholder"></div>
+						</article>
+
+						<article class="detail-card reveal">
+							<div class="meta">Skills</div>
+							<h3>Technical toolkit</h3>
+							<p>List languages, frameworks, research methods, software tools, and domain strengths.</p>
+							<div class="tag-list">
+								<span class="tag">Programming</span>
+								<span class="tag">Data Analysis</span>
+								<span class="tag">Research Writing</span>
+								<span class="tag">Presentation</span>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="container" id="interests">
+				<div class="section-head reveal">
+					<div>
+						<span class="eyebrow">Interests</span>
+						<h2>Curiosity beyond the resume</h2>
+					</div>
+					<p>
+						Use this section to show personality, long-term interests, interdisciplinary themes, and the communities or ideas you care about.
+					</p>
+				</div>
+
+				<div class="interest-layout">
+					<div class="interest-stack">
+						<article class="interest-card reveal">
+							<div class="meta">Areas of Interest</div>
+							<h3>Topics worth exploring further</h3>
+							<ul>
+								<li>Add 3–5 core domains you want visitors to associate with your profile.</li>
+								<li>Mention conferences, labs, books, or fields that shape your thinking.</li>
+								<li>Describe how these interests connect to future research or career goals.</li>
+							</ul>
+						</article>
+
+						<article class="interest-card reveal">
+							<div class="meta">Communities</div>
+							<h3>Clubs, initiatives, and collaboration</h3>
+							<p>
+								Highlight student groups, volunteering, outreach, hackathons, or communities where you contribute and learn.
+							</p>
+							<div class="tag-list">
+								<span class="tag">Student groups</span>
+								<span class="tag">Mentoring</span>
+								<span class="tag">Workshops</span>
+								<span class="tag">Open collaboration</span>
+							</div>
+						</article>
+					</div>
+
+					<div class="interest-grid">
+						<article class="interest-card reveal">
+							<div class="meta">Gallery Space</div>
+							<h3>Event or travel photo</h3>
+							<div class="media-placeholder"></div>
+						</article>
+
+						<article class="interest-card reveal">
+							<div class="meta">Gallery Space</div>
+							<h3>Project or hobby image</h3>
+							<div class="media-placeholder"></div>
+						</article>
+
+						<article class="interest-card reveal">
+							<div class="meta">Gallery Space</div>
+							<h3>Campus or portrait image</h3>
+							<div class="media-placeholder"></div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="container" id="research">
+				<div class="section-head reveal">
+					<div>
+						<span class="eyebrow">Research</span>
+						<h2>Ideas, questions, and ongoing work</h2>
+					</div>
+					<p>
+						This section is structured for projects, publications, experiments, or thesis-oriented work, with visual placeholders and room for concise summaries.
+					</p>
+				</div>
+
+				<div class="research-layout">
+					<article class="research-card reveal">
+						<div class="meta">Featured Research Theme</div>
+						<h3>Introduce your central research direction</h3>
+						<p>
+							Add a short overview of the problem area, why it matters, and the methods or frameworks you are using to investigate it.
+						</p>
+						<ul>
+							<li>Core question or objective</li>
+							<li>Methods, datasets, or theoretical lens</li>
+							<li>Expected contribution or outcome</li>
+						</ul>
+						<div class="media-placeholder"></div>
+					</article>
+
+					<div class="research-grid">
+						<article class="research-card reveal">
+							<div class="meta">Project One</div>
+							<h3>Paper, poster, or study</h3>
+							<p>Use this for a publication summary, a capstone project, or a lab collaboration.</p>
+						</article>
+
+						<article class="research-card reveal">
+							<div class="meta">Project Two</div>
+							<h3>Experiment or technical build</h3>
+							<p>Describe a system, prototype, or experiment setup with key findings or lessons.</p>
+						</article>
+
+						<article class="research-card reveal">
+							<div class="meta">Project Three</div>
+							<h3>Future direction</h3>
+							<p>Outline the next question you want to pursue or the extension of current work.</p>
+						</article>
+
+						<article class="research-card reveal">
+							<div class="meta">Visual Space</div>
+							<h3>Publication image or diagram</h3>
+							<div class="media-placeholder"></div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="container" id="blog">
+				<div class="section-head reveal">
+					<div>
+						<span class="eyebrow">Blog</span>
+						<h2>Writing, notes, and reflections</h2>
+					</div>
+					<p>
+						A publication-style layout for future posts. You can replace these placeholders with real articles whenever you are ready.
+					</p>
+				</div>
+
+				<div class="blog-grid">
+					<article class="blog-card featured reveal">
+						<div class="meta">Featured Post</div>
+						<h3>Start with one flagship article</h3>
+						<p>
+							Use this area for a long-form essay, research reflection, internship summary, or a note on what you are currently learning.
+						</p>
+						<div class="media-placeholder"></div>
+					</article>
+
+					<article class="blog-card reveal">
+						<div class="meta">Post Placeholder</div>
+						<h3>Essay or update</h3>
+						<p>Add a title, date, short excerpt, and link once your first post is ready.</p>
+					</article>
+
+					<article class="blog-card reveal">
+						<div class="meta">Post Placeholder</div>
+						<h3>Research note</h3>
+						<p>Use this card for concise technical writing, summaries, or reading reflections.</p>
+					</article>
+
+					<article class="blog-card reveal">
+						<div class="meta">Post Placeholder</div>
+						<h3>Conference or project recap</h3>
+						<p>Document important events, project milestones, or lessons from collaboration.</p>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer container">
+			<div class="footer-card reveal">
+				<div>
+					<strong>Deeptanshu Devatha</strong>
+					<span>Personal website with quick access to resume, interests, research, and blog content.</span>
+				</div>
+				<div class="footer-links">
+					<a href="#resume">Resume</a>
+					<a href="#interests">Interests</a>
+					<a href="#research">Research</a>
+					<a href="#blog">Blog</a>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		const progress = document.getElementById('progress');
+		const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+		const sections = Array.from(document.querySelectorAll('main section[id]'));
+		const revealItems = document.querySelectorAll('.reveal');
+		const parallaxItems = document.querySelectorAll('.parallax');
+
+		const updateScrollState = () => {
+			const scrollTop = window.scrollY;
+			const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+			const ratio = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+			progress.style.width = `${ratio}%`;
+
+			parallaxItems.forEach((item) => {
+				const speed = Number(item.dataset.speed || 0.04);
+				item.style.transform = `translate3d(0, ${scrollTop * speed}px, 0)`;
+			});
+
+			let currentSection = 'home';
+			sections.forEach((section) => {
+				const offset = section.offsetTop - 180;
+				if (scrollTop >= offset) {
+					currentSection = section.id;
+				}
+			});
+
+			navLinks.forEach((link) => {
+				const active = link.getAttribute('href') === `#${currentSection}`;
+				link.classList.toggle('active', active);
+			});
+		};
+
+		const revealObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						revealObserver.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				threshold: 0.16,
+				rootMargin: '0px 0px -40px 0px'
+			}
+		);
+
+		revealItems.forEach((item) => revealObserver.observe(item));
+		updateScrollState();
+
+		window.addEventListener('scroll', updateScrollState, { passive: true });
+		window.addEventListener('resize', updateScrollState);
+	</script>
+</body>
+</html>
