@@ -822,6 +822,134 @@
 				font-size: clamp(2.6rem, 12vw, 4rem);
 			}
 		}
+
+		/* ── Blog Modal ── */
+		.modal-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 200;
+			background: rgba(29, 26, 23, 0.55);
+			backdrop-filter: blur(6px);
+			align-items: flex-start;
+			justify-content: center;
+			padding: 40px 16px 60px;
+			overflow-y: auto;
+		}
+		.modal-overlay.open {
+			display: flex;
+		}
+		.modal-box {
+			background: #fcf8f4;
+			border-radius: var(--radius-lg);
+			max-width: 820px;
+			width: 100%;
+			padding: 48px 52px;
+			position: relative;
+			box-shadow: 0 32px 80px rgba(52,36,28,0.18);
+		}
+		.modal-close {
+			position: absolute;
+			top: 18px;
+			right: 22px;
+			background: none;
+			border: none;
+			font-size: 1.6rem;
+			cursor: pointer;
+			color: var(--muted);
+			line-height: 1;
+			padding: 4px 8px;
+			border-radius: 6px;
+			transition: background 0.18s;
+		}
+		.modal-close:hover { background: var(--accent-soft); }
+		.modal-box h1 {
+			font-size: clamp(1.6rem, 4vw, 2.2rem);
+			font-family: Georgia, "Times New Roman", serif;
+			letter-spacing: -0.02em;
+			margin: 0 0 8px;
+			line-height: 1.25;
+		}
+		.modal-box .post-meta {
+			font-size: 0.82rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--accent-dark);
+			margin-bottom: 28px;
+			display: flex;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+		.modal-box h2 {
+			font-size: 1.2rem;
+			font-family: Georgia, "Times New Roman", serif;
+			letter-spacing: -0.01em;
+			margin: 36px 0 10px;
+			color: var(--text);
+		}
+		.modal-box p {
+			color: var(--muted);
+			line-height: 1.8;
+			margin: 0 0 16px;
+		}
+		.modal-box strong { color: var(--text); }
+		.modal-img {
+			width: 100%;
+			border-radius: var(--radius-md);
+			margin: 20px 0;
+			object-fit: cover;
+			border: 1px solid rgba(29,26,23,0.08);
+			box-shadow: 0 8px 28px rgba(52,36,28,0.09);
+		}
+		.modal-img-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 14px;
+			margin: 20px 0;
+		}
+		.modal-img-grid img {
+			width: 100%;
+			border-radius: var(--radius-md);
+			object-fit: cover;
+			border: 1px solid rgba(29,26,23,0.08);
+			box-shadow: 0 8px 28px rgba(52,36,28,0.09);
+		}
+		.modal-links {
+			display: flex;
+			gap: 14px;
+			margin: 24px 0 0;
+			flex-wrap: wrap;
+		}
+		.modal-links a {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 11px 20px;
+			border-radius: 8px;
+			background: var(--accent);
+			color: #fff;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 0.92rem;
+			transition: background 0.18s, transform 0.18s;
+		}
+		.modal-links a:hover { background: var(--accent-dark); transform: translateY(-2px); }
+		.modal-links a.secondary {
+			background: var(--accent-soft);
+			color: var(--accent-dark);
+		}
+		.modal-links a.secondary:hover { background: #e0bfaf; }
+		.modal-caption {
+			font-size: 0.8rem;
+			color: var(--muted);
+			text-align: center;
+			margin-top: -10px;
+			margin-bottom: 16px;
+		}
+		@media (max-width: 640px) {
+			.modal-box { padding: 32px 22px; }
+			.modal-img-grid { grid-template-columns: 1fr; }
+		}
 	</style>
 </head>
 <body>
@@ -1138,40 +1266,119 @@
 						<span class="eyebrow">Blog</span>
 						<h2>Writing, notes, and reflections</h2>
 					</div>
-					<p>
-						A publication-style layout for future posts. You can replace these placeholders with real articles whenever you are ready.
-					</p>
+					<p>First-hand accounts from projects, hackathons, and learning experiences.</p>
 				</div>
 
 				<div class="blog-grid">
-					<article class="blog-card featured reveal">
-						<div class="meta">Featured Post</div>
-						<h3>Start with one flagship article</h3>
+					<article class="blog-card featured reveal" style="cursor:pointer;" onclick="document.getElementById('modal-shopsmart').classList.add('open')">
+						<div class="meta">Hackathon Recap &nbsp;·&nbsp; Aug 27–30, 2025</div>
+						<h3>Building ShopSmart: How Our Team Won First Place at the TechLit Hackathon</h3>
 						<p>
-							Use this area for a long-form essay, research reflection, internship summary, or a note on what you are currently learning.
+							Over four intense days, our team built ShopSmart—an app that finds the cheapest, fastest, or most eco-friendly multi-store shopping route. We placed first out of all submissions, earning $100 and five .xyz domains. Click to read the full story.
 						</p>
-						<div class="media-placeholder"></div>
+						<img src="img/techlit-devpost.png" alt="TechLit Hackathon DevPost page showing ShopSmart as a winner" class="modal-img" onerror="this.style.display='none'" />
+						<div class="arrow">Read full post →</div>
 					</article>
 
 					<article class="blog-card reveal">
-						<div class="meta">Post Placeholder</div>
+						<div class="meta">Coming Soon</div>
 						<h3>Essay or update</h3>
-						<p>Add a title, date, short excerpt, and link once your first post is ready.</p>
+						<p>Add a title, date, short excerpt, and link once your next post is ready.</p>
 					</article>
 
 					<article class="blog-card reveal">
-						<div class="meta">Post Placeholder</div>
+						<div class="meta">Coming Soon</div>
 						<h3>Research note</h3>
 						<p>Use this card for concise technical writing, summaries, or reading reflections.</p>
 					</article>
-
-					<article class="blog-card reveal">
-						<div class="meta">Post Placeholder</div>
-						<h3>Conference or project recap</h3>
-						<p>Document important events, project milestones, or lessons from collaboration.</p>
-					</article>
 				</div>
 			</section>
+
+			<!-- ShopSmart Blog Modal -->
+			<div class="modal-overlay" id="modal-shopsmart" role="dialog" aria-modal="true" aria-labelledby="modal-shopsmart-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-shopsmart').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-shopsmart-title">Building ShopSmart: How Our Team Won First Place at the TechLit Hackathon</h1>
+					<div class="post-meta">
+						<span>Aug 27–30, 2025</span>
+						<span>TechLit Hackathon</span>
+						<span>Team: Arjun Subramanian, Hrudhai Lothumalla, Arjun Sharma &amp; Deeptanshu Devatha</span>
+					</div>
+
+					<img src="img/techlit-devpost.png" alt="TechLit Hackathon DevPost page — ShopSmart listed as a winner" class="modal-img" onerror="this.style.display='none'" />
+					<p class="modal-caption">ShopSmart on the TechLit Hackathon DevPost gallery, listed as a winner alongside TinyTeacher and satya.</p>
+
+					<p>
+						From August 27–30, 2025, I had the opportunity to compete in the TechLit Hackathon alongside Arjun Subramanian, Hrudhai Lothumalla, and Arjun Sharma. Over the course of a few intense days, we went from a rough idea to a fully functioning prototype—and ultimately placed first. More than the prize, though, the experience challenged how we think about building technology that is both practical and meaningful.
+					</p>
+
+					<h2>The Idea: Making Smart Shopping Accessible</h2>
+					<p>
+						We built <strong>ShopSmart</strong>, an application designed to solve a simple but impactful problem: finding the most cost-effective way to shop across multiple stores. For many people—especially those on tight budgets or trying to shop more sustainably—comparing prices and planning efficient trips can be time-consuming and frustrating.
+					</p>
+					<p>
+						ShopSmart addresses this by allowing users to input a grocery list and receive an optimized shopping route. Depending on user preference, the app can prioritize the lowest total cost, the fastest route, or the most eco-friendly option. We also integrated an AI assistant that can answer questions about product prices and provide guidance tailored to the user's needs.
+					</p>
+
+					<img src="img/shopsmart-dashboard.png" alt="ShopSmart dashboard showing total savings, list cost, trip time, and shopping progress" class="modal-img" onerror="this.style.display='none'" />
+					<p class="modal-caption">The ShopSmart dashboard: total savings of $1.49, list cost of $6.85, and an estimated 32-minute trip, alongside a live shopping progress tracker.</p>
+
+					<h2>The Build: Turning Features into a System</h2>
+					<p>
+						Our tech stack combined <strong>Python</strong> and <strong>JSX</strong>, supported by web scraping tools, the Google Maps API, and an OpenAI-powered language model for the chatbot. One of our main goals was to ensure that every feature worked cohesively—price aggregation, route optimization, and user interaction all had to come together seamlessly.
+					</p>
+					<p>
+						I contributed heavily to the development side of the project, focusing on implementing core functionality and ensuring that our backend logic effectively powered the user experience. I also contributed to the video narration—presenting the app and walking through its features for the final submission. Meanwhile, my teammates played key roles in refining the design and crafting a strong final presentation.
+					</p>
+
+					<h2>Routes &amp; Savings</h2>
+					<img src="img/shopsmart-routes.png" alt="ShopSmart Routes and Savings page with GPS route view and cost breakdown" class="modal-img" onerror="this.style.display='none'" />
+					<p class="modal-caption">The Routes &amp; Savings view: Cheapest, Fastest, and Eco tabs. The cheapest route shows a GPS path, $6.85 total cost, 32 minutes, 8.8 miles, and $4.33 in savings.</p>
+
+					<h2>Challenges Along the Way</h2>
+					<p>
+						As with any fast-paced build, we ran into several technical obstacles. One of the biggest was creating a system that could successfully connect our pricing data with our route optimization logic. Because our approach relied on structured, context-aware data, ensuring that everything worked together in a meaningful and responsive way required multiple iterations.
+					</p>
+					<p>
+						We also encountered issues with the user interface—particularly our search functionality. While interacting with the AI assistant or adding items to the cart, the search bar would frequently reset, disrupting the experience. This forced us to rethink how users interact with the app and redesign parts of our input flow.
+					</p>
+					<p>
+						With limited time, we made deliberate trade-offs. We shifted focus toward high-impact features such as map rendering and calculating total trip costs across different store combinations, ensuring our core value proposition remained strong.
+					</p>
+
+					<h2>What We're Proud Of</h2>
+					<p>
+						One of our biggest achievements was designing a solution that connects personal savings with environmental awareness. ShopSmart doesn't just help users spend less—it also gives them the option to make more sustainable choices in how they shop.
+					</p>
+					<p>
+						We're also proud of building a working prototype that brings together shopping lists, route optimization, pricing insights, and projected savings. Even with simulated data, we created a system that delivers personalized and actionable results, with clear potential to support underserved communities.
+					</p>
+
+					<h2>What We Learned</h2>
+					<p>
+						This experience reinforced how important it is to balance functionality, efficiency, and innovation—especially within tight time constraints. We gained hands-on experience integrating large language models into a practical application by building and connecting a chatbot trained on a custom dataset for grocery-related queries.
+					</p>
+					<p>
+						We also learned that usability comes first. Addressing interface issues made it clear that even strong technical features lose value if the user experience isn't smooth and intuitive. More broadly, we saw how fragmented grocery data can be—and how much opportunity there is to improve it.
+					</p>
+
+					<h2>What's Next</h2>
+					<p>
+						Looking ahead, we want to integrate real-time pricing data so the app can reflect actual store conditions and adapt dynamically to changes such as inflation or shifting inventory. With more accurate data and continued development, ShopSmart has the potential to become a practical tool that helps people make smarter, more sustainable shopping decisions every day.
+					</p>
+
+					<h2>Final Thoughts</h2>
+					<p>
+						Winning first place—and earning $100 along with five .xyz domains—was an incredible moment for our team. But more importantly, it validated the idea that thoughtful, user-focused technology can make a real difference. Innovation isn't just about complexity—it's about building something that people can actually use.
+					</p>
+
+					<div class="modal-links">
+						<a href="https://smartgroc-ccfxrh.manus.space" target="_blank" rel="noopener">&#127758; Try the App</a>
+						<a href="https://smartgroc-ccfxrh.manus.space" target="_blank" rel="noopener" class="secondary">&#9654; Watch the Demo Video</a>
+					</div>
+				</div>
+			</div>
 		</main>
 
 		<footer class="footer container">
@@ -1242,6 +1449,19 @@
 
 		window.addEventListener('scroll', updateScrollState, { passive: true });
 		window.addEventListener('resize', updateScrollState);
+
+		// Close modal on overlay click
+		document.querySelectorAll('.modal-overlay').forEach(overlay => {
+			overlay.addEventListener('click', (e) => {
+				if (e.target === overlay) overlay.classList.remove('open');
+			});
+		});
+		// Close modal on Escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+			}
+		});
 	</script>
 </body>
 </html>
