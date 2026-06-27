@@ -1270,6 +1270,15 @@
 				</div>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-crosscommunal').classList.add('open')">
+						<div class="meta">Community Initiative &nbsp;·&nbsp; June 2026</div>
+						<h3>Three Communities, One Meeting, and the Slow Work of Starting Something</h3>
+						<p>
+							The first gathering of our cross-communal coding initiative brought together students from Avondale, The Heights at Westridge, and Ridgeview at Panther Creek. Nobody knew each other. Experience levels ranged from zero to two-plus years. Here's what actually happened—and why it felt like the right kind of start.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
 					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-shopsmart').classList.add('open')">
 						<div class="meta">Hackathon Recap &nbsp;·&nbsp; Aug 27–30, 2025</div>
 						<h3>Building ShopSmart: How Our Team Won First Place at the TechLit Hackathon</h3>
@@ -1281,6 +1290,104 @@
 					</article>
 				</div>
 			</section>
+
+			<!-- Cross-Communal Coding Initiative Blog Modal -->
+			<div class="modal-overlay" id="modal-crosscommunal" role="dialog" aria-modal="true" aria-labelledby="modal-crosscommunal-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-crosscommunal').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-crosscommunal-title">Three Communities, One Meeting, and the Slow Work of Starting Something</h1>
+					<div class="post-meta">
+						<span>June 2026</span>
+						<span>Community Initiative</span>
+						<span>Led by Deeptanshu Devatha &nbsp;·&nbsp; Srichandra Pallerla, Krishna Pothapragada, Roshan Hucthagower</span>
+					</div>
+
+					<p>
+						Avondale, The Heights at Westridge, and Ridgeview at Panther Creek are close to each other in the way that many neighborhoods are close—geographically near, socially separate. Students who live in these communities might go to the same stores, drive the same roads, and still never interact in any meaningful way. That gap is ordinary, and most of the time, nobody thinks much about it.
+					</p>
+					<p>
+						This initiative is an attempt to do something about that gap—not through a grand program or an institutional mandate, but through the smaller, more practical act of learning to code together.
+					</p>
+
+					<h2>What This Is</h2>
+					<p>
+						A few weeks ago, Srichandra Pallerla, Krishna Pothapragada, Roshan Hucthagower, and I started talking about whether there was a way to bring students from our three communities into the same room—or at least the same Zoom call—around something concrete. Coding felt like the right anchor. It's a skill with a clear entry point, a low barrier to starting, and enough depth that students at very different levels can still be working toward something real.
+					</p>
+					<p>
+						The core idea is simple: weekly Zoom sessions, every weekend, open to students from all three communities regardless of experience. Not a class in the rigid sense—more of a shared space to build, ask questions, and figure things out alongside people you wouldn't otherwise know.
+					</p>
+					<p>
+						The first meeting was introductory. We weren't trying to accomplish much. We just wanted to see who showed up and what they were carrying with them.
+					</p>
+
+					<h2>The Meeting</h2>
+					<p>
+						Around seven students joined. The first few minutes had the particular awkwardness of a Zoom call where nobody is quite sure who's supposed to talk first—the kind of silence that feels loud. Roshan broke it by doing a quick roll call by community, which helped: hearing "Avondale," "Heights," "Ridgeview" repeated back was a small but useful way to make the three-way nature of the group tangible rather than abstract.
+					</p>
+					<p>
+						We went around with introductions: name, community, grade, and one honest answer to the question, <em>what's your experience with coding, if any?</em> The range was immediate and real. One student from Ridgeview had been writing Python for about two years and had built a few small projects on his own. Another from Avondale had done Scratch in fifth grade and hadn't touched anything since. Most people fell somewhere in the middle—a semester of a school CS elective, a few hours of a tutorial they'd started and not finished, or some exposure through a math class that briefly touched on programming.
+					</p>
+					<p>
+						Nobody exaggerated their experience, which felt like a good sign. There's a version of this kind of meeting where people perform confidence. This wasn't that.
+					</p>
+
+					<h2>What We Talked About</h2>
+					<p>
+						The first real discussion came when Krishna asked a direct question: <em>What do you actually want to get out of this?</em> It sounds like an obvious thing to ask. In practice, it's the kind of question that separates a meeting from a check-in.
+					</p>
+					<p>
+						Answers varied. A few students wanted to build something—an app, a game, something they could show people. One student from The Heights said she mainly wanted to understand what people meant when they talked about programming, because it came up constantly in school and she felt like she was missing a foundation everyone else had. Someone else said he was hoping to get better before AP Computer Science next year. One student was more candid: he said he mostly came because a friend invited him and he was curious what this would actually be.
+					</p>
+					<p>
+						That last answer was probably the most useful. It acknowledged that not everyone arrives at something like this with a clear purpose—and that the initiative has to earn sustained engagement rather than assume it.
+					</p>
+					<p>
+						We spent some time brainstorming project directions. Ideas that came up: a shared community events app that people across all three neighborhoods could actually use, a simple quiz game that could be built incrementally over several weeks, a tool to track something—scores, weather, anything—just to have a functional goal to orient around. Nobody landed on a final choice. That was fine. The brainstorming wasn't really about the projects themselves yet. It was about getting people to think out loud together.
+					</p>
+
+					<h2>The Harder Question</h2>
+					<p>
+						The most substantive conversation of the night came out of a simple observation Srichandra made: if we run every session for beginners, the more experienced students will check out. But if we pitch the content at an intermediate level, the students who are just starting will fall behind quickly and disengage. Both outcomes kill the thing we're trying to build.
+					</p>
+					<p>
+						We didn't solve it in that meeting. What we did do was name it clearly, which matters more than it sounds. The tentative direction—and we're still working this out—is to structure sessions so that there's a shared foundation everyone works through together, but with room for students who are further along to take on more open-ended or challenging extensions of the same concept. Pair-based work across experience levels might help too. We'll see what actually works once we start.
+					</p>
+					<p>
+						There was also a quieter thread running through the meeting about what it means to learn something with people you don't know yet. A few students mentioned that their school's CS classes felt competitive—graded, ranked, stressful in a way that made them reluctant to admit confusion. The appeal of this kind of initiative, if we do it right, is that none of that applies. You're not being evaluated. You can ask a basic question without it affecting anything except your own understanding.
+					</p>
+
+					<h2>What Stood Out</h2>
+					<p>
+						The most striking moment of the meeting wasn't a discussion point. It was when we asked everyone, near the end, to type into the chat one thing they were hoping to build or learn—anything at all, no pressure. People who had been quiet the whole call participated. The answers were specific and genuine: <em>I want to make a game with a character I designed. I want to understand what a function actually is. I want to build a website for my family's business. I want to learn enough to know if I want to keep going.</em>
+					</p>
+					<p>
+						That last one—<em>learn enough to know if I want to keep going</em>—is worth sitting with. It's an honest way to describe being at the beginning of something you're not sure about yet. It's also, I think, the right attitude to have toward a first meeting. Nobody has to be certain. They just have to show up.
+					</p>
+
+					<h2>What Comes Next</h2>
+					<p>
+						Starting this weekend, we'll hold weekly Zoom sessions every Saturday or Sunday—rotating slightly based on availability, but consistent enough that it becomes a rhythm. The first few sessions will focus on Python fundamentals: variables, loops, functions, and basic logic. Not because Python is the only option, but because it's readable, the error messages are relatively human, and there are good free tools that work on any computer without setup friction.
+					</p>
+					<p>
+						We'll use a shared Discord server for communication between sessions—questions, links, code snippets, and whatever else comes up. We're also setting up a lightweight GitHub organization so that students who are ready to start version-controlling their work can do that, and those who aren't can pick it up later without pressure.
+					</p>
+					<p>
+						The goal by the end of the summer is for every student who stays engaged to have built at least one thing they feel ownership over—something they can point to and say they made. What that thing is will vary. That's fine.
+					</p>
+
+					<h2>A Closing Thought</h2>
+					<p>
+						Something worth being honest about: this kind of initiative is easy to talk about and harder to sustain. Getting eleven people onto a call is not the same as building something durable. The weeks where attendance drops, when content is harder than expected, when schedules conflict—those are the real test.
+					</p>
+					<p>
+						But the first meeting felt like a genuine starting point, not a performed one. The students who joined weren't there because they had to be. They were curious enough to show up, honest enough to say what they didn't know, and open enough to think about what they might want to build alongside people they'd never met.
+					</p>
+					<p>
+						That's enough to work with.
+					</p>
+				</div>
+			</div>
 
 			<!-- ShopSmart Blog Modal -->
 			<div class="modal-overlay" id="modal-shopsmart" role="dialog" aria-modal="true" aria-labelledby="modal-shopsmart-title">
