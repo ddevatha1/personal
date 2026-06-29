@@ -946,6 +946,23 @@
 			margin-top: -10px;
 			margin-bottom: 16px;
 		}
+		.modal-box code {
+			font-family: 'Courier New', Courier, monospace;
+			background: rgba(184, 109, 74, 0.09);
+			padding: 2px 6px;
+			border-radius: 4px;
+			font-size: 0.91em;
+			color: var(--accent-dark);
+		}
+		.modal-curriculum {
+			width: 100%;
+			height: 420px;
+			border-radius: var(--radius-md);
+			border: 1px solid rgba(29,26,23,0.08);
+			box-shadow: 0 8px 28px rgba(52,36,28,0.09);
+			display: block;
+			margin: 20px 0 0;
+		}
 		@media (max-width: 640px) {
 			.modal-box { padding: 32px 22px; }
 			.modal-img-grid { grid-template-columns: 1fr; }
@@ -1270,6 +1287,15 @@
 				</div>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-online').classList.add('open')">
+						<div class="meta">KidCode &nbsp;·&nbsp; June 2026</div>
+						<h3>Our First KidCode Online Python Class</h3>
+						<p>
+							Twelve students joined our first Google Meet coding session. We installed Python, covered data types, variables, and user input, and worked through two exercises together. By the end, everyone had working code. Here's how the first class went.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
 					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-crosscommunal').classList.add('open')">
 						<div class="meta">Community Initiative &nbsp;·&nbsp; June 2026</div>
 						<h3>Three Communities, One Meeting, and the Slow Work of Starting Something</h3>
@@ -1290,6 +1316,88 @@
 					</article>
 				</div>
 			</section>
+
+			<!-- KidCode Online Python Class Blog Modal -->
+			<div class="modal-overlay" id="modal-kidcode-online" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-online-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-kidcode-online').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-kidcode-online-title">Our First KidCode Online Python Class</h1>
+					<div class="post-meta">
+						<span>June 2026</span>
+						<span>KidCode Python Bootcamp</span>
+						<span>Deeptanshu Devatha</span>
+					</div>
+
+					<p>
+						The first actual class had been on my mind for weeks. There's a gap between planning a curriculum and teaching it for the first time, and Saturday morning was when that gap closed.
+					</p>
+					<p>
+						I logged into Google Meet a few minutes early. Students started joining quickly—within a few minutes, twelve had made it in: Anuk, Jaswitha, Oviya, Sabera, Sumirah, Purnima, Arya, Rajani, Ann, Saji, Gowri, and Gowtham. Attendance was better than I'd expected, and almost everyone came prepared and ready to work.
+					</p>
+
+					<img src="img/kidcode-googlemeet-2.png" alt="Screenshot of the KidCode Python Bootcamp Day 1 Google Meet session showing students on video" class="modal-img" />
+					<p class="modal-caption">The class as it looked from my end—twelve students on, cameras up, ready to start.</p>
+
+					<h2>Getting Set Up</h2>
+					<p>
+						The first order of business was installation. Getting Python and Visual Studio Code running across twelve different computers, with different operating systems and permission settings, never goes exactly to plan. I'd set aside the first part of class specifically for this. A few students ran into issues—one had a permissions error during installation, another's VS Code wasn't detecting Python at all. While I walked through the steps on screen, other students who'd already finished setup helped troubleshoot. Both problems got resolved. We had everyone writing code within about twenty minutes.
+					</p>
+
+					<h2>What We Covered</h2>
+					<p>
+						We started with <code>print()</code> statements—the most direct way to confirm that Python is running and responding to what you type. Students wrote their first programs, ran them, and a few immediately started changing the text to see what else they could get Python to display. That instinct to experiment before anyone tells you to is a good sign early on.
+					</p>
+					<p>
+						From there, we covered data types: strings, integers, floats, and booleans. I explained why they matter with a concrete example—you can add two numbers together without any trouble, but if you try to combine a number and a piece of text the same way, Python stops and tells you something's wrong. Understanding that different kinds of data behave differently is one of those foundational ideas that prevents a lot of confusion later.
+					</p>
+					<p>
+						Variables came next. I described them as labeled containers—a place to store information so a program can refer to it again later without retyping it each time. We worked through several examples together, and I asked students to predict what would be printed before we actually ran the code. Getting them to think through what Python is doing at each step—rather than just watching it happen—made a noticeable difference in the follow-up questions.
+					</p>
+					<p>
+						The piece that clicked most visibly was <code>input()</code>. Up until that point, every program students had written just displayed something fixed. <code>input()</code> means the program can ask the user a question and do something with whatever answer it gets. That shift—from a program that only displays output to one that can actually respond—is when Python stops feeling like an exercise and starts feeling like you're building something real.
+					</p>
+
+					<h2>Exercises</h2>
+					<p>
+						The first exercise was intentionally straightforward: write a program that prints your name, your age, and what you're most excited to learn during the bootcamp. The goal was to make sure everyone had <code>print()</code> working and could use it to display several things in sequence. Students shared their outputs aloud, which made for a good few minutes—hearing what each person wanted to learn gave the class a clearer picture of what everyone was working toward.
+					</p>
+
+					<img src="img/kidcode-googlemeet-1.png" alt="Screenshot of the KidCode Python Bootcamp Google Meet session during the coding exercises" class="modal-img" />
+					<p class="modal-caption">Students working through the exercises during class.</p>
+
+					<p>
+						The second exercise introduced <code>input()</code>. Students wrote a program that asks the user for their name and age, then displays both back. It's a small program, but it required pulling together several things we'd just covered: storing input in a variable, then using that variable in a <code>print()</code> statement. Syntax errors came up—missing quotes, a mismatched parenthesis, a typo in a function name. We walked through each one as a group. I made a point of saying directly that finding a bug and fixing it is the same work as debugging real code. Getting comfortable with that process early is worth the time.
+					</p>
+					<p>
+						By the end of class, everyone had both programs running.
+					</p>
+
+					<h2>Homework</h2>
+					<p>
+						Before we wrapped up, I gave everyone a challenge to work on before our next session on Saturday, July 4: can your program tell the user how old they'll be in five years? It builds on everything we covered—<code>input()</code>, variables, and a simple arithmetic step. I want students to work through it themselves rather than waiting to be walked through it in class. Coming back with something they tried, even if it doesn't quite work yet, is more useful than coming back having done nothing.
+					</p>
+
+					<h2>How the Class Felt</h2>
+					<p>
+						A few students kept their cameras off early on, which is normal the first time. I made a point to call on different people throughout the session rather than defaulting to whoever was most visibly engaged. When someone wasn't confident about an answer, I encouraged them to guess anyway—being wrong out loud is easier when the room makes that okay.
+					</p>
+					<p>
+						The dynamic started shifting once students began helping each other. When someone ran into an installation issue, another student who'd already worked through something similar jumped in with what had worked for them. That's not something you can plan for—it just happens when people are paying enough attention to what's going on around them.
+					</p>
+					<p>
+						A few syntax mistakes turned into useful teaching moments. One student had forgotten to close a parenthesis; another had a quote mismatch that was hard to spot at first glance. We stopped and traced through each one rather than just correcting it and moving on, because reading an error message and working backward to its cause is exactly the kind of thinking that makes someone better at programming over time. I made sure to say that out loud—debugging isn't a sign that something went wrong, it's just part of writing code.
+					</p>
+
+					<h2>Looking Ahead</h2>
+					<p>
+						I spent a good amount of time building the curriculum before this class—thinking through the pacing, deciding what to cover first and what to save for later. Running the actual session made it feel less like preparation and more like teaching. That transition is what I'd been working toward.
+					</p>
+					<p>
+						Watching students write their first Python programs and have them actually work is a different thing from anticipating that it'll go well. The class confirmed the foundation is there. We'll build on it Saturday.
+					</p>
+				</div>
+			</div>
 
 			<!-- Cross-Communal Coding Initiative Blog Modal -->
 			<div class="modal-overlay" id="modal-crosscommunal" role="dialog" aria-modal="true" aria-labelledby="modal-crosscommunal-title">
@@ -1321,6 +1429,9 @@
 						The first meeting was introductory. I wasn't trying to accomplish much. I just wanted to see who showed up and what they were carrying with them.
 					</p>
 
+					<img src="img/kidcode-inperson-group.jpg" alt="Students posing at an outdoor pavilion next to a chalkboard reading Python Bootcamp Day 1" class="modal-img" />
+					<p class="modal-caption">Students who came out for the first KidCode Python Bootcamp session at the neighborhood pavilion.</p>
+
 					<h2>The Meeting</h2>
 					<p>
 						Around eleven students joined. The first few minutes had the particular awkwardness of a Zoom call where nobody is quite sure who's supposed to talk first—the kind of silence that feels loud. I started with a quick roll call by community, which helped: hearing "Avondale," "Heights," "Ridgeview" repeated back was a small but useful way to make the three-way nature of the group tangible rather than abstract.
@@ -1331,6 +1442,9 @@
 					<p>
 						Nobody exaggerated their experience, which felt like a good sign. There's a version of this kind of meeting where people perform confidence. This wasn't that.
 					</p>
+
+					<img src="img/kidcode-inperson-presenting.jpg" alt="Deeptanshu presenting to students seated at an outdoor picnic table during a KidCode session" class="modal-img" />
+					<p class="modal-caption">Introducing concepts to the group during one of our early in-person sessions.</p>
 
 					<h2>What We Talked About</h2>
 					<p>
@@ -1369,6 +1483,18 @@
 					<p>
 						Starting this weekend, I'll be running weekly Zoom sessions every Saturday or Sunday—consistent enough to become a rhythm. The first few sessions will focus on Python fundamentals: variables, loops, functions, and basic logic. Not because Python is the only option, but because it's readable, the error messages are relatively human, and there are good free tools that work on any computer without setup friction.
 					</p>
+
+					<object
+						data="./python_kids_curriculum.pdf"
+						type="application/pdf"
+						class="modal-curriculum"
+						aria-label="Python Kids Curriculum PDF">
+						<p style="text-align:center; padding: 24px; color: var(--muted);">
+							<a href="./python_kids_curriculum.pdf" target="_blank" rel="noopener" style="color: var(--accent-dark); font-weight: 600;">View the Python curriculum (PDF) ↗</a>
+						</p>
+					</object>
+					<p class="modal-caption">The curriculum I put together for the KidCode Python Bootcamp sessions.</p>
+
 					<p>
 						I've set up a shared Discord server for communication between sessions—questions, links, code snippets, and whatever else comes up. There's also a lightweight GitHub organization for students who are ready to start version-controlling their work, with no pressure for those who aren't there yet.
 					</p>
