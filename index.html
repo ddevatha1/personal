@@ -1287,6 +1287,24 @@
 				</div>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day3').classList.add('open')">
+						<div class="meta">KidCode &nbsp;·&nbsp; July 2026</div>
+						<h3>Day 3: What Happens When You Slow Down</h3>
+						<p>
+							After day two ran into more material than an hour could hold, I rebuilt the lesson around just four related ideas: booleans, comparison operators, and, and or. The slower pace changed the room: more volunteers, more students explaining things to each other, and a third grader who worked out and vs. or on her own.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day2').classList.add('open')">
+						<div class="meta">KidCode &nbsp;·&nbsp; July 2026</div>
+						<h3>Day 2: When I Tried to Teach Too Much in One Hour</h3>
+						<p>
+							Booleans, if statements, for loops, and while loops: four big ideas for students who'd only just started learning to code. Attendance held steady from day one, but participation dropped as the pace outran the class. Here's what that taught me about the difference between covering material and actually teaching it.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
 					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-online').classList.add('open')">
 						<div class="meta">KidCode &nbsp;·&nbsp; June 2026</div>
 						<h3>Our First KidCode Online Python Class</h3>
@@ -1316,6 +1334,119 @@
 					</article>
 				</div>
 			</section>
+
+			<!-- KidCode Day 3 Blog Modal -->
+			<div class="modal-overlay" id="modal-kidcode-day3" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-day3-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-kidcode-day3').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-kidcode-day3-title">Day 3: What Happens When You Slow Down</h1>
+					<div class="post-meta">
+						<span>July 11, 2026</span>
+						<span>KidCode Python Bootcamp</span>
+						<span>Deeptanshu Devatha</span>
+					</div>
+
+					<p>
+						After day two, I rewrote the lesson plan for day three almost completely. Instead of trying to cover as much ground as possible, I picked four ideas that all point at the same underlying concept: booleans, comparison operators, <code>and</code>, and <code>or</code>. I gave the entire hour to just that. No for loops, no while loops, nothing held over from the topics that had gotten rushed the last time. Fewer moving pieces, more time on each one.
+					</p>
+
+					<img src="img/kidcode-day3-title-slide.png" alt="Title slide for KidCode Day 3, dated July 11 2026, reading Booleans, comparisons, and logic" class="modal-img" />
+					<p class="modal-caption">The opening slide for day three. After the last session, I cut the lesson down to a quarter of the topics.</p>
+
+					<h2>Starting Smaller</h2>
+					<p>
+						We opened with a quick review of <code>int()</code>, <code>float()</code>, and the arithmetic operators from day two, then moved into booleans properly, not as a rushed setup for if statements but as their own topic. I put up simple expressions, <code>5 == 5</code>, <code>10 &gt; 20</code>, <code>"cat" != "dog"</code>, and gave the class real time to sit with each one before revealing the answer. Nobody was racing to the next slide. That alone changed how the hour felt.
+					</p>
+					<p>
+						From there we went into comparison operators, then <code>and</code> and <code>or</code>, treating each one as worth a few extra minutes rather than a line to get through. I kept coming back to the same framing: <code>and</code> needs both sides to be true, <code>or</code> only needs one. Repeating that a few different ways, with a few different examples, is not exciting to plan, but it's what day two was missing.
+					</p>
+
+					<h2>The Moment That Told Me I'd Gotten It Right</h2>
+					<p>
+						One of the students who joined that day was younger than the rest of the group, around third grade, and new to the bootcamp. During one of the interactive examples, I asked the class to explain the difference between <code>and</code> and <code>or</code> in their own words, and she was the one who raised her hand first. She said <code>and</code> needs both things to be true, and <code>or</code> just needs one of them. Then, without me prompting her further, she came up with her own example to show it. Watching someone that young reason through boolean logic correctly, and unprompted, told me more about whether the slower pace was working than anything else that happened that day.
+					</p>
+
+					<img src="img/kidcode-day3-and-or-slide.png" alt="KidCode Day 3 slide explaining and, or, and not with example comparisons" class="modal-img" />
+					<p class="modal-caption">The and/or/not slide, the one we spent the most time on and the one that stuck.</p>
+
+					<h2>What Changed in the Room</h2>
+					<p>
+						The difference from day two showed up almost immediately in how many students were willing to answer out loud. When I put up a comparison and asked the class to predict True or False before I revealed it, more hands went up each time, and a few students started arguing quietly with each other about the answer before either of them said it aloud. That's a good sign: it means they're reasoning it through rather than guessing.
+					</p>
+					<p>
+						A few students started explaining things to each other without me stepping in. When one student got stuck on why <code>age &gt; 5 and age &lt; 18</code> evaluated to True for a specific number, another student jumped in with an explanation before I had the chance to. I let it run instead of cutting in. Students were also more willing to read code out loud than they had been in earlier sessions, with less hesitation over the syntax and more focus on what the line actually meant.
+					</p>
+
+					<h2>Ending With a Challenge</h2>
+					<p>
+						I closed the lesson with a small challenge: write a password checker that asks for a username and password, and prints True only if the username is "admin" and the password is "kidcode123." It's a direct application of <code>and</code>, dressed up as something that feels like a real program instead of a textbook exercise. A handful of students said they wanted to try extending it on their own, adding more usernames or a limited number of attempts, before we'd even finished going over the intended solution.
+					</p>
+
+					<h2>What I'm Taking From Day 3</h2>
+					<p>
+						The goal was never just to get through a curriculum. It's to get students to a point where they trust their own reasoning enough to try things without waiting for permission. Day two taught me that cramming four topics into an hour doesn't actually teach four topics. It teaches a fraction of one and leaves the rest as vague impressions. Day three, with a quarter of the material and four times the attention on each piece, is what I want more of. A third grader working out <code>and</code> versus <code>or</code> on her own is a better outcome than a room that nodded along to twice as many slides.
+					</p>
+				</div>
+			</div>
+
+			<!-- KidCode Day 2 Blog Modal -->
+			<div class="modal-overlay" id="modal-kidcode-day2" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-day2-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-kidcode-day2').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-kidcode-day2-title">Day 2: When I Tried to Teach Too Much in One Hour</h1>
+					<div class="post-meta">
+						<span>July 5, 2026</span>
+						<span>KidCode Python Bootcamp</span>
+						<span>Deeptanshu Devatha</span>
+					</div>
+
+					<p>
+						Attendance for day two was close to day one. Most of the same students logged back onto the Google Meet, plus one new face who'd heard about the bootcamp from a friend. Before getting into new material, I had a few students walk through their homework from day one out loud: a short program that calculates what age you'll be five years from now. Almost everyone had it working. The couple who didn't were missing a closing parenthesis and, in one case, had left out <code>int()</code> entirely, which we fixed together in a few minutes.
+					</p>
+
+					<h2>What Was on the Agenda</h2>
+					<p>
+						The plan for day two was booleans, if statements, for loops, and while loops. Four topics, one hour. I want to be honest about this now: that was too much. Each of those ideas is worth sitting with on its own, and stacking all four together in a single session meant students were still absorbing one concept by the time I'd already moved on to the next.
+					</p>
+
+					<img src="img/kidcode-day2-title-slide.png" alt="Title slide for KidCode Day 2, dated July 5 2026, reading Operators, decisions, and loops" class="modal-img" />
+					<p class="modal-caption">The opening slide for day two. In hindsight, the title alone was a preview of how packed the hour would get.</p>
+
+					<h2>Booleans and the First Signs of Slowing Down</h2>
+					<p>
+						I spent several hours beforehand building this presentation, because I wanted booleans and loops to feel visual and concrete instead of abstract rules to memorize. We started with booleans, since if statements and loops both depend on them. I put a handful of expressions on screen: <code>5 &gt; 3</code>, <code>"cat" == "dog"</code>, <code>10 == 10</code>, and asked students to call out True or False before I revealed the answer. That part went well. By the third or fourth example, more hands were going up, and a couple of students started predicting correctly even on the trickier ones.
+					</p>
+					<p>
+						Where things slowed down was the move into if statements. A few students asked questions that showed they were genuinely trying to connect the new material to what we'd covered on day one. One asked whether an if statement could check a variable's value the same way we'd been printing variables, which is exactly the kind of connection I want students making on their own. Answering questions like that well takes time, though, and I hadn't built enough of it into the plan.
+					</p>
+
+					<h2>For Loops, While Loops, and Running Out of Room</h2>
+					<p>
+						By the time we reached for loops and while loops, the pace was working against me. I introduced <code>range()</code>, walked through a for loop counting to five, then a while loop doing roughly the same thing with a counter variable, and asked students to notice the difference between them. A few caught it right away. More were still working through if statements and hadn't fully caught up.
+					</p>
+					<p>
+						Participation dropped compared to day one during this stretch. Students were still following along: cameras stayed on, nobody dropped off the call, but fewer people were volunteering answers. When I called on someone directly, several needed a moment before responding, which usually means they're still processing the previous idea rather than ready for the next one.
+					</p>
+
+					<img src="img/kidcode-day2-if-else-slide.png" alt="KidCode Day 2 slide explaining if and else statements with a score example" class="modal-img" />
+					<p class="modal-caption">The if/else slide. This is roughly where the pace started outrunning the class.</p>
+
+					<h2>What Still Went Right</h2>
+					<p>
+						Even with the pacing off, there were real moments worth holding onto. About twenty minutes after we'd moved past if statements, one student said something close to, "oh, so it's just like a question the computer asks itself," which is a better description of conditional logic than most explanations I could have written myself. Watching students start to think about programming as logical reasoning rather than a set of syntax to memorize is the actual point of teaching this material, and it happened here even with the pace off.
+					</p>
+					<p>
+						After I ended the call, a few students stayed on for several more minutes with questions about loops. One wanted to know if a while loop could run forever. Another was trying to figure out how to print only even numbers and wanted to talk through her thinking before trying it on her own. Sticking around after class to keep working through something that isn't fully clicking yet is a good sign, regardless of how the hour itself went.
+					</p>
+
+					<h2>What Day 2 Taught Me</h2>
+					<p>
+						The material I put together was solid. The problem was how much of it I tried to fit into sixty minutes. Teaching isn't just about how much ground you cover. It's about matching the pace of the people you're teaching. Day two was a reminder that four good concepts, poorly paced, don't land as well as two concepts taught with room to actually think them through. I went into day three with a much shorter list.
+					</p>
+				</div>
+			</div>
 
 			<!-- KidCode Online Python Class Blog Modal -->
 			<div class="modal-overlay" id="modal-kidcode-online" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-online-title">
