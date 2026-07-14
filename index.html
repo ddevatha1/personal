@@ -1287,6 +1287,205 @@
 				</div>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-01').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2025</div>
+						<h3>Starting From Zero: Learning How Research Problems Get Made</h3>
+						<p>
+							I've decided to spend this year trying to do real machine learning research, and I want to write about it as it happens rather than only after the fact. I have no formal research experience — until now, "research" for me has meant reading other people's papers, not writing my own. So the first few weeks of this project have mostly been about learning how research problems get made in the first place, not about writing any code.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-02').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2025</div>
+						<h3>Narrowing In: Why Speech, and Why Dementia</h3>
+						<p>
+							I started meeting regularly with Joe Xiao, a PhD student who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-03').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2025</div>
+						<h3>Discourse Coherence 101</h3>
+						<p>
+							This week was pure reading, and it was the first time the project started to feel like it had real technical bones rather than just a motivating story. "Discourse coherence" turns out to be a whole subfield with its own vocabulary, and a lot of it maps surprisingly cleanly onto the kinds of breakdowns that get described anecdotally in dementia case studies.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-04').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2025</div>
+						<h3>Finding a Dataset: DementiaBank and the Pitt Corpus</h3>
+						<p>
+							Dataset search this week, and I think I found the right one: the DementiaBank Pitt Corpus. It's a collection of transcribed speech samples from participants completing a handful of standardized elicitation tasks — most notably the "Cookie Theft" picture description task, along with fluency, recall, and sentence-repetition tasks — collected from both a dementia group and a healthy control group. Critically for what I want to do, many participants were seen across multiple visits over time, with cognitive assessment scores (including MMSE) recorded at each visit.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-05').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2025</div>
+						<h3>From Transcripts to Tables: First Preprocessing Pass</h3>
+						<p>
+							This week was almost entirely plumbing, and I mean that in the least glamorous sense possible: getting raw transcript files and a metadata spreadsheet into a single clean table I can actually build features on top of. It is not exciting to write about, but it's the part of research nobody tells you takes as long as it does.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-06').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2025</div>
+						<h3>Teaching a Model to "Read" Meaning: Adding SBERT</h3>
+						<p>
+							Handcrafted lexical-overlap features (how many words two consecutive sentences share) are a reasonable first pass at coherence, but they have an obvious blind spot: two sentences can be about the exact same thing while sharing almost no vocabulary at all ("the woman is drying dishes" vs. "she's wiping plates with a towel"). If I only measure literal word overlap, I'll systematically miss semantic coherence — coherence at the level of meaning rather than surface form.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-07').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+						<h3>Coreference, Entity Tracking, and a Frustrating Virtual Environment</h3>
+						<p>
+							I lost most of two days this week to environment setup, which is not something I expected to be writing about in a research blog, but it felt worth documenting because it's such a normal part of doing this kind of work. Coreference resolution — figuring out that "she," "the woman," and "her" in a transcript all refer to the same entity — needs a fairly heavy transformer-based model, and getting a working coreference pipeline installed alongside the rest of my existing packages caused enough dependency conflicts that I ended up isolating it into its own virtual environment entirely, separate from the environment I use for everything else. Not elegant, but it works, and I'd rather have a slightly ugly setup than lose another day to it.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-08').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+						<h3>First Modeling Attempt: The LSTM That Wasn't Ready</h3>
+						<p>
+							After weeks of feature engineering, I finally trained a model. Since the whole premise of this project involves patients with multiple visits over time, a sequence model felt like the obvious first choice — I built an LSTM that takes a patient's visit history as a sequence of feature vectors (handcrafted coherence features plus SBERT embeddings per visit) and predicts the MMSE score at a future visit.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-09').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+						<h3>Back to Basics: Random Forests Beat the Neural Net</h3>
+						<p>
+							I trained a Random Forest regressor on the same feature set the LSTM had access to — handcrafted discourse features plus SBERT embeddings, flattened per patient rather than fed in as a sequence — and it outperformed the LSTM by a meaningful margin, landing around R² ≈ 0.4 on cross-validation. That's still far from a result I'd call strong, but it's a real improvement over the neural network's ~0.44 validation score once you account for the fact that the LSTM's number came from a single validation split while the Random Forest number is a cross-validated estimate, and the Random Forest got there with a small fraction of the tuning effort.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-10').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; September 2025</div>
+						<h3>Building Out the Feature Set: Trajectories, Gaps, and History</h3>
+						<p>
+							With the Random Forest baseline in place, I spent this stretch trying to squeeze more signal out of the longitudinal structure of the data rather than adding entirely new feature families. The instinct behind this: I've been treating each visit somewhat independently, but the whole point of longitudinal data is that a patient's history should inform the prediction, not just their most recent snapshot.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-11').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; October 2025</div>
+						<h3>Moving to LightGBM and Meeting Optuna</h3>
+						<p>
+							Switched the modeling backbone from Random Forest to LightGBM, a gradient-boosted decision tree library. The core difference from Random Forest is how the trees are built: Random Forest trains many trees independently on bootstrapped samples and averages them, while gradient boosting trains trees sequentially, where each new tree is fit to correct the errors (residuals) of the ensemble built so far. In principle, this lets the model capture more subtle feature interactions and generally squeezes more performance out of tabular data — at the cost of being more sensitive to hyperparameters and more prone to overfitting if you're not careful.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-12').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; October 2025</div>
+						<h3>The Leakage Problem: Rebuilding Cross-Validation From Scratch</h3>
+						<p>
+							I flagged this concern a couple weeks ago and finally sat down to check it properly, and it turned out to be a real problem, not a false alarm. My cross-validation setup had been splitting the dataset at the level of individual samples (patient-visits), not at the level of patients. Since many patients in this cohort have multiple visits, that means it was entirely possible — and, once I checked, actually happening — for one visit from a given patient to land in the training fold while another visit from that same patient landed in the validation fold.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-13').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; November 2025</div>
+						<h3>Adding the Clinical Picture</h3>
+						<p>
+							With patient-grouped cross-validation now in place as an honest baseline, I finally did the thing I'd been putting off since August: incorporated the clinical metadata that comes bundled with the Pitt Corpus alongside the speech data. Specifically, I added each patient's entry MMSE (their cognitive score at their first recorded visit), Blessed Dementia Scale score (a measure of functional impairment in daily activities), CDR (Clinical Dementia Rating), NYU and Mattis battery scores, and their baseline diagnosis category (dementia, control, or otherwise).
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-14').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; December 2025</div>
+						<h3>A Silent Bug and the Biggest Single Improvement</h3>
+						<p>
+							While setting up the ablation study I'd planned last time, I went digging into why the "entry MMSE" feature — which I expected, based on everything I understand about this problem, to be by far the single most predictive feature available — wasn't behaving the way I expected in early feature-importance checks. It turned out to be almost inert, which didn't make sense.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-15').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; December 2025</div>
+						<h3>What's Actually Driving the Predictions? Feature Importance Deep Dive</h3>
+						<p>
+							With the entry-MMSE bug fixed and the rest of the clinical feature joins audited and confirmed correct, I ran a proper permutation-importance analysis across all five cross-validation folds. The method: for each fold, take the trained model, measure its validation R², then shuffle one feature column at a time (breaking that feature's relationship to the target while leaving everything else intact) and measure how much R² drops. A bigger drop means the model was relying on that feature more. Repeating the shuffle multiple times per fold and averaging cuts down on noise from any single unlucky shuffle.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-16').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; January 2026</div>
+						<h3>Ablation Studies: How Much Do Speech Features Really Add?</h3>
+						<p>
+							Ran the ablation study I've been planning since November, comparing four feature configurations under identical patient-grouped 5-fold cross-validation: linguistic (handcrafted) features alone, SBERT embeddings alone, clinical features alone, and combinations of all three. The results settle the question from a few weeks ago, at least as far as this dataset can settle it.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-17').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; February 2026</div>
+						<h3>Ensembles, Noise Augmentation, and Rejecting a Long List of Ideas</h3>
+						<p>
+							Most of this stretch was incremental tuning, and in the spirit of documenting the real process rather than just the wins, I want to write down what didn't work as much as what did, because the list of rejected ideas ended up being long.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-18').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; March 2026</div>
+						<h3>Locking In the Final Model and a Held-Out Test Set</h3>
+						<p>
+							I set aside a patient-grouped held-out test set this week — a slice of patients that took no part whatsoever in feature selection, hyperparameter tuning, or fold-ensemble training. Everything up to this point has been evaluated purely through cross-validation, which is a reasonable way to make modeling decisions on a small dataset but leaves open the possibility that repeated tuning decisions, made by me, looking at CV scores over and over across months, have quietly overfit to the CV folds themselves. A genuinely untouched test set is the only way to check that.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-19').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; April 2026</div>
+						<h3>Starting to Write: Learning the Shape of a Research Paper</h3>
+						<p>
+							Almost a full year after I first started reading about domains, tasks, targets, and data, I sat down this week to start turning all of this into an actual manuscript, and immediately ran into a problem I hadn't anticipated: I don't really know how to write a research paper. I know how to run experiments, keep notes, and argue with myself about whether a result is real. I don't have much practice putting that into the specific, conventionalized shape a paper is supposed to take.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-20').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2026</div>
+						<h3>Drafting Methods and Results</h3>
+						<p>
+							Spent this stretch actually writing prose for the first time, starting with Methods and Results rather than the Introduction, on Joe's advice — apparently it's common to draft these sections first since they're the most mechanical and the least dependent on getting the framing exactly right, and writing them first tends to clarify what the Introduction and Discussion actually need to set up and explain.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-21').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2026</div>
+						<h3>Wrestling With the Discussion Section</h3>
+						<p>
+							The Discussion section has taken longer to draft than Methods and Results combined, and I think that's because it's the section where I actually have to take a position rather than just report what happened. It's easy to describe a permutation importance table. It's harder to write a paragraph honestly explaining what it means that clinical features account for the overwhelming majority of predictive power, without either overselling the speech features' contribution or undermining the motivation for the entire project.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-22').classList.add('open')">
+						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2026</div>
+						<h3>First Full Draft Done</h3>
+						<p>
+							I finished assembling the first complete draft of the manuscript today — Introduction, Methods, Results, Discussion, and Conclusion, all in one document, for the first time since I started this project fourteen months ago. It's rough. There are sentences I'll rewrite, a couple of figures that need to be redone at higher resolution, and at least one Methods paragraph Joe already flagged as too dense. But it's a real draft of a real paper, built entirely from work I did and understood, and I want to take a minute to look back at how it got here before diving into revisions.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
 					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day3').classList.add('open')">
 						<div class="meta">KidCode &nbsp;·&nbsp; July 2026</div>
 						<h3>Day 3: What Happens When You Slow Down</h3>
@@ -1334,6 +1533,1081 @@
 					</article>
 				</div>
 			</section>
+
+				<!-- Starting From Zero: Learning How Research Problems Get Made -->
+				<div class="modal-overlay" id="modal-dementia-01" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-01-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-01').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-01-title">Starting From Zero: Learning How Research Problems Get Made</h1>
+						<div class="post-meta">
+							<span>May 12, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I've decided to spend this year trying to do real machine learning research, and I want to write about it as it happens rather than only after the fact. I have no formal research experience — until now, "research" for me has meant reading other people's papers, not writing my own. So the first few weeks of this project have mostly been about learning how research problems get made in the first place, not about writing any code.
+					</p>
+
+					<p>
+						The starting point was broad: I know I want to work at the intersection of AI and healthcare, because it feels like one of the few areas where a marginal improvement in a model can translate into something that actually matters to a person's life, not just a benchmark leaderboard. But "AI for healthcare" is not a research question — it's a mood. I needed a way to turn a vague interest into something concrete enough to actually work on.
+					</p>
+
+					<p>
+						The most useful thing I've learned so far is a simple framework for decomposing a research idea into four pieces: <strong>domain</strong>, <strong>task</strong>, <strong>target</strong>, and <strong>data</strong>. The domain is the general area (say, healthcare, or NLP). The task is the type of problem you're solving (classification, generation, retrieval, prediction). The target is the specific outcome variable you're trying to predict or produce. And the data is whatever you actually have access to that connects the domain to the task. It sounds obvious written out like this, but I found that most of my "ideas" were domains without tasks, or tasks without any realistic data source. Having this checklist has already killed a few ideas I was excited about for about a day each.
+					</p>
+
+					<img src="img/dementia/dementia-01-framework.png" alt="Diagram showing the domain, task, target, and data framework for turning a vague interest into a research question" class="modal-img" />
+					<p class="modal-caption">The framework that turned a vague interest in healthcare AI into something I could actually start testing against real datasets.</p>
+
+					<p>
+						I've been doing a lot of reading on Google Scholar, mostly following citation trails backward from survey papers rather than searching keywords blindly, which turns out to be a much better way to figure out what's already been tried. A few candidate directions I looked at this week:
+					</p>
+
+					<ul>
+						<li><strong>Machine translation</strong> — technically mature, lots of tooling, but it's hard to find a novel angle as a newcomer; the low-hanging fruit has been picked for a decade.</li>
+						<li><strong>Medical code prediction</strong> (assigning ICD codes from clinical notes) — interesting NLP problem, but data access is a real barrier, and the task is more of an information-extraction problem than something with a clear longitudinal or clinical story.</li>
+						<li><strong>Chess improvement prediction</strong> — a fun idea (predicting a player's rating trajectory from their game history) but not obviously connected to anything I actually care about beyond curiosity.</li>
+						<li><strong>Healthcare NLP more broadly</strong> — this is the one that kept pulling me back in.</li>
+					</ul>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						The main lesson this week wasn't technical — it was that a good research topic has to satisfy at least four constraints simultaneously: it has to be <strong>technically feasible</strong> for someone at my level, there has to be <strong>data</strong> actually available to work with, there should be some <strong>novelty</strong> (or at least an underexplored angle on an established problem), and — this one is easy to underweight — I need to actually be <strong>interested</strong> in it, because this is going to take a long time.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I want to spend more time specifically inside healthcare NLP and see if I can find a task where longitudinal data (repeated measurements over time, not just a single snapshot) is available, since a lot of the medical prediction problems I've read about only use single time points. If disease progression is gradual, a single snapshot seems like the wrong way to study it.
+					</p>
+					</div>
+				</div>
+
+				<!-- Narrowing In: Why Speech, and Why Dementia -->
+				<div class="modal-overlay" id="modal-dementia-02" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-02-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-02').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-02-title">Narrowing In: Why Speech, and Why Dementia</h1>
+						<div class="post-meta">
+							<span>May 27, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I started meeting regularly with Joe Xiao, a PhD student who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
+					</p>
+
+					<p>
+						The idea that stuck was speech. Clinicians already use cognitive assessments that involve some form of verbal or written response — describing a picture, recalling a story, naming objects — and the reason those tasks work as diagnostic tools is that language production is not one skill but many working together: retrieving the right word from memory, organizing ideas into a coherent structure, maintaining a topic instead of drifting off it, and coordinating all of that under whatever executive-function load the task demands. If a disease disrupts any of those underlying processes, it seems plausible that it would leave a trace in how a person talks, potentially before it becomes obvious on a standard test.
+					</p>
+
+					<img src="img/dementia/dementia-02-speech-processes.png" alt="Diagram showing memory retrieval, semantic organization, executive function, and topic maintenance feeding into speech production" class="modal-img" />
+					<p class="modal-caption">Language production draws on several cognitive processes at once — if dementia disrupts one of them, it may show up in ordinary speech.</p>
+
+					<p>
+						That is the actual insight that got me excited: dementia assessment today is built around periodic clinician-administered tests — something like the MMSE or MoCA — administered every several months at best. Between those visits, cognitive change is basically invisible to the medical record. It's a series of snapshots, not a trajectory. If we could pull useful signal out of ordinary speech, in principle you could imagine a much higher-frequency, lower-burden way of tracking cognitive change over time. I want to be careful not to oversell this — I have no evidence yet that it's actually feasible — but as a motivation for a project, it's a real gap.
+					</p>
+
+					<h2>Research Question</h2>
+
+					<p>
+						At this stage, I don't have one precise question yet, more like three drafts I'm choosing between:
+					</p>
+
+					<ol>
+						<li>Can discourse-level features extracted from speech predict cognitive decline?</li>
+						<li>Can transformer-based language models detect subtle changes in a person's speech across repeated visits?</li>
+						<li>Does a decline in speech coherence correlate with increasing severity on standard cognitive scales like MMSE or MoCA?</li>
+					</ol>
+
+					<p>
+						These aren't the same question. The first is about prediction, the second is about change-detection, and the third is about correlation with an existing clinical measure. I suspect the project will end up closest to a hybrid of (1) and (3) — using coherence-style features to predict a clinical severity score — but I want to sit with the ambiguity a little longer before committing.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Joe pointed out that "speech changes reflect cognitive decline" is a hypothesis with a lot of prior literature behind it already, particularly around discourse coherence — how well ideas connect to each other across an utterance, whether a speaker stays on topic, how much repetition or filler language shows up. I hadn't heard the term "discourse coherence" before this week, so next up is actually reading into what that means formally, since right now I'm using it as a vibe rather than a defined concept.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Read more specifically about discourse coherence in the clinical linguistics literature, rather than general NLP papers, since I suspect the vocabulary and the standard feature sets are already well established there.
+					</p>
+					</div>
+				</div>
+
+				<!-- Discourse Coherence 101 -->
+				<div class="modal-overlay" id="modal-dementia-03" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-03-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-03').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-03-title">Discourse Coherence 101</h1>
+						<div class="post-meta">
+							<span>June 9, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						This week was pure reading, and it was the first time the project started to feel like it had real technical bones rather than just a motivating story. "Discourse coherence" turns out to be a whole subfield with its own vocabulary, and a lot of it maps surprisingly cleanly onto the kinds of breakdowns that get described anecdotally in dementia case studies.
+					</p>
+
+					<p>
+						A few concepts I now understand much better:
+					</p>
+
+					<img src="img/dementia/dementia-03-coherence-glossary.png" alt="Glossary card defining global coherence, thematic progression, lexical overlap, coreference, disfluency, and repetition" class="modal-img" />
+					<p class="modal-caption">Six terms from the discourse coherence literature that became the vocabulary for the rest of this project.</p>
+
+					<ul>
+						<li><strong>Global coherence</strong> — how well an entire narrative or response holds together relative to its overall topic or goal, as opposed to just local sentence-to-sentence flow. A person can produce individually fluent sentences that, taken together, don't actually answer the question or describe the picture they were asked to describe.</li>
+						<li><strong>Thematic progression</strong> — the way a topic is introduced and then developed or maintained across successive sentences, versus abandoned or restarted.</li>
+						<li><strong>Lexical overlap</strong> — the degree to which nearby sentences share vocabulary, which is one of the simplest proxies for local coherence (if two consecutive sentences share almost no words or concepts, that's often a sign of a topic jump).</li>
+						<li><strong>Coreference</strong> — tracking when different expressions (pronouns, repeated noun phrases, "it," "they," "the woman") refer back to the same entity. Coreference <em>failures</em> — losing track of who "she" refers to, or reintroducing an entity as if it were new — are a specific, measurable kind of discourse breakdown.</li>
+						<li><strong>Disfluency</strong> — fillers, false starts, self-corrections; not unique to dementia (everyone produces disfluencies) but their rate and pattern can shift with cognitive load.</li>
+						<li><strong>Repetition</strong> — saying the same thing again, sometimes within a single sentence or turn, which can reflect either a memory issue (forgetting it was already said) or a retrieval issue (looping while searching for a different way to express an idea).</li>
+					</ul>
+
+					<p>
+						None of these concepts individually screams "dementia marker" — healthy speakers are disfluent, repeat themselves, and occasionally lose a thread too. The interesting question is whether the <em>rate</em> and <em>pattern</em> of these behaviors shift in a way that's measurable and gradual, rather than whether they're present or absent categorically. That reframing feels important: this isn't going to be a classification problem with a clean decision boundary, it's more likely a <em>degree</em> problem.
+					</p>
+
+					<h2>Research Question</h2>
+
+					<p>
+						I'm converging on a working version of the research question: <strong>can machine learning models predict future cognitive severity scores using longitudinal speech transcripts and extracted discourse coherence features?</strong> The word "future" and "longitudinal" both matter here — I want the model to use a patient's <em>history</em> of visits, not just a single snapshot, echoing the original motivation about capturing trajectories rather than isolated points.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						The obvious challenge is that all of this is currently just vocabulary, not features I can compute. Concepts like "global coherence" are qualitative descriptions in the linguistics literature, and turning them into something a model can consume (a number, or a vector) requires an actual operationalization choice, and I don't yet know which of the many possible operationalizations in the literature are the ones that end up mattering empirically.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Now that I have vocabulary, I need data. Time to look seriously at what longitudinal speech datasets with cognitive assessment scores actually exist and are accessible.
+					</p>
+					</div>
+				</div>
+
+				<!-- Finding a Dataset: DementiaBank and the Pitt Corpus -->
+				<div class="modal-overlay" id="modal-dementia-04" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-04-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-04').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-04-title">Finding a Dataset: DementiaBank and the Pitt Corpus</h1>
+						<div class="post-meta">
+							<span>June 20, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Dataset search this week, and I think I found the right one: the <strong>DementiaBank Pitt Corpus</strong>. It's a collection of transcribed speech samples from participants completing a handful of standardized elicitation tasks — most notably the "Cookie Theft" picture description task, along with fluency, recall, and sentence-repetition tasks — collected from both a dementia group and a healthy control group. Critically for what I want to do, many participants were seen across <strong>multiple visits over time</strong>, with cognitive assessment scores (including MMSE) recorded at each visit.
+					</p>
+
+					<p>
+						That longitudinal structure is exactly what the last few weeks of reading convinced me I needed. A single transcript paired with a single MMSE score can only ever support a cross-sectional analysis — does speech at time T correlate with cognitive score at time T? But if a patient has transcripts and scores from visit 1, visit 2, visit 3, I can ask a more interesting question: does what they said at visit 1 (and how it changed by visit 2) tell you something about their score at visit 3? That's a prediction problem over time, not just a correlation at a single moment, and it lines up with the original motivation about wanting something closer to a continuous trajectory than a snapshot.
+					</p>
+
+					<p>
+						I spent a good chunk of time this week just understanding the structure of the data rather than doing anything with it. The transcripts are in the CHAT/.cha format used in the CHILDES/TalkBank ecosystem, which has its own transcription conventions (speaker tags, disfluency markers, overlapping speech annotations) that I'll need to parse carefully rather than just treating as raw text. Participant metadata — MMSE and related test scores, diagnosis, demographics — lives separately and has to be joined to the right transcript and the right visit, which already looks like it's going to be fiddlier than I expected, since visit numbering and file naming aren't always perfectly aligned.
+					</p>
+
+					<img src="img/dementia/dementia-04-pitt-corpus.png" alt="Directory structure of the DementiaBank Pitt Corpus alongside a sample Cookie Theft transcript excerpt in CHAT format" class="modal-img" />
+					<p class="modal-caption">The Pitt Corpus's directory structure, and an excerpt from a Cookie Theft picture-description transcript in CHAT format.</p>
+
+					<h2>Research Question</h2>
+
+					<p>
+						I now have a concrete, dataset-grounded version of the question I've been circling for a month: <strong>can machine learning models predict future MMSE severity scores using longitudinal patient speech transcripts and extracted speech coherence features?</strong> This is the version I'm going to actually try to answer, rather than continuing to refine it in the abstract.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						The dataset is smaller than I initially hoped — this is not a "big data" NLP problem, it's a "small, valuable, real clinical data" problem, which Joe pointed out has real implications for what kinds of models are going to be appropriate later. I'm filing that away for when I actually start modeling.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Get the raw .cha files and the metadata spreadsheet actually loading and joined together correctly on my machine, even in the crudest possible way, so I have something to build feature extraction on top of.
+					</p>
+					</div>
+				</div>
+
+				<!-- From Transcripts to Tables: First Preprocessing Pass -->
+				<div class="modal-overlay" id="modal-dementia-05" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-05-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-05').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-05-title">From Transcripts to Tables: First Preprocessing Pass</h1>
+						<div class="post-meta">
+							<span>July 3, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						This week was almost entirely plumbing, and I mean that in the least glamorous sense possible: getting raw transcript files and a metadata spreadsheet into a single clean table I can actually build features on top of. It is not exciting to write about, but it's the part of research nobody tells you takes as long as it does.
+					</p>
+
+					<p>
+						The .cha transcript format encodes a lot more than just words — there are speaker-turn markers, timing information, and disfluency/overlap annotations layered into the text. My first task was writing a parser that pulls out only the participant's own speech (excluding the examiner's prompts and interjections) and normalizes it into plain text I can run further processing on, while still preserving enough structure to compute things like pause or repetition markers later if I need them. Getting this right took longer than expected because the annotation conventions aren't perfectly consistent across files — small formatting differences between transcribers.
+					</p>
+
+					<img src="img/dementia/dementia-05-preprocessing-bug.png" alt="Code snippet showing a patient ID join bug where an integer ID fails to match a zero-padded string ID in the metadata table" class="modal-img" />
+					<p class="modal-caption">An early version of exactly the kind of silent ID-matching bug that would come back to bite me again five months later.</p>
+
+					<p>
+						The second, more annoying task was joining transcripts to the right metadata. Each patient can have multiple visits, and I needed to make sure a given transcript file was matched to the correct visit's cognitive scores — not the wrong one, and not silently dropped if the match failed. I did not get this fully right on the first attempt (a problem I suspect I'll be paying for later — matching problems like this have a way of resurfacing), but I now have a working pipeline that produces one row per patient-visit, with participant speech text and the corresponding MMSE and metadata fields attached.
+					</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						At this point the pipeline looks roughly like: raw <code>.cha</code> files → parsed participant utterances → joined with the patient metadata spreadsheet on patient ID and visit number → a single dataframe with one row per visit. I started layering in the simplest possible handcrafted features on top of this — word count, sentence count, basic type-token ratio — mostly as a sanity check that the join is working and that features vary sensibly with visit and with diagnosis group, rather than as features I expect to actually matter in a final model.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						The patient ID matching is more fragile than I'd like. Some IDs appear as plain integers in one place and as zero-padded strings elsewhere, and I already had to go back and fix a few silent mismatches this week where a row would just get the wrong metadata attached without erroring. I have a feeling this exact class of bug is going to bite me again later if I'm not careful, since it fails silently rather than loudly.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Now that I have clean text per visit, it's time to move past word counts and start building the actual discourse coherence features I've been reading about — lexical overlap, some notion of topic maintenance, repetition — and also start thinking seriously about semantic embeddings, since word-overlap-based features are unlikely to capture meaning-level coherence on their own.
+					</p>
+					</div>
+				</div>
+
+				<!-- Teaching a Model to "Read" Meaning: Adding SBERT -->
+				<div class="modal-overlay" id="modal-dementia-06" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-06-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-06').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-06-title">Teaching a Model to "Read" Meaning: Adding SBERT</h1>
+						<div class="post-meta">
+							<span>July 18, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Handcrafted lexical-overlap features (how many words two consecutive sentences share) are a reasonable first pass at coherence, but they have an obvious blind spot: two sentences can be about the exact same thing while sharing almost no vocabulary at all ("the woman is drying dishes" vs. "she's wiping plates with a towel"). If I only measure literal word overlap, I'll systematically miss semantic coherence — coherence at the level of meaning rather than surface form.
+					</p>
+
+					<p>
+						This week I started using <strong>SBERT</strong> (Sentence-BERT), a transformer model fine-tuned specifically to produce sentence embeddings where semantic similarity in meaning corresponds to geometric closeness in the embedding space — unlike raw BERT embeddings, which aren't well-suited to direct comparison via cosine similarity out of the box. Practically, this means I can take two sentences, embed each one into a fixed-length vector, and get a similarity score that actually reflects whether they're about the same thing, not just whether they use the same words.
+					</p>
+
+					<img src="img/dementia/dementia-06-sbert-cosine.png" alt="Code snippet computing SBERT sentence embeddings and adjacent cosine similarity between consecutive sentences" class="modal-img" />
+					<p class="modal-caption">Computing SBERT embeddings and using cosine similarity between adjacent sentences as a semantic coherence feature.</p>
+
+					<p>
+						With that in hand, I built a first batch of embedding-based coherence features:
+					</p>
+
+					<ul>
+						<li><strong>Adjacent cosine similarity</strong> — the similarity between each sentence's embedding and the next one's, averaged across a transcript, as a semantic analogue to lexical overlap.</li>
+						<li><strong>Windowed embedding coherence</strong> — instead of only comparing immediate neighbors, comparing each sentence to a small window of nearby sentences, which should be more robust to a single locally-odd sentence.</li>
+					</ul>
+
+					<p>
+						I also went back and formalized a few of the more literal features I'd been computing ad hoc: lexical overlap (now computed properly rather than as a sanity check), intra-sentence repetition (a sentence repeating a word or phrase within itself), and filler rate (words like "um," "uh," and similar disfluency markers as a fraction of total words).
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Looking at the numbers, semantic and lexical coherence measures are correlated but clearly not redundant — some transcripts score reasonably on lexical overlap while scoring low on embedding coherence, and vice versa, which is a mild but reassuring sign that these two feature families are capturing genuinely different things rather than one being a noisy version of the other. I don't yet know if either one actually predicts MMSE — that's still a few weeks away — but it's encouraging that they're not just duplicating each other.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						Sentence segmentation on spontaneous, disfluent speech is messier than segmenting written text — people don't produce clean sentence boundaries when they're talking, especially under cognitive load, which is exactly the population I'm studying. I'm currently using a fairly naive punctuation/pause-based segmentation, and I suspect this is introducing noise into the sentence-level coherence features, but I don't have a better solution yet.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Coreference tracking and entity-level features are the next big piece of unfinished business from my discourse coherence reading — I want to measure how well participants track "who's doing what" across a transcript, not just how similar consecutive sentences are.
+					</p>
+					</div>
+				</div>
+
+				<!-- Coreference, Entity Tracking, and a Frustrating Virtual Environment -->
+				<div class="modal-overlay" id="modal-dementia-07" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-07-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-07').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-07-title">Coreference, Entity Tracking, and a Frustrating Virtual Environment</h1>
+						<div class="post-meta">
+							<span>August 1, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I lost most of two days this week to environment setup, which is not something I expected to be writing about in a research blog, but it felt worth documenting because it's such a normal part of doing this kind of work. Coreference resolution — figuring out that "she," "the woman," and "her" in a transcript all refer to the same entity — needs a fairly heavy transformer-based model, and getting a working coreference pipeline installed alongside the rest of my existing packages caused enough dependency conflicts that I ended up isolating it into its own virtual environment entirely, separate from the environment I use for everything else. Not elegant, but it works, and I'd rather have a slightly ugly setup than lose another day to it.
+					</p>
+
+					<img src="img/dementia/dementia-07-env-conflict.png" alt="Terminal output showing a pip dependency resolver conflict while installing a coreference resolution model, followed by a working install in an isolated virtual environment" class="modal-img" />
+					<p class="modal-caption">Losing two days to dependency conflicts before isolating the coreference model into its own virtual environment.</p>
+
+					<p>
+						Once it was running, I used it to build a small set of entity-tracking features on top of the coreference chains: how often a referring expression fails to resolve cleanly, how many distinct entities get introduced across a transcript, and — the one I'm most curious about — <strong>entity transition entropy</strong>, a measure of how unpredictably the focus of a transcript jumps between entities from one mention to the next. My intuition is that healthy narration tends to move through entities in a fairly structured way (introduce the woman, talk about her for a while, introduce the sink, connect it back to her), while disorganized narration might jump around more erratically. Entropy is a natural way to quantify "how unpredictable is the sequence of entities being talked about."
+					</p>
+
+					<p>
+						I also finished off a batch of the remaining handcrafted features I'd sketched out weeks ago: filler rate is now computed properly rather than as a rough estimate, and intra-sentence repetition is tightened up to catch phrase-level repeats, not just single repeated words.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						The motivating idea behind all of these features — coreference, entity entropy, repetition, filler rate — is the same one from my discourse-coherence reading: dementia can specifically affect a person's ability to maintain a topic, connect ideas across a narrative, avoid restating things they've already said, retrieve the right word, and keep track of which entity they're currently talking about. Each of these handcrafted features is meant to be a rough proxy for one of those specific underlying processes, rather than a generic "is this text weird" signal. Whether any of them actually correlates with MMSE is still an open question I haven't tested yet.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						The coreference model is not particularly accurate on this kind of spontaneous, disfluent speech — it was trained on more standard written text, and picture-description transcripts full of false starts and fragments are a real distribution shift for it. I'm treating its output as a noisy signal rather than ground truth, which means the entity-based features probably have a real noise floor I can't fully get rid of.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I now have a genuinely broad feature set — lexical, semantic/embedding, coreference/entity, and disfluency-based. It's time to stop adding new feature families and actually try to predict something with what I have.
+					</p>
+					</div>
+				</div>
+
+				<!-- First Modeling Attempt: The LSTM That Wasn't Ready -->
+				<div class="modal-overlay" id="modal-dementia-08" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-08-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-08').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-08-title">First Modeling Attempt: The LSTM That Wasn't Ready</h1>
+						<div class="post-meta">
+							<span>August 14, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						After weeks of feature engineering, I finally trained a model. Since the whole premise of this project involves patients with multiple visits over time, a sequence model felt like the obvious first choice — I built an LSTM that takes a patient's visit history as a sequence of feature vectors (handcrafted coherence features plus SBERT embeddings per visit) and predicts the MMSE score at a future visit.
+					</p>
+
+					<p>
+						The results were not good. Validation R² landed around 0.44, with an RMSE over 5.5 MMSE points — on a 0–30 scale, that's a big enough error band to be clinically close to useless. I spent a few days trying to convince myself this was a tuning problem: different learning rates, different hidden sizes, dropout, weight decay, a learning-rate scheduler that reduces on plateau. None of it moved the needle much.
+					</p>
+
+					<p>
+						Once I stepped back, the actual explanation was pretty obvious in retrospect. The Pitt Corpus is not a big dataset, and it's an even smaller dataset once you restrict to patients with enough repeated visits to form a meaningful sequence. My input feature vector per visit is large — SBERT contributes several hundred dimensions on its own, on top of the handcrafted features — and the LSTM I built has over half a million parameters. That's an enormous amount of capacity relative to maybe a hundred usable training sequences. I was essentially asking a model built for large sequential corpora to learn from a dataset better suited to a much simpler estimator.
+					</p>
+
+					<img src="img/dementia/dementia-08-lstm-curves.png" alt="Line chart of LSTM training and validation loss curves over 100 epochs, showing validation loss plateauing while training loss keeps declining" class="modal-img" />
+					<p class="modal-caption">Training and validation loss for the first LSTM baseline — validation performance plateaus well before training loss does.</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Joe's read on this, which I now agree with, is that model complexity and dataset size have to be matched, and I had that badly mismatched. A sophisticated architecture doesn't rescue you from a small-sample regime — if anything it makes overfitting worse, since there are more parameters than there is signal to constrain them. This is a lesson I'd read about abstractly before starting this project but hadn't actually felt the consequences of until now.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						The deeper challenge is that this dataset is never going to stop being small — DementiaBank isn't growing, and the number of patients with multiple usable longitudinal visits is a hard ceiling. That means the right modeling approach for this project isn't "get a bigger model," it's "get a model whose inductive biases are appropriate for a high-feature-count, low-sample-count tabular problem."
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I want to try something much simpler next — a classical tree-based model on the same feature set, partly as a sanity check on whether the features themselves have any signal at all, independent of whatever the LSTM was or wasn't learning.
+					</p>
+					</div>
+				</div>
+
+				<!-- Back to Basics: Random Forests Beat the Neural Net -->
+				<div class="modal-overlay" id="modal-dementia-09" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-09-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-09').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-09-title">Back to Basics: Random Forests Beat the Neural Net</h1>
+						<div class="post-meta">
+							<span>August 29, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I trained a Random Forest regressor on the same feature set the LSTM had access to — handcrafted discourse features plus SBERT embeddings, flattened per patient rather than fed in as a sequence — and it outperformed the LSTM by a meaningful margin, landing around <strong>R² ≈ 0.4</strong> on cross-validation. That's still far from a result I'd call strong, but it's a real improvement over the neural network's ~0.44 <em>validation</em> score once you account for the fact that the LSTM's number came from a single validation split while the Random Forest number is a cross-validated estimate, and the Random Forest got there with a small fraction of the tuning effort.
+					</p>
+
+					<p>
+						This was a useful, slightly humbling result. I had implicitly assumed that a more "modern" architecture would be a strict upgrade over classical machine learning, and that assumption turned out to be wrong for this specific regime. Tree-based ensembles like Random Forest handle small tabular datasets well for a few reasons that are easy to state and easy to forget in the moment: they don't require gradient-based optimization over large parameter counts, they're naturally robust to irrelevant or noisy features (a tree can simply not split on a useless feature), and they don't need anywhere near as much data to find stable splits as a neural network needs to find stable weights.
+					</p>
+
+					<img src="img/dementia/dementia-09-rf-vs-lstm.png" alt="Bar chart comparing R-squared for the 538,000-parameter LSTM versus a much simpler Random Forest model" class="modal-img" />
+					<p class="modal-caption">A much smaller, simpler model outperforming a heavily parameterized LSTM on this dataset size.</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						The lesson I keep coming back to is: <strong>feature quality matters more than model complexity</strong>, at least at this dataset size. Swapping the LSTM for a Random Forest, with no other changes to the underlying features, moved performance in the right direction. That suggests the ceiling I'm currently hitting has more to do with what signal is actually present in my features than with which model architecture is consuming them. If that's true, the highest-leverage thing I can do next is improve or expand the feature set, not keep experimenting with architectures.
+					</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						Current pipeline: parsed transcripts → handcrafted discourse/coherence features + SBERT sentence embeddings → per-visit feature vectors → Random Forest regression predicting MMSE at a target visit, evaluated with cross-validation. This is now my baseline to beat.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						R² ≈ 0.4 leaves a lot of variance unexplained. I don't yet know how much of that is a ceiling imposed by dataset size and noise versus a ceiling imposed by missing information — specifically, I'm currently only using speech-derived features, and I have a nagging suspicion that a patient's own clinical history (not just their speech) is going to matter a lot for predicting their future score, and I'm not using it yet.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Two directions in parallel: keep expanding and refining the feature set (dimensionality reduction on the embeddings, temporal/trajectory features across visits), and start seriously considering whether to bring in the clinical metadata I've mostly ignored so far.
+					</p>
+					</div>
+				</div>
+
+				<!-- Building Out the Feature Set: Trajectories, Gaps, and History -->
+				<div class="modal-overlay" id="modal-dementia-10" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-10-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-10').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-10-title">Building Out the Feature Set: Trajectories, Gaps, and History</h1>
+						<div class="post-meta">
+							<span>September 15, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						With the Random Forest baseline in place, I spent this stretch trying to squeeze more signal out of the longitudinal structure of the data rather than adding entirely new feature families. The instinct behind this: I've been treating each visit somewhat independently, but the whole point of longitudinal data is that a patient's <em>history</em> should inform the prediction, not just their most recent snapshot.
+					</p>
+
+					<p>
+						A few additions:
+					</p>
+
+					<ul>
+						<li><strong>Previous-visit information</strong> — literally including a patient's prior-visit MMSE and prior-visit feature values as inputs when predicting a later visit's score, rather than only using the most recent visit's raw features.</li>
+						<li><strong>Visit gap / temporal features</strong> — the amount of time elapsed between visits. This matters because a two-point MMSE drop over six months is a very different trajectory than the same drop over three years, and without an explicit time-gap feature, the model has no way to distinguish those cases.</li>
+						<li><strong>Trajectory features</strong> — simple derived quantities like the rate of change in MMSE or in coherence features between a patient's available visits, as an explicit signal about <em>direction</em>, not just current level.</li>
+					</ul>
+
+					<p>
+						Separately, the raw SBERT embeddings were becoming a real dimensionality problem. Each transcript embedding is several hundred dimensions, and once I started concatenating embeddings across multiple visits per sample, the feature count was ballooning relative to the number of training examples — exactly the overfitting risk that burned the LSTM. I added a <strong>PCA step</strong> to compress the embeddings down to a much smaller number of components before they enter the feature matrix, trying to keep most of the semantic variance while cutting the dimensionality substantially.
+					</p>
+
+					<img src="img/dementia/dementia-10-pca-variance.png" alt="Line chart of cumulative variance explained versus number of PCA components on SBERT embeddings, with 20 components highlighted as the chosen value" class="modal-img" />
+					<p class="modal-caption">Cumulative variance explained by PCA components on the 768-dim SBERT embeddings — 20 components retains most of the signal.</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						The feature matrix now has four rough categories: handcrafted discourse/coherence features, PCA-reduced SBERT embeddings, temporal/trajectory features derived from visit history, and (still) no clinical metadata. I re-ran the Random Forest baseline with this expanded set, and while there's some improvement, it's incremental rather than transformative — a few points of R², not a step change.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						I'm noticing a pattern where each new feature addition gives a smaller marginal improvement than the last, which either means I'm approaching the ceiling of what speech alone can predict, or it means Random Forest isn't the right tool to actually exploit the richer feature set I now have. I don't have a clean way to distinguish those two explanations yet.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Joe suggested trying gradient boosted trees (specifically LightGBM) instead of Random Forest, since boosting tends to handle feature interactions and gets more mileage out of larger feature sets — it's worth ruling out "wrong model" before I conclude I've hit a ceiling on "not enough signal."
+					</p>
+					</div>
+				</div>
+
+				<!-- Moving to LightGBM and Meeting Optuna -->
+				<div class="modal-overlay" id="modal-dementia-11" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-11-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-11').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-11-title">Moving to LightGBM and Meeting Optuna</h1>
+						<div class="post-meta">
+							<span>October 2, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Switched the modeling backbone from Random Forest to <strong>LightGBM</strong>, a gradient-boosted decision tree library. The core difference from Random Forest is how the trees are built: Random Forest trains many trees independently on bootstrapped samples and averages them, while gradient boosting trains trees sequentially, where each new tree is fit to correct the errors (residuals) of the ensemble built so far. In principle, this lets the model capture more subtle feature interactions and generally squeezes more performance out of tabular data — at the cost of being more sensitive to hyperparameters and more prone to overfitting if you're not careful.
+					</p>
+
+					<p>
+						That hyperparameter sensitivity is what led me to <strong>Optuna</strong> this week — a library for automated hyperparameter search. Instead of manually guessing learning rates, tree depth, number of estimators, and regularization strength, Optuna runs a sequential search (using a Bayesian-ish sampling strategy) that tries to find good hyperparameter combinations more efficiently than a grid search would, using the results of earlier trials to inform later ones.
+					</p>
+
+					<img src="img/dementia/dementia-11-optuna-snippet.png" alt="Code snippet defining an Optuna objective function that tunes LightGBM hyperparameters using grouped cross-validation" class="modal-img" />
+					<p class="modal-caption">The Optuna objective function used to search LightGBM hyperparameters against grouped cross-validation.</p>
+
+					<p>
+						The early results with LightGBM plus Optuna, still on the speech-only feature set (handcrafted coherence features + PCA-reduced SBERT + temporal features), are in a similar ballpark to where Random Forest landed — noticeably not a dramatic jump. That's a little discouraging on its face, but it also isolates something useful: if switching from bagging to boosting doesn't move the needle much, the bottleneck is probably not "wrong model family," which pushes me back toward suspecting the bottleneck is the feature set itself, or specifically, the absence of clinical information I flagged a couple weeks ago.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Model family swaps (Random Forest → LightGBM) are cheap to try and worth trying, but they're not a substitute for actually diagnosing what's limiting performance. I went into this half-hoping LightGBM would just be better and mostly confirmed that it isn't going to rescue a feature-set ceiling on its own.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						I also need to be honest with myself about my evaluation setup. I've been using a fairly standard cross-validation split up to this point, and I haven't carefully checked whether the way I'm splitting folds could let information about the same patient leak between training and validation — given that patients have multiple visits in this dataset, that's a real risk I've been ignoring, and I want to go back and check it properly before trusting any of these numbers too much.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Two things, in order: audit my cross-validation setup for patient leakage before drawing any more conclusions from CV scores, and seriously evaluate whether to bring in the clinical metadata fields I've been avoiding.
+					</p>
+					</div>
+				</div>
+
+				<!-- The Leakage Problem: Rebuilding Cross-Validation From Scratch -->
+				<div class="modal-overlay" id="modal-dementia-12" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-12-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-12').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-12-title">The Leakage Problem: Rebuilding Cross-Validation From Scratch</h1>
+						<div class="post-meta">
+							<span>October 21, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I flagged this concern a couple weeks ago and finally sat down to check it properly, and it turned out to be a real problem, not a false alarm. My cross-validation setup had been splitting the dataset at the level of individual <strong>samples</strong> (patient-visits), not at the level of <strong>patients</strong>. Since many patients in this cohort have multiple visits, that means it was entirely possible — and, once I checked, actually happening — for one visit from a given patient to land in the training fold while another visit from that <em>same</em> patient landed in the validation fold.
+					</p>
+
+					<p>
+						That's a leakage problem. A model doesn't need to learn anything general about speech and cognition to do well under this setup; it can partly just learn to recognize a specific patient's writing/speaking style or baseline severity level from one visit and carry that recognition over to predict their other visit, since the two visits are highly correlated by virtue of being the same person. My cross-validation scores up to this point were, to some unknown degree, optimistic.
+					</p>
+
+					<p>
+						The fix is conceptually simple: switch to <strong>patient-grouped cross-validation</strong> (GroupKFold, grouping by patient ID), so that all of a given patient's visits are guaranteed to fall entirely within one fold — either all in training or all in validation, never split across both. This is a strictly harder evaluation setup, and I want to be upfront that my numbers got worse after making this change, not better. That's expected and, honestly, correct: the previous numbers were inflated by leakage, and this drop is the model losing access to information it was never supposed to have.
+					</p>
+
+					<img src="img/dementia/dementia-12-leakage-diagram.png" alt="Diagram comparing a random sample-level split, where a patient's visits leak across train and validation folds, against a patient-grouped GroupKFold split, where each patient's visits stay in one fold" class="modal-img" />
+					<p class="modal-caption">The difference between a leaky random split and a patient-grouped GroupKFold split — the same patient can no longer appear in both training and validation.</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						It's a strange feeling to "fix" your methodology and watch your reported performance go down. Joe was pretty clear with me about this being the right kind of setback, though — a leakage bug that inflates your numbers is much worse to discover after a paper is written than now, and this exact mistake (patient-level leakage in longitudinal clinical data) is common enough in the literature that catching it myself, at this stage, is a genuine positive.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Any evaluation involving repeated measurements on the same entity — patients, users, whatever the unit is — needs to be split at the entity level, not the observation level. This feels obvious written down, but it's exactly the kind of thing that's easy to get wrong when you're focused on getting a pipeline running end to end and haven't stopped to interrogate your own splitting logic.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Re-baseline everything under patient-grouped CV so I have an honest number to compare against going forward, and then revisit the clinical-metadata question from a few weeks ago — I suspect it's about to matter a lot more than it did before, now that my speech-only ceiling looks lower than I'd been telling myself.
+					</p>
+					</div>
+				</div>
+
+				<!-- Adding the Clinical Picture -->
+				<div class="modal-overlay" id="modal-dementia-13" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-13-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-13').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-13-title">Adding the Clinical Picture</h1>
+						<div class="post-meta">
+							<span>November 10, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						With patient-grouped cross-validation now in place as an honest baseline, I finally did the thing I'd been putting off since August: incorporated the clinical metadata that comes bundled with the Pitt Corpus alongside the speech data. Specifically, I added each patient's <strong>entry MMSE</strong> (their cognitive score at their first recorded visit), <strong>Blessed Dementia Scale</strong> score (a measure of functional impairment in daily activities), <strong>CDR</strong> (Clinical Dementia Rating), <strong>NYU</strong> and <strong>Mattis</strong> battery scores, and their <strong>baseline diagnosis</strong> category (dementia, control, or otherwise).
+					</p>
+
+					<p>
+						The jump in performance was immediate and large — considerably bigger than anything I'd gotten from weeks of feature engineering on the speech side. This is both encouraging and a little deflating. Encouraging because the overall pipeline now produces genuinely useful predictions; deflating because it raises an uncomfortable question about the actual thesis of this project. If clinical baseline information alone explains most of the variance in a future MMSE score, what exactly is the speech data contributing? Is this still a project about speech-based cognitive monitoring, or has it quietly become a project about the fact that cognitive decline is autocorrelated over time (which, put that bluntly, is not a very surprising finding)?
+					</p>
+
+					<img src="img/dementia/dementia-13-clinical-jump.png" alt="Bar chart showing cross-validated R-squared jumping from about 0.41 with speech features only to about 0.82 after adding clinical baseline features" class="modal-img" />
+					<p class="modal-caption">The jump in cross-validated R² after adding entry MMSE, Blessed scale, CDR, and baseline diagnosis to the speech-only feature set.</p>
+
+					<p>
+						I don't have a satisfying answer yet, and I don't want to pretend I do. My working hypothesis is that clinical features and speech features are capturing genuinely different things — clinical scores are periodic clinician assessments, exactly the kind of infrequent snapshot the original motivation for this project was trying to get away from, while speech features could plausibly be sensitive to finer-grained or more frequent changes. But "plausibly" isn't evidence. The only way to actually answer this is to run the comparison properly: how much does the model gain from speech on top of clinical, versus clinical alone.
+					</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						The feature matrix now spans three sources: clinical/demographic baseline features, handcrafted discourse/coherence features, and PCA-reduced SBERT embeddings. All are entering the same LightGBM model. I have not yet run a controlled ablation to separate their contributions — that's the obvious and necessary next step before I say anything stronger about what's driving these results.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						I need to resist the temptation to declare victory just because the aggregate number went up. A dramatic performance jump from adding a strong feature is exactly the situation where it's easiest to stop being careful about what's actually being measured.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Run a proper ablation study — clinical-only, speech-only, and combined — under the same patient-grouped CV protocol, so I can actually quantify how much (if anything) the speech features are adding once clinical information is available.
+					</p>
+					</div>
+				</div>
+
+				<!-- A Silent Bug and the Biggest Single Improvement -->
+				<div class="modal-overlay" id="modal-dementia-14" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-14-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-14').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-14-title">A Silent Bug and the Biggest Single Improvement</h1>
+						<div class="post-meta">
+							<span>December 1, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						While setting up the ablation study I'd planned last time, I went digging into why the "entry MMSE" feature — which I expected, based on everything I understand about this problem, to be by far the single most predictive feature available — wasn't behaving the way I expected in early feature-importance checks. It turned out to be almost inert, which didn't make sense.
+					</p>
+
+					<p>
+						I found two separate bugs, both silent, both data-joining issues of exactly the kind I worried about back in July when I was first matching transcripts to metadata:
+					</p>
+
+					<img src="img/dementia/dementia-14-bug-diff.png" alt="Code diff showing the entry MMSE lookup bug caused by a renamed column and a patient ID type mismatch, alongside the fix" class="modal-img" />
+					<p class="modal-caption">The two silent bugs — a renamed column and a string/integer ID mismatch — that had been quietly breaking the single most predictive feature in the project.</p>
+
+					<ol>
+						<li><strong>A column rename I'd forgotten about.</strong> At some point the source spreadsheet's MMSE column got renamed (<code>mms</code> → <code>mmse1</code>), and my lookup code was still requesting the old column name. Because I was using a permissive <code>.get()</code>-style lookup instead of something that would raise an error on a missing key, every single request for entry MMSE was silently returning nothing and falling back to a default — which, for a numeric feature, meant every patient was effectively receiving the same imputed value (the group median, around 22) regardless of their actual baseline score.</li>
+					</ol>
+
+					<ol>
+						<li><strong>A patient ID type mismatch.</strong> My training samples stored patient IDs as plain integers (<code>1</code>, <code>2</code>, <code>3</code>...), while the Excel-based metadata lookup used zero-padded strings (<code>'001'</code>, <code>'002'</code>...). Every lookup was failing to match, again silently, again falling back to a default.</li>
+					</ol>
+
+					<p>
+						Both bugs point the same direction: entry MMSE — the single feature I most expected to matter — had been carrying almost no real information for every model I'd trained up to this point. After fixing both issues so that each patient actually receives their true baseline score, this became, by a wide margin, the largest single improvement I've made in the entire project. Permutation importance analysis (feature by feature, measuring how much validation performance drops when a feature's values are shuffled) now shows entry MMSE as the dominant single predictor, well ahead of everything else.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						This is a hard lesson, but a useful one: <strong>silent failures in data pipelines are more dangerous than loud ones.</strong> A crash tells you immediately that something is wrong. A <code>.get()</code> call that quietly returns a default value doesn't — it just degrades your data without telling you, and the model happily "learns" from whatever's left, producing numbers that look plausible enough that you don't necessarily go looking for a bug. I'd already been bitten by ID-matching issues once, back in the very first preprocessing pass in July, and I still managed to reintroduce a version of the same problem months later in a different part of the pipeline.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						I now have to go back and be suspicious of every other feature I haven't specifically audited this way. If entry MMSE — the feature I most expected to matter — was silently broken for months, I have no strong reason to assume everything else is fine just because the pipeline runs without errors.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Audit the rest of the clinical feature joins with the same scrutiny, then actually run the ablation study I keep postponing — now on a version of the pipeline I trust considerably more than I did a week ago.
+					</p>
+					</div>
+				</div>
+
+				<!-- What's Actually Driving the Predictions? Feature Importance Deep Dive -->
+				<div class="modal-overlay" id="modal-dementia-15" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-15-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-15').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-15-title">What's Actually Driving the Predictions? Feature Importance Deep Dive</h1>
+						<div class="post-meta">
+							<span>December 18, 2025</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						With the entry-MMSE bug fixed and the rest of the clinical feature joins audited and confirmed correct, I ran a proper permutation-importance analysis across all five cross-validation folds. The method: for each fold, take the trained model, measure its validation R², then shuffle one feature column at a time (breaking that feature's relationship to the target while leaving everything else intact) and measure how much R² drops. A bigger drop means the model was relying on that feature more. Repeating the shuffle multiple times per fold and averaging cuts down on noise from any single unlucky shuffle.
+					</p>
+
+					<p>
+						The results are fairly stark. <strong>Entry MMSE dominates</strong>, accounting for roughly a third of the model's total explained variance on its own — which lines up with the plain clinical intuition that a patient's baseline cognitive status is highly predictive of their future status, especially over the multi-year timescales typical in this cohort. <strong>Blessed Dementia Scale</strong> and <strong>baseline diagnosis category</strong> are the next most important, each contributing a much smaller but still real amount. The <strong>Mattis</strong> battery score contributes modestly. Somewhere further down the list, a couple of the top <strong>SBERT principal components</strong> show up — real, but clearly secondary to the clinical variables.
+					</p>
+
+					<p>
+						Native LightGBM split-based importance (how often a feature is actually used to split a tree, a different and cheaper-to-compute notion of importance) agrees with the permutation-based ranking on the top features, which is reassuring — it means this isn't an artifact of one particular importance method.
+					</p>
+
+					<img src="img/dementia/dementia-15-feature-importance.png" alt="Horizontal bar chart of permutation importance values showing entry MMSE as the dominant feature, followed by Blessed scale, baseline diagnosis, Mattis score, and SBERT principal components" class="modal-img" />
+					<p class="modal-caption">Permutation importance across all five cross-validation folds — entry MMSE dominates, with clinical features well ahead of speech-derived ones.</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						I think I now have an honest answer to the question I was uneasy about a few weeks ago: yes, clinical baseline information is doing most of the work. That's not the finding I originally set out hoping for, but it is very likely the <em>correct</em> finding, and pretending otherwise would just be bad science. The more useful and more honest question the project can actually answer is a narrower one: given that clinical features are dominant, do the speech-derived features add anything on top? That's a real, well-posed, checkable question, and — crucially — it's still a legitimate motivation for the project even if the answer turns out to be "a little" rather than "a lot." A speech-based signal that adds a modest amount on top of a full clinical workup is a much smaller claim than "speech can replace clinical assessment," but it's the claim the data can actually support, and I'd rather report that than overclaim.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						I need to design the ablation carefully enough to actually distinguish "speech adds a little" from "speech adds nothing and this is noise." With a dataset this size, small R² differences between feature configurations could easily be within the range of cross-validation fold-to-fold variance rather than a real effect.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Run the clinical-only vs. speech-only vs. combined ablation, holding everything else (model type, hyperparameters, CV protocol) fixed, and pay close attention to the variance across folds, not just the mean, before drawing any conclusions.
+					</p>
+					</div>
+				</div>
+
+				<!-- Ablation Studies: How Much Do Speech Features Really Add? -->
+				<div class="modal-overlay" id="modal-dementia-16" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-16-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-16').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-16-title">Ablation Studies: How Much Do Speech Features Really Add?</h1>
+						<div class="post-meta">
+							<span>January 19, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Ran the ablation study I've been planning since November, comparing four feature configurations under identical patient-grouped 5-fold cross-validation: linguistic (handcrafted) features alone, SBERT embeddings alone, clinical features alone, and combinations of all three. The results settle the question from a few weeks ago, at least as far as this dataset can settle it.
+					</p>
+
+					<p>
+						Handcrafted linguistic features alone are weak — cross-validated R² in the high-teens percent, at best a faint signal. SBERT embeddings alone do meaningfully better, somewhere in the mid-30s. Clinical features alone are the dominant single source by a wide margin, landing around 0.78 R² on their own — already close to what my full combined model was achieving a couple months ago before I'd even added speech. Combining all speech features (linguistic + SBERT) together gets to a little over 0.4, still far below clinical alone.
+					</p>
+
+					<p>
+						The part I actually care about is what happens when you add speech on top of clinical rather than comparing them as competitors. Clinical plus SBERT edges up a few points over clinical alone. The full combination — clinical, linguistic, and SBERT together — is the best configuration in every fold, consistently, not just on average. The gain from adding speech on top of a full clinical feature set is real but modest: a handful of points of R², not a transformation.
+					</p>
+
+					<img src="img/dementia/dementia-16-ablation.png" alt="Bar chart of cross-validated R-squared for linguistic-only, SBERT-only, clinical-only, and combined feature configurations, with the fully combined model highlighted as the best" class="modal-img" />
+					<p class="modal-caption">The full ablation: clinical features dominate on their own, but the combined model — clinical, linguistic, and SBERT together — wins in every fold.</p>
+
+					<h2>Research Question</h2>
+
+					<p>
+						I think this genuinely refines the research question rather than undermining it. The original framing was close to "can speech features predict cognitive decline." The more defensible framing, based on what I'm actually seeing, is something closer to: <strong>clinical baseline assessments are highly predictive of future cognitive status on their own, and discourse/semantic features derived from speech provide a smaller, consistent, complementary contribution on top of that.</strong> That's a less dramatic claim, but every piece of it is something I can actually back up with the ablation numbers, fold by fold.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Consistency across folds matters more than the size of an average effect. A gain that's small but present in all five folds is more trustworthy than a larger gain that only shows up in one or two folds — the latter is much more likely to be an artifact of which patients happened to land in which fold.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I want to push the combined model further with more careful hyperparameter tuning and some kind of ensembling, since the ablation suggests I'm not yet squeezing out everything the combined feature set has to offer, and also start thinking about how to frame all of this in whatever the eventual writeup looks like.
+					</p>
+					</div>
+				</div>
+
+				<!-- Ensembles, Noise Augmentation, and Rejecting a Long List of Ideas -->
+				<div class="modal-overlay" id="modal-dementia-17" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-17-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-17').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-17-title">Ensembles, Noise Augmentation, and Rejecting a Long List of Ideas</h1>
+						<div class="post-meta">
+							<span>February 9, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Most of this stretch was incremental tuning, and in the spirit of documenting the real process rather than just the wins, I want to write down what didn't work as much as what did, because the list of rejected ideas ended up being long.
+					</p>
+
+					<p>
+						What actually helped: training <strong>five separate LightGBM models</strong>, one per cross-validation fold (each on that fold's ~80% training partition), and averaging their predictions at inference time rather than relying on a single model. Because each fold model sees a slightly different subset of patients, they make somewhat independent errors, and averaging reduces variance without adding bias — a small but consistent improvement over any single fold's model alone. I also added <strong>Gaussian noise augmentation</strong> to the training features (a small amount of random noise added to feature values during training, forcing the model to be less sensitive to exact feature values) and expanded the feature representation with <strong>binned copies</strong> of the top features (discretizing continuous features into quantile bins alongside their continuous form), both of which gave small additional gains on this small dataset.
+					</p>
+
+					<img src="img/dementia/dementia-17-ensemble-diagram.png" alt="Diagram of five fold-specific LightGBM models each trained on a different subset of patients, averaged together into one final prediction" class="modal-img" />
+					<p class="modal-caption">The final ensembling approach: five fold-specific models, each trained on a different 80% of patients, averaged into one prediction.</p>
+
+					<p>
+						What didn't help, in roughly the order I tried it: stacking (training a meta-model on top of the five fold models' predictions) — with only about 35 samples per validation fold, the meta-learner had nowhere near enough data to learn a sensible combination and overfit its own training signal; CatBoost as an alternative to LightGBM; adding several more demographic and clinical fields beyond the core set (hamilton scale, race, more detailed diagnosis subcodes); several other PCA dimensionalities for the SBERT embeddings; different noise levels for the augmentation; different top-k thresholds for feature selection; different correlation thresholds for pruning redundant features; and a 7-fold CV split instead of 5. Every one of these either did nothing or made cross-validated R² measurably worse.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						A useful mental model I've settled into: on a dataset this size, almost every added degree of freedom is a bet, and most bets lose. The ones that won this round (fold ensembling, light noise augmentation, feature binning) all share a property — they're forms of regularization or variance reduction, not complexity addition. That fits the broader pattern from months ago, when a heavily parameterized LSTM lost to a much simpler Random Forest.
+					</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						Current best configuration: 5-fold ensemble of LightGBM regressors, Optuna-tuned hyperparameters (shallow trees, strong regularization), trained on the combined clinical + linguistic + SBERT-PCA feature set with noise augmentation and binned feature copies, evaluated under patient-grouped cross-validation.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I've been treating cross-validation as my only evaluation signal for months now. Before I start writing anything up, I want to carve out a genuine held-out test set — patients the model never sees during any tuning or fold-averaging decision — so I have one number I can report with full confidence that no part of the modeling process was allowed to peek at it.
+					</p>
+					</div>
+				</div>
+
+				<!-- Locking In the Final Model and a Held-Out Test Set -->
+				<div class="modal-overlay" id="modal-dementia-18" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-18-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-18').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-18-title">Locking In the Final Model and a Held-Out Test Set</h1>
+						<div class="post-meta">
+							<span>March 2, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I set aside a patient-grouped held-out test set this week — a slice of patients that took no part whatsoever in feature selection, hyperparameter tuning, or fold-ensemble training. Everything up to this point has been evaluated purely through cross-validation, which is a reasonable way to make modeling decisions on a small dataset but leaves open the possibility that repeated tuning decisions, made by me, looking at CV scores over and over across months, have quietly overfit to the CV folds themselves. A genuinely untouched test set is the only way to check that.
+					</p>
+
+					<p>
+						The final model: a 5-fold ensemble of LightGBM regressors, trained on the combined clinical, handcrafted discourse, and SBERT-embedding (PCA-reduced) feature set, using patient-grouped splitting throughout, with the noise augmentation and feature-binning tweaks from a few weeks ago. On the held-out test set, this model achieves <strong>R² = 0.732</strong>, <strong>RMSE = 3.35</strong>, <strong>MAE = 2.22</strong>, and a <strong>Pearson correlation of 0.867</strong> between predicted and true MMSE. The 5-fold cross-validation estimate, computed over the remaining development data, is <strong>R² = 0.840 ± 0.015</strong>.
+					</p>
+
+					<p>
+						The gap between the CV estimate (0.840) and the true held-out test performance (0.732) is worth sitting with rather than explaining away. Some of that gap is expected and healthy — CV scores from a process that included iterative tuning decisions will tend to run optimistic relative to a truly untouched test set, even when leakage has been carefully controlled for, simply because you made dozens of small modeling choices in response to CV feedback over the past several months. Some of it is probably just small-sample variance — a held-out test set built from a limited number of patients has real sampling noise of its own. I don't think this gap indicates a bug the way the entry-MMSE issue did back in December; it looks like the ordinary, expected consequence of an iterative research process on a small dataset, and I'd rather report both numbers honestly than only report the more flattering one.
+					</p>
+
+					<img src="img/dementia/dementia-18-predicted-vs-actual.png" alt="Scatter plot of predicted versus actual MMSE scores on the held-out test set, closely tracking the diagonal line of perfect prediction" class="modal-img" />
+					<p class="modal-caption">Predicted versus actual MMSE on the genuinely untouched held-out test set — R² = 0.732, MAE = 2.22.</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						I now have two numbers I'm comfortable standing behind: a cross-validated estimate that reflects the model's expected performance under the development protocol, and a held-out test estimate that reflects performance on data that genuinely never influenced any decision. MAE of 2.22 MMSE points, on a 0–30 scale with a clinical impairment threshold around 24, means the median prediction error is well within a single severity band.
+					</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Reporting a single cross-validation number from a long iterative process, without a genuinely untouched test set, risks reporting an optimistic estimate even without any leakage bug — the iteration itself is a subtle source of overfitting to the evaluation metric. This feels like an important thing to have learned before writing anything up, not after.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						I think the modeling work, for now, is essentially done. Time to shift into writing this up properly — which is its own skill I haven't really practiced before.
+					</p>
+					</div>
+				</div>
+
+				<!-- Starting to Write: Learning the Shape of a Research Paper -->
+				<div class="modal-overlay" id="modal-dementia-19" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-19-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-19').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-19-title">Starting to Write: Learning the Shape of a Research Paper</h1>
+						<div class="post-meta">
+							<span>April 6, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Almost a full year after I first started reading about domains, tasks, targets, and data, I sat down this week to start turning all of this into an actual manuscript, and immediately ran into a problem I hadn't anticipated: I don't really know how to write a research paper. I know how to run experiments, keep notes, and argue with myself about whether a result is real. I don't have much practice putting that into the specific, conventionalized shape a paper is supposed to take.
+					</p>
+
+					<p>
+						Joe walked me through the standard structure — Introduction, Methods, Results, Discussion, Conclusion — and, more usefully, through <em>why</em> each section exists and what job it's doing, rather than just the labels. The Introduction has to earn the reader's attention by motivating the problem before mentioning a single number. The Methods section has to be detailed and honest enough that someone else could, in principle, reproduce what I did, including the parts that didn't work if they're relevant to interpreting the parts that did. Results should present findings without yet arguing for what they mean. Discussion is where interpretation, limitations, and honesty about what the data can and can't support all belong. This sounds obvious in the abstract, but looking back at fourteen months of blog posts, I can see how much of what I've written mixes all of these together constantly — which is fine for a running journal, but not for a paper.
+					</p>
+
+					<img src="img/dementia/dementia-19-outline.png" alt="Diagram of the five-section manuscript outline: Introduction, Methods, Results, Discussion, and Conclusion, each with a short description" class="modal-img" />
+					<p class="modal-caption">The manuscript outline Joe and I settled on — five sections, each doing a distinct job.</p>
+
+					<p>
+						The hardest part so far isn't any individual section — it's deciding what the paper's actual central claim is. Eight months ago I would have said "speech predicts cognitive decline." I don't believe that's the honest headline anymore. The honest headline, based on the ablation work from January, is closer to: clinical baseline features are the dominant predictor of future MMSE, and discourse/semantic speech features provide a smaller but consistent complementary signal on top of them. That's a real finding, but it's a quieter one, and I've had to make peace with writing the paper I actually have evidence for rather than the paper I originally set out hoping to write.
+					</p>
+
+					<h2>Research Question</h2>
+
+					<p>
+						Writing the Introduction forced me to state the research question more precisely than I ever have out loud: can longitudinal speech-derived discourse features, combined with clinical history, predict future MMSE severity — and separately, how much of that predictive power comes from speech versus from clinical history alone? Framing it as two connected questions rather than one is new, and it's a direct consequence of the ablation results.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Build a full outline before writing prose — section by section, with placeholder bullet points for what each subsection needs to argue and which numbers back it up — so I'm not making structural decisions and writing sentences at the same time.
+					</p>
+					</div>
+				</div>
+
+				<!-- Drafting Methods and Results -->
+				<div class="modal-overlay" id="modal-dementia-20" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-20-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-20').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-20-title">Drafting Methods and Results</h1>
+						<div class="post-meta">
+							<span>May 18, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Spent this stretch actually writing prose for the first time, starting with Methods and Results rather than the Introduction, on Joe's advice — apparently it's common to draft these sections first since they're the most mechanical and the least dependent on getting the framing exactly right, and writing them first tends to clarify what the Introduction and Discussion actually need to set up and explain.
+					</p>
+
+					<p>
+						Methods turned out to be more work than I expected, not because the pipeline is complicated to describe, but because I had to decide how much of the year's worth of iteration belongs in the final writeup. I didn't try to narrate every dead end (the paper isn't a diary), but I did keep the methodologically important pivots: why patient-grouped cross-validation replaced sample-level splitting, why the feature set includes clinical, handcrafted linguistic, and SBERT-derived components together rather than any one alone, and why a five-model fold-ensemble is the final architecture rather than a single trained model. Leaving out the leakage story, in particular, felt wrong — it's not just a footnote, it's the reason the reported numbers can be trusted at all, so it gets real space in the Methods section rather than a passing mention.
+					</p>
+
+					<p>
+						Results was more straightforward to draft, mostly because by this point the numbers are stable and I'm not still second-guessing them: held-out test R² = 0.732, RMSE = 3.35, MAE = 2.22, Pearson r = 0.867, alongside the 5-fold CV estimate of R² = 0.840 ± 0.015 on the development data. I also included the ablation table from January — clinical alone, speech alone, and combined — because that comparison is central to the paper's actual claim, not a side note. Writing the Results section made me tighten a habit I'd been sloppy about in earlier drafts: stating exactly which evaluation protocol produced each number, since CV and held-out test numbers are not interchangeable and I don't want a reader (or myself, months from now) to conflate them.
+					</p>
+
+					<img src="img/dementia/dementia-20-methods-snippet.png" alt="Mockup of a manuscript page showing a Methods section excerpt describing the cross-validation protocol and final ensemble architecture" class="modal-img" />
+					<p class="modal-caption">An early draft of the Methods section, describing the cross-validation protocol and the final ensemble architecture.</p>
+
+					<h2>Technical Progress</h2>
+
+					<p>
+						Revised the outline once, after actually drafting these two sections, because writing Results made it obvious the Discussion needs its own explicit subsection on the CV-versus-test gap rather than a passing sentence — it's a real methodological point worth explaining on its own, not something to bury.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						Deciding what counts as a limitation versus what counts as ordinary methodological detail is harder than I expected. The small dataset size, the single-site 1980s–90s cohort, and the modest absolute size of the speech-feature contribution all feel like they belong in Discussion, but each of them also shapes how the Methods section should be worded, so there's real back-and-forth between sections rather than a clean linear writing order.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Draft the Discussion — the section I'm least experienced writing, since it requires arguing about what the results <em>mean</em>, not just what they <em>are</em>.
+					</p>
+					</div>
+				</div>
+
+				<!-- Wrestling With the Discussion Section -->
+				<div class="modal-overlay" id="modal-dementia-21" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-21-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-21').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-21-title">Wrestling With the Discussion Section</h1>
+						<div class="post-meta">
+							<span>June 15, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						The Discussion section has taken longer to draft than Methods and Results combined, and I think that's because it's the section where I actually have to take a position rather than just report what happened. It's easy to describe a permutation importance table. It's harder to write a paragraph honestly explaining what it means that clinical features account for the overwhelming majority of predictive power, without either overselling the speech features' contribution or undermining the motivation for the entire project.
+					</p>
+
+					<p>
+						I went through a few drafts of the core interpretive paragraph before landing on something I'm satisfied with: the finding that clinical baseline assessments dominate isn't a failure of the speech-based approach, it's a reflection of how strongly autocorrelated cognitive trajectories are over the multi-year timescales in this cohort — and the more interesting scientific contribution is that discourse and semantic speech features add a small, consistent, cross-validated improvement <em>on top of</em> that strong clinical prior, which matters most precisely in settings where frequent clinical assessment isn't available. That's the sentence I wish I'd been able to write back in November, when the clinical-feature jump first made me anxious about the whole premise of the project.
+					</p>
+
+					<p>
+						Limitations took a lot of honest reflection. The dataset is small — 173 samples from 126 patients — and drawn from a single site, collected between 1983 and 1991, using elicitation tasks (like Cookie Theft picture description) that may not generalize to other populations, other languages, or more modern speech-collection methods like phone-based passive monitoring. The gap between cross-validated R² (0.840) and held-out test R² (0.732) also belongs here, explained plainly as an expected consequence of an iterative research process rather than glossed over. I also had to be honest that the coreference-based entity features, which took real effort to build back in August 2025, ended up contributing relatively little in the final feature importance ranking — not every feature I built earned its place, and the paper should reflect that rather than only showcasing what worked.
+					</p>
+
+					<img src="img/dementia/dementia-21-discussion-notes.png" alt="Diagram mapping the paper's limitations: small sample size, single-site cohort, modest speech signal contribution, and the gap between cross-validation and test performance" class="modal-img" />
+					<p class="modal-caption">The four limitations that ended up anchoring the Discussion section, mapped out before I started writing prose.</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Writing Discussion well seems to require holding two things in your head at once: genuine confidence in what the data supports, and genuine humility about what it doesn't. I don't think I was naturally good at doing both simultaneously going into this — my instinct under uncertainty is to either overstate a finding to make it sound more important, or undersell it out of caution. Neither is what the section needs.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Write the Introduction and Conclusion last, now that I know exactly what claims the rest of the paper actually supports, and then assemble a complete first draft end to end.
+					</p>
+					</div>
+				</div>
+
+				<!-- First Full Draft Done -->
+				<div class="modal-overlay" id="modal-dementia-22" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-22-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-22').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-22-title">First Full Draft Done</h1>
+						<div class="post-meta">
+							<span>July 12, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						I finished assembling the first complete draft of the manuscript today — Introduction, Methods, Results, Discussion, and Conclusion, all in one document, for the first time since I started this project fourteen months ago. It's rough. There are sentences I'll rewrite, a couple of figures that need to be redone at higher resolution, and at least one Methods paragraph Joe already flagged as too dense. But it's a real draft of a real paper, built entirely from work I did and understood, and I want to take a minute to look back at how it got here before diving into revisions.
+					</p>
+
+					<p>
+						In May 2025 I didn't know what a research question was supposed to look like, let alone have one. The project moved through a real sequence of refinements: a vague interest in healthcare NLP became an interest in speech and cognition specifically; a mood became three candidate research questions; three candidate questions became one, grounded in an actual dataset — the DementiaBank Pitt Corpus — once I understood why longitudinal data mattered for a trajectory-based question rather than a snapshot-based one. Feature engineering went from word counts, to handcrafted discourse and coherence features, to SBERT-based semantic embeddings, to coreference and entity-tracking features that, in the end, mattered less than I expected them to. Modeling went from an LSTM that was badly mismatched to the dataset's size, to Random Forest, to LightGBM with Optuna-tuned hyperparameters and patient-grouped cross-validation, ending in a five-model fold ensemble.
+					</p>
+
+					<p>
+						The two hardest technical turning points were not the ones that felt like progress at the time. Discovering the patient-leakage bug in my cross-validation splits in October 2025 meant watching my numbers get worse right after I'd "fixed" something — correctly worse, but still uncomfortable. And finding the silent entry-MMSE bug in December — a renamed column and a string/integer ID mismatch, both quietly defaulting to a group median for months — was humbling in a different way: the single most predictive feature in the entire project had been effectively broken the whole time I was trying to interpret results without it. Both of those moments taught me more about doing careful research than any of the moments that felt like wins.
+					</p>
+
+					<p>
+						The final model — a patient-grouped, five-fold LightGBM ensemble over clinical, handcrafted discourse, and SBERT-embedding features — reaches a held-out test R² of 0.732 (RMSE 3.35, MAE 2.22, Pearson r 0.867), with a 5-fold cross-validation estimate of R² = 0.840 ± 0.015 on the development data. The honest scientific finding underneath those numbers isn't that speech alone can predict cognitive decline — it's that clinical baseline assessments are the dominant predictor of future MMSE, and that discourse and semantic speech features contribute a smaller, consistent, cross-validated improvement on top of that. That's a narrower claim than the one I set out chasing in May 2025, and it's the one I can actually stand behind.
+					</p>
+
+					<img src="img/dementia/dementia-22-final-draft.png" alt="Mockup of the manuscript's title page and abstract, stamped DRAFT v1, dated July 12 2026" class="modal-img" />
+					<p class="modal-caption">The title page of the first complete draft — fourteen months after the project started as a vague interest in healthcare AI.</p>
+
+					<h2>What We Learned</h2>
+
+					<p>
+						Looking back at fourteen months of posts, the throughline isn't a straight line at all — it's a series of corrections. Simpler models beating a more sophisticated one. A leakage fix that made results worse but more honest. A silent bug that had been quietly capping performance for months. A hypothesis (speech features as the primary signal) that had to be narrowed once the ablation evidence came in. None of these felt like progress in the moment. All of them were necessary to end up with a result I trust.
+					</p>
+
+					<h2>Challenges</h2>
+
+					<p>
+						The draft still has real gaps. The Methods section needs another editing pass for density. A couple of figures need to be regenerated. And I know the Discussion's limitations section will need to expand once outside readers — starting with Joe, and eventually reviewers — start asking questions I haven't thought to ask myself yet.
+					</p>
+
+					<h2>Next Steps</h2>
+
+					<p>
+						Revision, not new research, for now: tightening the writing, regenerating figures, and getting outside feedback on the draft. Looking further out, the natural extensions are ones I can only gesture at with this dataset: validating on a larger and more contemporary longitudinal cohort, incorporating other biomarkers alongside speech (acoustic features, gait, or other passively collected signals) rather than speech alone, exploring temporal architectures better suited to irregular, sparse visit intervals than the LSTM I tried in August 2025, and — most importantly — testing whether any of this holds up on data collected outside of the Pitt Corpus entirely. This draft is a real milestone, not a finish line.
+					</p>
+					</div>
+				</div>
 
 			<!-- KidCode Day 3 Blog Modal -->
 			<div class="modal-overlay" id="modal-kidcode-day3" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-day3-title">
