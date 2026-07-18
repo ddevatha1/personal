@@ -636,6 +636,91 @@
 			font-weight: 600;
 		}
 
+		.blog-filter-bar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-bottom: 24px;
+		}
+
+		.filter-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 18px;
+			border-radius: 999px;
+			border: 1px solid rgba(29, 26, 23, 0.1);
+			background: rgba(255, 255, 255, 0.72);
+			color: var(--muted);
+			font-size: 0.88rem;
+			font-weight: 600;
+			font-family: inherit;
+			cursor: pointer;
+			transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+		}
+
+		.filter-pill:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 24px rgba(52, 36, 28, 0.1);
+		}
+
+		.filter-pill.active {
+			background: linear-gradient(145deg, var(--accent), var(--accent-dark));
+			color: #fff;
+			border-color: transparent;
+			box-shadow: 0 14px 28px rgba(143, 78, 49, 0.22);
+		}
+
+		.filter-pill .filter-count {
+			font-size: 0.74rem;
+			font-weight: 700;
+			padding: 2px 8px;
+			border-radius: 999px;
+			background: rgba(29, 26, 23, 0.08);
+			color: inherit;
+		}
+
+		.filter-pill.active .filter-count {
+			background: rgba(255, 255, 255, 0.28);
+		}
+
+		.blog-empty-state {
+			padding: 32px;
+			text-align: center;
+			color: var(--muted);
+			background: var(--surface-strong);
+			border: 1px solid rgba(29, 26, 23, 0.08);
+			border-radius: 0;
+		}
+
+		.blog-card.card-hidden {
+			display: none;
+		}
+
+		.meta {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 8px 10px;
+		}
+
+		.cat-pill {
+			display: inline-flex;
+			align-items: center;
+			padding: 4px 11px;
+			border-radius: 999px;
+			background: rgba(184, 109, 74, 0.14);
+			color: var(--accent-dark);
+			font-size: 0.72rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			white-space: nowrap;
+		}
+
+		.meta-date {
+			color: var(--accent-dark);
+		}
+
 		.timeline {
 			display: grid;
 			gap: 16px;
@@ -1286,10 +1371,28 @@
 					<p>First-hand accounts from projects, hackathons, and learning experiences.</p>
 				</div>
 
+				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
+					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">28</span></button>
+					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">5</span></button>
+					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">22</span></button>
+					<button type="button" class="filter-pill" data-filter="competitions">Competitions <span class="filter-count">1</span></button>
+				</div>
+
+				<p class="blog-empty-state" id="blog-empty-state" hidden>No posts in this category yet.</p>
+
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
 
-					<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-22').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2026</div>
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day4').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">July 2026</span></div>
+						<h3>Day 4: The Bug That Became the Best Part of Class</h3>
+						<p>
+							If statements this week, plus a room that felt different from the start: more returning faces, a few new ones, and more hands going up than usual. I forgot to plan an else statement and improvised with the example already on screen. Then a student's roller coaster exercise broke in three different ways at once, and fixing it together turned into the best debugging lesson we've had yet.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+
+					<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-22').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">July 2026</span></div>
 						<h3>First Full Draft Done</h3>
 						<p>
 							I finished assembling the first complete draft of the manuscript today — Introduction, Methods, Results, Discussion, and Conclusion, all in one document, for the first time since I started this project fourteen months ago. It's rough. There are sentences I'll rewrite, a couple of figures that need to be redone at higher resolution, and at least one Methods paragraph Joe already flagged as too dense. But it's a real draft of a real paper, built entirely from work I did and understood, and I want to take a minute to look back at how it got here before diving into revisions.
@@ -1297,8 +1400,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day3').classList.add('open')">
-						<div class="meta">KidCode &nbsp;·&nbsp; July 2026</div>
+<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day3').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">July 2026</span></div>
 						<h3>Day 3: What Happens When You Slow Down</h3>
 						<p>
 							After day two ran into more material than an hour could hold, I rebuilt the lesson around just four related ideas: booleans, comparison operators, and, and or. The slower pace changed the room: more volunteers, more students explaining things to each other, and a third grader who worked out and vs. or on her own.
@@ -1306,8 +1409,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day2').classList.add('open')">
-						<div class="meta">KidCode &nbsp;·&nbsp; July 2026</div>
+<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-day2').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">July 2026</span></div>
 						<h3>Day 2: When I Tried to Teach Too Much in One Hour</h3>
 						<p>
 							Booleans, if statements, for loops, and while loops: four big ideas for students who'd only just started learning to code. Attendance held steady from day one, but participation dropped as the pace outran the class. Here's what that taught me about the difference between covering material and actually teaching it.
@@ -1315,8 +1418,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-21').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-21').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">June 2026</span></div>
 						<h3>Wrestling With the Discussion Section</h3>
 						<p>
 							The Discussion section has taken longer to draft than Methods and Results combined, and I think that's because it's the section where I actually have to take a position rather than just report what happened. It's easy to describe a permutation importance table. It's harder to write a paragraph honestly explaining what it means that clinical features account for the overwhelming majority of predictive power, without either overselling the speech features' contribution or undermining the motivation for the entire project.
@@ -1324,8 +1427,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-online').classList.add('open')">
-						<div class="meta">KidCode &nbsp;·&nbsp; June 2026</div>
+<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-online').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 2026</span></div>
 						<h3>Our First KidCode Online Python Class</h3>
 						<p>
 							Twelve students joined our first Google Meet coding session. We installed Python, covered data types, variables, and user input, and worked through two exercises together. By the end, everyone had working code. Here's how the first class went.
@@ -1333,8 +1436,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-crosscommunal').classList.add('open')">
-						<div class="meta">Community Initiative &nbsp;·&nbsp; June 2026</div>
+<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-crosscommunal').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 2026</span></div>
 						<h3>Three Communities, One Meeting, and the Slow Work of Starting Something</h3>
 						<p>
 							I started a cross-communal coding initiative bringing together students from Avondale, The Heights at Westridge, and Ridgeview at Panther Creek. The first meeting had nobody knowing each other and experience levels ranging from zero to two-plus years. Here's what actually happened—and why it felt like the right kind of start.
@@ -1342,8 +1445,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-20').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-20').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">May 2026</span></div>
 						<h3>Drafting Methods and Results</h3>
 						<p>
 							Spent this stretch actually writing prose for the first time, starting with Methods and Results rather than the Introduction, on Joe's advice — apparently it's common to draft these sections first since they're the most mechanical and the least dependent on getting the framing exactly right, and writing them first tends to clarify what the Introduction and Discussion actually need to set up and explain.
@@ -1351,8 +1454,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-19').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; April 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-19').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">April 2026</span></div>
 						<h3>Starting to Write: Learning the Shape of a Research Paper</h3>
 						<p>
 							Almost a full year after I first started reading about domains, tasks, targets, and data, I sat down this week to start turning all of this into an actual manuscript, and immediately ran into a problem I hadn't anticipated: I don't really know how to write a research paper. I know how to run experiments, keep notes, and argue with myself about whether a result is real. I don't have much practice putting that into the specific, conventionalized shape a paper is supposed to take.
@@ -1360,8 +1463,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-18').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; March 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-18').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">March 2026</span></div>
 						<h3>Locking In the Final Model and a Held-Out Test Set</h3>
 						<p>
 							I set aside a patient-grouped held-out test set this week — a slice of patients that took no part whatsoever in feature selection, hyperparameter tuning, or fold-ensemble training. Everything up to this point has been evaluated purely through cross-validation, which is a reasonable way to make modeling decisions on a small dataset but leaves open the possibility that repeated tuning decisions, made by me, looking at CV scores over and over across months, have quietly overfit to the CV folds themselves. A genuinely untouched test set is the only way to check that.
@@ -1369,8 +1472,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-17').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; February 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-17').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">February 2026</span></div>
 						<h3>Ensembles, Noise Augmentation, and Rejecting a Long List of Ideas</h3>
 						<p>
 							Most of this stretch was incremental tuning, and in the spirit of documenting the real process rather than just the wins, I want to write down what didn't work as much as what did, because the list of rejected ideas ended up being long.
@@ -1378,8 +1481,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-16').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; January 2026</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-16').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">January 2026</span></div>
 						<h3>Ablation Studies: How Much Do Speech Features Really Add?</h3>
 						<p>
 							Ran the ablation study I've been planning since November, comparing four feature configurations under identical patient-grouped 5-fold cross-validation: linguistic (handcrafted) features alone, SBERT embeddings alone, clinical features alone, and combinations of all three. The results settle the question from a few weeks ago, at least as far as this dataset can settle it.
@@ -1387,8 +1490,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-15').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; December 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-15').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">December 2025</span></div>
 						<h3>What's Actually Driving the Predictions? Feature Importance Deep Dive</h3>
 						<p>
 							With the entry-MMSE bug fixed and the rest of the clinical feature joins audited and confirmed correct, I ran a proper permutation-importance analysis across all five cross-validation folds. The method: for each fold, take the trained model, measure its validation R², then shuffle one feature column at a time (breaking that feature's relationship to the target while leaving everything else intact) and measure how much R² drops. A bigger drop means the model was relying on that feature more. Repeating the shuffle multiple times per fold and averaging cuts down on noise from any single unlucky shuffle.
@@ -1396,8 +1499,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-14').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; December 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-14').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">December 2025</span></div>
 						<h3>A Silent Bug and the Biggest Single Improvement</h3>
 						<p>
 							While setting up the ablation study I'd planned last time, I went digging into why the "entry MMSE" feature — which I expected, based on everything I understand about this problem, to be by far the single most predictive feature available — wasn't behaving the way I expected in early feature-importance checks. It turned out to be almost inert, which didn't make sense.
@@ -1405,8 +1508,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-13').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; November 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-13').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">November 2025</span></div>
 						<h3>Adding the Clinical Picture</h3>
 						<p>
 							With patient-grouped cross-validation now in place as an honest baseline, I finally did the thing I'd been putting off since August: incorporated the clinical metadata that comes bundled with the Pitt Corpus alongside the speech data. Specifically, I added each patient's entry MMSE (their cognitive score at their first recorded visit), Blessed Dementia Scale score (a measure of functional impairment in daily activities), CDR (Clinical Dementia Rating), NYU and Mattis battery scores, and their baseline diagnosis category (dementia, control, or otherwise).
@@ -1414,8 +1517,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-12').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; October 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-12').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2025</span></div>
 						<h3>The Leakage Problem: Rebuilding Cross-Validation From Scratch</h3>
 						<p>
 							I flagged this concern a couple weeks ago and finally sat down to check it properly, and it turned out to be a real problem, not a false alarm. My cross-validation setup had been splitting the dataset at the level of individual samples (patient-visits), not at the level of patients. Since many patients in this cohort have multiple visits, that means it was entirely possible — and, once I checked, actually happening — for one visit from a given patient to land in the training fold while another visit from that same patient landed in the validation fold.
@@ -1423,8 +1526,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-11').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; October 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-11').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2025</span></div>
 						<h3>Moving to LightGBM and Meeting Optuna</h3>
 						<p>
 							Switched the modeling backbone from Random Forest to LightGBM, a gradient-boosted decision tree library. The core difference from Random Forest is how the trees are built: Random Forest trains many trees independently on bootstrapped samples and averages them, while gradient boosting trains trees sequentially, where each new tree is fit to correct the errors (residuals) of the ensemble built so far. In principle, this lets the model capture more subtle feature interactions and generally squeezes more performance out of tabular data — at the cost of being more sensitive to hyperparameters and more prone to overfitting if you're not careful.
@@ -1432,8 +1535,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-10').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; September 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-10').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">September 2025</span></div>
 						<h3>Building Out the Feature Set: Trajectories, Gaps, and History</h3>
 						<p>
 							With the Random Forest baseline in place, I spent this stretch trying to squeeze more signal out of the longitudinal structure of the data rather than adding entirely new feature families. The instinct behind this: I've been treating each visit somewhat independently, but the whole point of longitudinal data is that a patient's history should inform the prediction, not just their most recent snapshot.
@@ -1441,8 +1544,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-shopsmart').classList.add('open')">
-						<div class="meta">Hackathon Recap &nbsp;·&nbsp; Aug 27–30, 2025</div>
+<article class="blog-card reveal" data-category="competitions" style="cursor:pointer;" onclick="document.getElementById('modal-shopsmart').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-competitions">Competitions</span><span class="meta-date">Aug 27–30, 2025</span></div>
 						<h3>Building ShopSmart: How Our Team Won First Place at the TechLit Hackathon</h3>
 						<p>
 							Over four intense days, our team built ShopSmart—an app that finds the cheapest, fastest, or most eco-friendly multi-store shopping route. We placed first out of all submissions, earning $100 and five .xyz domains. Click to read the full story.
@@ -1451,8 +1554,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-09').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-09').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">August 2025</span></div>
 						<h3>Back to Basics: Random Forests Beat the Neural Net</h3>
 						<p>
 							I trained a Random Forest regressor on the same feature set the LSTM had access to — handcrafted discourse features plus SBERT embeddings, flattened per patient rather than fed in as a sequence — and it outperformed the LSTM by a meaningful margin, landing around R² ≈ 0.4 on cross-validation. That's still far from a result I'd call strong, but it's a real improvement over the neural network's ~0.44 validation score once you account for the fact that the LSTM's number came from a single validation split while the Random Forest number is a cross-validated estimate, and the Random Forest got there with a small fraction of the tuning effort.
@@ -1460,8 +1563,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-08').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-08').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">August 2025</span></div>
 						<h3>First Modeling Attempt: The LSTM That Wasn't Ready</h3>
 						<p>
 							After weeks of feature engineering, I finally trained a model. Since the whole premise of this project involves patients with multiple visits over time, a sequence model felt like the obvious first choice — I built an LSTM that takes a patient's visit history as a sequence of feature vectors (handcrafted coherence features plus SBERT embeddings per visit) and predicts the MMSE score at a future visit.
@@ -1469,8 +1572,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-07').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; August 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-07').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">August 2025</span></div>
 						<h3>Coreference, Entity Tracking, and a Frustrating Virtual Environment</h3>
 						<p>
 							I lost most of two days this week to environment setup, which is not something I expected to be writing about in a research blog, but it felt worth documenting because it's such a normal part of doing this kind of work. Coreference resolution — figuring out that "she," "the woman," and "her" in a transcript all refer to the same entity — needs a fairly heavy transformer-based model, and getting a working coreference pipeline installed alongside the rest of my existing packages caused enough dependency conflicts that I ended up isolating it into its own virtual environment entirely, separate from the environment I use for everything else. Not elegant, but it works, and I'd rather have a slightly ugly setup than lose another day to it.
@@ -1478,8 +1581,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-06').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-06').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">July 2025</span></div>
 						<h3>Teaching a Model to "Read" Meaning: Adding SBERT</h3>
 						<p>
 							Handcrafted lexical-overlap features (how many words two consecutive sentences share) are a reasonable first pass at coherence, but they have an obvious blind spot: two sentences can be about the exact same thing while sharing almost no vocabulary at all ("the woman is drying dishes" vs. "she's wiping plates with a towel"). If I only measure literal word overlap, I'll systematically miss semantic coherence — coherence at the level of meaning rather than surface form.
@@ -1487,8 +1590,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-05').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; July 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-05').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">July 2025</span></div>
 						<h3>From Transcripts to Tables: First Preprocessing Pass</h3>
 						<p>
 							This week was almost entirely plumbing, and I mean that in the least glamorous sense possible: getting raw transcript files and a metadata spreadsheet into a single clean table I can actually build features on top of. It is not exciting to write about, but it's the part of research nobody tells you takes as long as it does.
@@ -1496,8 +1599,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-04').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-04').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">June 2025</span></div>
 						<h3>Finding a Dataset: DementiaBank and the Pitt Corpus</h3>
 						<p>
 							Dataset search this week, and I think I found the right one: the DementiaBank Pitt Corpus. It's a collection of transcribed speech samples from participants completing a handful of standardized elicitation tasks — most notably the "Cookie Theft" picture description task, along with fluency, recall, and sentence-repetition tasks — collected from both a dementia group and a healthy control group. Critically for what I want to do, many participants were seen across multiple visits over time, with cognitive assessment scores (including MMSE) recorded at each visit.
@@ -1505,8 +1608,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-03').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; June 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-03').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">June 2025</span></div>
 						<h3>Discourse Coherence 101</h3>
 						<p>
 							This week was pure reading, and it was the first time the project started to feel like it had real technical bones rather than just a motivating story. "Discourse coherence" turns out to be a whole subfield with its own vocabulary, and a lot of it maps surprisingly cleanly onto the kinds of breakdowns that get described anecdotally in dementia case studies.
@@ -1514,8 +1617,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-02').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-02').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">May 2025</span></div>
 						<h3>Narrowing In: Why Speech, and Why Dementia</h3>
 						<p>
 							I started meeting regularly with Joe Xiao, a PhD student who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
@@ -1523,8 +1626,8 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
-<article class="blog-card reveal" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-01').classList.add('open')">
-						<div class="meta">Dementia Research &nbsp;·&nbsp; May 2025</div>
+<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-01').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">May 2025</span></div>
 						<h3>Starting From Zero: Learning How Research Problems Get Made</h3>
 						<p>
 							I've decided to spend this year trying to do real machine learning research, and I want to write about it as it happens rather than only after the fact. I have no formal research experience — until now, "research" for me has meant reading other people's papers, not writing my own. So the first few weeks of this project have mostly been about learning how research problems get made in the first place, not about writing any code.
@@ -1534,6 +1637,95 @@
 
 </div>
 			</section>
+
+				<!-- KidCode Day 4 Blog Modal -->
+				<div class="modal-overlay" id="modal-kidcode-day4" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-day4-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-day4').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-kidcode-day4-title">Day 4: The Bug That Became the Best Part of Class</h1>
+						<div class="post-meta">
+							<span>July 18, 2026</span>
+							<span>KidCode Python Bootcamp</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+						<p>
+							Day four felt like the first session with real momentum behind it. Attendance has climbed a little each week, and today I noticed something I hadn't quite clocked before: I recognized most of the room. Familiar names asking the kind of questions I've started to expect from them, sitting next to two or three students I hadn't seen before who'd heard about KidCode from a friend. The class felt more interactive than any session so far. More hands went up, and more people jumped in before I'd even finished asking a question.
+						</p>
+
+						<img src="img/kidcode-day4-title-slide.png" alt="Title slide for KidCode Day 4, dated July 17 2026, reading If statements: teaching your programs to decide" class="modal-img" />
+						<p class="modal-caption">The opening slide for day four. Four sessions in, this is the first topic that actually lets a program make a choice.</p>
+
+						<h2>Teaching Programs to Decide</h2>
+						<p>
+							Today's topic was if statements, the first real branch point in everything we've covered so far. Booleans and comparison operators from the last two sessions weren't standalone ideas anymore. They were finally the thing a program uses to make a choice. I opened with a simple framing: right now, every program the class has written runs every line, every time, in order. An if statement is the first tool that lets a program skip lines depending on whether something is true.
+						</p>
+
+						<img src="img/kidcode-day4-what-is-if-slide.png" alt="KidCode Day 4 slide explaining what an if statement is, using an umbrella and age example" class="modal-img" />
+						<p class="modal-caption">The opening example: check the weather, decide whether to grab an umbrella. This slide ended up mattering more than I planned.</p>
+
+						<p>
+							From there we broke an if statement into its three pieces: the condition, which is the yes-or-no question, the colon that starts the block, and the indentation that marks what actually sits inside the if. Naming the parts explicitly seems to help more than jumping straight to examples, since two of the three most common mistakes today, it turned out, came from students treating the colon and the indentation as formatting suggestions rather than rules.
+						</p>
+
+						<h2>The Else Statement I Forgot to Plan For</h2>
+						<p>
+							About fifteen minutes in, a student asked the question I should have seen coming: what happens if the condition is false? Looking at my own slide, I realized I'd built the entire if-statement introduction, umbrella example included, without ever writing an else block into the presentation. I'd covered it in my head while prepping and then just never put it on a slide.
+						</p>
+						<p>
+							Rather than stall and go build something new on the spot, I used the example already on the screen. If it's raining, you bring an umbrella. If it's not, you don't, you just leave the house like normal. That's an else. I wrote it out live, an if block for the umbrella and an else block underneath for the version where nothing special happens. It's a fairly low-stakes save as far as mistakes in front of a class go, but it's worth noting because it's a good reminder that the plan is a starting point, not the whole job. A few students said afterward that the umbrella example made else click faster than anything else that day, which is a little humbling given it wasn't supposed to be there at all.
+						</p>
+
+						<h2>Indentation, and Checking In Along the Way</h2>
+						<p>
+							We spent real time on indentation specifically, since it's the part of Python that trips up beginners the most and looks the most like a formatting choice until it isn't. I ran a side-by-side comparison: the same two lines, once correctly indented and once not, with the second version throwing an IndentationError. Watching students react to that error message was useful. A couple of them clearly expected Python to figure out what they meant, the way a person reading the same code would, and the fact that it doesn't was a genuinely new idea for them.
+						</p>
+
+						<img src="img/kidcode-day4-indentation-slide.png" alt="KidCode Day 4 slide comparing correctly and incorrectly indented if statements" class="modal-img" />
+						<p class="modal-caption">The indentation comparison slide. This came back later in a different form during the roller coaster exercise.</p>
+
+						<p>
+							I kept checking in throughout the lesson: quick show-of-hands questions, thumbs up or down on whether an example made sense, asking someone to explain a line back in their own words before moving on. It slows the pace down slightly, but after day two taught me what happens when I skip this, I'd rather lose a few minutes confirming understanding than lose the back half of the class to confusion nobody mentioned out loud. Comprehension held up well today. Almost every check came back with more thumbs up than not.
+						</p>
+
+						<h2>The Roller Coaster Bug</h2>
+						<p>
+							The exercise that ended up teaching the most wasn't one I'd planned as a debugging lesson. I asked students to write a program that asks for someone's age and prints whether they can ride a roller coaster: ask for age, and if they're 10 or older, print that they can ride. One student shared her screen to walk through her attempt, and it had three separate mistakes at once. The if line was missing its colon, the condition itself was backwards, checking whether age was less than 10 instead of at least 10, and the print statement wasn't indented under the if at all.
+						</p>
+
+						<img src="img/kidcode-day4-rollercoaster-exercise-slide.png" alt="KidCode Day 4 roller coaster exercise slide asking students to check if a user is 10 or older" class="modal-img" />
+						<p class="modal-caption">The roller coaster exercise. Simple on the slide, and the source of the best ten minutes of class.</p>
+
+						<p>
+							Instead of fixing it for her, I went through each problem one at a time and asked the class to help me spot it before I said anything. The missing colon was the first one someone caught. The indentation issue came next, once I asked what would happen if Python couldn't tell which line belonged inside the if. The backwards condition took the longest, because the code still looked reasonable to a few students until we actually stepped through it with a specific age and watched it print the wrong thing.
+						</p>
+						<p>
+							That last part is exactly why I think this was the most useful stretch of the class. Writing correct code on the first try doesn't teach you nearly as much as fixing code that's wrong for three different reasons and having to isolate each one. A couple of students said this was the first time they'd really debugged something instead of just rewriting it from scratch until it happened to work, which is precisely the shift I want to see.
+						</p>
+
+						<img src="img/kidcode-day4-common-mistakes-slide.png" alt="KidCode Day 4 slide listing common if statement mistakes: missing colon, skipped indentation, and using = instead of ==" class="modal-img" />
+						<p class="modal-caption">The exact three mistakes from the roller coaster bug were already sitting on this slide, coincidentally, right where we needed them.</p>
+
+						<h2>More Moments Worth Mentioning</h2>
+						<p>
+							A few other things stood out. When I put up the "predict what this prints" slide, more students called out answers before I'd finished reading the code aloud than in any previous session, and most of them were right. One student asked, unprompted, whether if statements were the reason apps show different content to different people, like an age check before letting someone watch something, which turned into a short but genuinely good tangent about where conditional logic shows up outside of a classroom. Two students who finished the password-checker exercise early turned around and started helping the student next to them instead of waiting for me to get to their table.
+						</p>
+						<p>
+							By the end of the temperature exercise, when I asked who wanted to share their output, more hands went up than I had time to call on. That hasn't really happened before this session.
+						</p>
+
+						<h2>What's Next</h2>
+						<p>
+							Next class will look different from the first four. I'm planning the group's first small project, something that pulls together variables, input, booleans, and if statements into one program students build over the full session rather than a series of separate exercises. I also want to run a short quiz beforehand, low stakes, mostly to give students a concrete way to see what's actually sticking after four weeks rather than relying on my read of the room.
+						</p>
+
+						<h2>Four Sessions In</h2>
+						<p>
+							Four classes in, the thing I notice most isn't any single concept landing well. It's the shape of the room changing: more volunteers, more students finishing early and turning to help someone else, more questions that go slightly past what I asked. The else statement I forgot and the roller coaster bug a student accidentally built were both mistakes, mine and hers, and both ended up teaching more than anything I'd actually planned. Going into the project and the quiz next week, I want to hold onto that: the plan matters less than what happens when it doesn't quite go to plan.
+						</p>
+					</div>
+				</div>
 
 				<!-- First Full Draft Done -->
 				<div class="modal-overlay" id="modal-dementia-22" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-22-title">
@@ -3087,6 +3279,28 @@
 			if (e.key === 'Escape') {
 				document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
 			}
+		});
+
+		// Blog category filtering
+		const filterPills = document.querySelectorAll('.filter-pill');
+		const blogCards = document.querySelectorAll('.blog-card[data-category]');
+		const blogEmptyState = document.getElementById('blog-empty-state');
+
+		filterPills.forEach((pill) => {
+			pill.addEventListener('click', () => {
+				const filter = pill.dataset.filter;
+
+				filterPills.forEach((p) => p.classList.toggle('active', p === pill));
+
+				let visibleCount = 0;
+				blogCards.forEach((card) => {
+					const matches = filter === 'all' || card.dataset.category === filter;
+					card.classList.toggle('card-hidden', !matches);
+					if (matches) visibleCount += 1;
+				});
+
+				if (blogEmptyState) blogEmptyState.hidden = visibleCount !== 0;
+			});
 		});
 	</script>
 </body>
