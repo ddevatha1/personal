@@ -1,0 +1,82 @@
+<svg viewBox="0 0 1180 660" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif" role="img" aria-labelledby="cmpTitle cmpDesc">
+  <title id="cmpTitle">MVP versus finished architecture, side by side</title>
+  <desc id="cmpDesc">The MVP is a focused four-screen pipeline: search, planner, cart, profile. The finished architecture wraps the same pipeline in intent routing, generators, trust and arbitration, and persistent personalization, without more screens.</desc>
+  <rect x="0" y="0" width="1180" height="660" fill="#fcf8f4"/>
+
+  <text x="590" y="38" font-size="15" fill="#a89684" text-anchor="middle">Architectural growth, not just feature count &#8212; more capability without more screens</text>
+
+  <!-- LEFT: MVP -->
+  <rect x="40" y="64" width="520" height="560" rx="14" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="70" y="102" font-size="22" font-weight="700" fill="#1d1a17">MVP &#8212; shipped</text>
+  <text x="70" y="124" font-size="13" fill="#62574d">a focused pipeline</text>
+
+  <!-- mini pipeline -->
+  <g font-size="12.5">
+    <rect x="70" y="140" width="460" height="34" rx="8" fill="rgba(184,109,74,0.1)"/>
+    <text x="300" y="162" text-anchor="middle" fill="#8f4e31">Mobile (4 tabs) &#8594; Backend &#8594; Search &#8594; 9 Adapters</text>
+  </g>
+
+  <g font-size="13.5" fill="#4a3f36">
+    <text x="70" y="204">&#9679; Product search + live multi-store price compare</text>
+    <text x="70" y="230">&#9679; Smart Planner: multi-item list, brute-force route/store optimization</text>
+    <text x="70" y="256">&#9679; Cart with per-store subtotals, trip-time estimate</text>
+    <text x="70" y="282">&#9679; Guest-first: ZIP code is the only thing required</text>
+    <text x="70" y="308">&#9679; No AI, no LLM calls, no personalization</text>
+  </g>
+
+  <line x1="70" y1="330" x2="530" y2="330" stroke="#e4d7c9"/>
+
+  <text x="70" y="358" font-size="14" font-weight="700" fill="#1d1a17">Why it's smaller, on purpose</text>
+  <g font-size="13" fill="#62574d">
+    <text x="70" y="384">&#8226; Smaller surface area, easier to test end to end</text>
+    <text x="70" y="406">&#8226; Fewer failure points across 9 already-flaky retailer sources</text>
+    <text x="70" y="428">&#8226; Predictable UX &#8212; nothing an LLM might improvise</text>
+    <text x="70" y="450">&#8226; Faster path to App Store review</text>
+    <text x="70" y="472">&#8226; Lower operational cost &#8212; one process, in-memory cache</text>
+  </g>
+
+  <rect x="70" y="500" width="460" height="100" rx="10" fill="#f6efe8" stroke="#d8c4b1" stroke-dasharray="3 3"/>
+  <text x="90" y="524" font-size="12.5" font-weight="700" fill="#4a3f36">Built, not shipped (feature-flagged off):</text>
+  <text x="90" y="546" font-size="12" fill="#62574d">Fridge &#183; Meal Planner &#183; Assistant &#183; Product Quality Scan</text>
+  <text x="90" y="566" font-size="12" fill="#62574d">Barcode Scan &#183; List OCR &#183; Voice Entry &#183; Savings &#183; Advisor Insights</text>
+  <text x="90" y="588" font-size="11" fill="#a89684">code exists on disk, no navigation entry point wired up</text>
+
+  <!-- RIGHT: Finished -->
+  <rect x="620" y="64" width="520" height="560" rx="14" fill="#fbeee4" stroke="#b86d4a" stroke-width="1.5"/>
+  <text x="650" y="102" font-size="22" font-weight="700" fill="#1d1a17">Finished &#8212; target design</text>
+  <text x="650" y="124" font-size="13" fill="#8f4e31">a coordinated system</text>
+
+  <g font-size="12.5">
+    <rect x="650" y="140" width="460" height="34" rx="8" fill="rgba(184,109,74,0.16)"/>
+    <text x="880" y="162" text-anchor="middle" fill="#8f4e31">+ Intent Router &#8594; Generators &#8594; Trust/Arbitration &#8594; 3 shapes</text>
+  </g>
+
+  <g font-size="13.5" fill="#4a3f36">
+    <text x="650" y="204">&#9679; Same search/compare/planner core, untouched underneath</text>
+    <text x="650" y="230">&#9679; Voice + camera as second Perception paths into one router</text>
+    <text x="650" y="256">&#9679; Meal planning, nutrition gap analysis, food-waste nudges</text>
+    <text x="650" y="282">&#9679; Budget as a shared constraint object, not a dashboard</text>
+    <text x="650" y="308">&#9679; One ranked-suggestion queue instead of per-feature nagging</text>
+  </g>
+
+  <line x1="650" y1="330" x2="1110" y2="330" stroke="#d8c4b1"/>
+
+  <text x="650" y="358" font-size="14" font-weight="700" fill="#1d1a17">What it costs to get there</text>
+  <g font-size="13" fill="#8f4e31">
+    <text x="650" y="384">&#8226; Real infrastructure: LLM calls, rate limits, vision boundary</text>
+    <text x="650" y="406">&#8226; A trust layer that can say no &#8212; or nothing surfaces at all</text>
+    <text x="650" y="428">&#8226; Account-backed persistence, not just AsyncStorage</text>
+    <text x="650" y="450">&#8226; More failure modes to design honest fallbacks for</text>
+    <text x="650" y="472">&#8226; Harder to test: nine generators, one shared arbitration layer</text>
+  </g>
+
+  <rect x="650" y="500" width="460" height="100" rx="10" fill="#ffffff" stroke="#b86d4a" stroke-dasharray="3 3"/>
+  <text x="670" y="524" font-size="12.5" font-weight="700" fill="#4a3f36">Central lesson:</text>
+  <text x="670" y="546" font-size="12" fill="#62574d">A good MVP isn't a smaller final product &#8212;</text>
+  <text x="670" y="566" font-size="12" fill="#62574d">it's the architecture that validates the core</text>
+  <text x="670" y="586" font-size="12" fill="#62574d">assumption with the least unnecessary complexity.</text>
+
+  <!-- connecting arrow between the two -->
+  <line x1="572" y1="344" x2="608" y2="344" stroke="#b86d4a" stroke-width="2.5"/>
+  <path d="M598,336 L610,344 L598,352" fill="none" stroke="#b86d4a" stroke-width="2.5"/>
+</svg>

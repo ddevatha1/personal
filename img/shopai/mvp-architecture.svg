@@ -1,0 +1,129 @@
+<svg viewBox="0 0 1180 960" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif" role="img" aria-labelledby="mvpArchTitle mvpArchDesc">
+  <title id="mvpArchTitle">ShopAI MVP architecture</title>
+  <desc id="mvpArchDesc">The current App Store MVP: the mobile app calls a single Express backend, which runs a search and aggregation layer that fans out in parallel to nine retailer adapters, which each talk to a different external grocery retailer system.</desc>
+  <defs>
+    <marker id="mvpArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b86d4a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1180" height="960" fill="#fcf8f4"/>
+
+  <!-- Band 1: Mobile -->
+  <rect x="60" y="24" width="1060" height="118" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="58" font-size="21" font-weight="700" fill="#1d1a17">ShopAI Mobile</text>
+  <text x="90" y="80" font-size="13.5" fill="#62574d">React Native / Expo &#183; Zustand state &#183; React Navigation (bottom tabs + native stack)</text>
+  <g font-size="12.5" fill="#8f4e31">
+    <rect x="90" y="94" width="118" height="30" rx="15" fill="rgba(184,109,74,0.12)"/>
+    <text x="149" y="113" text-anchor="middle">Search &amp; Compare</text>
+    <rect x="220" y="94" width="86" height="30" rx="15" fill="rgba(184,109,74,0.12)"/>
+    <text x="263" y="113" text-anchor="middle">Cart</text>
+    <rect x="318" y="94" width="150" height="30" rx="15" fill="rgba(184,109,74,0.12)"/>
+    <text x="393" y="113" text-anchor="middle">Smart Planner</text>
+    <rect x="480" y="94" width="96" height="30" rx="15" fill="rgba(184,109,74,0.12)"/>
+    <text x="528" y="113" text-anchor="middle">Profile</text>
+  </g>
+  <text x="1090" y="113" font-size="12.5" fill="#a89684" text-anchor="end">Fridge / Assistant / Meal Planner: flagged off &#8594;</text>
+
+  <!-- Arrow 1 -->
+  <line x1="590" y1="146" x2="590" y2="192" stroke="#b86d4a" stroke-width="2" marker-end="url(#mvpArrow)"/>
+  <text x="605" y="164" font-size="12.5" fill="#62574d">HTTPS + JSON</text>
+  <text x="605" y="180" font-size="12.5" fill="#62574d">EXPO_PUBLIC_API_BASE_URL &#8594; api.deeptanshudevatha.com</text>
+
+  <!-- Band 2: Backend -->
+  <rect x="60" y="196" width="1060" height="108" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="228" font-size="21" font-weight="700" fill="#1d1a17">Backend API</text>
+  <text x="90" y="250" font-size="13.5" fill="#62574d">Standalone Express + TypeScript server &#183; deployed on Render &#183; own package.json, own process</text>
+  <g font-size="12" fill="#8f4e31">
+    <rect x="90" y="264" width="112" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="146" y="281" text-anchor="middle">/api/search</text>
+    <rect x="212" y="264" width="116" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="270" y="281" text-anchor="middle">/api/planner</text>
+    <rect x="338" y="264" width="112" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="394" y="281" text-anchor="middle">/api/warmup</text>
+    <rect x="460" y="264" width="100" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="510" y="281" text-anchor="middle">/api/trip</text>
+    <rect x="570" y="264" width="150" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="645" y="281" text-anchor="middle">/api/product-image</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="590" y1="304" x2="590" y2="350" stroke="#b86d4a" stroke-width="2" marker-end="url(#mvpArrow)"/>
+  <text x="605" y="332" font-size="12.5" fill="#62574d">in-process call &#8212; performSearch()</text>
+
+  <!-- Band 3: Search & Aggregation -->
+  <rect x="60" y="354" width="1060" height="170" rx="12" fill="#fbeee4" stroke="#b86d4a" stroke-width="1.5"/>
+  <text x="90" y="386" font-size="21" font-weight="700" fill="#1d1a17">Search &amp; Aggregation Layer</text>
+  <text x="90" y="406" font-size="13.5" fill="#8f4e31">searchService.ts &#8212; the one place ranking/filtering logic lives</text>
+  <g font-size="13" fill="#4a3f36">
+    <text x="90" y="432">1&#183;  Query correction (typos, plurals) &#8212; skippable per request</text>
+    <text x="90" y="454">2&#183;  Fan out to every retailer adapter in parallel &#8212; each races a shared response-time budget</text>
+    <text x="90" y="476">3&#183;  Per-store pipeline: food filter &#8594; relevance filter &#8594; store-level ranking</text>
+    <text x="90" y="498">4&#183;  Cross-store image backfill, then aggregate into one SearchResponse</text>
+  </g>
+  <rect x="820" y="418" width="140" height="46" rx="10" fill="#ffffff" stroke="#d8c4b1" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="890" y="437" font-size="12.5" font-weight="700" fill="#1d1a17" text-anchor="middle">TTL Cache</text>
+  <text x="890" y="453" font-size="10.5" fill="#62574d" text-anchor="middle">in-memory, per query</text>
+  <rect x="970" y="418" width="140" height="46" rx="10" fill="#ffffff" stroke="#d8c4b1" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="1040" y="437" font-size="12.5" font-weight="700" fill="#1d1a17" text-anchor="middle">Warmup Service</text>
+  <text x="1040" y="453" font-size="10.5" fill="#62574d" text-anchor="middle">pre-warms sessions</text>
+  <line x1="960" y1="441" x2="920" y2="441" stroke="#b86d4a" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="820" y1="441" x2="700" y2="441" stroke="#b86d4a" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+  <!-- Arrow 3 (fan out) -->
+  <text x="590" y="548" font-size="12.5" fill="#62574d" text-anchor="middle">Promise.all &#8212; nine parallel adapter calls, each with its own timeout</text>
+  <line x1="200" y1="524" x2="200" y2="566" stroke="#b86d4a" stroke-width="1.6" marker-end="url(#mvpArrow)"/>
+  <line x1="590" y1="524" x2="590" y2="566" stroke="#b86d4a" stroke-width="1.6" marker-end="url(#mvpArrow)"/>
+  <line x1="980" y1="524" x2="980" y2="566" stroke="#b86d4a" stroke-width="1.6" marker-end="url(#mvpArrow)"/>
+
+  <!-- Band 4: Retailer adapters -->
+  <text x="90" y="592" font-size="16" font-weight="700" fill="#1d1a17">Retailer Adapters</text>
+  <text x="90" y="610" font-size="12.5" fill="#62574d">one module per store &#183; every one normalizes its output to the same ApiProduct shape</text>
+
+  <!-- grid of 9 store chips -->
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <!-- row 1 -->
+    <rect x="60" y="622" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="78" y="643" font-size="14" font-weight="700" fill="#1d1a17">Kroger</text>
+    <text x="78" y="661" font-size="11.5" fill="#62574d">REST API + OAuth2 client credentials</text>
+
+    <rect x="420" y="622" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="438" y="643" font-size="14" font-weight="700" fill="#1d1a17">Harris Teeter</text>
+    <text x="438" y="661" font-size="11.5" fill="#62574d">same Kroger API, scoped to the HART banner</text>
+
+    <rect x="780" y="622" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="798" y="643" font-size="14" font-weight="700" fill="#1d1a17">Aldi</text>
+    <text x="798" y="661" font-size="11.5" fill="#62574d">public GraphQL API, no browser</text>
+
+    <!-- row 2 -->
+    <rect x="60" y="682" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="78" y="703" font-size="14" font-weight="700" fill="#1d1a17">Sprouts</text>
+    <text x="78" y="721" font-size="11.5" fill="#62574d">GraphQL API, no browser</text>
+
+    <rect x="420" y="682" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="438" y="703" font-size="14" font-weight="700" fill="#1d1a17">Publix</text>
+    <text x="438" y="721" font-size="11.5" fill="#62574d">Instacart-fulfilled GraphQL API</text>
+
+    <rect x="780" y="682" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="798" y="703" font-size="14" font-weight="700" fill="#1d1a17">Trader Joe's</text>
+    <text x="798" y="721" font-size="11.5" fill="#62574d">Playwright browser session + store directory</text>
+
+    <!-- row 3 -->
+    <rect x="60" y="742" width="340" height="52" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+    <text x="78" y="763" font-size="14" font-weight="700" fill="#1d1a17">Whole Foods Market</text>
+    <text x="78" y="781" font-size="11.5" fill="#62574d">server-rendered HTML, no browser</text>
+
+    <rect x="420" y="742" width="340" height="52" rx="10" fill="#f6efe8" stroke="#d8c4b1" stroke-dasharray="3 3"/>
+    <text x="438" y="763" font-size="14" font-weight="700" fill="#5c5248">Albertsons *</text>
+    <text x="438" y="781" font-size="11.5" fill="#8a7c6c">store locations only, no product search</text>
+
+    <rect x="780" y="742" width="340" height="52" rx="10" fill="#f6efe8" stroke="#d8c4b1" stroke-dasharray="3 3"/>
+    <text x="798" y="763" font-size="14" font-weight="700" fill="#5c5248">Tom Thumb *</text>
+    <text x="798" y="781" font-size="11.5" fill="#8a7c6c">registered, no live data source yet</text>
+  </g>
+  <text x="90" y="812" font-size="11.5" fill="#a89684">* honestly reported as unavailable in the response &#8212; never silently dropped or faked</text>
+
+  <!-- Arrow 4 -->
+  <line x1="590" y1="822" x2="590" y2="862" stroke="#b86d4a" stroke-width="2" marker-end="url(#mvpArrow)"/>
+  <text x="605" y="848" font-size="12.5" fill="#62574d">each adapter's own request shape &#8212; REST, GraphQL, or a real browser session</text>
+
+  <!-- Band 5: External systems -->
+  <rect x="60" y="866" width="1060" height="76" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="896" font-size="18" font-weight="700" fill="#1d1a17">External Grocery Retailer Systems</text>
+  <text x="90" y="918" font-size="13" fill="#62574d">Nine independent websites/APIs ShopAI does not own, version, or control</text>
+</svg>

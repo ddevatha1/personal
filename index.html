@@ -8,6 +8,20 @@
 		name="description"
 		content="Personal website for Deeptanshu Devatha featuring resume, interests, research, and blog."
 	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Deeptanshu Devatha" />
+	<meta property="og:title" content="Deeptanshu Devatha | Personal Website" />
+	<meta
+		property="og:description"
+		content="Personal website for Deeptanshu Devatha featuring resume, interests, research, and blog."
+	/>
+	<meta property="og:image" content="https://deeptanshudevatha.com/img/shopai/mvp-vs-finished.svg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Deeptanshu Devatha | Personal Website" />
+	<meta
+		name="twitter:description"
+		content="Personal website for Deeptanshu Devatha featuring resume, interests, research, and blog."
+	/>
 	<style>
 		:root {
 			--bg: #f6efe8;
@@ -1039,6 +1053,44 @@
 			font-size: 0.91em;
 			color: var(--accent-dark);
 		}
+		.modal-box .table-scroll {
+			overflow-x: auto;
+			margin: 20px 0;
+			border: 1px solid rgba(29,26,23,0.08);
+			border-radius: var(--radius-md);
+			box-shadow: 0 8px 28px rgba(52,36,28,0.09);
+		}
+		.modal-box table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: 0.88rem;
+			min-width: 480px;
+		}
+		.modal-box th,
+		.modal-box td {
+			text-align: left;
+			padding: 12px 16px;
+			border-bottom: 1px solid rgba(29,26,23,0.08);
+			vertical-align: top;
+		}
+		.modal-box thead th {
+			background: rgba(184, 109, 74, 0.1);
+			color: var(--accent-dark);
+			font-family: Georgia, "Times New Roman", serif;
+			font-size: 0.8rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+		}
+		.modal-box tbody td {
+			color: var(--muted);
+			line-height: 1.6;
+		}
+		.modal-box tbody td:first-child {
+			color: var(--text);
+			font-weight: 700;
+			white-space: nowrap;
+		}
+		.modal-box tbody tr:last-child td { border-bottom: none; }
 		.modal-curriculum {
 			width: 100%;
 			height: 420px;
@@ -1372,16 +1424,26 @@
 				</div>
 
 				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
-					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">66</span></button>
+					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">67</span></button>
 					<button type="button" class="filter-pill" data-filter="india">India Outreach <span class="filter-count">38</span></button>
 					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">5</span></button>
 					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">22</span></button>
 					<button type="button" class="filter-pill" data-filter="competitions">Competitions <span class="filter-count">1</span></button>
+					<button type="button" class="filter-pill" data-filter="engineering">Engineering <span class="filter-count">1</span></button>
 				</div>
 
 				<p class="blog-empty-state" id="blog-empty-state" hidden>No posts in this category yet.</p>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+
+					<article class="blog-card reveal" data-category="engineering" style="cursor:pointer;" onclick="document.getElementById('modal-shopai-architecture').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-engineering">Engineering</span><span class="meta-date">August 2026</span></div>
+						<h3>Shipping ShopAI: What Nine Grocery Retailers Taught Me About MVP Architecture</h3>
+						<p>
+							ShopAI is out for App Store and Play Store review. Here's the architecture that actually shipped — a focused search, compare, and planning pipeline across nine live grocery retailers — next to the five-layer AI system it's designed to grow into, and an honest account of what got cut, why, and what it would take to build the rest.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
 
 					<article class="blog-card reveal" data-category="india" style="cursor:pointer;" onclick="document.getElementById('modal-india-38').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-india">India Outreach</span><span class="meta-date">July 2026</span></div>
@@ -1980,6 +2042,191 @@
 
 				</div>
 			</section>
+
+			<!-- ShopAI Architecture Blog Modal -->
+			<div class="modal-overlay" id="modal-shopai-architecture" role="dialog" aria-modal="true" aria-labelledby="modal-shopai-architecture-title">
+				<div class="modal-box">
+					<button class="modal-close" onclick="document.getElementById('modal-shopai-architecture').classList.remove('open')" aria-label="Close">&times;</button>
+
+					<h1 id="modal-shopai-architecture-title">Shipping ShopAI: What Nine Grocery Retailers Taught Me About MVP Architecture</h1>
+					<div class="post-meta">
+						<span>August 2026</span>
+						<span>Personal Project</span>
+						<span>Deeptanshu Devatha</span>
+					</div>
+
+					<p>
+						ShopAI is currently sitting in App Store and Google Play review. That milestone sounds bigger than it is — the build under review is deliberately not the app I originally set out to build. It's the version I let myself finish, which turned out to require cutting most of what I'd already written. This is the engineering story of how a hackathon prototype called <a href="#" onclick="event.preventDefault(); document.getElementById('modal-shopai-architecture').classList.remove('open'); document.getElementById('modal-shopsmart').classList.add('open');" style="color:var(--accent-dark); text-decoration:underline;">ShopSmart</a> turned into a real, submitted iOS and Android app called ShopAI: what actually shipped, why the MVP is smaller than the codebase behind it, and what the rest of the architecture is built to grow into.
+					</p>
+
+					<h2>The problem ShopAI is solving</h2>
+					<p>
+						Grocery prices for the same item vary more between stores in the same city than most people track. A shopper who's willing to compare — this store for milk, that one for produce — can save real money, but doing that comparison by hand means either checking multiple apps and circulars or just not bothering. ShopAI's core bet is narrow on purpose: search once, see live prices for that item across every nearby store that carries it, and let the shopper decide where to actually buy it. Everything else in the app — the shopping list, the multi-store trip optimizer, eventually the AI layer — exists to make that one comparison more useful, not to replace it.
+					</p>
+
+					<h2>What actually shipped</h2>
+					<p>
+						ShopAI is a React Native / Expo app (bundle id <code>com.ddevatha.shopai</code>, currently on build 7) with its own independent backend — a standalone Express + TypeScript server, ported line-for-line from a sibling Next.js project's search route and deployed on Render behind <code>api.deeptanshudevatha.com</code>. The mobile app has no search logic of its own beyond the UI: every search, every planner request, and every warm-up check is a call to that backend. Nothing about the shipped feature set is exotic — it's product search, live multi-store price comparison across nine retailers, store filtering, product detail pages, a cart with per-store subtotals, a sign-in-optional profile, and a Smart Shopping Planner that turns a whole grocery list into an optimized multi-store trip. What makes it worth writing about is everything that <em>isn't</em> in that list, and why.
+					</p>
+					<p>
+						(One small fossil from the build's history: the Expo project slug is still <code>CartIQ_mobile</code> — the app was briefly renamed to CartIQ mid-development before coming back to ShopAI. Expo project slugs are painful to change without losing the EAS project link, so it just... stayed. Harmless, but a good reminder that naming churn during a build is cheap right up until it touches something with a real identifier attached.)
+					</p>
+
+					<h2>Why the MVP was intentionally smaller</h2>
+					<p>
+						By the time I was preparing for App Store submission, the mobile app's <code>src/</code> directory had screens and services for a Virtual Fridge, a full recipe-to-shopping-list Meal Planner, an AI chat Assistant, a camera-based Product Quality scanner, barcode scanning, receipt/list OCR, voice list entry, a "Savings" insights screen, AI advisor-card insight banners, and product-substitution recommendations. None of it shipped. All of it still exists on disk.
+					</p>
+					<p>
+						The cut is a literal config file, <code>src/config/features.ts</code>, and its own comment explains the reasoning better than I can paraphrase: <em>"App Store MVP cut — every non-core feature is disconnected from the UI here rather than deleted. The underlying screens/services/components all still exist; flipping a flag back to true ... is the entire re-enable path for a future release."</em> The navigator that wires up screens doesn't even <code>import</code> the disabled ones — not behind a runtime check, but omitted entirely — because Metro resolves a module's whole dependency graph at bundle time, and half of those screens depend on native packages (<code>expo-camera</code>, <code>expo-notifications</code>, <code>expo-speech-recognition</code>) that aren't installed in this build at all. Kept unconditionally: product search and price comparison, store selection, the shopping list, and the cart — the two MVP experiences and the bridge between them.
+					</p>
+					<p>
+						One cut wasn't a flag at all. The original ShopSmart hackathon prototype's headline feature was a GPS route view across multiple stores — visible in the screenshot on <a href="#" onclick="event.preventDefault(); document.getElementById('modal-shopai-architecture').classList.remove('open'); document.getElementById('modal-shopsmart').classList.add('open');" style="color:var(--accent-dark); text-decoration:underline;">that earlier post</a>. ShopAI's navigator doesn't register a Route screen at all anymore — not flagged off, removed as a product decision, with the code left untouched on disk for the same reason as everything else. Turn-by-turn navigation between stores added real complexity (live location tracking, a route map, a guided pickup checklist) for a workflow most shoppers already have solved with their phone's own maps app. Store addresses now just show up in the cart instead. Cutting your own hackathon-winning feature is an uncomfortable thing to do, but it was the right call for what the MVP was actually trying to prove.
+					</p>
+					<p>
+						Sign-in is optional too, for now: <code>authRequired</code> is currently <code>false</code>, so onboarding doesn't force account creation — a ZIP code, collected through a lightweight prompt with no account attached, is the only thing search and the Planner actually require. Cart, price history, and planner preferences already degrade gracefully with no signed-in user (each one no-ops on an empty owner field); under this flag they just don't persist across sessions, which is the expected shape of guest use, not a broken feature.
+					</p>
+
+					<h2>The MVP architecture</h2>
+					<p>
+						With the cuts made, what's left is a short, legible pipeline: a mobile client, one backend process, a search-and-aggregation layer, and a set of retailer-specific adapters that talk to nine external grocery systems that ShopAI doesn't own or control.
+					</p>
+					<img src="img/shopai/mvp-architecture.svg" alt="Diagram of the ShopAI MVP architecture: the mobile app calls a standalone Express backend over HTTPS, which runs a search and aggregation layer backed by a TTL cache and a warmup service, which fans out in parallel to nine retailer adapters, each talking to its own external grocery retailer system." class="modal-img" loading="lazy" />
+					<p class="modal-caption">The shipped pipeline — four layers, one direction of data flow, no step the app can skip.</p>
+					<p>
+						Two things about this diagram matter more than the boxes themselves. First, <strong>all of the ranking and filtering logic lives server-side</strong>, in one file (<code>searchService.ts</code>): query correction, food filtering, relevance scoring, and per-store selection all happen before a response ever leaves the backend. The mobile app doesn't re-implement any of it — it calls its own endpoint and renders whatever comes back, the same discipline the five-layer design further down this post depends on. Second, the backend is genuinely independent: it's not a route inside some larger monolith, and it doesn't depend on a sibling web app's dev server being up. That was a real design decision — an earlier iteration of the mobile app called into a Next.js web app's own API routes directly, which meant the mobile app simply didn't work unless that unrelated project happened to be running. Porting the same search logic into its own standalone Express server removed a dependency the mobile app had no business having.
+					</p>
+
+					<h2>Following a grocery search through the system</h2>
+					<p>
+						The best way to make an architecture diagram concrete is to run one real request through it. Here's what happens when a shopper opens the app and searches for "milk."
+					</p>
+					<img src="img/shopai/search-flow.svg" alt="Eight-step data flow diagram: a shopper types milk on the Home screen, the apiClient posts to the search endpoint, the Express route validates and corrects the query, the backend fans out to nine retailer adapters in parallel with a shared response-time budget, results are normalized and aggregated into one response, the results render grouped by product, the shopper opens the compare screen to see a per-store price list, and finally adds the cheapest option to the cart." class="modal-img" loading="lazy" />
+					<p class="modal-caption">One search, eight steps, roughly a few seconds of wall-clock time. Prices shown are illustrative — this is a UX walkthrough, not a live price snapshot.</p>
+					<p>
+						The interesting steps are the middle three. Query correction runs first and is cheap to skip — "milk" needs none of it, but a typo or a plural gets normalized before anything is sent to a single retailer, so every store adapter is searching for the same corrected term. Then the backend fires all nine retailer calls with <code>Promise.all</code>, and each one races a shared response-time budget rather than its own fixed timeout: if one store's adapter is unusually slow, it comes back marked <code>pending</code> instead of holding up the eight stores that already have an answer. That distinction — a per-store timeout that only protects that one store, versus a budget the whole response respects — is what keeps one flaky retailer from making every search feel slow.
+					</p>
+					<p>
+						Once results land, each store's raw reply goes through the same three-stage funnel regardless of where it came from: a food filter (is this actually a grocery item, not a gift card or a magazine that happened to match), a relevance filter (does this product actually match what was searched), and a per-store selection step that ranks and trims what's shown. Only after that does the backend do a cross-store image backfill — filling in a missing product photo from a matching item at a different store — and assemble everything into one <code>SearchResponse</code> with an explicit status per store: <code>ok</code>, <code>error</code>, <code>unavailable</code>, or <code>pending</code>. The mobile app never has to guess why a store's section is empty.
+					</p>
+
+					<h2>The retailer problem</h2>
+					<p>
+						None of the nine retailers built their systems for an app like this to consume. Some expose a real API; most don't, at least not one meant for outside use. That heterogeneity is the actual hard problem underneath "compare prices across stores" — not the comparison logic itself, which is simple, but making nine structurally different data sources look like one.
+					</p>
+					<img src="img/shopai/retailer-normalization.svg" alt="Diagram showing three different retailer integration strategies — REST plus OAuth2 for Kroger and Harris Teeter, GraphQL APIs for Aldi, Sprouts, and Publix, and browser automation or server-rendered HTML for Trader Joe's and Whole Foods — all converging into one shared ApiProduct interface that every downstream service reads." class="modal-img" loading="lazy" />
+					<p class="modal-caption">Three integration strategies in production at once, collapsed into one interface before anything downstream sees a store name.</p>
+					<p>
+						Kroger and Harris Teeter (the same underlying Kroger API, scoped to a different store banner) are the closest thing to an ideal case: a real REST API behind OAuth2 client-credentials. Aldi, Sprouts, and Publix (Publix by way of its Instacart fulfillment integration) are GraphQL APIs meant for their own site's frontend, reachable with an anonymous session cookie rather than a documented public contract. Trader Joe's has no API at all worth using, so its adapter drives a real Playwright browser session and reads the store's own site the way a person would; Whole Foods is server-rendered HTML parsed directly, no browser needed. Two more retailers, Albertsons and Tom Thumb, are registered — their store locations resolve fine — but have no live product-search source at all yet, and the search response says exactly that (<code>unavailable</code>) instead of silently returning nothing or, worse, stale data dressed up as current.
+					</p>
+					<p>
+						Every one of those adapters converges on the same shape, <code>ApiProduct</code> — name, size, price, store, rating, image, an optional nutrition block — and every service above the adapter layer (search ranking, the comparison screen, the shopping-plan optimizer) reads only that shape. This is why the retailer abstraction matters more than it sounds like it should: it's the difference between "add a tenth retailer" meaning "write one more adapter that emits the same shape" versus "audit every consumer of retailer data for a new special case." A generic, declarative onboarding path for browser-based stores already exists and was validated against Trader Joe's and Aldi — a new store's config can be little more than a homepage URL and a search-input selector. That path was also used to evaluate Target as a candidate integration, and the honest conclusion there wasn't "too hard" — Target's site is technically compatible with the framework — it was that Target's own terms of service explicitly prohibit automated data collection, which is a different, non-technical kind of constraint the adapter layer can't abstract away.
+					</p>
+					<p>
+						Depending on nine systems ShopAI doesn't control has produced real production incidents, not hypothetical ones: a Node.js <code>setTimeout</code> delay overflow in a 30-day location cache once stalled the event loop badly enough to turn a normal ~1.5-second search into a 27-second one — fixed by capping the internal sweep interval rather than trusting a naive delay calculation. Render's build environment silently ignored a Playwright browser-path environment variable because the service had originally been created by hand in the dashboard before <code>render.yaml</code> existed, so a config file that looked authoritative wasn't actually being applied — a deployment-tooling gap that only showed up as a live Chromium failure in production. Neither of those is a "retailer" problem exactly, but both are the kind of thing that only surfaces once real, external, uncooperative systems are in the loop.
+					</p>
+
+					<h2>Cold starts and staying fast</h2>
+					<p>
+						Kroger's OAuth token, Aldi and Sprouts' session cookies, and Trader Joe's browser session all cost real time to establish — cost that used to be paid by whichever shopper's search happened to arrive first. ShopAI moves that cost out of the request path entirely with a warm-up cycle.
+					</p>
+					<img src="img/shopai/warmup-flow.svg" alt="Timeline showing warm-up: the server pre-warms retailer sessions at boot, the shopper's app opens and requests a zip-specific warm-up for nearest-store lookups, the backend reports a ready status once every store has been attempted, and the first real search runs against an already-warm backend." class="modal-img" loading="lazy" />
+					<p class="modal-caption">Warm-up as a small state machine — starting, warming, ready — checked per ZIP code, not as one global flag.</p>
+					<p>
+						At server boot, the backend fires a warm-up pass fire-and-forget: OAuth tokens, session cookies, and Trader Joe's browser session and store directory all get established before any shopper has asked for anything. Once the app knows a shopper's ZIP, it fires a second, ZIP-specific warm-up for each store's nearest-location lookup — also fire-and-forget, which turned out to matter more than it sounds. An earlier version of the warm-up endpoint <code>await</code>ed the full warm-up cycle before responding, which meant the one call meant to answer "are you ready yet, quickly" was itself the thing timing out on the client. The fix was to make readiness a reported state instead of work done inline. Readiness is also tracked per ZIP rather than as one shared boolean, because this backend serves every concurrent shopper from a single process — without that, one shopper's in-flight cycle for a new ZIP could make a different shopper's already-warm ZIP falsely report "still warming," or worse, falsely report "ready" the moment an unrelated cycle happened to finish.
+					</p>
+
+					<h2>Turning a list into a plan</h2>
+					<p>
+						Comparing one item at a time is useful; comparing a whole grocery list is the harder, more valuable version of the same idea, and it's what the Smart Shopping Planner does. Given a list of items, it resolves each one against real search results, then decides which combination of stores to actually visit. With seven stores carrying real product data, that's 127 possible non-empty store combinations — small enough to score every single one exactly rather than reach for a heuristic or an approximate solver, so "cheapest" really is the cheapest of every option that was checked, not the cheapest of a shortcut.
+					</p>
+					<p>
+						The optimizer produces four candidate plans — cheapest, fastest, fewest-stops, and balanced — and I'll be honest that I overstated how uniform that scoring was in an earlier design note, until I wrote a review of my own architecture against the actual code and found the mistake: cheapest, fastest, and fewest-stops are hardcoded single-field sorts (by total cost, then drive time, then store count), and only "balanced" runs the weighted multi-factor score I'd described as if it applied everywhere. It's a small correction, but it's the kind that only surfaces by actually reading the code you wrote instead of trusting your own summary of it. Trip time and distance are estimated with a documented, clearly-labeled approximation (an assumed 25 mpg vehicle at $3.50/gallon for the gas-cost component) rather than presented as measured fact. A fifth "healthiest" mode exists too, but only scores products that carry real, extracted nutrition data from Open Food Facts — a product with no nutrition data is treated as missing information, never silently scored as the worst option, and the mode itself is only offered when at least one product in the plan actually has the data to back it.
+					</p>
+					<p>
+						A shopper-set budget target is compared against a plan's real cost after the fact today — useful, honest feedback — but doesn't yet steer which combination of stores gets chosen; that's a deliberately separate, larger change I haven't made yet. Store reliability works the same cautious way: a store confirmed closed right now is excluded from consideration before the optimizer even runs, but "confirmed closed" currently only has one real data source (Kroger's own posted hours) — every other store's hours are unknown, and unknown is never treated as closed. Both are foundations laid early on purpose, not half-finished features pretending to be complete.
+					</p>
+
+					<h2>The finished ShopAI architecture</h2>
+					<p>
+						The MVP pipeline isn't a placeholder for a different, unrelated "real" architecture — it's the bottom two layers of one. The rest of the design lives in an architecture document I wrote specifically to answer a harder question than "what feature comes next": how do you add meal planning, a voice assistant, nutrition analysis, a virtual fridge, and household budgeting to a search-and-comparison app without the result turning into twenty features bolted side by side, each with its own screen, its own notification style, and its own copy of "what store sells this."
+					</p>
+					<img src="img/shopai/finished-architecture.svg" alt="Five-layer diagram: an interaction layer with zero intelligence, an intent and orchestration layer of generators like a meal planner and nutrition analyzer, a domain and execution layer holding the real MVP search and planning pipeline plus new domain facts like nutrition data and store hours, a trust and arbitration layer that decides what reaches the user, and a presentation layer of three reusable UI shapes, with persistent user data feeding the domain layer." class="modal-img" loading="lazy" />
+					<p class="modal-caption">Five layers, strictly ordered — a layer only ever calls the one below it. This is a design document today, not a shipped system.</p>
+					<p>
+						The load-bearing property of this design is that <strong>layers two and three can grow arbitrarily — new generators, new domain facts, new retailer adapters — without layers one, four, or five ever changing.</strong> A meal-planning feature, concretely, isn't a new pipeline: it's one more generator that turns "beef and broccoli with rice" into an ingredient list, which is then handed to the exact same search-and-cart-and-optimizer pipeline a manually typed list already goes through. If a feature ever needs its own price logic or its own notification surface, that's the signal it was designed as a silo instead of one more path through the shared architecture — which is also the design's explicit answer to why there's no separate "Nutrition Chat" screen, no "My Fridge" browsing screen, and no per-feature notification inbox: every insight, from every generator, resolves through one ranked-suggestion queue and one of three reusable presentation shapes, so twelve capabilities can exist without twelve competing ways of interrupting the shopper.
+					</p>
+					<p>
+						It's worth being precise about how much of this is real today. The backend has zero LLM calls anywhere in the shipped search or planner path — confirmed, not assumed, by grepping the actual dependency list. What already exists as flagged-off code is a hybrid intent classifier that resolves free text to a closed set of actions (and deliberately does nothing else — no search, no cart mutation, no generated response text, by design), a template-based meal-plan generator that runs with no AI and no live prices at all, and a vision-LLM boundary for a product-quality and expiration scanner that would call a real hosted model (gated behind an API key, rate-limited, and honestly unavailable rather than faking a result when unconfigured). The single ranked-suggestion queue, the dismissal memory, and the three reusable presentation shapes — the parts of the design that keep this from sprawling — don't have code yet. That's Phase 0 of the roadmap for a reason: it ships zero new user-visible features and exists purely to be the thing everything else composes into, before any generator gets turned on.
+					</p>
+
+					<h2>MVP vs. finished architecture</h2>
+					<p>
+						Laid side by side, the shift isn't "the finished app has more screens" — the MVP already cut screens that once existed. It's that the same core pipeline gets wrapped in orchestration, arbitration, and persistence that don't exist yet, in service of features that reuse rather than duplicate what's already shipped.
+					</p>
+					<img src="img/shopai/mvp-vs-finished.svg" alt="Side-by-side comparison: the MVP is a focused pipeline of mobile app, backend, search, and nine adapters, with fridge, meal planner, assistant, and other features built but feature-flagged off; the finished architecture wraps the same pipeline in an intent router, generators, and a trust and arbitration layer, at the cost of real infrastructure, more failure modes, and harder testing." class="modal-img" loading="lazy" />
+					<p class="modal-caption">Same core underneath both columns — the difference is everything wrapped around it.</p>
+
+					<div class="table-scroll">
+						<table>
+							<thead>
+								<tr><th>Dimension</th><th>MVP (shipped)</th><th>Finished (target)</th></tr>
+							</thead>
+							<tbody>
+								<tr><td>Navigation</td><td>4 tabs/screens: Search, Cart, Planner, Profile</td><td>Same screens, plus a voice/camera entry point into one shared router</td></tr>
+								<tr><td>AI / LLM usage</td><td>None in the shipped search or planner path</td><td>Intent classification, vision quality checks, meal &amp; nutrition generation</td></tr>
+								<tr><td>Personalization</td><td>None &#8212; every shopper sees the same ranking</td><td>Purchase history, dismissal memory, preference-aware suggestions</td></tr>
+								<tr><td>Data persistence</td><td>AsyncStorage on-device only, guest-friendly</td><td>Account-backed store for history, pantry, and preferences</td></tr>
+								<tr><td>Store coverage</td><td>9 retailers, 7 with live product data</td><td>Same adapter model, extensible via declarative store configs</td></tr>
+								<tr><td>Failure handling</td><td>Per-store timeout + response budget, honest "unavailable" states</td><td>Same, plus a trust layer that can suppress a low-confidence result entirely</td></tr>
+								<tr><td>Testing surface</td><td>One pipeline, one response shape to assert against</td><td>Nine-plus generators sharing one arbitration layer to test in combination</td></tr>
+								<tr><td>Operational cost</td><td>One Express process, in-memory cache, no AI spend</td><td>LLM API usage, rate limits, a vision-model budget</td></tr>
+							</tbody>
+						</table>
+					</div>
+
+					<h2>The tradeoffs</h2>
+					<p>
+						The MVP's advantages are real and not just consolation prizes for shipping less: a smaller surface area is genuinely easier to test end to end, there are fewer failure points spread across nine already-imperfect retailer integrations, the UX is fully predictable because nothing in it is generated, and there's no AI infrastructure — no rate limits, no model costs, no hallucination surface — to get wrong before the core assumption (will people actually use cross-store comparison) is even validated. App Store review also rewards exactly this kind of focus; a smaller, more predictable app is a smaller, more predictable review.
+					</p>
+					<p>
+						Its limitations are just as real. There's no personalization, no automation, and the shopping planner's sophistication is capped at "score every real combination well," not "understand what this specific shopper actually wants this week." Every one of those gaps is a legitimate reason the finished architecture exists, and every layer that architecture adds is a legitimate cost, not a free win: real infrastructure and real spend once an LLM is in the loop, more failure modes to design honest fallbacks for, harder testing once nine generators share one arbitration layer instead of nine independent code paths, and a genuine need for caching, observability, and security work that a stateless, AI-free backend simply doesn't have to think about yet.
+					</p>
+					<p>
+						The lesson I keep coming back to: <strong>a good MVP isn't a smaller version of the finished product. It's an architecture optimized to validate the most important product assumption with the least unnecessary complexity.</strong> ShopAI's most important assumption was never "can this app plan a meal" or "can this app talk to you" — it was "will a shopper actually open an app to compare grocery prices across stores before AI, personalization, or automation are anywhere in the picture." Everything cut from this release was cut because it couldn't help answer that question, not because it wasn't worth building eventually.
+					</p>
+
+					<h2>What the MVP made possible</h2>
+					<p>
+						Concretely: a real, submitted iOS and Android app with live pricing across nine retailers, backed by a backend with no AI dependency to keep running or paying for, small enough that I could hold the entire request path in my head while debugging a live production incident. That's not a small thing — it's what let ShopAI go from "hackathon prototype with simulated data" to "something in App Store review" on a timeline a much larger scope never would have allowed.
+					</p>
+
+					<h2>What the finished architecture unlocks</h2>
+					<p>
+						The payoff of designing the five-layer system now, even mostly unbuilt, is that the features it's meant to support don't require re-architecting anything underneath. A meal-planning feature ends at the same list-and-cart screen a manually typed list already uses. Voice is a second way to reach the same intent router typed search already goes through, not a second implementation of search. A budget is one constraint object the optimizer already knows how to accept, not a dashboard. None of that removes the real cost of building it — it just means the cost is additive, one generator and one domain fact at a time, instead of compounding into a rewrite.
+					</p>
+
+					<h2>What building ShopAI taught me</h2>
+					<p>
+						The retailers never designed for this. Every integration decision in this app — REST here, GraphQL there, a real browser session somewhere else — is downstream of the fact that nine companies built nine systems for their own customers on their own websites, and ShopAI is a guest in all nine at once. Respecting that (Albertsons and Tom Thumb reporting themselves honestly unavailable rather than faking data; Target excluded on a terms-of-service basis rather than a technical one) mattered as much as any of the actual code.
+					</p>
+					<p>
+						Warm-up and caching turned out to matter more than clever ranking. The single production incident that did the most damage to search latency wasn't a bad relevance algorithm — it was a cache sweep interval that overflowed a 32-bit timer. Fast, predictable infrastructure is a bigger lever on "does this feel good to use" than most of the ranking logic I spent more time on.
+					</p>
+					<p>
+						And writing an honest review of my own architecture against my own code — not a plan, an actual line-by-line check of what the code does versus what I'd claimed it does — found a real bug (a dead substitution path in the Cart screen) and a real overstatement (the optimizer's scoring wasn't as uniform as I'd described it). Neither would have surfaced from reading the design doc again. Both surfaced from checking it against the code.
+					</p>
+
+					<h2>What's next</h2>
+					<p>
+						Immediately: get through App Store and Google Play review, then actually watch what a small number of real shoppers do with the MVP before adding anything. If cross-store comparison and the Planner don't earn their keep on their own, no amount of AI on top changes that. If they do, the roadmap's own next phase is deliberately unglamorous — better search ranking, typo tolerance, and progressive result loading — before anything in the five-layer design gets touched. Phase 0 of that design, the shared ranked-suggestion queue and the Intent Router skeleton, ships zero new user-visible features on purpose; it exists to be true before a single AI-powered flag gets flipped back on.
+					</p>
+
+					<h2>Conclusion</h2>
+					<p>
+						ShopAI in review right now is smaller than the app I have almost all the code for. That was the right trade. The MVP exists to answer one question honestly, and the finished architecture exists so that answering it doesn't have to be thrown away once the next question — meal planning, personalization, an actual assistant — is worth asking too.
+					</p>
+				</div>
+			</div>
 
 								<!-- India Outreach: The First Zoom Call -->
 				<div class="modal-overlay" id="modal-india-01" role="dialog" aria-modal="true" aria-labelledby="modal-india-01-title">

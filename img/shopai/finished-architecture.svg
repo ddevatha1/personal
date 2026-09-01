@@ -1,0 +1,82 @@
+<svg viewBox="0 0 1180 980" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif" role="img" aria-labelledby="finArchTitle finArchDesc">
+  <title id="finArchTitle">Finished ShopAI architecture &#8212; five-layer intelligence stack</title>
+  <desc id="finArchDesc">The target design: an interaction layer with zero intelligence, an intent and orchestration layer of generators, a domain and execution layer holding the real MVP pipeline plus new domain facts, a trust and arbitration layer that decides what the user sees, and a presentation layer of three reusable shapes, with persistent user data feeding the domain layer.</desc>
+  <defs>
+    <marker id="finArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b86d4a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1180" height="980" fill="#fcf8f4"/>
+
+  <text x="60" y="36" font-size="13" fill="#a89684">Designed for the finished product &#8212; not built yet, except where noted</text>
+
+  <!-- Layer 1: Interaction -->
+  <rect x="60" y="52" width="1060" height="88" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="80" font-size="18" font-weight="700" fill="#1d1a17">1&#183; Interaction Layer</text>
+  <text x="90" y="100" font-size="12.5" fill="#62574d">Tabs (Shop / List / Route / Profile), search bar, camera capture, voice &#8212; the universal entry point</text>
+  <text x="90" y="120" font-size="12.5" fill="#8f4e31">Contains zero intelligence: forwards raw input down, renders whatever Layer 5 hands back</text>
+
+  <line x1="590" y1="140" x2="590" y2="176" stroke="#b86d4a" stroke-width="2" marker-end="url(#finArrow)"/>
+  <text x="605" y="164" font-size="12" fill="#62574d">raw input: text / voice / photo / tap</text>
+
+  <!-- Layer 2: Intent & Orchestration -->
+  <rect x="60" y="180" width="1060" height="118" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="208" font-size="18" font-weight="700" fill="#1d1a17">2&#183; Intent &amp; Orchestration Layer</text>
+  <text x="90" y="228" font-size="12.5" fill="#62574d">The Intent Router + Generators &#8212; turns a want into a call against Layer 3, never answers from its own knowledge</text>
+  <g font-size="12" fill="#8f4e31">
+    <rect x="90" y="242" width="150" height="28" rx="14" fill="rgba(184,109,74,0.12)"/><text x="165" y="260" text-anchor="middle">Meal planner</text>
+    <rect x="252" y="242" width="160" height="28" rx="14" fill="rgba(184,109,74,0.12)"/><text x="332" y="260" text-anchor="middle">Occasion detector</text>
+    <rect x="424" y="242" width="180" height="28" rx="14" fill="rgba(184,109,74,0.12)"/><text x="514" y="260" text-anchor="middle">Nutrition analyzer</text>
+    <rect x="616" y="242" width="230" height="28" rx="14" fill="rgba(184,109,74,0.12)"/><text x="731" y="260" text-anchor="middle">Budget-constraint resolver</text>
+    <rect x="858" y="242" width="180" height="28" rx="14" fill="rgba(184,109,74,0.12)"/><text x="948" y="260" text-anchor="middle">Intent Router (hybrid)</text>
+  </g>
+
+  <line x1="590" y1="298" x2="590" y2="334" stroke="#b86d4a" stroke-width="2" marker-end="url(#finArrow)"/>
+  <text x="605" y="322" font-size="12" fill="#62574d">structured calls: search(), buildList(), optimize()...</text>
+
+  <!-- Layer 3: Domain & Execution -->
+  <rect x="60" y="338" width="1060" height="168" rx="12" fill="#fbeee4" stroke="#b86d4a" stroke-width="1.5"/>
+  <text x="90" y="366" font-size="18" font-weight="700" fill="#1d1a17">3&#183; Domain &amp; Execution Layer</text>
+  <text x="90" y="386" font-size="12.5" fill="#8f4e31">The only layer allowed to know real prices, real routes, real inventory facts</text>
+  <text x="90" y="410" font-size="12.5" font-weight="700" fill="#4a3f36">Everything the MVP already does, unchanged:</text>
+  <text x="90" y="428" font-size="12.5" fill="#62574d">price comparison &#183; retailer adapters &#183; shopping list / Planner &#183; canonical product identity</text>
+  <text x="90" y="454" font-size="12.5" font-weight="700" fill="#4a3f36">Plus new domain facts the finished app adds:</text>
+  <text x="90" y="472" font-size="12.5" fill="#62574d">nutrition attributes (Open Food Facts) &#183; store hours / closures &#183; purchase history &#183; pantry inventory estimate</text>
+  <rect x="820" y="440" width="280" height="52" rx="10" fill="#ffffff" stroke="#b86d4a" stroke-dasharray="3 3"/>
+  <text x="960" y="461" font-size="12.5" font-weight="700" fill="#1d1a17" text-anchor="middle">Same Search &amp; Aggregation pipeline</text>
+  <text x="960" y="478" font-size="11" fill="#62574d" text-anchor="middle">as the MVP diagram &#8212; not replaced, reused</text>
+
+  <line x1="590" y1="506" x2="590" y2="542" stroke="#b86d4a" stroke-width="2" marker-end="url(#finArrow)"/>
+  <text x="605" y="530" font-size="12" fill="#62574d">candidate results / candidate insights</text>
+
+  <!-- Layer 4: Trust & Arbitration -->
+  <rect x="60" y="546" width="1060" height="98" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="574" font-size="18" font-weight="700" fill="#1d1a17">4&#183; Trust &amp; Arbitration Layer</text>
+  <text x="90" y="594" font-size="12.5" fill="#62574d">Confidence scoring, one ranked-suggestion queue, dismissal memory</text>
+  <text x="90" y="616" font-size="12.5" fill="#8f4e31">Decides IF anything reaches the user, and which ONE thing, out of everything Layers 2&#8211;3 produced</text>
+
+  <line x1="590" y1="644" x2="590" y2="680" stroke="#b86d4a" stroke-width="2" marker-end="url(#finArrow)"/>
+  <text x="605" y="668" font-size="12" fill="#62574d">at most one insight / one recommendation</text>
+
+  <!-- Layer 5: Presentation -->
+  <rect x="60" y="684" width="1060" height="98" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+  <text x="90" y="712" font-size="18" font-weight="700" fill="#1d1a17">5&#183; Presentation Layer</text>
+  <text x="90" y="734" font-size="12.5" fill="#62574d">Three reusable shapes only &#8212; every feature renders through one of these, never a bespoke screen</text>
+  <g font-size="12" fill="#8f4e31">
+    <rect x="90" y="748" width="140" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="160" y="765" text-anchor="middle">Advisor card</text>
+    <rect x="242" y="748" width="260" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="372" y="765" text-anchor="middle">Before/after + undo action sheet</text>
+    <rect x="514" y="748" width="150" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="589" y="765" text-anchor="middle">Mode selector</text>
+  </g>
+
+  <!-- Persistent data feeding domain layer -->
+  <line x1="1140" y1="422" x2="1140" y2="850" stroke="#b86d4a" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="1140" y1="422" x2="1122" y2="422" stroke="#b86d4a" stroke-width="1.5" marker-end="url(#finArrow)"/>
+  <rect x="900" y="800" width="220" height="60" rx="10" fill="#f6efe8" stroke="#d8c4b1"/>
+  <text x="1010" y="822" font-size="13" font-weight="700" fill="#1d1a17" text-anchor="middle">Persistent User Data</text>
+  <text x="1010" y="840" font-size="11" fill="#62574d" text-anchor="middle">purchase history, pantry, prefs</text>
+  <text x="1010" y="854" font-size="10.5" fill="#a89684" text-anchor="middle">(AsyncStorage today &#8594; account-backed store)</text>
+  <line x1="1120" y1="830" x2="1140" y2="830" stroke="#b86d4a" stroke-width="1.5"/>
+
+  <text x="90" y="920" font-size="12.5" fill="#a89684">Load-bearing property: Layers 2 and 3 can grow &#8212; new Generators, new domain facts, new adapters &#8212;</text>
+  <text x="90" y="940" font-size="12.5" fill="#a89684">without Layers 1, 4, or 5 ever changing. That's what keeps "more features" from becoming "more screens."</text>
+</svg>

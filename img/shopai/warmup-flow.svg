@@ -1,0 +1,53 @@
+<svg viewBox="0 0 1180 420" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif" role="img" aria-labelledby="warmTitle warmDesc">
+  <title id="warmTitle">Warm-up: paying cold-start costs before a shopper searches</title>
+  <desc id="warmDesc">At server boot, ShopAI pre-warms Kroger's OAuth token, Aldi and Sprouts' session cookies, and Trader Joe's browser session and store directory. When the app opens, it also warms each store's nearest-location lookup for the shopper's zip code, tracked through a starting, warming, ready state machine.</desc>
+  <rect x="0" y="0" width="1180" height="420" fill="#fcf8f4"/>
+
+  <!-- timeline -->
+  <line x1="80" y1="150" x2="1100" y2="150" stroke="#d8c4b1" stroke-width="2"/>
+
+  <!-- event 1: server boot -->
+  <circle cx="140" cy="150" r="8" fill="#b86d4a"/>
+  <text x="140" y="120" font-size="13" font-weight="700" fill="#1d1a17" text-anchor="middle">Server boots</text>
+  <text x="140" y="138" font-size="11" fill="#62574d" text-anchor="middle">(Render process start)</text>
+  <rect x="45" y="176" width="190" height="130" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+  <text x="140" y="198" font-size="12" font-weight="700" fill="#8f4e31" text-anchor="middle">runWarmup() &#8212; fire and forget</text>
+  <text x="60" y="220" font-size="11" fill="#62574d">Kroger OAuth2 token</text>
+  <text x="60" y="238" font-size="11" fill="#62574d">Aldi / Sprouts session cookies</text>
+  <text x="60" y="256" font-size="11" fill="#62574d">Trader Joe's browser session</text>
+  <text x="60" y="274" font-size="11" fill="#62574d">+ store directory fetch</text>
+  <text x="60" y="296" font-size="10.5" fill="#a89684">status: starting &#8594; warming</text>
+
+  <!-- event 2: app open -->
+  <circle cx="500" cy="150" r="8" fill="#b86d4a"/>
+  <text x="500" y="120" font-size="13" font-weight="700" fill="#1d1a17" text-anchor="middle">Shopper opens the app</text>
+  <text x="500" y="138" font-size="11" fill="#62574d" text-anchor="middle">zip known from a prior visit or new prompt</text>
+  <rect x="405" y="176" width="190" height="130" rx="10" fill="#ffffff" stroke="#e4d7c9"/>
+  <text x="500" y="198" font-size="12" font-weight="700" fill="#8f4e31" text-anchor="middle">POST /api/warmup</text>
+  <text x="420" y="220" font-size="11" fill="#62574d">ensureWarmupStarted(zip)</text>
+  <text x="420" y="238" font-size="11" fill="#62574d">warms per-store nearest-</text>
+  <text x="420" y="256" font-size="11" fill="#62574d">location lookups for this zip</text>
+  <text x="420" y="278" font-size="10.5" fill="#a89684">responds immediately &#8212;</text>
+  <text x="420" y="294" font-size="10.5" fill="#a89684">never blocks on the work itself</text>
+
+  <!-- event 3: ready -->
+  <circle cx="860" cy="150" r="8" fill="#b86d4a"/>
+  <text x="860" y="120" font-size="13" font-weight="700" fill="#1d1a17" text-anchor="middle">Backend reports ready</text>
+  <text x="860" y="138" font-size="11" fill="#62574d" text-anchor="middle">client polls until status flips</text>
+  <rect x="765" y="176" width="190" height="130" rx="10" fill="#fbeee4" stroke="#b86d4a"/>
+  <text x="860" y="198" font-size="12" font-weight="700" fill="#8f4e31" text-anchor="middle">status: ready</text>
+  <text x="782" y="220" font-size="11" fill="#4a3f36">"we tried every store" &#8212;</text>
+  <text x="782" y="236" font-size="11" fill="#4a3f36">not "every store succeeded"</text>
+  <text x="782" y="258" font-size="11" fill="#4a3f36">a store that failed to warm just</text>
+  <text x="782" y="274" font-size="11" fill="#4a3f36">pays its init cost on first search</text>
+  <text x="782" y="296" font-size="10.5" fill="#8f4e31">tracked per zip, not one global flag</text>
+
+  <!-- event 4: first search -->
+  <circle cx="1040" cy="150" r="8" fill="#b86d4a"/>
+  <text x="1040" y="120" font-size="13" font-weight="700" fill="#1d1a17" text-anchor="middle">First real search</text>
+  <text x="1040" y="138" font-size="11" fill="#62574d" text-anchor="middle">already warm</text>
+
+  <!-- annotation of why -->
+  <text x="590" y="360" font-size="13" fill="#62574d" text-anchor="middle">The bug this fixed: /api/warmup used to await the warm-up cycle directly, so the very call meant to</text>
+  <text x="590" y="382" font-size="13" fill="#62574d" text-anchor="middle">answer "are you ready yet?" was itself what timed out. Now it reports state instead of doing the work inline.</text>
+</svg>

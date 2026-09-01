@@ -1,0 +1,125 @@
+<svg viewBox="0 0 1180 620" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif" role="img" aria-labelledby="flowTitle flowDesc">
+  <title id="flowTitle">Searching for milk: one request end to end</title>
+  <desc id="flowDesc">A shopper types milk on the Home screen; the request travels through the mobile client, the backend API, query correction, a parallel fan-out to retailer adapters, per-store filtering, aggregation, and back to a comparison UI.</desc>
+  <defs>
+    <marker id="flowArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b86d4a"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1180" height="620" fill="#fcf8f4"/>
+
+  <!-- step template: x, y, w=182, h=118 -->
+  <!-- Step 1 -->
+  <g>
+    <rect x="30" y="60" width="182" height="150" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="55" cy="86" r="14" fill="#b86d4a"/><text x="55" y="91" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+    <text x="77" y="91" font-size="14" font-weight="700" fill="#1d1a17">Home Screen</text>
+    <text x="46" y="116" font-size="12" fill="#62574d">Shopper types</text>
+    <text x="46" y="134" font-size="14" font-weight="700" fill="#8f4e31">"milk"</text>
+    <text x="46" y="158" font-size="11.5" fill="#62574d">searchStore (Zustand)</text>
+    <text x="46" y="176" font-size="11.5" fill="#62574d">debounces the query</text>
+  </g>
+  <line x1="212" y1="135" x2="248" y2="135" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 2 -->
+  <g>
+    <rect x="250" y="60" width="182" height="150" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="275" cy="86" r="14" fill="#b86d4a"/><text x="275" y="91" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+    <text x="297" y="91" font-size="14" font-weight="700" fill="#1d1a17">apiClient</text>
+    <text x="266" y="116" font-size="11.5" fill="#62574d">POST /api/search</text>
+    <text x="266" y="134" font-size="11.5" fill="#62574d">{ query, zipcode,</text>
+    <text x="266" y="150" font-size="11.5" fill="#62574d">&#160;&#160;latitude, longitude }</text>
+    <text x="266" y="174" font-size="11.5" fill="#62574d">only network module</text>
+    <text x="266" y="190" font-size="11.5" fill="#62574d">the app has</text>
+  </g>
+  <line x1="432" y1="135" x2="468" y2="135" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 3 -->
+  <g>
+    <rect x="470" y="60" width="182" height="150" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="495" cy="86" r="14" fill="#b86d4a"/><text x="495" y="91" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+    <text x="517" y="91" font-size="14" font-weight="700" fill="#1d1a17">Express Route</text>
+    <text x="486" y="116" font-size="11.5" fill="#62574d">validates zip format</text>
+    <text x="486" y="134" font-size="11.5" fill="#62574d">calls performSearch()</text>
+    <text x="486" y="158" font-size="11.5" fill="#8f4e31">correctQuery("milk")</text>
+    <text x="486" y="174" font-size="11.5" fill="#62574d">&#8594; no correction needed</text>
+  </g>
+  <line x1="652" y1="135" x2="688" y2="135" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 4 -->
+  <g>
+    <rect x="690" y="30" width="200" height="210" rx="12" fill="#fbeee4" stroke="#b86d4a" stroke-width="1.5"/>
+    <circle cx="715" cy="56" r="14" fill="#b86d4a"/><text x="715" y="61" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">4</text>
+    <text x="737" y="61" font-size="14" font-weight="700" fill="#1d1a17">Fan-out</text>
+    <text x="706" y="84" font-size="11.5" fill="#8f4e31">Promise.all across 9</text>
+    <text x="706" y="100" font-size="11.5" fill="#8f4e31">retailer adapters</text>
+    <rect x="706" y="112" width="80" height="24" rx="6" fill="#ffffff" stroke="#d8c4b1"/><text x="746" y="128" font-size="10.5" fill="#4a3f36" text-anchor="middle">Kroger API</text>
+    <rect x="794" y="112" width="80" height="24" rx="6" fill="#ffffff" stroke="#d8c4b1"/><text x="834" y="128" font-size="10.5" fill="#4a3f36" text-anchor="middle">Aldi GraphQL</text>
+    <rect x="706" y="140" width="80" height="24" rx="6" fill="#ffffff" stroke="#d8c4b1"/><text x="746" y="156" font-size="10.5" fill="#4a3f36" text-anchor="middle">TJ's browser</text>
+    <rect x="794" y="140" width="80" height="24" rx="6" fill="#ffffff" stroke="#d8c4b1"/><text x="834" y="156" font-size="10.5" fill="#4a3f36" text-anchor="middle">+ 5 more</text>
+    <text x="706" y="182" font-size="11" fill="#8f4e31">each races a shared</text>
+    <text x="706" y="198" font-size="11" fill="#8f4e31">response-time budget</text>
+    <text x="706" y="220" font-size="11" fill="#8f4e31">slow one &#8594; 'pending', not stuck</text>
+  </g>
+  <line x1="890" y1="135" x2="926" y2="135" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 5 -->
+  <g>
+    <rect x="928" y="30" width="222" height="210" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="953" cy="56" r="14" fill="#b86d4a"/><text x="953" y="61" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">5</text>
+    <text x="975" y="61" font-size="14" font-weight="700" fill="#1d1a17">Normalize + Aggregate</text>
+    <text x="944" y="86" font-size="11.5" fill="#62574d">Each store's raw reply</text>
+    <text x="944" y="102" font-size="11.5" fill="#62574d">&#8594; shared ApiProduct shape</text>
+    <text x="944" y="126" font-size="11.5" fill="#62574d">isFoodProductName()</text>
+    <text x="944" y="142" font-size="11.5" fill="#62574d">isRelevantToQuery()</text>
+    <text x="944" y="158" font-size="11.5" fill="#62574d">selectStoreProducts()</text>
+    <text x="944" y="182" font-size="11.5" fill="#8f4e31">image backfill across</text>
+    <text x="944" y="198" font-size="11.5" fill="#8f4e31">stores for the same item</text>
+    <text x="944" y="222" font-size="11" fill="#4a3f36" font-weight="700">&#8594; one SearchResponse</text>
+  </g>
+
+  <!-- vertical connector down then left to step 6 -->
+  <line x1="1039" y1="240" x2="1039" y2="330" stroke="#b86d4a" stroke-width="2"/>
+  <line x1="1039" y1="330" x2="212" y2="330" stroke="#b86d4a" stroke-width="2"/>
+  <line x1="212" y1="330" x2="212" y2="368" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+  <text x="500" y="322" font-size="12" fill="#62574d" text-anchor="middle">JSON response &#8212; products[], per-store status (ok / error / unavailable / pending)</text>
+
+  <!-- Step 6 -->
+  <g>
+    <rect x="30" y="372" width="182" height="150" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="55" cy="398" r="14" fill="#b86d4a"/><text x="55" y="403" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">6</text>
+    <text x="77" y="403" font-size="14" font-weight="700" fill="#1d1a17">Results render</text>
+    <text x="46" y="428" font-size="11.5" fill="#62574d">SearchResultsScreen</text>
+    <text x="46" y="444" font-size="11.5" fill="#62574d">groups matches into</text>
+    <text x="46" y="460" font-size="11.5" fill="#62574d">ProductGroupCards</text>
+    <text x="46" y="484" font-size="11.5" fill="#8f4e31">every live match, across</text>
+    <text x="46" y="500" font-size="11.5" fill="#8f4e31">up to 7 stores at once</text>
+  </g>
+  <line x1="212" y1="447" x2="248" y2="447" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 7 -->
+  <g>
+    <rect x="250" y="372" width="182" height="150" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
+    <circle cx="275" cy="398" r="14" fill="#b86d4a"/><text x="275" y="403" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">7</text>
+    <text x="297" y="403" font-size="14" font-weight="700" fill="#1d1a17">Compare Screen</text>
+    <text x="266" y="428" font-size="11.5" fill="#62574d">tap "Milk, 2%, 1 gal"</text>
+    <text x="266" y="444" font-size="11.5" fill="#62574d">&#8594; per-store price list</text>
+    <text x="266" y="468" font-size="11.5" fill="#8f4e31">Aldi $x.xx</text>
+    <text x="266" y="484" font-size="11.5" fill="#8f4e31">Kroger $x.xx</text>
+    <text x="266" y="500" font-size="11.5" fill="#8f4e31">Sprouts $x.xx</text>
+  </g>
+  <line x1="432" y1="447" x2="468" y2="447" stroke="#b86d4a" stroke-width="2" marker-end="url(#flowArrow)"/>
+
+  <!-- Step 8 -->
+  <g>
+    <rect x="470" y="372" width="182" height="150" rx="12" fill="#fbeee4" stroke="#b86d4a" stroke-width="1.5"/>
+    <circle cx="495" cy="398" r="14" fill="#b86d4a"/><text x="495" y="403" font-size="13" fill="#fff" text-anchor="middle" font-weight="700">8</text>
+    <text x="517" y="403" font-size="14" font-weight="700" fill="#1d1a17">Shopper decides</text>
+    <text x="486" y="428" font-size="11.5" fill="#4a3f36">Adds Aldi's milk to cart</text>
+    <text x="486" y="452" font-size="11.5" fill="#4a3f36">&#8212; cheapest option,</text>
+    <text x="486" y="468" font-size="11.5" fill="#4a3f36">one search, one screen,</text>
+    <text x="486" y="484" font-size="11.5" fill="#4a3f36">no store hopping</text>
+  </g>
+
+  <text x="30" y="580" font-size="12.5" fill="#a89684">Target latency budget: first search of a session under 5s even cold; a repeat search under 3s once every store is warm.</text>
+</svg>
