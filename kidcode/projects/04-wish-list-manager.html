@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 4: Wish List Manager | KidCode</title>
+<meta name="description" content="KidCode Year 1 (2024), curriculum Day 25: Wish List Manager. What was taught, what 24 students built, and one real student program." />
+<meta property="og:title" content="Project 4: Wish List Manager" />
+<meta property="og:description" content="KidCode Year 1 (2024), curriculum Day 25: Wish List Manager. What was taught, what 24 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html" class="on">2024</a><a href="../2025.html">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2024.html">Year 1 · 2024 · Foundations</a></p>
+<h1>Project 4: Wish List Manager</h1>
+<div class="meta"><span>Curriculum Day 25 of 40</span><span>24 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Wish List Manager is Project 4, on Day 25 of Year 1. It follows a week on lists: indexing, slicing, list methods, looping over lists, and turning sentences into word lists. The curriculum asks students to design the menu on paper first and then test it in pairs.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 1 curriculum, Week 5: Lists &amp; Tuples</p><blockquote><p><strong>Day 21: Lists: Organizing Many Things.</strong> Creating lists with [], zero-based indexing, negative indexes, len(), and slicing with [start:end]. Comparing lists with strings. Practice: &quot;Top 5 Ranker&quot;.</p><p><strong>Day 22: List Methods &amp; Mutability.</strong> Changing lists in place with .append(), .insert(), .remove(), .pop(), .sort(), and .reverse(). Membership tests with in and not in. Practice: &quot;Playlist Editor&quot;.</p><p><strong>Day 23: Looping Over Lists &amp; Tuples.</strong> Using for item in my_list, building new lists in a loop, and finding totals, maximums, and minimums. Tuples as read-only lists, and unpacking like x, y = point.</p><p><strong>Day 24: Words in a List.</strong> Turning text into lists with .split() and back into text with .join(). Sorting words and finding the longest word. Lab: &quot;Sentence Scrambler&quot; that shuffles a sentence.</p><p><strong>Day 25: Lab: Wish List Manager.</strong> Project 4. A menu-driven program that combines while, input(), if/elif, and lists to add, remove, and show items. Design the menu on paper first, then test in pairs.</p></blockquote>
+<h2>What students built</h2>
+<p>24 students built a list manager. Every one of them can add and remove items and checks whether an item is already on the list before adding it again; 46% added a sort option. The median program is 50.5 lines. The themes vary (reading lists, grocery lists and more); all 24 submissions are different variants.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>while True:
+    print()
+    print(&quot;[A] Add a grocery item&quot;)
+    print(&quot;[R] Remove a grocery item&quot;)
+    print(&quot;[S] Show my grocery list&quot;)
+    print(&quot;[O] Sort A-Z&quot;)
+    print(&quot;[C] Clear everything&quot;)
+    print(&quot;[Q] Quit&quot;)
+    choice = input(&quot;Command: &quot;).lower().strip()
+    if choice == &#x27;a&#x27;:
+        item = input(&quot;Which grocery item do you want to add? &quot;)
+        if item in items:
+            print(item + &quot; is already on your grocery list!&quot;)
+        else:
+            items.append(item)
+            print(f&quot;Added {item}. Total: {len(items)}&quot;)
+    elif choice == &#x27;r&#x27;:
+        item = input(&quot;Which grocery item should I remove? &quot;)
+        if item in items:
+            items.remove(item)
+            print(f&quot;Removed {item}.&quot;)
+        else:
+            print(&quot;I could not find that one.&quot;)
+    elif choice == &#x27;s&#x27;:
+        if len(items) == 0:
+            print(&quot;Your grocery list is empty.&quot;)
+        else:
+            print(&quot;--- Your grocery list ---&quot;)
+            number = 1
+            for item in items:
+                print(f&quot;{number}. {item}&quot;)
+                number += 1
+    elif choice == &#x27;o&#x27;:
+        items.sort()
+        print(&quot;Sorted your grocery list from A to Z.&quot;)
+    elif choice == &#x27;c&#x27;:
+        sure = input(&quot;Really clear everything? (yes/no) &quot;).lower()
+        if sure == &quot;yes&quot;:
+            items = []
+            print(&quot;All clear!&quot;)
+        else:
+            print(&quot;Okay, I kept everything.&quot;)
+    elif choice == &quot;q&quot;:
+        print(goodbye)
+        break
+    else:
+        print(&quot;Sorry, I do not know that command.&quot;)</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">Time to plan the shopping run!
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: s
+--- Your grocery list ---
+1. milk
+2. bananas
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: a
+Which grocery item do you want to add? apples
+Added apples. Total: 3
+…
+--- Your grocery list ---
+1. apples
+2. milk
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: q
+Happy shopping!</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Lists, Tuples &amp; Dictionaries</em> (Weeks 5–6 (Days 21–30), 13 questions).</p><figure><img src="../assets/img/pre-2024-3.png" alt="First page of the Lists, Tuples &amp; Dictionaries pre-assessment" loading="lazy" /><figcaption>Pre-assessment 3, Year 1 (2024). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>Lists hold single values here. Two weeks later, in <a href="05-trivia-quiz-show.html">Trivia Quiz Show</a>, the list holds dictionaries, and in Year 2 the same data gets saved to files.</p>
+<h2>Looking back</h2>
+<p>This is the first program where a student has to think about what happens when the user does something unexpected, like removing an item that isn't there. Every submission handles that case, which is what the paper-first design step is for.</p>
+<nav class="pn"><a href="03-guess-the-number-deluxe.html">← Project 3: Guess the Number Deluxe</a><a class="r" href="05-trivia-quiz-show.html">Project 5: Trivia Quiz Show →</a></nav>
+</main>
+</body>
+</html>

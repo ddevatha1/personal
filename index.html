@@ -1125,6 +1125,7 @@
 				<a href="#interests">Interests</a>
 				<a href="#research">Research</a>
 				<a href="#blog">Blog</a>
+				<a href="kidcode/">KidCode</a>
 			</div>
 		</nav>
 
@@ -1424,9 +1425,9 @@
 				</div>
 
 				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
-					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">67</span></button>
+					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">69</span></button>
 					<button type="button" class="filter-pill" data-filter="india">India Outreach <span class="filter-count">38</span></button>
-					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">5</span></button>
+					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">7</span></button>
 					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">22</span></button>
 					<button type="button" class="filter-pill" data-filter="competitions">Competitions <span class="filter-count">1</span></button>
 					<button type="button" class="filter-pill" data-filter="engineering">Engineering <span class="filter-count">1</span></button>
@@ -1435,6 +1436,24 @@
 				<p class="blog-empty-state" id="blog-empty-state" hidden>No posts in this category yet.</p>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="window.location.href='kidcode/'">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">September 2026</span></div>
+						<h3>KidCode: Three Years of Teaching Python</h3>
+						<p>
+							The full record of KidCode since June 2024: 124 students, a 20-project curriculum that runs from print() to spaCy, one real student program for every project, and how every number was checked.
+						</p>
+						<div class="arrow">Open the KidCode archive →</div>
+					</article>
+
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="window.location.href='kidcode/evidence.html'">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">September 2026</span></div>
+						<h3>1,214 Programs Later: What Three Years of Student Code Revealed</h3>
+						<p>
+							I ran every project KidCode students have turned in: 1,214 programs from 124 students. Every one runs. Year 2 code triples in length and picks up classes, files and tests; Year 3 code gets shorter, because spaCy does the work. Plus what curriculum-aligned pre/post tests showed: 104 students' mean score rose from 41.7% to 58.8%.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
 
 					<article class="blog-card reveal" data-category="engineering" style="cursor:pointer;" onclick="document.getElementById('modal-shopai-architecture').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-engineering">Engineering</span><span class="meta-date">August 2026</span></div>
@@ -5667,6 +5686,7 @@
 					<a href="#interests">Interests</a>
 					<a href="#research">Research</a>
 					<a href="#blog">Blog</a>
+					<a href="kidcode/">KidCode</a>
 				</div>
 			</div>
 		</footer>
@@ -5731,6 +5751,15 @@
 				if (e.target === overlay) overlay.classList.remove('open');
 			});
 		});
+		// Open a post directly from a link like /#modal-kidcode-day2 (used by the KidCode archive)
+		(() => {
+			const id = decodeURIComponent(location.hash.slice(1));
+			if (id.startsWith('modal-')) {
+				const m = document.getElementById(id);
+				if (m && m.classList.contains('modal-overlay')) m.classList.add('open');
+			}
+		})();
+
 		// Close modal on Escape key
 		document.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape') {

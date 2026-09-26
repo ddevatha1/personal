@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 3: Guess the Number Deluxe | KidCode</title>
+<meta name="description" content="KidCode Year 1 (2024), curriculum Day 20: Guess the Number Deluxe. What was taught, what 25 students built, and one real student program." />
+<meta property="og:title" content="Project 3: Guess the Number Deluxe" />
+<meta property="og:description" content="KidCode Year 1 (2024), curriculum Day 20: Guess the Number Deluxe. What was taught, what 25 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html" class="on">2024</a><a href="../2025.html">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2024.html">Year 1 · 2024 · Foundations</a></p>
+<h1>Project 3: Guess the Number Deluxe</h1>
+<div class="meta"><span>Curriculum Day 20 of 40</span><span>25 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Guess the Number Deluxe is Project 3, on Day 20 of Year 1, at the end of the week on loops: <code>while</code>, <code>for</code> and <code>range()</code>, counters, <code>break</code> and <code>continue</code>.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 1 curriculum, Week 4: Loops</p><blockquote><p><strong>Day 16: while Loops: Repeat Until.</strong> Repeating code with while, loop conditions, and counters. Stopping runaway loops with Thonny&#x27;s Stop button. Practice: &quot;Countdown Rocket&quot; and &quot;Three Tries Password&quot;.</p><p><strong>Day 17: for Loops &amp; range().</strong> Looping with for and range() using one, two, and three arguments. Choosing between for (known count) and while (unknown count). Practice: &quot;Times Table Printer&quot;.</p><p><strong>Day 18: Counting &amp; Looping Through Text.</strong> The accumulator pattern for running totals and counters, and looping through every character of a string. Practice: &quot;Vowel Counter&quot;, &quot;Palindrome Checker&quot;, and &quot;Average Calculator&quot;.</p><p><strong>Day 19: break, continue &amp; Nested Loops.</strong> Leaving a loop early with break, skipping a round with continue, and loops inside loops for grids and patterns. Practice: &quot;Multiplication Grid&quot; and &quot;Star Triangle&quot;.</p><p><strong>Day 20: Lab: Guess the Number Deluxe.</strong> Project 3. Combining while, if/elif/else, random.randint(), and counters into a game with hints, a guess counter, and a play-again option.</p></blockquote>
+<h2>What students built</h2>
+<p>25 students turned in a guessing game. Every one of them has a play-again option; 76% limit the number of guesses; and 56% added "hot / warm / cold" hints on top of higher/lower, working out how far the guess was from the secret number. The median program is 46 lines, roughly three times the Mad Libs median, because it now has a loop inside a loop.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>while True:
+    rounds += 1
+    secret = random.randint(lo, hi)
+    guesses = 0
+    won = False
+    print(f&quot;Round {rounds}: guess the vault number from {lo} to {hi}.&quot;)
+    while True:
+        guess = int(input(&quot;Try number: &quot;))
+        guesses += 1
+        if guess == secret:
+            print(&quot;The vault clicks open. Cookies for everyone!&quot;)
+            won = True
+            break
+        if guess &lt; secret:
+            print(&quot;Not that low, dear.&quot;)
+        else:
+            print(&quot;Not that high, dear.&quot;)
+        gap = abs(guess - secret)
+        if gap &lt;= (hi - lo) // 10:
+            print(&quot;   You are HOT!&quot;)
+        elif gap &lt;= (hi - lo) // 4:
+            print(&quot;   You are warm.&quot;)
+        else:
+            print(&quot;   You are cold.&quot;)
+        if guesses &gt;= max_tries:
+            print(f&quot;The vault stayed shut. The number was {secret}.&quot;)
+            break
+    if won:
+        print(f&quot;{player} solved it in {guesses} guesses!&quot;)
+        if best is None or guesses &lt; best:
+            best = guesses
+            print(&quot;New personal best!&quot;)
+    answer = input(&quot;Another round? (yes/no) &quot;).lower()
+    if answer != &quot;yes&quot; and answer != &quot;y&quot;:
+        break</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">SECRET RECIPE VAULT
+Grandma hid the recipe behind a numbered lock.
+What is your name? Player
+Round 1: guess the vault number from 1 to 10.
+Try number: 5
+Not that low, dear.
+   You are cold.
+Try number: 9
+Not that high, dear.
+   You are warm.
+Try number: 8
+The vault clicks open. Cookies for everyone!
+Player solved it in 3 guesses!
+New personal best!
+Another round? (yes/no) no
+Best game: 3 guesses. Well played, Player.</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Decisions, Debugging &amp; Loops</em> (Weeks 3–4 (Days 11–20), 15 questions).</p><figure><img src="../assets/img/pre-2024-2.png" alt="First page of the Decisions, Debugging &amp; Loops pre-assessment" loading="lazy" /><figcaption>Pre-assessment 2, Year 1 (2024). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>The pattern here (a <code>while True</code> game loop with a way out) is the skeleton of the Year 1 capstone, <a href="06-escape-the-haunted-school.html">Escape the Haunted School</a>, and of most menu-driven programs in Year 2.</p>
+<h2>Looking back</h2>
+<p>The code below is the first program in this archive where one loop runs inside another: an outer loop for rounds and an inner loop for guesses. It's the clearest sign in the Year 1 code that students were combining the week's ideas rather than using them one at a time.</p>
+<nav class="pn"><a href="02-mystic-oracle.html">← Project 2: Mystic Oracle</a><a class="r" href="04-wish-list-manager.html">Project 4: Wish List Manager →</a></nav>
+</main>
+</body>
+</html>

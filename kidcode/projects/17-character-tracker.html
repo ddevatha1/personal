@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 17: Character Tracker | KidCode</title>
+<meta name="description" content="KidCode Year 3 (2026), curriculum Day 24–25: Character Tracker. What was taught, what 52 students built, and one real student program." />
+<meta property="og:title" content="Project 17: Character Tracker" />
+<meta property="og:description" content="KidCode Year 3 (2026), curriculum Day 24–25: Character Tracker. What was taught, what 52 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html">2025</a><a href="../2026.html" class="on">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2026.html">Year 3 · 2026 · NLP</a></p>
+<h1>Project 17: Character Tracker</h1>
+<div class="meta"><span>Curriculum Day 24–25 of 40</span><span>52 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Character Tracker is Project 17, across Days 24 and 25 of Year 3, at the end of the week on named entities: <code>doc.ents</code>, entity labels like PERSON and GPE, and a day spent on why the model is sometimes wrong. Students run a story through spaCy chapter by chapter and count who and where appears.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 3 curriculum, Week 5: Named Entity Recognition</p><blockquote><p><strong>Day 21: What Are Named Entities?.</strong> Real-world names and facts hiding in text. Using doc.ents, ent.text, ent.label_, and ent.start_char, and decoding PERSON, ORG, GPE, DATE, and MONEY with spacy.explain().</p><p><strong>Day 22: Seeing Entities with displaCy.</strong> Highlighting entities with displacy.render(doc, style=&quot;ent&quot;) in a notebook or displacy.serve() in the browser, and saving results as HTML. Lab: &quot;Entity Gallery&quot; of student paragraphs.</p><p><strong>Day 23: When the Model Is Wrong.</strong> Why models guess: ambiguous names like … &quot;Apple&quot; …, names from many cultures, and text without capital letters. Hand-labeling 20 sentences for an &quot;NER Report Card&quot;.</p><p><strong>Day 24: Lab: Character Tracker I.</strong> Project 4. Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Counter.</p><p><strong>Day 25: Lab: Character Tracker II.</strong> Merging name variants like &quot;Dorothy&quot; and &quot;Dorothy Gale&quot;, tracking which characters appear in each chapter, and printing a &quot;Who&#x27;s Who&quot; report. Listing what the tool gets wrong.</p></blockquote>
+<h2>What students built</h2>
+<p>52 students built a tracker. Every one counts PERSON entities chapter by chapter, and 60% also track places (GPE). It is the least-completed project of Year 3.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>people = Counter()
+places = Counter()
+for number, chapter in enumerate(CHAPTERS, start=1):
+    doc = nlp(chapter)
+    for ent in doc.ents:
+        if ent.label_ == &quot;PERSON&quot;:
+            people[ent.text] += 1
+        elif ent.label_ == &quot;GPE&quot;:
+            places[ent.text] += 1
+    print(f&quot;Chapter {number}: {len(doc.ents)} entities found&quot;)
+
+print()
+print(&quot;=== Who&#x27;s Who: The Desert Caravan ===&quot;)
+for name, count in people.most_common():
+    print(f&quot;  {name}: appears {count} time(s)&quot;)
+print(&quot;Places mentioned:&quot;)
+for place, count in places.most_common():
+    print(f&quot;  {place}: {count} time(s)&quot;)</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">Chapter 1: 3 entities found
+Chapter 2: 4 entities found
+
+=== Who&#x27;s Who: The Desert Caravan ===
+  Hassan Rahman: appears 1 time(s)
+  Samira: appears 1 time(s)
+  Hassan: appears 1 time(s)
+Places mentioned:
+  Cairo: 1 time(s)</pre>
+<figure><img src="../assets/img/p17-output.png" alt="Output of a student's Character Tracker program" loading="lazy" /><figcaption>The chart this student&#x27;s program saves: character mentions found by named-entity recognition.</figcaption></figure>
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Named Entities &amp; Responsible NLP</em> (Week 5 + Days 33–34, 9 questions).</p><figure><img src="../assets/img/pre-2026-3.png" alt="First page of the Named Entities &amp; Responsible NLP pre-assessment" loading="lazy" /><figcaption>Pre-assessment 3, Year 3 (2026). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>Named entities are the core of the next two projects: <a href="18-privacy-shield.html">Privacy Shield</a> hides them, and <a href="19-kidbot-brain.html">KidBot Brain</a> uses them to work out which city a question is about.</p>
+<h2>Looking back</h2>
+<p>The day before this project is about the model's mistakes: ambiguous names, names from many cultures, text without capital letters. A tracker that counts entities is only as good as the entities, and the curriculum asks students to list what their tool gets wrong.</p>
+<nav class="pn"><a href="16-auto-mad-libs.html">← Project 16: Auto Mad Libs</a><a class="r" href="18-privacy-shield.html">Project 18: Privacy Shield →</a></nav>
+</main>
+</body>
+</html>

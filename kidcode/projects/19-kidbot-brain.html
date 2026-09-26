@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 19: KidBot Brain | KidCode</title>
+<meta name="description" content="KidCode Year 3 (2026), curriculum Day 31–32: KidBot Brain. What was taught, what 118 students built, and one real student program." />
+<meta property="og:title" content="Project 19: KidBot Brain" />
+<meta property="og:description" content="KidCode Year 3 (2026), curriculum Day 31–32: KidBot Brain. What was taught, what 118 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html">2025</a><a href="../2026.html" class="on">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2026.html">Year 3 · 2026 · NLP</a></p>
+<h1>Project 19: KidBot Brain</h1>
+<div class="meta"><span>Curriculum Day 31–32 of 40</span><span>118 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">KidBot Brain is Project 19, across Days 31 and 32 of Year 3: a rule-based chatbot. Students list intents (greeting, joke, weather), write spaCy <code>Matcher</code> patterns for each, use named entities to pull out the city in "what's the weather in Paris", and add a fallback reply for everything else.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 3 curriculum, Week 7: Chatbots &amp; Responsible NLP</p><blockquote><p><strong>Day 31: Lab: KidBot Brain I.</strong> Project 6. Designing a rule-based chatbot: listing intents (greeting, joke, weather), writing Matcher patterns for each, and sketching the conversation loop.</p><p><strong>Day 32: Lab: KidBot Brain II.</strong> Using entities to pull out places and dates so &quot;What&#x27;s the weather in Paris tomorrow?&quot; gets a pretend forecast. Adding a friendly fallback reply and testing with classmates.</p><p><strong>Day 33: How Models Learn.</strong> How spaCy&#x27;s model learned from labeled examples, why training data shapes what a model gets right, and how mistakes and bias appear. Students annotate 20 sentences and compare with the model.</p><p><strong>Day 34: Responsible NLP: Bias &amp; Privacy.</strong> Fairness, privacy, and knowing when not to use NLP. Class roundtable: &quot;Should a school use NLP to read student essays?&quot; Writing a &quot;Limitations&quot; card for a personal project.</p><p><strong>Day 35: Capstone Pitch &amp; Plan.</strong> Choosing a project: &quot;Story Explorer&quot;, &quot;KidBot Pro&quot;, &quot;Privacy Shield Pro&quot;, &quot;Time Traveler&#x27;s News Desk&quot;, or an approved original idea. A one-page plan with goals, test texts, and a feature checklist.</p></blockquote>
+<h2>What students built</h2>
+<p>118 students built a KidBot, the most-completed project in the whole program. Every one uses <code>Matcher</code> patterns and reads GPE entities to answer weather questions. They wrote 68 different variants between them.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>matcher = Matcher(nlp.vocab)
+
+GREETING_PATTERNS = [
+    [{&quot;LOWER&quot;: {&quot;IN&quot;: [&quot;hi&quot;, &quot;hello&quot;, &quot;hey&quot;, &quot;yo&quot;, &quot;hiya&quot;]}}],
+]
+JOKE_PATTERNS = [
+    [{&quot;LOWER&quot;: &quot;tell&quot;}, {&quot;LOWER&quot;: &quot;me&quot;}, {&quot;LOWER&quot;: &quot;a&quot;}, {&quot;LOWER&quot;: &quot;joke&quot;}],
+    [{&quot;LOWER&quot;: &quot;joke&quot;}],
+]
+WEATHER_PATTERNS = [
+    [{&quot;LOWER&quot;: &quot;weather&quot;}],
+    [{&quot;LOWER&quot;: &quot;weather&quot;}, {&quot;LOWER&quot;: &quot;in&quot;}, {&quot;IS_ALPHA&quot;: True}],
+]
+BYE_PATTERNS = [
+    [{&quot;LOWER&quot;: {&quot;IN&quot;: [&quot;bye&quot;, &quot;goodbye&quot;, &quot;later&quot;]}}],
+]
+
+matcher.add(&quot;GREETING&quot;, GREETING_PATTERNS)
+matcher.add(&quot;JOKE&quot;, JOKE_PATTERNS)
+matcher.add(&quot;WEATHER&quot;, WEATHER_PATTERNS)
+matcher.add(&quot;BYE&quot;, BYE_PATTERNS)
+<span class="gap">    …</span>
+    def classify(self, text):
+        doc = nlp(text)
+        matches = matcher(doc)
+        if not matches:
+            return &quot;UNKNOWN&quot;, doc
+        match_id, start, end = matches[-1]
+        return nlp.vocab.strings[match_id], doc
+
+    def reply(self, text):
+        intent, doc = self.classify(text)
+        self.history.append((text, intent))
+        if intent == &quot;GREETING&quot;:
+            return f&quot;Hey! I&#x27;m {self.name}.&quot;
+        if intent == &quot;JOKE&quot;:
+            return random.choice(JOKES)
+        if intent == &quot;WEATHER&quot;:
+            cities = [e.text for e in doc.ents if e.label_ == &quot;GPE&quot;]
+            if cities:
+                return f&quot;Checking the weather in {cities[0]}... it&#x27;s lovely!&quot;
+            return &quot;Which city?&quot;
+        if intent == &quot;BYE&quot;:
+            return &quot;Goodbye, friend!&quot;
+        return &quot;Sorry, I don&#x27;t know that one yet.&quot;</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">KidBot says hello!
+You: hello
+KidBot: Hey! I&#x27;m KidBot.
+You: tell me a joke
+KidBot: What do you call a fish with no eyes? A fsh!
+You: what&#x27;s the weather in Tokyo
+KidBot: Checking the weather in Tokyo... it&#x27;s lovely!
+You: what is your favorite color
+KidBot: Sorry, I don&#x27;t know that one yet.
+You: bye
+KidBot: Goodbye, friend!
+You: quit
+Conversation summary: {&#x27;GREETING&#x27;: 1, &#x27;JOKE&#x27;: 1, &#x27;WEATHER&#x27;: 1, &#x27;UNKNOWN&#x27;: 1, &#x27;BYE&#x27;: 1}</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Rules, Custom Entities &amp; Chatbots</em> (Weeks 6–8 (Days 26–40), 8 questions).</p><figure><img src="../assets/img/pre-2026-4.png" alt="First page of the Rules, Custom Entities &amp; Chatbots pre-assessment" loading="lazy" /><figcaption>Pre-assessment 4, Year 3 (2026). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>The capstone, <a href="20-nlp-capstone.html">Project 20</a>, offers "KidBot Pro" as one of its options. The two days after this project are about how models learn and about bias and privacy.</p>
+<h2>Looking back</h2>
+<p>A chatbot built from explicit rules is a useful counterweight to the rest of Year 3: students can see exactly why it answers the way it does, which is exactly what they can't see inside the statistical model that finds the entities.</p>
+<nav class="pn"><a href="18-privacy-shield.html">← Project 18: Privacy Shield</a><a class="r" href="20-nlp-capstone.html">Project 20: NLP Capstone →</a></nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 20: NLP Capstone | KidCode</title>
+<meta name="description" content="KidCode Year 3 (2026), curriculum Day 36–39: NLP Capstone. What was taught, what 55 students built, and one real student program." />
+<meta property="og:title" content="Project 20: NLP Capstone" />
+<meta property="og:description" content="KidCode Year 3 (2026), curriculum Day 36–39: NLP Capstone. What was taught, what 55 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html">2025</a><a href="../2026.html" class="on">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2026.html">Year 3 · 2026 · NLP</a></p>
+<h1>Project 20: NLP Capstone</h1>
+<div class="meta"><span>Curriculum Day 36–39 of 40</span><span>55 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">The Year 3 capstone is Project 20, the last numbered project in KidCode, across Days 36 to 39. Students pitch a project from a short list (Story Explorer, KidBot Pro, Privacy Shield Pro, Time Traveler's News Desk) or an approved idea of their own, then build it over four days, with a beta test, an NER audit, and "How It Works" and "Limitations" cards.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 3 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote><p><strong>Day 36: Capstone Build I.</strong> Project 7. Loading text from a file, running the spaCy pipeline, and organizing code into functions or classes. Daily stand-up check-ins: what I did, what is next, and what is blocking me.</p><p><strong>Day 37: Capstone Build II.</strong> Adding features: Counter charts, a displaCy HTML export, Matcher or entity ruler rules, and try/except for missing files. Writing a comment header that explains how to run the program.</p><p><strong>Day 38: Beta Test &amp; NER Audit.</strong> Swapping projects so testers can try to break them with tricky texts. Running an NER audit on each tool and logging every wrong guess in a bug list.</p><p><strong>Day 39: Polish &amp; Demo Rehearsal.</strong> Fixing bugs, cleaning up code, and writing &quot;How It Works&quot; and &quot;Limitations&quot; cards. Rehearsing a three-minute demo with a partner.</p><p><strong>Day 40: Showcase Day &amp; What&#x27;s Next.</strong> Presenting projects to classmates, families, and guests, and celebrating three years of KidCode with certificates. Next steps: machine learning with scikit-learn, web apps with Flask, and games with pygame.</p></blockquote>
+<h2>What students built</h2>
+<p>55 students finished a capstone. Every one is built around a class and saves a chart. The class names show what they chose: Story Explorer (13), KidBot Pro (11), Vocabulary Coach (11), Privacy Shield Pro (11), News Desk (9). The median capstone is 72 lines.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>class VocabularyCoach:
+
+    def __init__(self, path):
+        self.path = path
+        self.doc = None
+
+    def load(self):
+        with open(self.path) as f:
+            self.doc = nlp(f.read())
+
+    def hard_words(self, min_len=7, n=8):
+        words = sorted({t.text.lower() for t in self.doc if t.is_alpha and len(t.text) &gt;= min_len})
+        return words[:n]
+
+    def sentence_for(self, word):
+        for sent in self.doc.sents:
+            if word in sent.text.lower():
+                return sent.text.strip()
+        return &quot;(no example sentence found)&quot;
+
+    def quiz(self, words):
+        score = 0
+        for word in words:
+            guess = input(f&quot;How many letters does &#x27;{word}&#x27; have? &quot;)
+            try:
+                correct = int(guess) == len(word)
+            except ValueError:
+                correct = False
+            if correct:
+                score += 1
+                print(&quot;Correct!&quot;)
+            else:
+                print(f&quot;Nope, it has {len(word)} letters.&quot;)
+        return score</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">=== Vocabulary Coach: The Lighthouse Keeper ===
+against: Mira polished the lamp every evening while the stormy waves crashed against the rocks.
+alvarez: On March 3, 1921, Mira Alvarez climbed the tall lighthouse near Portland.
+balcony: Mira lit the great lamp and waved a red flag from the balcony.
+bravery: The Harbor Guild paid Mira $40 for her bravery, and Captain Brooks smiled proudly.
+captain: The old keeper, Captain Owen Brooks, handed her a brass lamp and said the light must never go out.
+climbed: On March 3, 1921, Mira Alvarez climbed the tall lighthouse near Portland.
+crashed: Mira polished the lamp every evening while the stormy waves crashed against the rocks.
+drifted: One night a small boat called the Silver Gull drifted toward the cliffs.
+How many letters does &#x27;against&#x27; have? 7
+Correct!
+How many letters does &#x27;alvarez&#x27; have? 7
+Correct!
+How many letters does &#x27;balcony&#x27; have? 6
+Nope, it has 7 letters.
+How many letters does &#x27;bravery&#x27; have? 7
+Correct!
+How many letters does &#x27;captain&#x27; have? 7
+Correct!
+How many letters does &#x27;climbed&#x27; have? 7
+Correct!
+How many letters does &#x27;crashed&#x27; have? 7
+Correct!
+How many letters does &#x27;drifted&#x27; have? 7
+Correct!
+Score: 7/8</pre>
+<figure><img src="../assets/img/p20-output.png" alt="Output of a student's NLP Capstone program" loading="lazy" /><figcaption>The chart this student&#x27;s capstone saves.</figcaption></figure>
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Rules, Custom Entities &amp; Chatbots</em> (Weeks 6–8 (Days 26–40), 8 questions).</p><figure><img src="../assets/img/pre-2026-4.png" alt="First page of the Rules, Custom Entities &amp; Chatbots pre-assessment" loading="lazy" /><figcaption>Pre-assessment 4, Year 3 (2026). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>The final day of the curriculum points past KidCode: machine learning with scikit-learn, web apps with Flask, and games with pygame.</p>
+<h2>Looking back</h2>
+<p>Across the three capstones (a text adventure, a text analyzer, an NLP tool), the median program goes from about 130 lines of hand-written game logic to about 120 lines of classes, files and tests, and then to about 70 lines that lean on a library for the hard parts. What grows over three years isn't length. It's how much each line is able to do.</p>
+<nav class="pn"><a href="19-kidbot-brain.html">← Project 19: KidBot Brain</a><a class="r" href="../evidence.html">What 1,214 programs revealed →</a></nav>
+</main>
+</body>
+</html>

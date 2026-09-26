@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 10: Virtual Pet Care | KidCode</title>
+<meta name="description" content="KidCode Year 2 (2025), curriculum Day 20: Virtual Pet Care. What was taught, what 60 students built, and one real student program." />
+<meta property="og:title" content="Project 10: Virtual Pet Care" />
+<meta property="og:description" content="KidCode Year 2 (2025), curriculum Day 20: Virtual Pet Care. What was taught, what 60 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html" class="on">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2025.html">Year 2 · 2025 · Building Complexity</a></p>
+<h1>Project 10: Virtual Pet Care</h1>
+<div class="meta"><span>Curriculum Day 20 of 40</span><span>60 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Virtual Pet Care is Project 10, on Day 20 of Year 2, at the end of the first week of object-oriented programming: <code>class</code>, <code>__init__</code>, <code>self</code>, methods, and <code>__str__</code>. Students design the pet on paper, then code its hunger and happiness meters, a daily menu, and saving to JSON.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 2 curriculum, Week 4: Objects &amp; Classes</p><blockquote><p><strong>Day 16: Everything Is an Object.</strong> Discovering that str, list, and dict are classes and that methods are functions belonging to objects. Exploring with type(), dir(), and help(). A class is a blueprint, like a cookie cutter.</p><p><strong>Day 17: Your First Class.</strong> Writing a class with class, __init__, self, and attributes, then creating several instances. Practice: a Pet class with name, species, and energy.</p><p><strong>Day 18: Methods &amp; Readable Objects.</strong> Giving objects behaviors: methods like feed() and play() that change attributes, and methods that return values. Using __str__ so print(pet) is readable.</p><p><strong>Day 19: Objects Working Together.</strong> Storing objects in lists, objects that hold other objects (a Team with Players), and class vs. instance attributes. Practice: &quot;Zoo Manager&quot;.</p><p><strong>Day 20: Lab: Virtual Pet Care.</strong> Project 4. Designing a pet on paper, then coding hunger and happiness meters, a daily menu of actions, and saving the pet to a JSON file. Classmates trade pets and keep them alive.</p></blockquote>
+<h2>What students built</h2>
+<p>60 students built a pet. Every one defines a class with <code>__str__</code>, so <code>print(pet)</code> shows something readable, and saves the pet to JSON so it is still there tomorrow. The median program is 84 lines.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>class Pet:
+    def __init__(self, name, hunger=5, happiness=5, coins=0, food_stock=3, day=1):
+        self.name = name
+        self.hunger = hunger
+        self.happiness = happiness
+        self.coins = coins
+        self.food_stock = food_stock
+        self.day = day
+
+    def feed(self):
+        if self.food_stock == 0:
+            print(&quot;No food left! Buy some first.&quot;)
+            return
+        self.food_stock -= 1
+        self.hunger = max(0, self.hunger - 4)
+        print(f&quot;{self.name} devours tuna. Meow!&quot;)
+
+    def play(self):
+        self.happiness = min(10, self.happiness + 3)
+        self.hunger = min(10, self.hunger + 1)
+        self.coins += 2
+        print(f&quot;{self.name} plays with a feather wand and earns 2 coins.&quot;)
+
+    def rest(self):
+        self.coins += 1
+        self.happiness = min(10, self.happiness + 1)
+        print(f&quot;{self.name} rests in the sunny windowsill and finds 1 coin.&quot;)
+
+    def buy_food(self):
+        if self.coins &gt;= 3:
+            self.coins -= 3
+            self.food_stock += 2
+            print(&quot;Bought 2 servings of tuna for 3 coins.&quot;)
+        else:
+            print(&quot;Not enough coins. Food costs 3.&quot;)
+
+    def end_day(self):
+        self.day += 1
+        self.hunger = min(10, self.hunger + 2)
+        self.happiness = max(0, self.happiness - 1)
+
+    def __str__(self):
+        return (f&quot;{self.name} | day {self.day} | hunger {self.hunger} | happy {self.happiness} | &quot;
+                f&quot;coins {self.coins} | food {self.food_stock}&quot;)
+
+
+def save_game(pet):
+    data = {&quot;name&quot;: pet.name, &quot;hunger&quot;: pet.hunger, &quot;happiness&quot;: pet.happiness,
+            &quot;coins&quot;: pet.coins, &quot;food_stock&quot;: pet.food_stock, &quot;day&quot;: pet.day}
+    with open(SAVE_FILE, &quot;w&quot;) as f:
+        json.dump(data, f)
+
+
+def load_game():
+    with open(SAVE_FILE) as f:
+        d = json.load(f)
+    return Pet(d[&quot;name&quot;], d[&quot;hunger&quot;], d[&quot;happiness&quot;], d[&quot;coins&quot;], d[&quot;food_stock&quot;], d[&quot;day&quot;])</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">Name your cat: Mochi
+
+Mochi | day 1 | hunger 5 | happy 5 | coins 0 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 2
+Mochi plays with a feather wand and earns 2 coins.
+
+Mochi | day 1 | hunger 6 | happy 8 | coins 2 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 2
+Mochi plays with a feather wand and earns 2 coins.
+
+Mochi | day 1 | hunger 7 | happy 10 | coins 4 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 4
+Bought 2 servings of tuna for 3 coins.
+
+Mochi | day 2 | hunger 9 | happy 9 | coins 1 | food 5
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 1
+Mochi devours tuna. Meow!
+
+…</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Objects, Classes &amp; Inheritance</em> (Weeks 4–5 (Days 16–25), 8 questions).</p><figure><img src="../assets/img/pre-2025-4.png" alt="First page of the Objects, Classes &amp; Inheritance pre-assessment" loading="lazy" /><figcaption>Pre-assessment 4, Year 2 (2025). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>The next project, <a href="11-monster-battle-arena.html">Monster Battle Arena</a>, takes the class and gives it children. Classes then reappear in Year 3 whenever a program has to keep track of several things at once: the <a href="20-nlp-capstone.html">capstone</a> projects are all built around one.</p>
+<h2>Looking back</h2>
+<p>Object-oriented programming is the biggest conceptual jump in Year 2, and it shows up plainly in the code: no Year 1 program defines a class, while nearly half of all Year 2 programs do.</p>
+<nav class="pn"><a href="09-trivia-quiz-2-0.html">← Project 9: Trivia Quiz 2.0</a><a class="r" href="11-monster-battle-arena.html">Project 11: Monster Battle Arena →</a></nav>
+</main>
+</body>
+</html>

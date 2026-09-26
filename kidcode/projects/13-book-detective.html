@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 13: Book Detective | KidCode</title>
+<meta name="description" content="KidCode Year 2 (2025), curriculum Day 36–39: Book Detective. What was taught, what 86 students built, and one real student program." />
+<meta property="og:title" content="Project 13: Book Detective" />
+<meta property="og:description" content="KidCode Year 2 (2025), curriculum Day 36–39: Book Detective. What was taught, what 86 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html" class="on">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2025.html">Year 2 · 2025 · Building Complexity</a></p>
+<h1>Project 13: Book Detective</h1>
+<div class="meta"><span>Curriculum Day 36–39 of 40</span><span>86 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Book Detective is the Year 2 capstone, Project 13, across Days 36 to 39. Students plan and build a <code>TextAnalyzer</code> class that loads a book, cleans the text, counts words with <code>Counter</code>, reports statistics, tests itself with <code>assert</code>, and saves a chart. The week before, the lesson called Bug Safari feeds sentences full of abbreviations like "U.S.A." to this kind of code and logs every way it breaks.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 2 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote><p><strong>Day 36: Capstone I: Book Detective Plan.</strong> Project 7. Planning a TextAnalyzer class that loads a book and reports total words, unique words, longest word, average word length, and top words. Sketching attributes and methods on paper.</p><p><strong>Day 37: Capstone II: Building the Core.</strong> Coding the class: loading a file with try/except, cleaning text, counting with Counter, and one method per statistic. Testing each method with assert.</p><p><strong>Day 38: Capstone III: Charts &amp; Reports.</strong> Adding a matplotlib chart method, saving a full text report to a file, and letting users pick a book from a menu. Reusing functions from kidtools.py.</p><p><strong>Day 39: Playtest, Polish &amp; Debug.</strong> Swapping projects so testers can try to break them with odd files. Fixing bugs, adding docstrings, and rehearsing a three-minute demo.</p><p><strong>Day 40: Showcase Day &amp; Year 3 Preview.</strong> Presenting Book Detective reports to classmates and guests, plus a skills checklist. Preview of KidCode 3: the sentences that broke our code are what NLP and the spaCy library are built to solve.</p></blockquote>
+<h2>What students built</h2>
+<p>86 students finished the capstone, the most-completed project of Year 2. Every one defines a class, counts with <code>Counter</code>, compares texts with sets, saves a chart, and runs <code>assert</code> tests. At a median of 120 lines, it is tied with Monster Battle Arena for the longest Year 2 project.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>class TextAnalyzer:
+    def __init__(self, path):
+        self.path = path
+        self.text = &quot;&quot;
+        self.words = []
+        self.sentences = []
+
+    def load(self):
+        try:
+            with open(self.path) as f:
+                self.text = f.read()
+        except FileNotFoundError:
+            print(&quot;Could not open&quot;, self.path)
+
+    def clean(self):
+        for end in &quot;!?&quot;:
+            self.text = self.text.replace(end, &quot;.&quot;)
+        self.sentences = [s.strip() for s in self.text.split(&quot;.&quot;) if s.strip()]
+        lowered = self.text.lower()
+        for mark in string.punctuation:
+            lowered = lowered.replace(mark, &quot;&quot;)
+        self.words = lowered.split()
+
+    def total_words(self):
+        return len(self.words)
+
+    def unique_words(self):
+        return len(set(self.words))
+
+    def longest_word(self):
+        return max(self.words, key=len) if self.words else &quot;&quot;
+
+    def average_word_length(self):
+        return sum(len(w) for w in self.words) / len(self.words) if self.words else 0.0
+
+    def sentence_count(self):
+        return len(self.sentences)
+
+    def words_per_sentence(self):
+        if not self.sentences:
+            return 0.0
+        return self.total_words() / self.sentence_count()
+
+    def top_words(self, n=10):
+        counts = Counter([w for w in self.words if w not in STOP_WORDS])
+        return counts.most_common(n)
+
+    def chart(self, filename):
+        top = self.top_words()
+        plt.bar([w for w, c in top], [c for w, c in top], color=&quot;slateblue&quot;)
+        plt.title(&quot;Top words and &quot; + str(self.sentence_count()) + &quot; sentences&quot;)
+        plt.savefig(filename)
+        plt.show()
+        plt.close()
+<span class="gap">    …</span>
+def run_tests():
+    with open(&quot;test_sample.txt&quot;, &quot;w&quot;) as f:
+        f.write(&quot;The cat and the hat. The cat sat!&quot;)
+    checker = TextAnalyzer(&quot;test_sample.txt&quot;)
+    checker.load()
+    checker.clean()
+    assert checker.total_words() == 8
+    assert checker.unique_words() == 5
+    assert checker.longest_word() in (&quot;the&quot;, &quot;cat&quot;, &quot;and&quot;, &quot;hat&quot;, &quot;sat&quot;)
+    assert abs(checker.average_word_length() - 3.0) &lt; 0.001
+    os.remove(&quot;test_sample.txt&quot;)
+    print(&quot;All TextAnalyzer tests passed.&quot;)</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">All TextAnalyzer tests passed.
+1. The Mountain Village
+2. The Lighthouse Keeper
+3. The Desert Caravan
+Choose a book or q: 1
+The Mountain Village
+  words: 94 | unique: 71
+  longest word: sparkling
+  sentences: 7
+  words per sentence: 13.4
+  top words: [(&#x27;the&#x27;, 11), (&#x27;pema&#x27;, 3), (&#x27;and&#x27;, 3), (&#x27;mountain&#x27;, 2), (&#x27;village&#x27;, 2), (&#x27;in&#x27;, 2), (&#x27;her&#x27;, 2), (&#x27;to&#x27;, 2), (&#x27;high&#x27;, 1), (&#x27;above&#x27;, 1)]
+1. The Mountain Village
+2. The Lighthouse Keeper
+3. The Desert Caravan
+Choose a book or q: q</pre>
+<figure><img src="../assets/img/p13-output.png" alt="Output of a student's Book Detective program" loading="lazy" /><figcaption>The chart this student&#x27;s program saves, as produced by the unmodified code.</figcaption></figure>
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Libraries, Modules &amp; Text as Data</em> (Weeks 6–8 (Days 26–40), 11 questions).</p><figure><img src="../assets/img/pre-2025-5.png" alt="First page of the Libraries, Modules &amp; Text as Data pre-assessment" loading="lazy" /><figcaption>Pre-assessment 5, Year 2 (2025). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>The last day of Year 2 previews Year 3 with a sentence from the curriculum: the sentences that broke our code are what NLP and spaCy are built to solve. Year 3's first project, <a href="14-tokenizer-showdown.html">Tokenizer Showdown</a>, scores this kind of cleaning code against spaCy.</p>
+<h2>Looking back</h2>
+<p>Book Detective is where Year 2 and Year 3 meet. The <code>clean()</code> method below, which lowercases the text, strips punctuation and splits on spaces, is exactly the approach Year 3 opens by testing and breaking.</p>
+<nav class="pn"><a href="12-turtle-art-studio.html">← Project 12: Turtle Art Studio</a><a class="r" href="14-tokenizer-showdown.html">Project 14: Tokenizer Showdown →</a></nav>
+</main>
+</body>
+</html>

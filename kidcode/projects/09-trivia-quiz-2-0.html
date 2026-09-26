@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 9: Trivia Quiz 2.0 | KidCode</title>
+<meta name="description" content="KidCode Year 2 (2025), curriculum Day 15: Trivia Quiz 2.0. What was taught, what 83 students built, and one real student program." />
+<meta property="og:title" content="Project 9: Trivia Quiz 2.0" />
+<meta property="og:description" content="KidCode Year 2 (2025), curriculum Day 15: Trivia Quiz 2.0. What was taught, what 83 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html" class="on">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2025.html">Year 2 · 2025 · Building Complexity</a></p>
+<h1>Project 9: Trivia Quiz 2.0</h1>
+<div class="meta"><span>Curriculum Day 15 of 40</span><span>83 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Trivia Quiz 2.0 is Project 9, on Day 15 of Year 2, and it is an upgrade of a Year 1 project on purpose. The questions move into a JSON file, high scores are saved to disk, input is protected with <code>try</code>/<code>except</code>, and every job gets its own function.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 2 curriculum, Week 3: Errors &amp; Data Formats</p><blockquote><p><strong>Day 11: try/except: When Things Go Wrong.</strong> Catching errors with try and except, and common exceptions (ValueError, ZeroDivisionError, KeyError, FileNotFoundError). Reading tracebacks. Practice: &quot;Safe Divider&quot;.</p><p><strong>Day 12: Bulletproof Input.</strong> Validation loops that re-ask until the input is good, else and finally blocks, and a reusable ask_number() function that no silly answer can break.</p><p><strong>Day 13: CSV Files.</strong> Reading and writing spreadsheet-style .csv files with the csv module, rows as lists, and DictReader for rows as dictionaries. Practice: &quot;Pet Registry&quot;.</p><p><strong>Day 14: JSON Files.</strong> Saving and loading structured data with json.dump() and json.load(). How dictionaries and lists map onto JSON. Practice: &quot;Game Settings&quot; and a &quot;Quiz Question Bank&quot;.</p><p><strong>Day 15: Lab: Trivia Quiz 2.0.</strong> Project 3. Upgrading Year 1&#x27;s quiz: questions loaded from a JSON file, high scores saved to disk, input protected with try/except, and one function per job. Pair review with a checklist.</p></blockquote>
+<h2>What students built</h2>
+<p>83 students built the upgraded quiz. Every one loads its questions with <code>json.load()</code> and catches both a missing file (<code>FileNotFoundError</code>) and a damaged one (<code>JSONDecodeError</code>). A program from this week keeps working when its data is broken, and the Year 1 version would simply have crashed. The median program is 98 lines, against 29 for the Year 1 quiz.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>SCORE_FILE = &quot;high_scores.json&quot;
+
+
+QUESTION_FILE = &quot;questions.json&quot;
+
+
+def load_questions():
+    try:
+        with open(QUESTION_FILE) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(&quot;No question file yet, creating one...&quot;)
+        with open(QUESTION_FILE, &quot;w&quot;) as f:
+            json.dump(DEFAULT_QUESTIONS, f, indent=2)
+        return DEFAULT_QUESTIONS
+    except json.JSONDecodeError:
+        print(&quot;The question file is damaged, using the built-in questions.&quot;)
+        return DEFAULT_QUESTIONS
+
+
+def load_high_scores():
+    try:
+        with open(SCORE_FILE) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def save_high_scores(scores):
+    with open(SCORE_FILE, &quot;w&quot;) as f:
+        json.dump(scores, f, indent=2)
+
+
+def score_of(entry):
+    return entry[&quot;score&quot;]
+
+
+def add_score(scores, name, score):
+    scores.append({&quot;name&quot;: name, &quot;score&quot;: score})
+    scores.sort(key=score_of, reverse=True)
+    return scores[:5]
+
+
+def ask_question(item):
+    reply = input(item[&quot;question&quot;] + &quot; &quot;).strip().lower()
+    if reply in item[&quot;answers&quot;]:
+        print(&quot;Correct!&quot;)
+        return True
+    print(&quot;Sorry, it was &quot; + item[&quot;answers&quot;][0] + &quot;.&quot;)
+    return False
+
+
+def show_high_scores(scores):
+    print(&quot;--- HIGH SCORES ---&quot;)
+    for place, entry in enumerate(scores, start=1):
+        print(f&quot;{place}. {entry[&#x27;name&#x27;]:&lt;12} {entry[&#x27;score&#x27;]}&quot;)
+
+
+def play_round(questions):
+    score = 0
+    for item in questions:
+        if ask_question(item):
+            score += 1
+    return score</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">No question file yet, creating one...
+Player name: Player
+What has keys but cannot open locks? piano
+Correct!
+What gets wetter the more it dries? towel
+Correct!
+What has hands but cannot clap? clock
+Correct!
+What has a neck but no head? bottle
+Correct!
+What can you catch but never throw? a ball
+Sorry, it was cold.
+Player scored 4/5
+--- HIGH SCORES ---
+1. Player       4
+Play again? (yes/no) no</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Errors &amp; Data Formats</em> (Week 3 (Days 11–15), 8 questions).</p><figure><img src="../assets/img/pre-2025-3.png" alt="First page of the Errors &amp; Data Formats pre-assessment" loading="lazy" /><figcaption>Pre-assessment 3, Year 2 (2025). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>Compare with <a href="05-trivia-quiz-show.html">Trivia Quiz Show</a> from Year 1. The same idea, a quiz, now carries files and error handling; the program below also sorts scores with a <code>key</code> function to keep a top-five leaderboard.</p>
+<h2>Looking back</h2>
+<p>Rebuilding a program students already wrote is the most direct way I know to show them what they've learned, because the only thing that changed is them. It also makes the comparison easy to check in the code: same project, more than three times the median length.</p>
+<nav class="pn"><a href="08-message-vault.html">← Project 8: Message Vault</a><a class="r" href="10-virtual-pet-care.html">Project 10: Virtual Pet Care →</a></nav>
+</main>
+</body>
+</html>

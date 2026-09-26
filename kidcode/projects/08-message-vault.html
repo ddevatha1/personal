@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project 8: Message Vault | KidCode</title>
+<meta name="description" content="KidCode Year 2 (2025), curriculum Day 10: Message Vault. What was taught, what 75 students built, and one real student program." />
+<meta property="og:title" content="Project 8: Message Vault" />
+<meta property="og:description" content="KidCode Year 2 (2025), curriculum Day 10: Message Vault. What was taught, what 75 students built, and one real student program." />
+<link rel="stylesheet" href="../assets/kidcode.css" />
+</head>
+<body>
+<header class="top"><nav><a class="home" href="../../">Deeptanshu Devatha</a><a href="../index.html">KidCode</a><a href="../2024.html">2024</a><a href="../2025.html" class="on">2025</a><a href="../2026.html">2026</a><a href="../evidence.html">Evidence</a><a href="https://github.com/ddevatha1/kidcode-evidence">Proof package</a></nav></header>
+<main>
+<p class="eyebrow"><a href="../2025.html">Year 2 · 2025 · Building Complexity</a></p>
+<h1>Project 8: Message Vault</h1>
+<div class="meta"><span>Curriculum Day 10 of 40</span><span>75 students completed it</span><span>Deeptanshu Devatha</span></div>
+<p class="lead">Message Vault is Project 8, on Day 10 of Year 2. It combines the cipher from Project 7 with the week's file lessons (<code>open()</code>, <code>with</code>, read, write and append modes) into a password-protected diary that survives after the program closes.</p>
+<h2>What I taught that week</h2>
+<p class="label">From the Year 2 curriculum, Week 2: Secret Codes &amp; Files</p><blockquote><p><strong>Day 6: Character Codes &amp; Caesar Shifts.</strong> How computers store letters as numbers with ord() and chr(). Shifting letters with % to wrap around the alphabet and looping through strings. Practice: &quot;Letter Shifter&quot;.</p><p><strong>Day 7: Lab: Secret Agent Cipher Lab.</strong> Project 1. Building encrypt(text, shift) and decrypt(text, shift) with assert tests. Swapping coded messages, then a crack-the-code challenge that tries all 25 shifts.</p><p><strong>Day 8: Reading Files.</strong> Opening files with open() and with, then .read(), .readlines(), and for line in file. File paths, the working folder, and FileNotFoundError. Practice: &quot;Story Reader&quot;.</p><p><strong>Day 9: Writing &amp; Appending Files.</strong> File modes &quot;w&quot; and &quot;a&quot;, .write(), newline characters, and why write mode erases old data. Practice: &quot;Diary Logger&quot; adds an entry each run, and &quot;High Score Keeper&quot; remembers scores.</p><p><strong>Day 10: Lab: Message Vault.</strong> Project 2. Combining the cipher with file reading and writing: save secret messages to a file and unlock them with a password. Swap vaults and try to crack them.</p></blockquote>
+<h2>What students built</h2>
+<p>75 students built a vault. Every one opens files with <code>with open(...)</code>, checks whether the vault already exists before creating it, and limits password attempts. The median program is 90 lines. In the program below, most of that length is small single-purpose functions: one to save, one to load, one to check the password.</p>
+<h2>One student's program</h2>
+<p>This is one real submission, shown as the student wrote it apart from the removed name header. It was chosen by a fixed rule rather than for being the best: it is the submission closest to the project's median length among those that ran cleanly and contain nothing that could identify anyone. Parts are skipped where marked with …</p>
+<pre>def caesar(text, shift):
+    result = &quot;&quot;
+    i = 0
+    while i &lt; len(text):
+        code = ord(text[i])
+        if 65 &lt;= code &lt;= 90:
+            code = (code - 65 + shift) % 26 + 65
+        elif 97 &lt;= code &lt;= 122:
+            code = (code - 97 + shift) % 26 + 97
+        result += chr(code)
+        i += 1
+    return result
+
+
+def encrypt(text, shift):
+    return caesar(text, shift)
+
+
+def decrypt(text, shift):
+    return caesar(text, -shift)
+<span class="gap">    …</span>
+PASSWORD_FILE = &quot;vault_password.txt&quot;
+
+
+def vault_exists():
+    return os.path.exists(PASSWORD_FILE)
+
+
+def create_vault(record):
+    with open(PASSWORD_FILE, &quot;w&quot;) as f:
+        f.write(record)
+
+
+def read_record():
+    with open(PASSWORD_FILE) as f:
+        return f.read().strip()
+
+
+def count_messages():
+    n = 0
+    while os.path.exists(&quot;vault_msg_&quot; + str(n + 1) + &quot;.txt&quot;):
+        n += 1
+    return n
+
+
+def save_message(text, shift):
+    number = count_messages() + 1
+    with open(&quot;vault_msg_&quot; + str(number) + &quot;.txt&quot;, &quot;w&quot;) as f:
+        f.write(encrypt(text, shift))
+
+
+def load_messages(shift):
+    found = []
+    for number in range(1, count_messages() + 1):
+        with open(&quot;vault_msg_&quot; + str(number) + &quot;.txt&quot;) as f:
+            found.append(decrypt(f.read(), shift))
+    return found
+
+
+MAX_TRIES = 3
+
+
+def ask_for_password():
+    record = read_record()
+    for attempt in range(1, MAX_TRIES + 1):
+        password = input(&quot;Vault password: &quot;)
+        if check_password(password, record):
+            return password
+        print(f&quot;Wrong password ({attempt}/{MAX_TRIES}).&quot;)
+    return None</pre>
+<p class="label">A sample run of that program (the input was typed for this page)</p><pre class="out">--- My Private Diary Vault ---
+No vault found, so let&#x27;s build one.
+Choose a password: kidcode
+Vault created!
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 1
+Vault password: kidcode
+Type your diary entry: Meet at the library at noon
+Locked away safely.
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 2
+Vault password: kidcode
+ * Meet at the library at noon
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 3
+Diary locked. Sweet dreams!</pre>
+
+<h2>The worksheet for this unit</h2><p>Each unit has a pre- and post-assessment written from the same curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Secret Codes &amp; Files</em> (Week 2 (Days 6–10), 9 questions).</p><figure><img src="../assets/img/pre-2025-2.png" alt="First page of the Secret Codes &amp; Files pre-assessment" loading="lazy" /><figcaption>Pre-assessment 2, Year 2 (2025). The post-assessment tests the same skills with different code.</figcaption></figure>
+<h2>Where it fits</h2>
+<p>File persistence carries through the rest of Year 2: quiz high scores in <a href="09-trivia-quiz-2-0.html">Trivia Quiz 2.0</a>, pets saved as JSON in <a href="10-virtual-pet-care.html">Virtual Pet Care</a>, and a Hall of Fame in <a href="11-monster-battle-arena.html">Monster Battle Arena</a>.</p>
+<h2>Looking back</h2>
+<p>A program that remembers things between runs is a different kind of program. The code below is also a good picture of the Year 2 habit of splitting work into functions small enough to test one at a time.</p>
+<nav class="pn"><a href="07-secret-agent-cipher-lab.html">← Project 7: Secret Agent Cipher Lab</a><a class="r" href="09-trivia-quiz-2-0.html">Project 9: Trivia Quiz 2.0 →</a></nav>
+</main>
+</body>
+</html>
