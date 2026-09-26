@@ -1465,10 +1465,10 @@
 				</div>
 				<!-- KC:ARCHIVE:end -->
 				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
-					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">91</span></button>
+					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">95</span></button>
 					<button type="button" class="filter-pill" data-filter="india">India Outreach <span class="filter-count">38</span></button>
 					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">29</span></button>
-					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">22</span></button>
+					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">26</span></button>
 					<button type="button" class="filter-pill" data-filter="competitions">Competitions <span class="filter-count">1</span></button>
 					<button type="button" class="filter-pill" data-filter="engineering">Engineering <span class="filter-count">1</span></button>
 				</div>
@@ -1476,6 +1476,17 @@
 				<p class="blog-empty-state" id="blog-empty-state" hidden>No posts in this category yet.</p>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-09-26" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-26').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">September 2026</span></div>
+						<h3>Where the Paper Stands</h3>
+						<p>
+							A short update on where the manuscript is now: submitted to Frontiers in Aging Neuroscience on August 4 and currently in review, with no decision yet.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-student-code').classList.add('open')">
@@ -1496,6 +1507,39 @@
 						</p>
 						<div class="arrow">Read full post →</div>
 					</article>
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-08-04" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-25').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">August 2026</span></div>
+						<h3>Submitting to Frontiers in Aging Neuroscience</h3>
+						<p>
+							The last few days before submission were less about adding anything and more about stating exactly what the results could support. On August 4, 2026, the manuscript went to Frontiers in Aging Neuroscience.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-08-01" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-24').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">August 2026</span></div>
+						<h3>Rerunning the Ablation for the Paper</h3>
+						<p>
+							The question the ablation answers is simple to state: how much of the model's accuracy comes from each kind of feature, and does speech add anything once the clinical history is already there? For the paper, I reran it with a design I could describe exactly, and the answer came out less tidy than it did in January.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-07-28" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-23').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">July 2026</span></div>
+						<h3>Checking the Draft Against the Code</h3>
+						<p>
+							Two weeks after finishing the first draft, I stopped editing sentences and checked something more basic: whether the paper described the model I had actually trained. It didn't, in a few places that mattered.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
 
 					<article class="blog-card reveal" data-category="india" style="cursor:pointer;" onclick="document.getElementById('modal-india-38').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-india">India Outreach</span><span class="meta-date">July 2026</span></div>
@@ -4546,6 +4590,206 @@
 					</div>
 				</div>
 
+				<!-- DM:MODALS:start -->
+				<!-- Checking the Draft Against the Code -->
+				<div class="modal-overlay" id="modal-dementia-23" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-23-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-23').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-23-title">Checking the Draft Against the Code</h1>
+						<div class="post-meta">
+							<span>July 28, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						Two weeks after finishing the <a href="#modal-dementia-22">first full draft</a>, I stopped editing sentences and checked something more basic: whether the paper described the model I had actually trained. I had written most of it from fourteen months of notes and memory, and the code had kept changing underneath those notes. So before revising any prose, I saved a copy of the draft and had it checked section by section, with every method description, formula, and number compared against the code that produced the results: the feature-extraction module, and the saved list of features the final model was trained on.
+					</p>
+
+					<p>
+						It didn't match everywhere, and the biggest mismatch was in the Feature Extraction section.
+					</p>
+
+					<h2>The Features the Model Didn't Use</h2>
+					<p>
+						The draft described six handcrafted discourse features built around coreference chains, lexical overlap between sentences, and the entropy of entity transitions: the kind of features I'd experimented with back in the <a href="#modal-dementia-07">coreference and entity-tracking</a> phase. None of the six were in the feature set of the trained model. In the first-draft post I wrote that those features "mattered less than I expected them to"; it turns out they weren't in the final model at all, but the draft was still describing them as if they were. The model's actual twelve linguistic features were a different list, and six of them weren't described anywhere in the draft.
+					</p>
+
+					<div class="table-scroll"><table>
+						<thead><tr><th>What changed in Methods</th><th>Draft</th><th>After checking the code</th></tr></thead>
+						<tbody>
+							<tr><td>Handcrafted features</td><td>Included six coreference, lexical-overlap, and entity-transition features the model never used</td><td>The twelve features the model was actually trained on: ACS, Global Coherence, Semantic Slope, Topic Drift, Embedding Variance, Inter-Sentence Repetition, Filler Rate, MATTR, Mean Sentence Length, Fragment Ratio, Named Entity Rate, Generic Word Rate</td></tr>
+							<tr><td>Semantic Slope</td><td>Compared each sentence with the <em>next</em> sentence</td><td>Compares each sentence with the <em>first</em> sentence, as the code does</td></tr>
+							<tr><td>Inter-Sentence Repetition</td><td>A per-sentence ratio of repeated lemmas</td><td>A whole-transcript, token-level scan for repeats, as the code does</td></tr>
+							<tr><td>Dataset</td><td>"Skewed towards patients with dementia"</td><td>Exact counts: 126 patients (69 dementia, 57 control), 173 prediction samples</td></tr>
+						</tbody>
+					</table></div>
+					<p class="modal-caption">The Methods changes that came from comparing the draft line by line with the code.</p>
+
+					<p>
+						Two of the features that were described had the wrong formula. Both were close enough to sound right, and far enough off that someone trying to reproduce the work from the paper would have built different features. The fix in every case was the same: the code is what produced the numbers in the Results section, so Methods has to describe the code, even when an earlier idea reads better on the page.
+					</p>
+
+					<h2>Citations, Equations, Figures</h2>
+					<p>
+						The same pass turned up four in-text citations that used placeholder author names rather than verifiable papers for the findings I was describing. Each was replaced with the real paper that reports that finding, and several sources I was relying on without citing (LightGBM, Optuna, permutation importance, scikit-learn) got proper in-text citations. Every displayed equation got a number so the text could point to it, the feature list became a proper table, and every figure mention was tied to an actual figure file from the project instead of a description of one.
+					</p>
+					<p>
+						One thing the audit flagged without changing: the draft reported only cross-validation results. The held-out test result from <a href="#modal-dementia-18">March</a> and the early LSTM comparison both exist in the project files, but neither was in the draft. That was marked as a decision to make on purpose rather than something to leave out by accident.
+					</p>
+
+					<h2>What We Learned</h2>
+					<p>
+						A paper written from memory drifts away from the code without anyone noticing, including the person who wrote both. None of these mismatches changed a single reported number, which is exactly why they were easy to miss: the results were right, and the description of how they were produced was partly wrong. Reading the first draft as a finished paper was what made it possible to see this; while I was still writing it, it had felt like a record of what I'd done.
+					</p>
+
+					<h2>Next Steps</h2>
+					<p>
+						With Methods now matching the code, the next piece to bring up to the same standard is the ablation. The paper needs a feature-group comparison whose design can be stated exactly, so a reader knows precisely what each number is measuring.
+					</p>
+
+					</div>
+				</div>
+
+				<!-- Rerunning the Ablation for the Paper -->
+				<div class="modal-overlay" id="modal-dementia-24" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-24-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-24').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-24-title">Rerunning the Ablation for the Paper</h1>
+						<div class="post-meta">
+							<span>August 1, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						The question an ablation answers is simple to state: how much of the model's accuracy comes from each kind of feature, and does speech add anything once the clinical history is already known? I ran a version of this <a href="#modal-dementia-16">in January</a>. For the paper, I needed one whose design I could write down exactly, and one where differences between rows could only come from the features, not from anything else in the pipeline.
+					</p>
+
+					<h2>The Design</h2>
+					<p>
+						The main pipeline does a lot besides training a model: correlation-based pruning, feature selection, and a long Optuna search over hyperparameters. If each feature group went through all of that separately, a row could look better simply because its tuning happened to go well. So every configuration here uses the same fixed, untuned LightGBM regressor (300 trees, maximum depth 3, learning rate 0.05), trained on one feature subset at a time, under the same patient-grouped 5-fold cross-validation as everything else: a patient is never in both the training and validation folds. I also added a row that removes the engineered longitudinal change features, to test whether the visit-to-visit deltas add anything beyond the most recent visit.
+					</p>
+
+					<div class="table-scroll"><table>
+						<thead><tr><th>Feature subset</th><th>R² (mean ± SD)</th><th>RMSE</th><th>MAE</th><th>Pearson r</th></tr></thead>
+						<tbody>
+							<tr><td>Linguistic features only</td><td>0.118 ± 0.140</td><td>6.38</td><td>4.91</td><td>0.429</td></tr>
+							<tr><td>SBERT embeddings only</td><td>0.458 ± 0.170</td><td>4.94</td><td>3.91</td><td>0.699</td></tr>
+							<tr><td>Clinical/demographic only</td><td>0.716 ± 0.080</td><td>3.56</td><td>2.52</td><td>0.859</td></tr>
+							<tr><td>Speech (linguistic + SBERT)</td><td>0.437 ± 0.180</td><td>5.04</td><td>3.80</td><td>0.683</td></tr>
+							<tr><td>Clinical + SBERT</td><td>0.759 ± 0.086</td><td>3.26</td><td>2.42</td><td>0.880</td></tr>
+							<tr><td>All features</td><td>0.740 ± 0.080</td><td>3.39</td><td>2.41</td><td>0.869</td></tr>
+							<tr><td>All features, no longitudinal change features</td><td>0.740 ± 0.077</td><td>3.39</td><td>2.45</td><td>0.868</td></tr>
+						</tbody>
+					</table></div>
+					<p class="modal-caption">Feature-source ablation: a fixed, untuned LightGBM, patient-grouped 5-fold cross-validation.</p>
+
+					<h2>What the Numbers Say, and What They Don't</h2>
+					<p>
+						Clinical and demographic features are still the strongest single source by a wide margin. Of the two speech sources, SBERT embeddings carry far more signal than the handcrafted linguistic features, and putting the two together doesn't beat SBERT alone, which suggests they overlap. Adding SBERT to the clinical features gives the best result of any subset (0.759 against 0.716 for clinical alone). That's the finding the paper leans on, and also the one I had to be most careful with: the standard deviations overlap, so it's directional evidence that speech adds something, not a statistically confirmed difference.
+					</p>
+					<p>
+						Two results didn't go the way I would have written them in advance. The full feature set scored slightly <em>below</em> clinical plus SBERT, and removing the longitudinal change features changed nothing at all (0.740 either way). Neither is a clean verdict. A small, fixed model may simply struggle to use extra dimensions, and with 126 patients, an ablation may not have the power to detect the contribution of sparse visit-to-visit changes. What these rows can't support is a claim that the longitudinal features matter, and the paper doesn't make one. The "All features" row also isn't comparable to the main model's cross-validated R² of 0.840: that number comes from the tuned pipeline, which is exactly what this design leaves out on purpose.
+					</p>
+					<p>
+						These numbers don't match January's. In January, the full combination came out best in every fold. With the design controlled, clinical plus SBERT edges ahead of it. The broad conclusion survived the stricter test: clinical history dominates, and speech adds a smaller, complementary signal. The more specific claim about which combination is best did not, and it isn't in the paper.
+					</p>
+
+					<h2>What We Learned</h2>
+					<p>
+						An ablation answers a question about a specific setup, so the setup belongs in the result. The January version answered "what happens across my configurations"; this one answers "how much signal does each feature group carry on its own, with everything else held fixed." For a paper, only the second question is the kind a reader can check.
+					</p>
+
+					<h2>Next Steps</h2>
+					<p>
+						Writing this into the Results and Discussion, and then finishing the manuscript around what the analyses can support, which is a narrower set of claims than the first draft made.
+					</p>
+
+					</div>
+				</div>
+
+				<!-- Submitting to Frontiers in Aging Neuroscience -->
+				<div class="modal-overlay" id="modal-dementia-25" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-25-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-25').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-25-title">Submitting to Frontiers in Aging Neuroscience</h1>
+						<div class="post-meta">
+							<span>August 4, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						The last few days before submission were less about adding anything and more about stating exactly what the results could support. The manuscript moved into LaTeX, the Results and Discussion were rewritten around the <a href="#modal-dementia-24">controlled ablation</a>, and the figures were finalized. Most of the real work, though, went into the limitations: sentences that tell a reader where to be skeptical.
+					</p>
+
+					<h2>Saying What the Results Can't Show</h2>
+					<p>
+						Three caveats that weren't in the first draft went in before submission:
+					</p>
+					<ul>
+						<li><strong>A possible optimistic bias.</strong> Feature pruning, feature selection, PCA, and the Optuna search were each run once on the full dataset rather than being refit inside nested folds. Because selection and tuning depend on the labels, the cross-validation metrics may be modestly optimistic, and the paper says so at the end of Methods, just before the results.</li>
+						<li><strong>Error that's comparable to the test's own noise.</strong> The model's average error (MAE 2.02, RMSE 2.75 MMSE points) is about the same size as the variability reported between different raters scoring the MMSE. That's encouraging in one sense, but it also means the remaining error can't be clearly separated from the measurement noise of the target itself.</li>
+						<li><strong>No external validation.</strong> The model was evaluated on one cohort. I didn't find a public dataset with longitudinal speech, repeated MMSE scores, and a comparable prediction setup to test it on.</li>
+					</ul>
+					<p>
+						They sit alongside one limitation the first draft already had: there's very little data on patients with MMSE below 10, and the model mildly overpredicts for them.
+					</p>
+
+					<p>
+						The results the paper reports are the cross-validated ones: R² = 0.840 ± 0.015, RMSE 2.75, MAE 2.02, and Pearson r = 0.917, computed from out-of-fold predictions across the five patient-grouped folds. The held-out test result from <a href="#modal-dementia-18">March</a> is not part of the submitted manuscript. The headline claim is the same narrower one the ablation supports: clinical history is the dominant predictor of future MMSE, and transformer-derived speech representations add complementary signal on top of it.
+					</p>
+
+					<h2>The Submission</h2>
+					<p>
+						On August 4, 2026, the manuscript, "Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features," was submitted to <em>Frontiers in Aging Neuroscience</em> as an Original Research Article in the Alzheimer's Disease and Related Dementias section. Joe Xiao, who has mentored this project since <a href="#modal-dementia-02">May 2025</a>, is the co-author, and the author contributions credit him, among other roles, with supervision.
+					</p>
+					<p>
+						The same day, the code went public in a <a href="https://github.com/ddevatha1/dementia-mmse-prediction" target="_blank" rel="noopener">GitHub repository</a>: the feature extraction, the evaluation pipeline, the ablation script, and aggregate results. The DementiaBank transcripts themselves are not in it. Access to the Pitt Corpus is restricted, and anyone reproducing the work needs to request it from DementiaBank directly.
+					</p>
+
+					<h2>What Submission Means</h2>
+					<p>
+						Submitting isn't a verdict. It moves the paper from my own checks to people who haven't lived with it for fourteen months. The questions I know about are already in the limitations section. The useful ones will be the ones I haven't thought of.
+					</p>
+
+					</div>
+				</div>
+
+				<!-- Where the Paper Stands -->
+				<div class="modal-overlay" id="modal-dementia-26" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-26-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-26').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-26-title">Where the Paper Stands</h1>
+						<div class="post-meta">
+							<span>September 26, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						A short update. The manuscript was <a href="#modal-dementia-25">submitted</a> to <em>Frontiers in Aging Neuroscience</em> on August 4, 2026, and as of the end of September it's in review. There's no decision yet: it hasn't been accepted or published, and review hasn't finished. If it comes back with requests for revision, that's a normal part of the process, not a setback.
+					</p>
+
+					<h2>What Changed Between the First Draft and the Submission</h2>
+					<p>
+						The model didn't change after the first draft; everything that changed was about how honestly the paper described it. The Methods section now describes the features the model was actually trained on, because it was <a href="#modal-dementia-23">checked line by line against the code</a>. The ablation was <a href="#modal-dementia-24">rerun with a controlled design</a>, and one of January's conclusions didn't survive it. The paper now says plainly where its numbers might be optimistic and what it hasn't tested. The claim it makes is narrower than the one I started with in May 2025, and I understand every part of it.
+					</p>
+
+					<h2>What I'd Do Next</h2>
+					<p>
+						The limitations section is effectively a list of the next experiments. Refitting feature selection and tuning inside nested folds would show how much of the cross-validated score depends on those choices. A simple baseline, such as linear regression on the clinical features alone, would show how much the full pipeline adds over the obvious approach. And the question that matters most can't be answered with this dataset: whether the model holds up on a different cohort of patients, recorded differently. That needs a longitudinal speech dataset I don't have access to yet.
+					</p>
+
+					</div>
+				</div>
+
+				<!-- DM:MODALS:end -->
 			<!-- KidCode Day 3 Blog Modal -->
 			<div class="modal-overlay" id="modal-kidcode-day3" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-day3-title">
 				<div class="modal-box">
