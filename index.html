@@ -1104,6 +1104,41 @@
 			.modal-box { padding: 32px 22px; }
 			.modal-img-grid { grid-template-columns: 1fr; }
 		}
+		/* KC:CSS:start */
+		.kc-archive { margin: 0 0 28px; padding: 26px 28px; background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: var(--radius-md); }
+		.kc-intro { color: var(--muted); line-height: 1.7; margin: 0 0 18px; }
+		.kc-intro a, .kc-year a { color: var(--accent-dark); }
+		.kc-years { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+		.kc-year h3 { font-family: Georgia, "Times New Roman", serif; margin: 0 0 2px; font-size: 1.1rem; }
+		.kc-theme, .kc-sub { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-dark); margin: 0 0 10px; }
+		.kc-sub { margin-top: 16px; }
+		.kc-year ul { list-style: none; padding: 0; margin: 0; }
+		.kc-year li { margin: 0 0 7px; line-height: 1.35; font-size: 0.93rem; }
+		.kc-year li a { text-decoration: none; color: var(--text); display: block; }
+		.kc-year li a:hover { color: var(--accent-dark); }
+		.kc-when { display: block; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.02em; }
+		.modal-box .kc-label { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px; }
+		.modal-box .kc-quote { margin: 8px 0 18px; padding: 12px 16px; border-left: 3px solid var(--accent); background: rgba(234,210,196,0.35); border-radius: 0 10px 10px 0; }
+		.modal-box .kc-quote p { margin: 6px 0; font-size: 0.95rem; }
+		.modal-box pre.kc-code, .modal-box pre.kc-out { font-family: Menlo, Consolas, "Courier New", monospace; font-size: 0.78rem; line-height: 1.55; padding: 14px 16px; border-radius: 12px; overflow-x: auto; margin: 8px 0 18px; }
+		.modal-box pre.kc-code { background: #1f1b18; color: #f3ebe3; }
+		.modal-box pre.kc-out { background: #f3ebe3; color: #2b241f; border: 1px solid var(--line); }
+		.modal-box .kc-gap { color: #a08f80; }
+		.modal-box .kc-art { background: #fff; }
+		.modal-box .kc-chart { width: 100%; height: auto; margin: 8px 0 18px; }
+		.modal-box .kc-chart text { font-family: Georgia, "Times New Roman", serif; }
+		.modal-box .kc-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 14px 0 20px; }
+		.modal-box .kc-stats div { background: rgba(255,255,255,0.8); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+		.modal-box .kc-stats b { display: block; font-family: Georgia, serif; font-size: 1.4rem; color: var(--text); }
+		.modal-box .kc-stats span { font-size: 0.8rem; color: var(--muted); line-height: 1.35; display: block; }
+		.modal-box a { color: var(--accent-dark); }
+		.modal-overlay[id^="modal-kidcode"] .modal-box h1, #modal-crosscommunal .modal-box h1 { max-width: none; }
+		.kc-pn { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 0.9rem; }
+		.kc-pn a { text-decoration: none; max-width: 40%; }
+		.kc-pn .kc-up { text-align: center; }
+		.kc-pn .kc-next { text-align: right; }
+		@media (max-width: 860px) { .kc-years { grid-template-columns: 1fr; } .kc-archive { padding: 20px 18px; } .kc-pn a { max-width: 100%; } }
+		/* KC:CSS:end */
 	</style>
 </head>
 <body>
@@ -1125,7 +1160,6 @@
 				<a href="#interests">Interests</a>
 				<a href="#research">Research</a>
 				<a href="#blog">Blog</a>
-				<a href="kidcode/">KidCode</a>
 			</div>
 		</nav>
 
@@ -1424,10 +1458,16 @@
 					<p>First-hand accounts from projects, hackathons, and learning experiences.</p>
 				</div>
 
+				<!-- KC:ARCHIVE:start -->
+				<div class="kc-archive reveal" id="kidcode-archive">
+					<p class="kc-intro">KidCode is the Python program I've taught in Frisco since June 2024, and its posts here follow the program year by year: the first class of each year, every project class from <code>print()</code> to spaCy with a real student program (shown without names), and the 2026 bootcamp sessions I wrote up as they happened. Project classes are listed in curriculum order. <a href="#modal-kidcode-student-code">What three years of student code showed</a> · <a href="https://github.com/ddevatha1/kidcode" target="_blank" rel="noopener">KidCode on GitHub</a></p>
+					<div class="kc-years"><div class="kc-year" id="kidcode-2024"><h3>KidCode · 2024</h3><p class="kc-theme">Year 1: Foundations · 6 projects</p><ul><li><a href="#modal-kidcode-2024-class1"><span class="kc-when">June 5, 2024 · Class 1</span>First class: welcome to coding</a></li><li><a href="#modal-kidcode-p01"><span class="kc-when">Class 6</span>Project 1: Mad Libs Machine</a></li><li><a href="#modal-kidcode-p02"><span class="kc-when">Class 15</span>Project 2: Mystic Oracle</a></li><li><a href="#modal-kidcode-p03"><span class="kc-when">Class 20</span>Project 3: Guess the Number Deluxe</a></li><li><a href="#modal-kidcode-p04"><span class="kc-when">Class 25</span>Project 4: Wish List Manager</a></li><li><a href="#modal-kidcode-p05"><span class="kc-when">Class 30</span>Project 5: Trivia Quiz Show</a></li><li><a href="#modal-kidcode-p06"><span class="kc-when">Classes 36–39</span>Project 6: Escape the Haunted School</a></li></ul></div><div class="kc-year" id="kidcode-2025"><h3>KidCode · 2025</h3><p class="kc-theme">Year 2: Deeper Programming · 7 projects</p><ul><li><a href="#modal-kidcode-2025-class1"><span class="kc-when">June 5, 2025 · Class 1</span>First class: welcome back and skills check-up</a></li><li><a href="#modal-kidcode-p07"><span class="kc-when">Class 7</span>Project 7: Secret Agent Cipher Lab</a></li><li><a href="#modal-kidcode-p08"><span class="kc-when">Class 10</span>Project 8: Message Vault</a></li><li><a href="#modal-kidcode-p09"><span class="kc-when">Class 15</span>Project 9: Trivia Quiz 2.0</a></li><li><a href="#modal-kidcode-p10"><span class="kc-when">Class 20</span>Project 10: Virtual Pet Care</a></li><li><a href="#modal-kidcode-p11"><span class="kc-when">Classes 23–24</span>Project 11: Monster Battle Arena</a></li><li><a href="#modal-kidcode-p12"><span class="kc-when">Class 28</span>Project 12: Turtle Art Studio</a></li><li><a href="#modal-kidcode-p13"><span class="kc-when">Classes 36–39</span>Project 13: Book Detective</a></li></ul></div><div class="kc-year" id="kidcode-2026"><h3>KidCode · 2026</h3><p class="kc-theme">Year 3: NLP · 7 projects</p><ul><li><a href="#modal-kidcode-2026-class1"><span class="kc-when">June 5, 2026 · Class 1</span>First class: welcome back and Bug Safari revisited</a></li><li><a href="#modal-kidcode-p14"><span class="kc-when">Class 10</span>Project 14: Tokenizer Showdown</a></li><li><a href="#modal-kidcode-p15"><span class="kc-when">Classes 12–13</span>Project 15: Keyword Detective</a></li><li><a href="#modal-kidcode-p16"><span class="kc-when">Classes 16–17</span>Project 16: Auto Mad Libs</a></li><li><a href="#modal-kidcode-p17"><span class="kc-when">Classes 24–25</span>Project 17: Character Tracker</a></li><li><a href="#modal-kidcode-p18"><span class="kc-when">Classes 26–27</span>Project 18: Privacy Shield</a></li><li><a href="#modal-kidcode-p19"><span class="kc-when">Classes 31–32</span>Project 19: KidBot Brain</a></li><li><a href="#modal-kidcode-p20"><span class="kc-when">Classes 36–39</span>Project 20: NLP Capstone</a></li></ul><p class="kc-sub">Summer 2026 online bootcamp</p><ul><li><a href="#modal-crosscommunal"><span class="kc-when">June 2026 · Introductory meeting</span>Three Communities, One Meeting, and the Slow Work of Starting Something</a></li><li><a href="#modal-kidcode-online"><span class="kc-when">June 2026 · Bootcamp session 1</span>The First Class of Our Online Python Bootcamp</a></li><li><a href="#modal-kidcode-day2"><span class="kc-when">July 5, 2026 · Bootcamp session 2</span>Day 2: When I Tried to Teach Too Much in One Hour</a></li><li><a href="#modal-kidcode-day3"><span class="kc-when">July 11, 2026 · Bootcamp session 3</span>Day 3: What Happens When You Slow Down</a></li><li><a href="#modal-kidcode-day4"><span class="kc-when">July 18, 2026 · Bootcamp session 4</span>Day 4: The Bug That Became the Best Part of Class</a></li></ul></div></div>
+				</div>
+				<!-- KC:ARCHIVE:end -->
 				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
-					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">69</span></button>
+					<button type="button" class="filter-pill active" data-filter="all">All <span class="filter-count">91</span></button>
 					<button type="button" class="filter-pill" data-filter="india">India Outreach <span class="filter-count">38</span></button>
-					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">7</span></button>
+					<button type="button" class="filter-pill" data-filter="kidcode">KidCode <span class="filter-count">29</span></button>
 					<button type="button" class="filter-pill" data-filter="research">Research <span class="filter-count">22</span></button>
 					<button type="button" class="filter-pill" data-filter="competitions">Competitions <span class="filter-count">1</span></button>
 					<button type="button" class="filter-pill" data-filter="engineering">Engineering <span class="filter-count">1</span></button>
@@ -1437,23 +1477,16 @@
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
 
-					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="window.location.href='kidcode/'">
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-student-code').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">September 2026</span></div>
-						<h3>KidCode: Three Years of Teaching Python</h3>
-						<p>
-							The full record of KidCode since June 2024: 124 students, a 20-project curriculum that runs from print() to spaCy, one real student program for every project, and how every number was checked.
-						</p>
-						<div class="arrow">Open the KidCode archive →</div>
-					</article>
-
-					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="window.location.href='kidcode/evidence.html'">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">September 2026</span></div>
-						<h3>1,214 Programs Later: What Three Years of Student Code Revealed</h3>
+						<h3>1,214 Programs Later: What Three Years of Student Code Showed</h3>
 						<p>
 							I ran every project KidCode students have turned in: 1,214 programs from 124 students. Every one runs. Year 2 code triples in length and picks up classes, files and tests; Year 3 code gets shorter, because spaCy does the work. Plus what curriculum-aligned pre/post tests showed: 104 students' mean score rose from 41.7% to 58.8%.
 						</p>
 						<div class="arrow">Read full post →</div>
 					</article>
+					<!-- /KC:CARD -->
 
 					<article class="blog-card reveal" data-category="engineering" style="cursor:pointer;" onclick="document.getElementById('modal-shopai-architecture').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-engineering">Engineering</span><span class="meta-date">August 2026</span></div>
@@ -1607,6 +1640,94 @@
 						</p>
 						<div class="arrow">Read full post →</div>
 					</article>
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p20').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 36–39</span></div>
+						<h3>Project 20: NLP Capstone</h3>
+						<p>
+							The Year 3 capstone is Project 20, the last numbered project in KidCode, across Days 36 to 39. Students pitch a project from a short list (Story Explorer, KidBot Pro, Privacy Shield Pro, Time Traveler's News Desk) or an approved idea of their own, then build it over four days, with a beta test, an NER audit, and "How It Works" and "Limitations" cards.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p19').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 31–32</span></div>
+						<h3>Project 19: KidBot Brain</h3>
+						<p>
+							KidBot Brain is Project 19, across Days 31 and 32 of Year 3: a rule-based chatbot. Students list intents (greeting, joke, weather), write spaCy Matcher patterns for each, use named entities to pull out the city in "what's the weather in Paris", and add a fallback reply for everything else.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p18').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 26–27</span></div>
+						<h3>Project 18: Privacy Shield</h3>
+						<p>
+							Privacy Shield is Project 18, across Days 26 and 27 of Year 3. Students plan which kinds of entity to hide and what the placeholders look like, then replace entities token by token with token.ent_iob_ and text_with_ws, so that a two-word name becomes one [PERSON], not two.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p17').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 24–25</span></div>
+						<h3>Project 17: Character Tracker</h3>
+						<p>
+							Character Tracker is Project 17, across Days 24 and 25 of Year 3, at the end of the week on named entities: doc.ents, entity labels like PERSON and GPE, and a day spent on why the model is sometimes wrong. Students run a story through spaCy chapter by chapter and count who and where appears.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p16').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 16–17</span></div>
+						<h3>Project 16: Auto Mad Libs</h3>
+						<p>
+							Auto Mad Libs is Project 16, across Days 16 and 17 of Year 3, and it brings back the very first KidCode project. This time spaCy finds the nouns, verbs, adjectives or names in a story, the program asks the player for replacements, and the story is rebuilt with token.text_with_ws so the spacing and punctuation survive.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p15').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 12–13</span></div>
+						<h3>Project 15: Keyword Detective</h3>
+						<p>
+							Keyword Detective is Project 15, across Days 12 and 13 of Year 3. Students tokenize a chapter, drop stop words and punctuation, lemmatize, count with Counter, chart the top keywords, and compare the result with what their Year 2 Book Detective finds on the same text.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p14').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Class 10</span></div>
+						<h3>Project 14: Tokenizer Showdown</h3>
+						<p>
+							Tokenizer Showdown is Project 14, on Day 10 of Year 3, the NLP year. After a week on what a token is, token attributes, stop words and lemmas, students test three ways of splitting text on twenty tricky sentences (contractions, abbreviations, URLs, numbers, punctuation): Python's .split(), their own Year 2 cleaning code, and spaCy.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2026-class1').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 5, 2026</span></div>
+						<h3>Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong</h3>
+						<p>
+							Year 3 began on June 5, 2026. The first class reviews Years 1 and 2 (Python Olympics 2.0) and then returns to the Year 2 lesson that broke on purpose: Bug Safari, where splitting text on spaces and periods fails on sentences with abbreviations like "U.S.A." and contractions like "don't". 36 new students joined KidCode in 2026.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
 
 					<article class="blog-card reveal" data-category="india" style="cursor:pointer;" onclick="document.getElementById('modal-india-29').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-india">India Outreach</span><span class="meta-date">May 2026</span></div>
@@ -2041,6 +2162,94 @@
 						<div class="arrow">Read full post →</div>
 					</article>
 
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p13').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 36–39</span></div>
+						<h3>Project 13: Book Detective</h3>
+						<p>
+							Book Detective is the Year 2 capstone, Project 13, across Days 36 to 39. Students plan and build a TextAnalyzer class that loads a book, cleans the text, counts words with Counter, reports statistics, tests itself with assert, and saves a chart. The week before, the lesson called Bug Safari feeds sentences full of abbreviations like "U.S.A." to this kind of code and logs every way it breaks.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p12').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 28</span></div>
+						<h3>Project 12: Turtle Art Studio</h3>
+						<p>
+							Turtle Art Studio is Project 12, on Day 28 of Year 2, in the week on modules and libraries. Students use Python's built-in turtle module (turtle objects with methods like forward(), left() and begin_fill()) and write loops and functions that draw spirals, stars and a draw_flower() function.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p11').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 23–24</span></div>
+						<h3>Project 11: Monster Battle Arena</h3>
+						<p>
+							Monster Battle Arena is Project 11, across Days 23 and 24 of Year 2. A Monster parent class holds name, hit points and attack; FireMonster and WaterMonster inherit from it and override how damage works; a turn-based battle loop uses random damage and type advantages; and winners go into a saved Hall of Fame.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p10').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 20</span></div>
+						<h3>Project 10: Virtual Pet Care</h3>
+						<p>
+							Virtual Pet Care is Project 10, on Day 20 of Year 2, at the end of the first week of object-oriented programming: class, __init__, self, methods, and __str__. Students design the pet on paper, then code its hunger and happiness meters, a daily menu, and saving to JSON.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p09').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 15</span></div>
+						<h3>Project 9: Trivia Quiz 2.0</h3>
+						<p>
+							Trivia Quiz 2.0 is Project 9, on Day 15 of Year 2, and it is an upgrade of a Year 1 project on purpose. The questions move into a JSON file, high scores are saved to disk, input is protected with try/except, and every job gets its own function.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p08').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 10</span></div>
+						<h3>Project 8: Message Vault</h3>
+						<p>
+							Message Vault is Project 8, on Day 10 of Year 2. It combines the cipher from Project 7 with the week's file lessons (open(), with, read, write and append modes) into a password-protected diary that survives after the program closes.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p07').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 7</span></div>
+						<h3>Project 7: Secret Agent Cipher Lab</h3>
+						<p>
+							Secret Agent Cipher Lab opens Year 2 as Project 7, on Day 7. Students learn that letters are numbers (ord() and chr()), wrap around the alphabet with %, and write encrypt(text, shift) and decrypt(text, shift). Both functions are checked with assert tests.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2025-class1').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 5, 2025</span></div>
+						<h3>Class 1 of Year 2: Welcome Back</h3>
+						<p>
+							Year 2 began on June 5, 2025. Its first class is a review of all of Year 1, run as a relay of short challenges the curriculum calls the Python Olympics, plus setting up a tidy project folder for a year of longer programs. 53 new students joined KidCode in 2025.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
 					<article class="blog-card reveal" data-category="research" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-02').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">May 2025</span></div>
 						<h3>Narrowing In: Why Speech, and Why Dementia</h3>
@@ -2058,6 +2267,83 @@
 						</p>
 						<div class="arrow">Read full post →</div>
 					</article>
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p06').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Classes 36–39</span></div>
+						<h3>Project 6: Escape the Haunted School</h3>
+						<p>
+							Escape the Haunted School is the Year 1 capstone, Project 6. It runs across Days 36 to 39: planning the map on paper, storing rooms in a dictionary, a game loop with go north-style commands, an inventory, locked doors, and a win condition, followed by a day of peer playtesting.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p05').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 30</span></div>
+						<h3>Project 5: Trivia Quiz Show</h3>
+						<p>
+							Trivia Quiz Show is Project 5, on Day 30 of Year 1, at the end of the week on dictionaries. Questions and answers are stored as a list of dictionaries, answers are cleaned up with .lower() and .strip(), and the score prints at the end.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p04').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 25</span></div>
+						<h3>Project 4: Wish List Manager</h3>
+						<p>
+							Wish List Manager is Project 4, on Day 25 of Year 1. It follows a week on lists: indexing, slicing, list methods, looping over lists, and turning sentences into word lists. The curriculum asks students to design the menu on paper first and then test it in pairs.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p03').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 20</span></div>
+						<h3>Project 3: Guess the Number Deluxe</h3>
+						<p>
+							Guess the Number Deluxe is Project 3, on Day 20 of Year 1, at the end of the week on loops: while, for and range(), counters, break and continue.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p02').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 15</span></div>
+						<h3>Project 2: Mystic Oracle</h3>
+						<p>
+							Mystic Oracle is Project 2, on Day 15 of Year 1. It closes a week about decisions (booleans, if/else, elif, and reading error messages) and introduces the first library students ever import: random.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p01').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 6</span></div>
+						<h3>Project 1: Mad Libs Machine</h3>
+						<p>
+							Mad Libs Machine is the first complete program in KidCode. It comes on Day 6 of Year 1, after a week of print(), variables, arithmetic and input(), and it is the first time those pieces have to work together to make something another person would actually want to run.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
+					<!-- KC:CARD -->
+					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2024-class1').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 5, 2024</span></div>
+						<h3>Class 1: Welcome to Coding</h3>
+						<p>
+							KidCode's first class was on June 5, 2024. It was Day 1 of a 40-day Year 1 curriculum I wrote for students who had never programmed. The first class sets up everything that follows: what a program is, a working Python install, and a first line of code.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /KC:CARD -->
+
 
 				</div>
 			</section>
@@ -4205,6 +4491,7 @@
 						<p>
 							Four classes in, the thing I notice most isn't any single concept landing well. It's the shape of the room changing: more volunteers, more students finishing early and turning to help someone else, more questions that go slightly past what I asked. The else statement I forgot and the roller coaster bug a student accidentally built were both mistakes, mine and theirs, and both ended up teaching more than anything I'd actually planned. Going into the project and the quiz next week, I want to hold onto that: the plan matters less than what happens when it doesn't quite go to plan.
 						</p>
+						<!-- KC:PN --><nav class="kc-pn"><a href="#modal-kidcode-day3">← Day 3: What Happens When You Slow Down</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-student-code" class="kc-next">1,214 Programs Later: What Three Years of Student Code Showed →</a></nav>
 					</div>
 				</div>
 
@@ -4311,6 +4598,7 @@
 					<p>
 						The goal was never just to get through a curriculum. It's to get students to a point where they trust their own reasoning enough to try things without waiting for permission. Day two taught me that cramming four topics into an hour doesn't actually teach four topics. It teaches a fraction of one and leaves the rest as vague impressions. Day three, with a quarter of the material and four times the attention on each piece, is what I want more of. A young student working out <code>and</code> versus <code>or</code> on their own is a better outcome than a room that nodded along to twice as many slides.
 					</p>
+						<!-- KC:PN --><nav class="kc-pn"><a href="#modal-kidcode-day2">← Day 2: When I Tried to Teach Too Much in One Hour</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-day4" class="kc-next">Day 4: The Bug That Became the Best Part of Class →</a></nav>
 				</div>
 			</div>
 
@@ -4369,6 +4657,7 @@
 					<p>
 						The material I put together was solid. The problem was how much of it I tried to fit into sixty minutes. Teaching isn't just about how much ground you cover. It's about matching the pace of the people you're teaching. Day two was a reminder that four good concepts, poorly paced, don't land as well as two concepts taught with room to actually think them through. I went into day three with a much shorter list.
 					</p>
+						<!-- KC:PN --><nav class="kc-pn"><a href="#modal-kidcode-online">← The First Class of Our Online Python Bootcamp</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-day3" class="kc-next">Day 3: What Happens When You Slow Down →</a></nav>
 				</div>
 			</div>
 
@@ -4492,6 +4781,7 @@
 					<p>
 						Watching students write their first Python programs and have them actually work is a different thing from anticipating that it'll go well. The class confirmed the foundation is there. We'll build on it Saturday.
 					</p>
+						<!-- KC:PN --><nav class="kc-pn"><a href="#modal-crosscommunal">← Three Communities, One Meeting, and the Slow Work of Starting Something</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-day2" class="kc-next">Day 2: When I Tried to Teach Too Much in One Hour →</a></nav>
 				</div>
 			</div>
 
@@ -4609,6 +4899,7 @@
 					<p>
 						That's enough to work with.
 					</p>
+						<!-- KC:PN --><nav class="kc-pn"><a href="#modal-kidcode-p20">← Project 20: NLP Capstone</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-online" class="kc-next">The First Class of Our Online Python Bootcamp →</a></nav>
 				</div>
 			</div>
 
@@ -5692,12 +5983,1729 @@
 					<a href="#interests">Interests</a>
 					<a href="#research">Research</a>
 					<a href="#blog">Blog</a>
-					<a href="kidcode/">KidCode</a>
 				</div>
 			</div>
 		</footer>
 	</div>
 
+				<!-- KC:MODALS:start -->
+				<!-- KidCode archive: Class 1: Welcome to Coding -->
+				<div class="modal-overlay" id="modal-kidcode-2024-class1" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-2024-class1-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2024-class1').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-2024-class1-title">Class 1: Welcome to Coding</h1>
+						<div class="post-meta"><span>June 5, 2024</span><span>KidCode · Year 1 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p>KidCode's first class was on June 5, 2024. It was Day 1 of a 40-day Year 1 curriculum I wrote for students who had never programmed. The first class sets up everything that follows: what a program is, a working Python install, and a first line of code.</p>
+						<h2>What I taught</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 1: Meet Python &amp; Setup</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome to Coding &amp; Setup.</strong> What a program is, and the Input → Process → Output idea. Installing Python with the Thonny editor and touring the editor and the Shell. Writing a first program: print(&quot;Hello, KidCode!&quot;).</p><p><strong>Day 2: Print, Escapes &amp; Comments.</strong> Mastering print(), fixing quote errors, and using escape characters (\n, \t, \&#x27;). Adding # comments. Lab: &quot;Name Banner&quot; ASCII art.</p><p><strong>Day 3: Variables: Labeled Boxes.</strong> Storing information with =. Variable naming rules and snake_case, changing values, and checking data types with type() (str, int, float). Lab: &quot;About Me Card&quot; built from variables.</p><p><strong>Day 4: Number Crunching.</strong> Arithmetic operators (+, -, *, /, //, %, **) and PEMDAS. Integers vs. floats, and the TypeError from mixing text and numbers. Lab: &quot;Snack Shop Calculator&quot;.</p><p><strong>Day 5: Talking to the User.</strong> Asking questions with input(), converting answers with int() and float(), and formatting output with f-strings like f&quot;Hi, {name}!&quot;. Practice: &quot;Age in Dog Years&quot; and &quot;Tip Helper&quot;.</p></blockquote>
+						<h2>What students worked on</h2>
+						<p>The first program is the one in the curriculum: <code>print("Hello, KidCode!")</code>, typed into the Thonny editor and run. The rest of that first week builds one idea per day on top of it: escape characters and comments, then variables, arithmetic, and finally <code>input()</code> and f-strings. By Day 6 those pieces are enough for the first real project.</p>
+						<h2>The worksheet</h2><p>The first unit, covering Weeks 1–2, has a matched pre- and post-assessment written from the curriculum. The pre-assessment is taken before the unit starts, so it measures what students walk in knowing. This is its first page: <em>Python Basics &amp; Strings</em> (Weeks 1–2 (Days 1–10), 13 questions).</p><img src="img/kidcode/pre-2024-1.png" alt="First page of the Python Basics &amp; Strings pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 1, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where the first week led</h2>
+						<p>The week ends at <a href="#modal-kidcode-p01">Project 1: Mad Libs Machine</a> on Day 6, where input, variables and f-strings have to work together. 29 students turned one in.</p>
+						<h2>Looking back</h2>
+						<p>Reading the Day 1 plan from 2026, it's mostly setup, and that's deliberate. Every later project assumes students can open an editor, run a file and read what comes back. The idea that carried furthest from this week is the f-string from Day 5: every one of the 138 Year 1 programs students later turned in uses one.</p>
+<nav class="kc-pn"><span></span><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p01" class="kc-next">Project 1: Mad Libs Machine →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Class 1 of Year 2: Welcome Back -->
+				<div class="modal-overlay" id="modal-kidcode-2025-class1" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-2025-class1-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2025-class1').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-2025-class1-title">Class 1 of Year 2: Welcome Back</h1>
+						<div class="post-meta"><span>June 5, 2025</span><span>KidCode · Year 2 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p>Year 2 began on June 5, 2025. Its first class is a review of all of Year 1, run as a relay of short challenges the curriculum calls the Python Olympics, plus setting up a tidy project folder for a year of longer programs. 53 new students joined KidCode in 2025.</p>
+						<h2>What I taught</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 1: Level Up: Functions &amp; Lists</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome Back &amp; Skills Check-Up.</strong> Reviewing Year 1: variables, strings and methods, if statements, loops, lists, dictionaries, and functions. &quot;Python Olympics&quot; relay of short challenges. Setting up the workspace and a tidy KidCode project folder.</p><p><strong>Day 2: Functions Power-Up.</strong> Default values, keyword arguments such as greet(name=&quot;friend&quot;), and returning several values as a tuple. Functions that call other functions. Practice: &quot;Mini Math Toolkit&quot;.</p><p><strong>Day 3: Scope, Docstrings &amp; Testing.</strong> Local vs. global variables, docstrings, and testing with assert: write the test first, then the function. Lab: &quot;Bug- Proof Calculator&quot;, where every function passes its own tests.</p><p><strong>Day 4: List Power Tools.</strong> Nested lists, sorted() and .sort(key=...), enumerate(), zip(), and sets for unique values with set() and .add(). Practice: &quot;Class Leaderboard&quot; sorted by score.</p><p><strong>Day 5: List Comprehensions.</strong> One-line list builders like [x * 2 for x in numbers], filtering with if, and comprehensions over strings and words. Converting for loops into comprehensions. Practice: &quot;Word Shouter&quot; and &quot;Even Filter&quot;.</p></blockquote>
+						<h2>What students worked on</h2>
+						<p>The review covers variables, strings and their methods, <code>if</code> statements, loops, lists, dictionaries and functions, each as a short timed challenge. The rest of Week 1 upgrades the toolkit: default and keyword arguments, <code>assert</code> tests written before the function, <code>sorted()</code> with a <code>key</code>, <code>enumerate()</code>, <code>zip()</code>, sets and list comprehensions.</p>
+						<h2>The worksheet</h2><p>Year 2's first unit (Week 1) has its own matched pre- and post-assessment. This is the first page of the pre-assessment: <em>Functions &amp; List Power Tools</em> (Week 1 (Days 1–5), 10 questions).</p><img src="img/kidcode/pre-2025-1.png" alt="First page of the Functions &amp; List Power Tools pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 1, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where the first week led</h2>
+						<p>Week 2 opens with <a href="#modal-kidcode-p07">Project 7: Secret Agent Cipher Lab</a> on Day 7, the first Year 2 project, where the <code>assert</code> habit from Day 3 becomes part of every submission.</p>
+						<h2>Looking back</h2>
+						<p>Starting Year 2 with a review built from Year 1's own skills is the same move the whole curriculum makes: each year returns to earlier work at a higher level. By the end of the year, every Year 2 program students turned in defines functions, and about half carry their own <code>assert</code> tests. Both habits start in this first week.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p06">← Project 6: Escape the Haunted School</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p07" class="kc-next">Project 7: Secret Agent Cipher Lab →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong -->
+				<div class="modal-overlay" id="modal-kidcode-2026-class1" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-2026-class1-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2026-class1').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-2026-class1-title">Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong</h1>
+						<div class="post-meta"><span>June 5, 2026</span><span>KidCode · Year 3 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p>Year 3 began on June 5, 2026. The first class reviews Years 1 and 2 (Python Olympics 2.0) and then returns to the Year 2 lesson that broke on purpose: Bug Safari, where splitting text on spaces and periods fails on sentences with abbreviations like "U.S.A." and contractions like "don't". 36 new students joined KidCode in 2026.</p>
+						<h2>What I taught</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 1: Libraries, NLP &amp; Setup</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome Back &amp; Skills Check-Up.</strong> Reviewing Years 1 and 2 with &quot;Python Olympics 2.0&quot;: functions, classes, files, Counter, and comprehensions. Revisiting Bug Safari: why .split() fails on sentences with abbreviations like &quot;U.S.A.&quot; and &quot;don&#x27;t&quot;.</p><p><strong>Day 2: What Is a Library, Really?.</strong> Library vs. package vs. module vs. API. The anatomy of an import, and how libraries are built from the same functions and classes students wrote in Year 2. A &quot;Standing on Shoulders&quot; scavenger hunt on PyPI.</p><p><strong>Day 3: Installing Libraries Safely.</strong> Using pip install, pip list, and pip show, creating a virtual environment with python -m venv, and saving requirements.txt. Reading install errors. Lab: &quot;Project Sandbox&quot;, a clean environment for the year.</p><p><strong>Day 4: What Is NLP?.</strong> Natural Language Processing in daily life: autocorrect, voice assistants, translation, and search. Why language is hard for computers: ambiguity (&quot;I saw her duck&quot;), slang, and punctuation.</p><p><strong>Day 5: Meet spaCy.</strong> Installing spacy and the en_core_web_sm model, loading it with spacy.load(), and passing text to the nlp object to get a Doc made of Token objects. Lab: &quot;Hello, spaCy&quot;.</p></blockquote>
+						<h2>What students worked on</h2>
+						<p>The review covers the Year 2 toolkit: functions, classes, files, <code>Counter</code> and comprehensions. Then the week moves from Python to libraries: what a library, package, module and API are, installing libraries safely with pip and a virtual environment, what natural-language processing is, and on Day 5 loading spaCy for the first time.</p>
+						<h2>The worksheet</h2><p>Year 3's first unit (Weeks 1–2) has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment: <em>Libraries, spaCy &amp; Tokens</em> (Weeks 1–2 (Days 1–10), 11 questions).</p><img src="img/kidcode/pre-2026-1.png" alt="First page of the Libraries, spaCy &amp; Tokens pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 1, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where the first week led</h2>
+						<p>Week 2 ends at <a href="#modal-kidcode-p14">Project 14: Tokenizer Showdown</a> on Day 10, where students score their own Year 2 cleaning code against spaCy on twenty tricky sentences.</p>
+						<h2>Looking back</h2>
+						<p>Year 3 opens on a problem students have already met, rather than with a new tool. That order matters: every Year 3 program students turned in uses spaCy, and the first one exists to show exactly what the Year 2 approach couldn't do.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p13">← Project 13: Book Detective</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p14" class="kc-next">Project 14: Tokenizer Showdown →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 1: Mad Libs Machine -->
+				<div class="modal-overlay" id="modal-kidcode-p01" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p01-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p01').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p01-title">Project 1: Mad Libs Machine</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 6 of 40</span><span>29 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Mad Libs Machine is the first complete program in KidCode. It comes on Day 6 of Year 1, after a week of <code>print()</code>, variables, arithmetic and <code>input()</code>, and it is the first time those pieces have to work together to make something another person would actually want to run.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 2: Words As Data</p><blockquote class="kc-quote"><p><strong>Day 6: Lab: Mad Libs Machine.</strong> Project 1. Combining input(), variables, and f-strings into a complete program: a silly story with blanks that players fill in. Pair programming with driver and navigator roles.</p><p><strong>Day 7: Strings: Beads on a String.</strong> Strings as ordered characters. Measuring with len(), joining with +, repeating with *, and picking characters with word[0] and word[-1]. Understanding IndexError. Practice: &quot;Secret Initials&quot;.</p><p><strong>Day 8: Slicing &amp; Dicing Text.</strong> Slicing with [start:end] and reversing with [::-1]. Why strings are immutable, so new strings are built instead of edited. Practice: &quot;Nickname Maker&quot; and &quot;Backwards Words&quot;.</p><p><strong>Day 9: String Methods: Dot Magic.</strong> The idea of a method: an action that belongs to a piece of data, called with a dot. Using .upper(), .lower(), .title(), .strip(), .replace(), and .count(). Lab: &quot;Text Cleaner&quot;.</p><p><strong>Day 10: More Methods &amp; Text Toolbox.</strong> Using .split(), .join(), .find(), .startswith(), and in. Lab: &quot;Text Toolbox&quot;, which reports a sentence&#x27;s length, word count, and shout and whisper versions.</p></blockquote>
+						<h2>What students built</h2>
+						<p>29 students turned in a Mad Libs program, and they wrote 29 different stories between them: no two submissions share a theme. Every one of them builds the story with an f-string, and the median program asks the player for 7 words. The median program is 17 lines long, which is about right for a first project: short enough to finish in one class, long enough that the order of the lines matters.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project.</p>
+						<pre class="kc-code">print(&quot;A Day at the Zoo&quot;)
+print(&quot;Fill in the blanks and I will tell you a story!&quot;)
+print()
+
+animal1 = input(&quot;Give me an animal: &quot;)
+animal2 = input(&quot;Give me another animal: &quot;)
+adj1 = input(&quot;Give me an adjective: &quot;)
+verb1 = input(&quot;Give me a verb: &quot;)
+food = input(&quot;Give me a food: &quot;)
+teacher = input(&quot;Give me a teacher&#x27;s name: &quot;)
+num = input(&quot;Give me a number: &quot;)
+
+print()
+story = f&quot;&quot;&quot;
+Our class visited the zoo with {teacher}.
+The {adj1} {animal1} tried to {verb1} while the {animal2} stole my {food}.
+We saw {num} more animals before the bus came back.
+&quot;&quot;&quot;
+print(story)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">A Day at the Zoo
+Fill in the blanks and I will tell you a story!
+
+Give me an animal: penguin
+Give me another animal: giraffe
+Give me an adjective: sleepy
+Give me a verb: dance
+Give me a food: pancakes
+Give me a teacher&#x27;s name: Professor Owl
+Give me a number: 12
+
+
+Our class visited the zoo with Professor Owl.
+The sleepy penguin tried to dance while the giraffe stole my pancakes.
+We saw 12 more animals before the bus came back.</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Python Basics &amp; Strings</em> (Weeks 1–2 (Days 1–10), 13 questions).</p><img src="img/kidcode/pre-2024-1.png" alt="First page of the Python Basics &amp; Strings pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 1, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Mad Libs comes back two years later. In Year 3, <a href="#modal-kidcode-p16">Auto Mad Libs</a> hands the job of choosing the blanks to spaCy, which tags every word in a story with its part of speech. The Year 1 version is the baseline that makes the Year 3 version interesting.</p>
+						<h2>Looking back</h2>
+						<p>The thing this project teaches that a worksheet can't is sequence: every <code>input()</code> has to run before the story prints, and a student who puts the <code>print</code> first finds out immediately. It is also the first day of pair programming, with one student driving and one navigating, which is how most Year 1 labs ran afterward.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-2024-class1">← Class 1: Welcome to Coding</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p02" class="kc-next">Project 2: Mystic Oracle →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 2: Mystic Oracle -->
+				<div class="modal-overlay" id="modal-kidcode-p02" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p02-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p02').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p02-title">Project 2: Mystic Oracle</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 15 of 40</span><span>18 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Mystic Oracle is Project 2, on Day 15 of Year 1. It closes a week about decisions (booleans, <code>if</code>/<code>else</code>, <code>elif</code>, and reading error messages) and introduces the first library students ever import: <code>random</code>.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 3: Making Decisions</p><blockquote class="kc-quote"><p><strong>Day 11: Booleans &amp; Comparisons.</strong> The bool type, comparison operators (==, !=, &lt;, &gt;, &lt;=, &gt;=), and the difference between = and ==. &quot;Predict, Run, Explain&quot; cards.</p><p><strong>Day 12: if &amp; else: Choosing a Path.</strong> Writing if and else blocks, colons, and indentation as Python&#x27;s grammar. Fixing IndentationError. Practice: &quot;Password Checker&quot; and &quot;Can You Ride?&quot;, a theme park height checker.</p><p><strong>Day 13: elif, and, or, not.</strong> Multi-way choices with elif, combining conditions with and, or, and not, and placing an if inside another if. Practice: &quot;Grade Calculator&quot; and &quot;Movie Night Picker&quot;.</p><p><strong>Day 14: Bug Hunters: Debugging Skills.</strong> Reading error messages (SyntaxError, NameError, TypeError) from the bottom line up. Print debugging and stepping through code in Thonny. Lab: &quot;Bug Zoo&quot;, ten broken programs to fix.</p><p><strong>Day 15: Lab: Mystic Oracle.</strong> Project 2. A first library: import random, random.randint(), and random.choice(). A fortune- telling program with if/elif logic. Big idea: import borrows code someone else wrote.</p></blockquote>
+						<h2>What students built</h2>
+						<p>18 students built an oracle. All of them use <code>random.choice()</code>, 61% also use <code>random.randint()</code>, and the median program has 3 <code>elif</code> branches deciding which answer to give. 44% went a step further and wrapped the oracle in a loop so it keeps answering until the player types quit, which the curriculum doesn't formally teach until the next week.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project.</p>
+						<pre class="kc-code">import random
+
+print(&#x27;Merlin the Wizard stirs his bubbling cauldron three times...&#x27;)
+print(&quot;Ask me yes/no questions. Type &#x27;quit&#x27; to leave.&quot;)
+asked = 0
+while True:
+    question = input(&quot;Your question: &quot;)
+    if question.lower().strip() == &quot;quit&quot;:
+        break
+    asked = asked + 1
+    roll = random.randint(1, 6)
+    if roll == 1:
+        answer = &#x27;Without a doubt.&#x27;
+    elif roll == 2:
+        answer = &#x27;Reply hazy, try again.&#x27;
+    elif roll == 3:
+        answer = &#x27;Most likely yes.&#x27;
+    elif roll == 4:
+        answer = &#x27;Do not count on it.&#x27;
+    elif roll == 5:
+        answer = &#x27;It is certain.&#x27;
+    else:
+        answer = &#x27;My sources say no.&#x27;
+    extra = random.choice([&#x27;That is my final answer.&#x27;, &#x27;Trust me.&#x27;, &#x27;I have been right before.&#x27;])
+    print(f&quot;The cauldron declares: {answer} {extra}&quot;)
+print(f&quot;You asked {asked} questions. Merlin tips his pointy hat.&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Merlin the Wizard stirs his bubbling cauldron three times...
+Ask me yes/no questions. Type &#x27;quit&#x27; to leave.
+Your question: Will it rain tomorrow?
+The cauldron declares: Do not count on it. That is my final answer.
+Your question: Should I learn Python?
+The cauldron declares: My sources say no. I have been right before.
+Your question: Is my code bug-free?
+The cauldron declares: Most likely yes. That is my final answer.
+Your question: quit
+You asked 3 questions. Merlin tips his pointy hat.</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Decisions, Debugging &amp; Loops</em> (Weeks 3–4 (Days 11–20), 15 questions).</p><img src="img/kidcode/pre-2024-2.png" alt="First page of the Decisions, Debugging &amp; Loops pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The next project, <a href="#modal-kidcode-p03">Guess the Number Deluxe</a>, keeps <code>random</code> and adds the loop properly. <code>import</code> itself turns into a whole unit in Year 2 (modules, your own module, pip) and a whole year in Year 3, when the library is spaCy.</p>
+						<h2>Looking back</h2>
+						<p>The big idea the curriculum attaches to this day is that <code>import</code> borrows code someone else wrote. It's an early place to put that idea, but it pays off: by Year 3 every program starts with an import that does more work than the rest of the file.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p01">← Project 1: Mad Libs Machine</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p03" class="kc-next">Project 3: Guess the Number Deluxe →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 3: Guess the Number Deluxe -->
+				<div class="modal-overlay" id="modal-kidcode-p03" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p03-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p03').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p03-title">Project 3: Guess the Number Deluxe</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 20 of 40</span><span>25 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Guess the Number Deluxe is Project 3, on Day 20 of Year 1, at the end of the week on loops: <code>while</code>, <code>for</code> and <code>range()</code>, counters, <code>break</code> and <code>continue</code>.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 4: Loops</p><blockquote class="kc-quote"><p><strong>Day 16: while Loops: Repeat Until.</strong> Repeating code with while, loop conditions, and counters. Stopping runaway loops with Thonny&#x27;s Stop button. Practice: &quot;Countdown Rocket&quot; and &quot;Three Tries Password&quot;.</p><p><strong>Day 17: for Loops &amp; range().</strong> Looping with for and range() using one, two, and three arguments. Choosing between for (known count) and while (unknown count). Practice: &quot;Times Table Printer&quot;.</p><p><strong>Day 18: Counting &amp; Looping Through Text.</strong> The accumulator pattern for running totals and counters, and looping through every character of a string. Practice: &quot;Vowel Counter&quot;, &quot;Palindrome Checker&quot;, and &quot;Average Calculator&quot;.</p><p><strong>Day 19: break, continue &amp; Nested Loops.</strong> Leaving a loop early with break, skipping a round with continue, and loops inside loops for grids and patterns. Practice: &quot;Multiplication Grid&quot; and &quot;Star Triangle&quot;.</p><p><strong>Day 20: Lab: Guess the Number Deluxe.</strong> Project 3. Combining while, if/elif/else, random.randint(), and counters into a game with hints, a guess counter, and a play-again option.</p></blockquote>
+						<h2>What students built</h2>
+						<p>25 students turned in a guessing game. Every one of them has a play-again option; 76% limit the number of guesses; and 56% added "hot / warm / cold" hints on top of higher/lower, working out how far the guess was from the secret number. The median program is 46 lines, roughly three times the Mad Libs median, because it now has a loop inside a loop.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">while True:
+    rounds += 1
+    secret = random.randint(lo, hi)
+    guesses = 0
+    won = False
+    print(f&quot;Round {rounds}: guess the vault number from {lo} to {hi}.&quot;)
+    while True:
+        guess = int(input(&quot;Try number: &quot;))
+        guesses += 1
+        if guess == secret:
+            print(&quot;The vault clicks open. Cookies for everyone!&quot;)
+            won = True
+            break
+        if guess &lt; secret:
+            print(&quot;Not that low, dear.&quot;)
+        else:
+            print(&quot;Not that high, dear.&quot;)
+        gap = abs(guess - secret)
+        if gap &lt;= (hi - lo) // 10:
+            print(&quot;   You are HOT!&quot;)
+        elif gap &lt;= (hi - lo) // 4:
+            print(&quot;   You are warm.&quot;)
+        else:
+            print(&quot;   You are cold.&quot;)
+        if guesses &gt;= max_tries:
+            print(f&quot;The vault stayed shut. The number was {secret}.&quot;)
+            break
+    if won:
+        print(f&quot;{player} solved it in {guesses} guesses!&quot;)
+        if best is None or guesses &lt; best:
+            best = guesses
+            print(&quot;New personal best!&quot;)
+    answer = input(&quot;Another round? (yes/no) &quot;).lower()
+    if answer != &quot;yes&quot; and answer != &quot;y&quot;:
+        break</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">SECRET RECIPE VAULT
+Grandma hid the recipe behind a numbered lock.
+What is your name? Player
+Round 1: guess the vault number from 1 to 10.
+Try number: 5
+Not that low, dear.
+   You are cold.
+Try number: 9
+Not that high, dear.
+   You are warm.
+Try number: 8
+The vault clicks open. Cookies for everyone!
+Player solved it in 3 guesses!
+New personal best!
+Another round? (yes/no) no
+Best game: 3 guesses. Well played, Player.</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Decisions, Debugging &amp; Loops</em> (Weeks 3–4 (Days 11–20), 15 questions).</p><img src="img/kidcode/pre-2024-2.png" alt="First page of the Decisions, Debugging &amp; Loops pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The pattern here (a <code>while True</code> game loop with a way out) is the skeleton of the Year 1 capstone, <a href="#modal-kidcode-p06">Escape the Haunted School</a>, and of most menu-driven programs in Year 2.</p>
+						<h2>Looking back</h2>
+						<p>The code below is the first program in this archive where one loop runs inside another: an outer loop for rounds and an inner loop for guesses. It's the clearest sign in the Year 1 code that students were combining the week's ideas rather than using them one at a time.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p02">← Project 2: Mystic Oracle</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p04" class="kc-next">Project 4: Wish List Manager →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 4: Wish List Manager -->
+				<div class="modal-overlay" id="modal-kidcode-p04" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p04-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p04').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p04-title">Project 4: Wish List Manager</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 25 of 40</span><span>24 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Wish List Manager is Project 4, on Day 25 of Year 1. It follows a week on lists: indexing, slicing, list methods, looping over lists, and turning sentences into word lists. The curriculum asks students to design the menu on paper first and then test it in pairs.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 5: Lists &amp; Tuples</p><blockquote class="kc-quote"><p><strong>Day 21: Lists: Organizing Many Things.</strong> Creating lists with [], zero-based indexing, negative indexes, len(), and slicing with [start:end]. Comparing lists with strings. Practice: &quot;Top 5 Ranker&quot;.</p><p><strong>Day 22: List Methods &amp; Mutability.</strong> Changing lists in place with .append(), .insert(), .remove(), .pop(), .sort(), and .reverse(). Membership tests with in and not in. Practice: &quot;Playlist Editor&quot;.</p><p><strong>Day 23: Looping Over Lists &amp; Tuples.</strong> Using for item in my_list, building new lists in a loop, and finding totals, maximums, and minimums. Tuples as read-only lists, and unpacking like x, y = point.</p><p><strong>Day 24: Words in a List.</strong> Turning text into lists with .split() and back into text with .join(). Sorting words and finding the longest word. Lab: &quot;Sentence Scrambler&quot; that shuffles a sentence.</p><p><strong>Day 25: Lab: Wish List Manager.</strong> Project 4. A menu-driven program that combines while, input(), if/elif, and lists to add, remove, and show items. Design the menu on paper first, then test in pairs.</p></blockquote>
+						<h2>What students built</h2>
+						<p>24 students built a list manager. Every one of them can add and remove items and checks whether an item is already on the list before adding it again; 46% added a sort option. The median program is 50.5 lines. The themes vary (reading lists, grocery lists and more); all 24 submissions are different variants.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">while True:
+    print()
+    print(&quot;[A] Add a grocery item&quot;)
+    print(&quot;[R] Remove a grocery item&quot;)
+    print(&quot;[S] Show my grocery list&quot;)
+    print(&quot;[O] Sort A-Z&quot;)
+    print(&quot;[C] Clear everything&quot;)
+    print(&quot;[Q] Quit&quot;)
+    choice = input(&quot;Command: &quot;).lower().strip()
+    if choice == &#x27;a&#x27;:
+        item = input(&quot;Which grocery item do you want to add? &quot;)
+        if item in items:
+            print(item + &quot; is already on your grocery list!&quot;)
+        else:
+            items.append(item)
+            print(f&quot;Added {item}. Total: {len(items)}&quot;)
+    elif choice == &#x27;r&#x27;:
+        item = input(&quot;Which grocery item should I remove? &quot;)
+        if item in items:
+            items.remove(item)
+            print(f&quot;Removed {item}.&quot;)
+        else:
+            print(&quot;I could not find that one.&quot;)
+    elif choice == &#x27;s&#x27;:
+        if len(items) == 0:
+            print(&quot;Your grocery list is empty.&quot;)
+        else:
+            print(&quot;--- Your grocery list ---&quot;)
+            number = 1
+            for item in items:
+                print(f&quot;{number}. {item}&quot;)
+                number += 1
+    elif choice == &#x27;o&#x27;:
+        items.sort()
+        print(&quot;Sorted your grocery list from A to Z.&quot;)
+    elif choice == &#x27;c&#x27;:
+        sure = input(&quot;Really clear everything? (yes/no) &quot;).lower()
+        if sure == &quot;yes&quot;:
+            items = []
+            print(&quot;All clear!&quot;)
+        else:
+            print(&quot;Okay, I kept everything.&quot;)
+    elif choice == &quot;q&quot;:
+        print(goodbye)
+        break
+    else:
+        print(&quot;Sorry, I do not know that command.&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Time to plan the shopping run!
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: s
+--- Your grocery list ---
+1. milk
+2. bananas
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: a
+Which grocery item do you want to add? apples
+Added apples. Total: 3
+…
+--- Your grocery list ---
+1. apples
+2. milk
+
+[A] Add a grocery item
+[R] Remove a grocery item
+[S] Show my grocery list
+[O] Sort A-Z
+[C] Clear everything
+[Q] Quit
+Command: q
+Happy shopping!</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Lists, Tuples &amp; Dictionaries</em> (Weeks 5–6 (Days 21–30), 13 questions).</p><img src="img/kidcode/pre-2024-3.png" alt="First page of the Lists, Tuples &amp; Dictionaries pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 3, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Lists hold single values here. Two weeks later, in <a href="#modal-kidcode-p05">Trivia Quiz Show</a>, the list holds dictionaries, and in Year 2 the same data gets saved to files.</p>
+						<h2>Looking back</h2>
+						<p>This is the first program where a student has to think about what happens when the user does something unexpected, like removing an item that isn't there. Every submission handles that case, which is what the paper-first design step is for.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p03">← Project 3: Guess the Number Deluxe</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p05" class="kc-next">Project 5: Trivia Quiz Show →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 5: Trivia Quiz Show -->
+				<div class="modal-overlay" id="modal-kidcode-p05" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p05-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p05').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p05-title">Project 5: Trivia Quiz Show</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 30 of 40</span><span>24 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Trivia Quiz Show is Project 5, on Day 30 of Year 1, at the end of the week on dictionaries. Questions and answers are stored as a list of dictionaries, answers are cleaned up with <code>.lower()</code> and <code>.strip()</code>, and the score prints at the end.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 6: Dictionaries &amp; Data</p><blockquote class="kc-quote"><p><strong>Day 26: Dictionaries: Key-Value Pairs.</strong> Creating dictionaries with {}, looking up values by key, and adding, changing, and deleting entries. Checking keys with in, and why KeyError appears. Practice: &quot;Pet Profile&quot;.</p><p><strong>Day 27: Looping Through Dictionaries.</strong> Using .keys(), .values(), .items(), and .get() with default values. Counting with dictionaries and choosing between a list and a dictionary.</p><p><strong>Day 28: Lab: Word Counter.</strong> Using .split(), loops, and a dictionary to count how often each word appears in a sentence, then finding the most common word. A first taste of text analysis.</p><p><strong>Day 29: Lists of Dictionaries.</strong> Storing many records, such as students or trivia questions, as a list of dictionaries. Looping through records and reading fields by key. Practice: &quot;Class Directory&quot;.</p><p><strong>Day 30: Lab: Trivia Quiz Show.</strong> Project 5. Questions and answers stored in a list of dictionaries, with score keeping. Accepting messy answers with .lower() and .strip(), and printing the score with an f-string.</p></blockquote>
+						<h2>What students built</h2>
+						<p>24 students built a quiz. Every one stores its questions as a list of dictionaries and normalizes answers with both <code>.lower()</code> and <code>.strip()</code>, so "Lion " and "lion" count as the same answer. 29% added a lives system that ends the game early. The median program is 29 lines.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project.</p>
+						<pre class="kc-code">questions = [
+    {&quot;question&quot;: &quot;What kind of animal is Simba in The Lion King?&quot;, &quot;answer&quot;: &quot;lion&quot;},
+    {&quot;question&quot;: &quot;What is the name of the toy cowboy in Toy Story?&quot;, &quot;answer&quot;: &quot;woody&quot;},
+    {&quot;question&quot;: &quot;Which movie features a snowman named Olaf?&quot;, &quot;answer&quot;: &quot;frozen&quot;},
+    {&quot;question&quot;: &quot;What color is the Hulk?&quot;, &quot;answer&quot;: &quot;green&quot;},
+    {&quot;question&quot;: &quot;What is the name of Mickey Mouse&#x27;s dog?&quot;, &quot;answer&quot;: &quot;pluto&quot;},
+]
+
+name = input(&quot;What is your name? &quot;)
+print(f&quot;Welcome to Cartoon Corner, {name}! Host: Professor Pop&quot;)
+print(&quot;You have 3 lives. Miss a question and you lose one.&quot;)
+lives = 3
+score = 0
+number = 0
+
+while number &lt; len(questions) and lives &gt; 0:
+    current = questions[number]
+    reply = input(f&quot;Question {number + 1}: {current[&#x27;question&#x27;]} &quot;)
+    reply = reply.strip().lower()
+    if reply == current[&quot;answer&quot;]:
+        score += 1
+        print(&quot;Yes! Points for you.&quot;)
+    else:
+        lives -= 1
+        print(f&quot;Oops! Answer: {current[&#x27;answer&#x27;]}. Lives left: {lives}&quot;)
+    number += 1
+
+if lives == 0:
+    print(&quot;GAME OVER. You ran out of lives.&quot;)
+else:
+    print(&quot;You survived the whole show!&quot;)
+print(f&quot;Final score: {score}/{len(questions)}&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">What is your name? Player
+Welcome to Cartoon Corner, Player! Host: Professor Pop
+You have 3 lives. Miss a question and you lose one.
+Question 1: What kind of animal is Simba in The Lion King? lion
+Yes! Points for you.
+Question 2: What is the name of the toy cowboy in Toy Story? Woody
+Yes! Points for you.
+Question 3: Which movie features a snowman named Olaf? frozen
+Yes! Points for you.
+Question 4: What color is the Hulk? blue
+Oops! Answer: green. Lives left: 2
+Question 5: What is the name of Mickey Mouse&#x27;s dog? pluto
+Yes! Points for you.
+You survived the whole show!
+Final score: 4/5</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Lists, Tuples &amp; Dictionaries</em> (Weeks 5–6 (Days 21–30), 13 questions).</p><img src="img/kidcode/pre-2024-3.png" alt="First page of the Lists, Tuples &amp; Dictionaries pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 3, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>This project comes back in Year 2 as <a href="#modal-kidcode-p09">Trivia Quiz 2.0</a>, where the questions move into a JSON file, high scores are saved, and bad input is caught with <code>try</code>/<code>except</code>. Putting the two versions side by side is the clearest single picture of what changed between Year 1 and Year 2.</p>
+						<h2>Looking back</h2>
+						<p>Tolerating messy answers is a small thing that makes a program feel real to the person using it. It's also the first time students write code for a user who isn't them.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p04">← Project 4: Wish List Manager</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p06" class="kc-next">Project 6: Escape the Haunted School →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 6: Escape the Haunted School -->
+				<div class="modal-overlay" id="modal-kidcode-p06" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p06-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p06').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p06-title">Project 6: Escape the Haunted School</h1>
+						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Classes 36–39 of 40</span><span>18 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Escape the Haunted School is the Year 1 capstone, Project 6. It runs across Days 36 to 39: planning the map on paper, storing rooms in a dictionary, a game loop with <code>go north</code>-style commands, an inventory, locked doors, and a win condition, followed by a day of peer playtesting.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 1 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone I: Haunted School Plan.</strong> Project 6. Planning a text adventure called &quot;Escape the Haunted School&quot;: sketching the map, listing rooms, items, and win and lose conditions, and drawing a flowchart of the game loop.</p><p><strong>Day 37: Capstone II: Rooms &amp; Movement.</strong> Storing rooms in a dictionary, moving with go north commands, and writing the while game loop. Handling unknown commands politely, with a helper function for each action.</p><p><strong>Day 38: Capstone III: Items &amp; Inventory.</strong> Adding an inventory list, take and use commands, locked doors, and a win condition. Testing each feature as it is added and keeping a bug list.</p><p><strong>Day 39: Playtest &amp; Polish.</strong> Peer playtesting with &quot;Two Stars and a Wish&quot; feedback cards, bug fixing, and adding room descriptions and ASCII art. Stretch goals: health points and a secret ending.</p><p><strong>Day 40: Showcase Day &amp; Year Review.</strong> Presenting games to classmates and guests. A &quot;Python Trivia&quot; review relay of Weeks 1 to 8, a skills checklist, and a preview of Year 2: files, classes, and libraries.</p></blockquote>
+						<h2>What students built</h2>
+						<p>18 students finished the capstone. Every one has an inventory and at least one locked door, and the median game defines 5 functions, one per action. At a median of 129.5 lines, the capstone is by far the longest Year 1 program, more than twice the next longest. It is also where most Year 1 function definitions live: only 13% of all Year 1 programs define a function, and every one of them is a capstone.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">locked = {&quot;dark_gym&quot;: &#x27;lantern&#x27;, &quot;playground_gate&quot;: &#x27;silver key&#x27;}
+
+inventory = []
+current = &quot;kindergarten_hall&quot;
+score = 0
+visited = [&quot;kindergarten_hall&quot;]
+
+
+def show_room(room):
+    print()
+    print(&quot;== &quot; + rooms[room][&quot;name&quot;] + &quot; ==&quot;)
+    print(rooms[room][&quot;desc&quot;])
+    if rooms[room][&quot;item&quot;] is not None:
+        print(&quot;You spot: &quot; + rooms[room][&quot;item&quot;])
+    print(&quot;Exits: &quot; + &quot;, &quot;.join(rooms[room][&quot;exits&quot;]))
+
+
+def move(room, direction):
+    exits = rooms[room][&quot;exits&quot;]
+    if direction not in exits:
+        print(&quot;You bump into a wall. You can&#x27;t go that way.&quot;)
+        return room
+    target = exits[direction]
+    if target in locked:
+        print(f&quot;The way {direction} is locked. Maybe the {locked[target]} would help?&quot;)
+        return room
+    return target
+
+
+def take_item(room):
+    item = rooms[room][&quot;item&quot;]
+    if item is None:
+        print(&quot;There is nothing here to take.&quot;)
+        return False
+    inventory.append(item)
+    rooms[room][&quot;item&quot;] = None
+    print(f&quot;You picked up the {item}.&quot;)
+    return True
+
+
+def use_item(room, item):
+    if item not in inventory:
+        print(f&quot;You don&#x27;t have a {item}.&quot;)
+        return
+    for direction in rooms[room][&quot;exits&quot;]:
+        target = rooms[room][&quot;exits&quot;][direction]
+        if target in locked and locked[target] == item:
+            del locked[target]
+            print(f&quot;You use the {item}. The way {direction} clicks open!&quot;)
+            return
+    print(&quot;Nothing happens.&quot;)
+
+
+def show_inventory():
+    if len(inventory) == 0:
+        print(&quot;Your backpack is empty.&quot;)
+    else:
+        print(&quot;You are carrying: &quot; + &quot;, &quot;.join(inventory))</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Nap time went on way too long. Everyone else has vanished!
+Type help to see commands.
+
+== Kindergarten Hall ==
+Tiny coat hooks line the wall and a music box plays alone.
+Exits: north, east, south
+&gt; look
+
+== Kindergarten Hall ==
+Tiny coat hooks line the wall and a music box plays alone.
+Exits: north, east, south
+&gt; go north
+…
+Exits: south, east
+&gt; use lantern
+You use the lantern. The way east clicks open!
+&gt; go east
+
+== Dark Gym ==
+Basketballs bounce slowly in the shadows.
+Exits: west, north
+&gt; use silver key
+You use the silver key. The way north clicks open!
+&gt; go north
+
+== Playground Gate ==
+The rusty gate leads out to the street.
+Exits: south
+The gate swings open and you run home. You are FREE!
+Final score: 90
+Rating: Ghost Buster</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Functions &amp; the Haunted School</em> (Weeks 7–8 (Days 31–40), 11 questions).</p><img src="img/kidcode/pre-2024-4.png" alt="First page of the Functions &amp; the Haunted School pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 1 (2024). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Functions become the default in Year 2: every Year 2 program defines at least one. The rooms dictionary is also the ancestor of the classes in <a href="#modal-kidcode-p10">Virtual Pet Care</a> and <a href="#modal-kidcode-p11">Monster Battle Arena</a>.</p>
+						<h2>Looking back</h2>
+						<p>The capstone pulls together dictionaries, lists, loops, conditionals and functions in one file. It works as an end-of-year check because a student can't fake any one of those pieces: if <code>move()</code> doesn't respect locked doors, the game can be won without the key.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p05">← Project 5: Trivia Quiz Show</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-2025-class1" class="kc-next">Class 1 of Year 2: Welcome Back →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 7: Secret Agent Cipher Lab -->
+				<div class="modal-overlay" id="modal-kidcode-p07" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p07-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p07').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p07-title">Project 7: Secret Agent Cipher Lab</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 7 of 40</span><span>82 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Secret Agent Cipher Lab opens Year 2 as Project 7, on Day 7. Students learn that letters are numbers (<code>ord()</code> and <code>chr()</code>), wrap around the alphabet with <code>%</code>, and write <code>encrypt(text, shift)</code> and <code>decrypt(text, shift)</code>. Both functions are checked with <code>assert</code> tests.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 2: Secret Codes &amp; Files</p><blockquote class="kc-quote"><p><strong>Day 6: Character Codes &amp; Caesar Shifts.</strong> How computers store letters as numbers with ord() and chr(). Shifting letters with % to wrap around the alphabet and looping through strings. Practice: &quot;Letter Shifter&quot;.</p><p><strong>Day 7: Lab: Secret Agent Cipher Lab.</strong> Project 1. Building encrypt(text, shift) and decrypt(text, shift) with assert tests. Swapping coded messages, then a crack-the-code challenge that tries all 25 shifts.</p><p><strong>Day 8: Reading Files.</strong> Opening files with open() and with, then .read(), .readlines(), and for line in file. File paths, the working folder, and FileNotFoundError. Practice: &quot;Story Reader&quot;.</p><p><strong>Day 9: Writing &amp; Appending Files.</strong> File modes &quot;w&quot; and &quot;a&quot;, .write(), newline characters, and why write mode erases old data. Practice: &quot;Diary Logger&quot; adds an entry each run, and &quot;High Score Keeper&quot; remembers scores.</p><p><strong>Day 10: Lab: Message Vault.</strong> Project 2. Combining the cipher with file reading and writing: save secret messages to a file and unlock them with a password. Swap vaults and try to crack them.</p></blockquote>
+						<h2>What students built</h2>
+						<p>82 students built a cipher lab. Every submission includes <code>assert</code> tests and a brute-force cracker that tries all 25 shifts. Most do the letter arithmetic with <code>ord()</code> and <code>chr()</code>; the rest build a shifted alphabet with <code>str.maketrans</code> or look letters up by position in an alphabet string.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project.</p>
+						<pre class="kc-code">def encrypt(text, shift):
+    result = &quot;&quot;
+    for ch in text:
+        if ch.isupper():
+            result += chr((ord(ch) - ord(&quot;A&quot;) + shift) % 26 + ord(&quot;A&quot;))
+        elif ch.islower():
+            result += chr((ord(ch) - ord(&quot;a&quot;) + shift) % 26 + ord(&quot;a&quot;))
+        else:
+            result += ch
+    return result
+
+
+def decrypt(text, shift):
+    result = &quot;&quot;
+    for ch in text:
+        if ch.isupper():
+            result += chr((ord(ch) - ord(&quot;A&quot;) - shift) % 26 + ord(&quot;A&quot;))
+        elif ch.islower():
+            result += chr((ord(ch) - ord(&quot;a&quot;) - shift) % 26 + ord(&quot;a&quot;))
+        else:
+            result += ch
+    return result
+
+assert encrypt(&quot;abc&quot;, 1) == &quot;bcd&quot;
+assert encrypt(&quot;xyz&quot;, 3) == &quot;abc&quot;
+assert encrypt(&quot;Zebra&quot;, 1) == &quot;Afcsb&quot;
+assert encrypt(&quot;Hi 5!&quot;, 0) == &quot;Hi 5!&quot;
+assert decrypt(&quot;Khoor, Zruog!&quot;, 3) == &quot;Hello, World!&quot;
+assert decrypt(encrypt(&quot;Agent Test 007&quot;, 11), 11) == &quot;Agent Test 007&quot;
+print(&quot;All cipher tests passed!&quot;)
+
+
+mission = &quot;Bring the map to the bridge at midnight&quot;
+key = 7
+print(&quot;Codename: Agent Shadow&quot;)
+coded = encrypt(mission, key)
+print(&quot;Encrypted mission:&quot;, coded)
+print(&quot;Decrypted mission:&quot;, decrypt(coded, key))
+
+print()
+print(&quot;Rival spy cracking attempt:&quot;)
+for guess in range(1, 26):
+    print(f&quot;  shift {guess:2d}: {decrypt(coded, guess)}&quot;)
+    if guess == key:
+        print(&quot;  ^^^ that is readable English, the code is broken!&quot;)
+print(&quot;Lesson: only 25 keys means a Caesar cipher is easy to crack.&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">All cipher tests passed!
+Codename: Agent Shadow
+Encrypted mission: Iypun aol thw av aol iypknl ha tpkupnoa
+Decrypted mission: Bring the map to the bridge at midnight
+
+Rival spy cracking attempt:
+  shift  1: Hxotm znk sgv zu znk hxojmk gz sojtomnz
+  shift  2: Gwnsl ymj rfu yt ymj gwnilj fy rnisnlmy
+  shift  3: Fvmrk xli qet xs xli fvmhki ex qmhrmklx
+  shift  4: Eulqj wkh pds wr wkh eulgjh dw plgqljkw
+  shift  5: Dtkpi vjg ocr vq vjg dtkfig cv okfpkijv
+  shift  6: Csjoh uif nbq up uif csjehf bu njeojhiu
+  shift  7: Bring the map to the bridge at midnight
+  ^^^ that is readable English, the code is broken!
+  shift  8: Aqhmf sgd lzo sn sgd aqhcfd zs lhcmhfgs
+  shift  9: Zpgle rfc kyn rm rfc zpgbec yr kgblgefr
+  shift 10: Yofkd qeb jxm ql qeb yofadb xq jfakfdeq
+  shift 11: Xnejc pda iwl pk pda xnezca wp iezjecdp
+  shift 12: Wmdib ocz hvk oj ocz wmdybz vo hdyidbco
+  shift 13: Vlcha nby guj ni nby vlcxay un gcxhcabn
+…</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Secret Codes &amp; Files</em> (Week 2 (Days 6–10), 9 questions).</p><img src="img/kidcode/pre-2025-2.png" alt="First page of the Secret Codes &amp; Files pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Three days later, <a href="#modal-kidcode-p08">Message Vault</a> puts this cipher to work on files. The cracker, which shows that 25 keys is no security at all, is a first taste of the "why is this broken?" thinking that Year 3 is built on.</p>
+						<h2>Looking back</h2>
+						<p>This is where testing enters the curriculum, attached to the first functions students write in Year 2. The median Year 2 program is three times the length of the median Year 1 program, and tests like these are part of how students kept longer programs working.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-2025-class1">← Class 1 of Year 2: Welcome Back</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p08" class="kc-next">Project 8: Message Vault →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 8: Message Vault -->
+				<div class="modal-overlay" id="modal-kidcode-p08" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p08-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p08').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p08-title">Project 8: Message Vault</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 10 of 40</span><span>75 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Message Vault is Project 8, on Day 10 of Year 2. It combines the cipher from Project 7 with the week's file lessons (<code>open()</code>, <code>with</code>, read, write and append modes) into a password-protected diary that survives after the program closes.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 2: Secret Codes &amp; Files</p><blockquote class="kc-quote"><p><strong>Day 6: Character Codes &amp; Caesar Shifts.</strong> How computers store letters as numbers with ord() and chr(). Shifting letters with % to wrap around the alphabet and looping through strings. Practice: &quot;Letter Shifter&quot;.</p><p><strong>Day 7: Lab: Secret Agent Cipher Lab.</strong> Project 1. Building encrypt(text, shift) and decrypt(text, shift) with assert tests. Swapping coded messages, then a crack-the-code challenge that tries all 25 shifts.</p><p><strong>Day 8: Reading Files.</strong> Opening files with open() and with, then .read(), .readlines(), and for line in file. File paths, the working folder, and FileNotFoundError. Practice: &quot;Story Reader&quot;.</p><p><strong>Day 9: Writing &amp; Appending Files.</strong> File modes &quot;w&quot; and &quot;a&quot;, .write(), newline characters, and why write mode erases old data. Practice: &quot;Diary Logger&quot; adds an entry each run, and &quot;High Score Keeper&quot; remembers scores.</p><p><strong>Day 10: Lab: Message Vault.</strong> Project 2. Combining the cipher with file reading and writing: save secret messages to a file and unlock them with a password. Swap vaults and try to crack them.</p></blockquote>
+						<h2>What students built</h2>
+						<p>75 students built a vault. Every one opens files with <code>with open(...)</code>, checks whether the vault already exists before creating it, and limits password attempts. The median program is 90 lines. In the program below, most of that length is small single-purpose functions: one to save, one to load, one to check the password.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def caesar(text, shift):
+    result = &quot;&quot;
+    i = 0
+    while i &lt; len(text):
+        code = ord(text[i])
+        if 65 &lt;= code &lt;= 90:
+            code = (code - 65 + shift) % 26 + 65
+        elif 97 &lt;= code &lt;= 122:
+            code = (code - 97 + shift) % 26 + 97
+        result += chr(code)
+        i += 1
+    return result
+
+
+def encrypt(text, shift):
+    return caesar(text, shift)
+
+
+def decrypt(text, shift):
+    return caesar(text, -shift)
+<span class="kc-gap">    …</span>
+PASSWORD_FILE = &quot;vault_password.txt&quot;
+
+
+def vault_exists():
+    return os.path.exists(PASSWORD_FILE)
+
+
+def create_vault(record):
+    with open(PASSWORD_FILE, &quot;w&quot;) as f:
+        f.write(record)
+
+
+def read_record():
+    with open(PASSWORD_FILE) as f:
+        return f.read().strip()
+
+
+def count_messages():
+    n = 0
+    while os.path.exists(&quot;vault_msg_&quot; + str(n + 1) + &quot;.txt&quot;):
+        n += 1
+    return n
+
+
+def save_message(text, shift):
+    number = count_messages() + 1
+    with open(&quot;vault_msg_&quot; + str(number) + &quot;.txt&quot;, &quot;w&quot;) as f:
+        f.write(encrypt(text, shift))
+
+
+def load_messages(shift):
+    found = []
+    for number in range(1, count_messages() + 1):
+        with open(&quot;vault_msg_&quot; + str(number) + &quot;.txt&quot;) as f:
+            found.append(decrypt(f.read(), shift))
+    return found
+
+
+MAX_TRIES = 3
+
+
+def ask_for_password():
+    record = read_record()
+    for attempt in range(1, MAX_TRIES + 1):
+        password = input(&quot;Vault password: &quot;)
+        if check_password(password, record):
+            return password
+        print(f&quot;Wrong password ({attempt}/{MAX_TRIES}).&quot;)
+    return None</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">--- My Private Diary Vault ---
+No vault found, so let&#x27;s build one.
+Choose a password: kidcode
+Vault created!
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 1
+Vault password: kidcode
+Type your diary entry: Meet at the library at noon
+Locked away safely.
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 2
+Vault password: kidcode
+ * Meet at the library at noon
+
+1) Write a diary entry
+2) Read my diary
+3) Quit
+Pick 1, 2 or 3: 3
+Diary locked. Sweet dreams!</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Secret Codes &amp; Files</em> (Week 2 (Days 6–10), 9 questions).</p><img src="img/kidcode/pre-2025-2.png" alt="First page of the Secret Codes &amp; Files pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>File persistence carries through the rest of Year 2: quiz high scores in <a href="#modal-kidcode-p09">Trivia Quiz 2.0</a>, pets saved as JSON in <a href="#modal-kidcode-p10">Virtual Pet Care</a>, and a Hall of Fame in <a href="#modal-kidcode-p11">Monster Battle Arena</a>.</p>
+						<h2>Looking back</h2>
+						<p>A program that remembers things between runs is a different kind of program. The code below is also a good picture of the Year 2 habit of splitting work into functions small enough to test one at a time.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p07">← Project 7: Secret Agent Cipher Lab</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p09" class="kc-next">Project 9: Trivia Quiz 2.0 →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 9: Trivia Quiz 2.0 -->
+				<div class="modal-overlay" id="modal-kidcode-p09" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p09-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p09').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p09-title">Project 9: Trivia Quiz 2.0</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 15 of 40</span><span>83 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Trivia Quiz 2.0 is Project 9, on Day 15 of Year 2, and it is an upgrade of a Year 1 project on purpose. The questions move into a JSON file, high scores are saved to disk, input is protected with <code>try</code>/<code>except</code>, and every job gets its own function.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 3: Errors &amp; Data Formats</p><blockquote class="kc-quote"><p><strong>Day 11: try/except: When Things Go Wrong.</strong> Catching errors with try and except, and common exceptions (ValueError, ZeroDivisionError, KeyError, FileNotFoundError). Reading tracebacks. Practice: &quot;Safe Divider&quot;.</p><p><strong>Day 12: Bulletproof Input.</strong> Validation loops that re-ask until the input is good, else and finally blocks, and a reusable ask_number() function that no silly answer can break.</p><p><strong>Day 13: CSV Files.</strong> Reading and writing spreadsheet-style .csv files with the csv module, rows as lists, and DictReader for rows as dictionaries. Practice: &quot;Pet Registry&quot;.</p><p><strong>Day 14: JSON Files.</strong> Saving and loading structured data with json.dump() and json.load(). How dictionaries and lists map onto JSON. Practice: &quot;Game Settings&quot; and a &quot;Quiz Question Bank&quot;.</p><p><strong>Day 15: Lab: Trivia Quiz 2.0.</strong> Project 3. Upgrading Year 1&#x27;s quiz: questions loaded from a JSON file, high scores saved to disk, input protected with try/except, and one function per job. Pair review with a checklist.</p></blockquote>
+						<h2>What students built</h2>
+						<p>83 students built the upgraded quiz. Every one loads its questions with <code>json.load()</code> and catches both a missing file (<code>FileNotFoundError</code>) and a damaged one (<code>JSONDecodeError</code>). A program from this week keeps working when its data is broken, and the Year 1 version would simply have crashed. The median program is 98 lines, against 29 for the Year 1 quiz.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">SCORE_FILE = &quot;high_scores.json&quot;
+
+
+QUESTION_FILE = &quot;questions.json&quot;
+
+
+def load_questions():
+    try:
+        with open(QUESTION_FILE) as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(&quot;No question file yet, creating one...&quot;)
+        with open(QUESTION_FILE, &quot;w&quot;) as f:
+            json.dump(DEFAULT_QUESTIONS, f, indent=2)
+        return DEFAULT_QUESTIONS
+    except json.JSONDecodeError:
+        print(&quot;The question file is damaged, using the built-in questions.&quot;)
+        return DEFAULT_QUESTIONS
+
+
+def load_high_scores():
+    try:
+        with open(SCORE_FILE) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+
+
+def save_high_scores(scores):
+    with open(SCORE_FILE, &quot;w&quot;) as f:
+        json.dump(scores, f, indent=2)
+
+
+def score_of(entry):
+    return entry[&quot;score&quot;]
+
+
+def add_score(scores, name, score):
+    scores.append({&quot;name&quot;: name, &quot;score&quot;: score})
+    scores.sort(key=score_of, reverse=True)
+    return scores[:5]
+
+
+def ask_question(item):
+    reply = input(item[&quot;question&quot;] + &quot; &quot;).strip().lower()
+    if reply in item[&quot;answers&quot;]:
+        print(&quot;Correct!&quot;)
+        return True
+    print(&quot;Sorry, it was &quot; + item[&quot;answers&quot;][0] + &quot;.&quot;)
+    return False
+
+
+def show_high_scores(scores):
+    print(&quot;--- HIGH SCORES ---&quot;)
+    for place, entry in enumerate(scores, start=1):
+        print(f&quot;{place}. {entry[&#x27;name&#x27;]:&lt;12} {entry[&#x27;score&#x27;]}&quot;)
+
+
+def play_round(questions):
+    score = 0
+    for item in questions:
+        if ask_question(item):
+            score += 1
+    return score</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">No question file yet, creating one...
+Player name: Player
+What has keys but cannot open locks? piano
+Correct!
+What gets wetter the more it dries? towel
+Correct!
+What has hands but cannot clap? clock
+Correct!
+What has a neck but no head? bottle
+Correct!
+What can you catch but never throw? a ball
+Sorry, it was cold.
+Player scored 4/5
+--- HIGH SCORES ---
+1. Player       4
+Play again? (yes/no) no</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Errors &amp; Data Formats</em> (Week 3 (Days 11–15), 8 questions).</p><img src="img/kidcode/pre-2025-3.png" alt="First page of the Errors &amp; Data Formats pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 3, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Compare with <a href="#modal-kidcode-p05">Trivia Quiz Show</a> from Year 1. The same idea, a quiz, now carries files and error handling; the program below also sorts scores with a <code>key</code> function to keep a top-five leaderboard.</p>
+						<h2>Looking back</h2>
+						<p>Rebuilding a program students already wrote is the most direct way I know to show them what they've learned, because the only thing that changed is them. It also makes the comparison easy to check in the code: same project, more than three times the median length.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p08">← Project 8: Message Vault</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p10" class="kc-next">Project 10: Virtual Pet Care →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 10: Virtual Pet Care -->
+				<div class="modal-overlay" id="modal-kidcode-p10" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p10-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p10').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p10-title">Project 10: Virtual Pet Care</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 20 of 40</span><span>60 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Virtual Pet Care is Project 10, on Day 20 of Year 2, at the end of the first week of object-oriented programming: <code>class</code>, <code>__init__</code>, <code>self</code>, methods, and <code>__str__</code>. Students design the pet on paper, then code its hunger and happiness meters, a daily menu, and saving to JSON.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 4: Objects &amp; Classes</p><blockquote class="kc-quote"><p><strong>Day 16: Everything Is an Object.</strong> Discovering that str, list, and dict are classes and that methods are functions belonging to objects. Exploring with type(), dir(), and help(). A class is a blueprint, like a cookie cutter.</p><p><strong>Day 17: Your First Class.</strong> Writing a class with class, __init__, self, and attributes, then creating several instances. Practice: a Pet class with name, species, and energy.</p><p><strong>Day 18: Methods &amp; Readable Objects.</strong> Giving objects behaviors: methods like feed() and play() that change attributes, and methods that return values. Using __str__ so print(pet) is readable.</p><p><strong>Day 19: Objects Working Together.</strong> Storing objects in lists, objects that hold other objects (a Team with Players), and class vs. instance attributes. Practice: &quot;Zoo Manager&quot;.</p><p><strong>Day 20: Lab: Virtual Pet Care.</strong> Project 4. Designing a pet on paper, then coding hunger and happiness meters, a daily menu of actions, and saving the pet to a JSON file. Classmates trade pets and keep them alive.</p></blockquote>
+						<h2>What students built</h2>
+						<p>60 students built a pet. Every one defines a class with <code>__str__</code>, so <code>print(pet)</code> shows something readable, and saves the pet to JSON so it is still there tomorrow. The median program is 84 lines.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">class Pet:
+    def __init__(self, name, hunger=5, happiness=5, coins=0, food_stock=3, day=1):
+        self.name = name
+        self.hunger = hunger
+        self.happiness = happiness
+        self.coins = coins
+        self.food_stock = food_stock
+        self.day = day
+
+    def feed(self):
+        if self.food_stock == 0:
+            print(&quot;No food left! Buy some first.&quot;)
+            return
+        self.food_stock -= 1
+        self.hunger = max(0, self.hunger - 4)
+        print(f&quot;{self.name} devours tuna. Meow!&quot;)
+
+    def play(self):
+        self.happiness = min(10, self.happiness + 3)
+        self.hunger = min(10, self.hunger + 1)
+        self.coins += 2
+        print(f&quot;{self.name} plays with a feather wand and earns 2 coins.&quot;)
+
+    def rest(self):
+        self.coins += 1
+        self.happiness = min(10, self.happiness + 1)
+        print(f&quot;{self.name} rests in the sunny windowsill and finds 1 coin.&quot;)
+
+    def buy_food(self):
+        if self.coins &gt;= 3:
+            self.coins -= 3
+            self.food_stock += 2
+            print(&quot;Bought 2 servings of tuna for 3 coins.&quot;)
+        else:
+            print(&quot;Not enough coins. Food costs 3.&quot;)
+
+    def end_day(self):
+        self.day += 1
+        self.hunger = min(10, self.hunger + 2)
+        self.happiness = max(0, self.happiness - 1)
+
+    def __str__(self):
+        return (f&quot;{self.name} | day {self.day} | hunger {self.hunger} | happy {self.happiness} | &quot;
+                f&quot;coins {self.coins} | food {self.food_stock}&quot;)
+
+
+def save_game(pet):
+    data = {&quot;name&quot;: pet.name, &quot;hunger&quot;: pet.hunger, &quot;happiness&quot;: pet.happiness,
+            &quot;coins&quot;: pet.coins, &quot;food_stock&quot;: pet.food_stock, &quot;day&quot;: pet.day}
+    with open(SAVE_FILE, &quot;w&quot;) as f:
+        json.dump(data, f)
+
+
+def load_game():
+    with open(SAVE_FILE) as f:
+        d = json.load(f)
+    return Pet(d[&quot;name&quot;], d[&quot;hunger&quot;], d[&quot;happiness&quot;], d[&quot;coins&quot;], d[&quot;food_stock&quot;], d[&quot;day&quot;])</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Name your cat: Mochi
+
+Mochi | day 1 | hunger 5 | happy 5 | coins 0 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 2
+Mochi plays with a feather wand and earns 2 coins.
+
+Mochi | day 1 | hunger 6 | happy 8 | coins 2 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 2
+Mochi plays with a feather wand and earns 2 coins.
+
+Mochi | day 1 | hunger 7 | happy 10 | coins 4 | food 3
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 4
+Bought 2 servings of tuna for 3 coins.
+
+Mochi | day 2 | hunger 9 | happy 9 | coins 1 | food 5
+1 feed | 2 play (+2 coins) | 3 rest (+1 coin) | 4 buy food | 5 stats | q quit
+Choice: 1
+Mochi devours tuna. Meow!
+
+…</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Objects, Classes &amp; Inheritance</em> (Weeks 4–5 (Days 16–25), 8 questions).</p><img src="img/kidcode/pre-2025-4.png" alt="First page of the Objects, Classes &amp; Inheritance pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The next project, <a href="#modal-kidcode-p11">Monster Battle Arena</a>, takes the class and gives it children. Classes then reappear in Year 3 whenever a program has to keep track of several things at once: the <a href="#modal-kidcode-p20">capstone</a> projects are all built around one.</p>
+						<h2>Looking back</h2>
+						<p>Object-oriented programming is the biggest conceptual jump in Year 2, and it shows up plainly in the code: no Year 1 program defines a class, while nearly half of all Year 2 programs do.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p09">← Project 9: Trivia Quiz 2.0</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p11" class="kc-next">Project 11: Monster Battle Arena →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 11: Monster Battle Arena -->
+				<div class="modal-overlay" id="modal-kidcode-p11" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p11-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p11').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p11-title">Project 11: Monster Battle Arena</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Classes 23–24 of 40</span><span>81 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Monster Battle Arena is Project 11, across Days 23 and 24 of Year 2. A <code>Monster</code> parent class holds name, hit points and attack; <code>FireMonster</code> and <code>WaterMonster</code> inherit from it and override how damage works; a turn-based battle loop uses random damage and type advantages; and winners go into a saved Hall of Fame.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 5: Inheritance &amp; The Arena</p><blockquote class="kc-quote"><p><strong>Day 21: Inheritance: Parents &amp; Children.</strong> Child classes that inherit from a parent class, super().__init__(), and overriding methods. Practice: an Animal parent with Dog and Cat children that each speak() differently.</p><p><strong>Day 22: Polymorphism &amp; isinstance().</strong> Treating different objects the same way: looping through a mixed list of animals and calling the same method. Using isinstance() and planning class families on paper.</p><p><strong>Day 23–24: Lab: Monster Battle Arena.</strong> Project 5. A Monster parent class with name, hp, and attack, plus FireMonster and WaterMonster children. A turn-based battle loop with random damage, type advantages, and a saved &quot;Hall of Fame&quot;.</p><p><strong>Day 25: Code Review &amp; Bug Bounty.</strong> Swapping projects and hunting bugs with a checklist: clear names, docstrings, functions that do one job, and passing tests. Kind, specific feedback, then refactoring.</p></blockquote>
+						<h2>What students built</h2>
+						<p>81 students built an arena. Every one uses inheritance with <code>super().__init__()</code>, checks types with <code>isinstance()</code> to decide who has the advantage, and saves a Hall of Fame. This project is where all of the inheritance in the whole corpus lives. At a median of 120 lines, it is tied for the longest project of Year 2.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">class Monster:
+    def __init__(self, name, hp, attack):
+        self.name = name
+        self.hp = hp
+        self.max_hp = hp
+        self.attack = attack
+        self.guarding = False
+
+    def is_alive(self):
+        return self.hp &gt; 0
+
+    def roll_damage(self):
+        return random.randint(self.attack - 3, self.attack + 3)
+
+    def advantage_against(self, other):
+        return 1.0
+
+    def take_damage(self, amount):
+        if self.guarding:
+            amount = amount // 2
+            self.guarding = False
+        self.hp = max(0, self.hp - amount)
+
+    def hit(self, other):
+        damage = self.roll_damage()
+        damage = max(1, int(damage * self.advantage_against(other)))
+        other.take_damage(damage)
+        print(f&quot;{self.name} hits {other.name} for {damage} damage!&quot;)
+        return damage
+
+    def __str__(self):
+        return f&quot;{self.name} [{self.__class__.__name__}] HP {self.hp}/{self.max_hp}&quot;
+
+
+class FireMonster(Monster):
+    def __init__(self, name, hp, attack):
+        super().__init__(name, hp, attack)
+        self.element = &quot;fire&quot;
+
+    def advantage_against(self, other):
+        if isinstance(other, WaterMonster):
+            return 0.6
+        return 1.0
+
+
+class WaterMonster(Monster):
+    def __init__(self, name, hp, attack):
+        super().__init__(name, hp, attack)
+        self.element = &quot;water&quot;
+
+    def advantage_against(self, other):
+        if isinstance(other, FireMonster):
+            return 1.5
+        return 1.0</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">=== Welcome to the Backyard Battle Bowl ===
+*** HALL OF FAME ***
+(nobody yet)
+
+1. Firefly Fred [FireMonster] HP 47/47
+2. Hot Dog Hank [FireMonster] HP 50/50
+3. Toasty Toad [FireMonster] HP 55/55
+4. Sprinkler Sam [WaterMonster] HP 56/56
+5. Puddle Pete [WaterMonster] HP 53/53
+6. Garden Gnome Gus [WaterMonster] HP 54/54
+Choose your monster (1-6): 4
+You chose Sprinkler Sam!
+
+##### FIGHT 1 OF 3: Sprinkler Sam vs Puddle Pete #####
+
+--- Round 1 ---
+Sprinkler Sam [WaterMonster] HP 56/56
+Puddle Pete [WaterMonster] HP 53/53
+Sprinkler Sam hits Puddle Pete for 10 damage!
+Puddle Pete hits Sprinkler Sam for 13 damage!
+
+--- Round 2 ---
+Sprinkler Sam [WaterMonster] HP 43/56
+Puddle Pete [WaterMonster] HP 43/53
+Sprinkler Sam hits Puddle Pete for 13 damage!
+Puddle Pete hits Sprinkler Sam for 10 damage!
+…</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Objects, Classes &amp; Inheritance</em> (Weeks 4–5 (Days 16–25), 8 questions).</p><img src="img/kidcode/pre-2025-4.png" alt="First page of the Objects, Classes &amp; Inheritance pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Day 25, the day after, is Code Review & Bug Bounty: students swap projects and review each other's code against a checklist. The Year 2 capstone, <a href="#modal-kidcode-p13">Book Detective</a>, is also built around a single class.</p>
+						<h2>Looking back</h2>
+						<p>The code below shows polymorphism in about the smallest space it can take: the battle loop calls <code>hit()</code> the same way on every monster, and each subclass decides for itself what that means.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p10">← Project 10: Virtual Pet Care</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p12" class="kc-next">Project 12: Turtle Art Studio →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 12: Turtle Art Studio -->
+				<div class="modal-overlay" id="modal-kidcode-p12" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p12-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p12').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p12-title">Project 12: Turtle Art Studio</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 28 of 40</span><span>37 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Turtle Art Studio is Project 12, on Day 28 of Year 2, in the week on modules and libraries. Students use Python's built-in <code>turtle</code> module (turtle objects with methods like <code>forward()</code>, <code>left()</code> and <code>begin_fill()</code>) and write loops and functions that draw spirals, stars and a <code>draw_flower()</code> function.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 6: Libraries &amp; Modules</p><blockquote class="kc-quote"><p><strong>Day 26: Modules &amp; the Standard Library.</strong> A module is a .py file of ready-made tools and a library is a collection of them. Using import, from ... import, and as. Touring math, random, datetime, string, and collections.</p><p><strong>Day 27: Your Own Module &amp; the Docs.</strong> Moving helpers like the cipher and ask_number() into kidtools.py and importing them. Reading Python&#x27;s official documentation: finding a function and reading its signature.</p><p><strong>Day 28: Lab: Turtle Art Studio.</strong> Project 6. Using the built-in turtle library: turtle objects with methods such as forward(), left(), and begin_fill(). Loops and functions draw spirals, stars, and a draw_flower() function.</p><p><strong>Day 29: pip &amp; Third-Party Libraries.</strong> What PyPI is and how pip install works, and the difference between a module, package, and library. Installing rich for colorful text, reading a README, and fixing a failed install safely.</p><p><strong>Day 30: Lab: Class Survey Dashboard.</strong> Installing matplotlib and drawing bar charts with plt.bar(), titles, labels, and plt.show(). Loading survey answers from a CSV file and charting the results.</p></blockquote>
+						<h2>What students built</h2>
+						<p>37 students made turtle art. Every one uses filled shapes and defines a <code>draw_flower()</code> function, and the median program defines 5 functions. It is the least-completed project of Year 2.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def jump(t, x, y):
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+
+
+def draw_spiral(t, steps, angle, color):
+    t.color(color)
+    for i in range(steps):
+        t.forward(i * 2 + 2)
+        t.left(angle)
+
+
+def draw_star(t, size, color, points=5):
+    t.color(color)
+    t.begin_fill()
+    for _ in range(points):
+        t.forward(size)
+        t.right(180 - 180 / points)
+    t.end_fill()
+
+
+def draw_flower(t, petals, size, petal_color, center_color):
+    for _ in range(petals):
+        t.color(petal_color)
+        t.begin_fill()
+        for _ in range(2):
+            t.circle(size, 60)
+            t.left(120)
+        t.end_fill()
+        t.left(360 / petals)
+    t.color(center_color)
+    t.begin_fill()
+    t.circle(size / 4)
+    t.end_fill()
+
+
+def scene(t):
+    for angle, x, y in ((SPIRAL_ANGLE, -200, 0), (SPIRAL_ANGLE + 2, 200, 100), (SPIRAL_ANGLE - 3, 0, -150)):
+        jump(t, x, y)
+        draw_spiral(t, 45, angle, COLORS[(x // 100) % 5])
+    jump(t, 0, 220)
+    draw_star(t, 50, COLORS[3], STAR_POINTS)</pre>
+						
+						<img src="img/kidcode/p12-output.svg" alt="Output of a student's Turtle Art Studio program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The drawing this program produces, rendered from the student&#x27;s unmodified code.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Libraries, Modules &amp; Text as Data</em> (Weeks 6–8 (Days 26–40), 11 questions).</p><img src="img/kidcode/pre-2025-5.png" alt="First page of the Libraries, Modules &amp; Text as Data pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 5, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The same week installs a third-party library with pip and draws matplotlib bar charts from a CSV file, which is the charting that shows up in <a href="#modal-kidcode-p13">Book Detective</a> and most of Year 3.</p>
+						<h2>Looking back</h2>
+						<p>Turtle is the most visual project in the curriculum, which is why its output is shown here as a picture rather than a transcript. The code itself is a good example of Year 2 style: small functions that take arguments like size and color and can be reused across the drawing.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p11">← Project 11: Monster Battle Arena</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p13" class="kc-next">Project 13: Book Detective →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 13: Book Detective -->
+				<div class="modal-overlay" id="modal-kidcode-p13" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p13-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p13').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p13-title">Project 13: Book Detective</h1>
+						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Classes 36–39 of 40</span><span>86 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Book Detective is the Year 2 capstone, Project 13, across Days 36 to 39. Students plan and build a <code>TextAnalyzer</code> class that loads a book, cleans the text, counts words with <code>Counter</code>, reports statistics, tests itself with <code>assert</code>, and saves a chart. The week before, the lesson called Bug Safari feeds sentences full of abbreviations like "U.S.A." to this kind of code and logs every way it breaks.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 2 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone I: Book Detective Plan.</strong> Project 7. Planning a TextAnalyzer class that loads a book and reports total words, unique words, longest word, average word length, and top words. Sketching attributes and methods on paper.</p><p><strong>Day 37: Capstone II: Building the Core.</strong> Coding the class: loading a file with try/except, cleaning text, counting with Counter, and one method per statistic. Testing each method with assert.</p><p><strong>Day 38: Capstone III: Charts &amp; Reports.</strong> Adding a matplotlib chart method, saving a full text report to a file, and letting users pick a book from a menu. Reusing functions from kidtools.py.</p><p><strong>Day 39: Playtest, Polish &amp; Debug.</strong> Swapping projects so testers can try to break them with odd files. Fixing bugs, adding docstrings, and rehearsing a three-minute demo.</p><p><strong>Day 40: Showcase Day &amp; Year 3 Preview.</strong> Presenting Book Detective reports to classmates and guests, plus a skills checklist. Preview of KidCode 3: the sentences that broke our code are what NLP and the spaCy library are built to solve.</p></blockquote>
+						<h2>What students built</h2>
+						<p>86 students finished the capstone, the most-completed project of Year 2. Every one defines a class, counts with <code>Counter</code>, compares texts with sets, saves a chart, and runs <code>assert</code> tests. At a median of 120 lines, it is tied with Monster Battle Arena for the longest Year 2 project.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">class TextAnalyzer:
+    def __init__(self, path):
+        self.path = path
+        self.text = &quot;&quot;
+        self.words = []
+        self.sentences = []
+
+    def load(self):
+        try:
+            with open(self.path) as f:
+                self.text = f.read()
+        except FileNotFoundError:
+            print(&quot;Could not open&quot;, self.path)
+
+    def clean(self):
+        for end in &quot;!?&quot;:
+            self.text = self.text.replace(end, &quot;.&quot;)
+        self.sentences = [s.strip() for s in self.text.split(&quot;.&quot;) if s.strip()]
+        lowered = self.text.lower()
+        for mark in string.punctuation:
+            lowered = lowered.replace(mark, &quot;&quot;)
+        self.words = lowered.split()
+
+    def total_words(self):
+        return len(self.words)
+
+    def unique_words(self):
+        return len(set(self.words))
+
+    def longest_word(self):
+        return max(self.words, key=len) if self.words else &quot;&quot;
+
+    def average_word_length(self):
+        return sum(len(w) for w in self.words) / len(self.words) if self.words else 0.0
+
+    def sentence_count(self):
+        return len(self.sentences)
+
+    def words_per_sentence(self):
+        if not self.sentences:
+            return 0.0
+        return self.total_words() / self.sentence_count()
+
+    def top_words(self, n=10):
+        counts = Counter([w for w in self.words if w not in STOP_WORDS])
+        return counts.most_common(n)
+
+    def chart(self, filename):
+        top = self.top_words()
+        plt.bar([w for w, c in top], [c for w, c in top], color=&quot;slateblue&quot;)
+        plt.title(&quot;Top words and &quot; + str(self.sentence_count()) + &quot; sentences&quot;)
+        plt.savefig(filename)
+        plt.show()
+        plt.close()
+<span class="kc-gap">    …</span>
+def run_tests():
+    with open(&quot;test_sample.txt&quot;, &quot;w&quot;) as f:
+        f.write(&quot;The cat and the hat. The cat sat!&quot;)
+    checker = TextAnalyzer(&quot;test_sample.txt&quot;)
+    checker.load()
+    checker.clean()
+    assert checker.total_words() == 8
+    assert checker.unique_words() == 5
+    assert checker.longest_word() in (&quot;the&quot;, &quot;cat&quot;, &quot;and&quot;, &quot;hat&quot;, &quot;sat&quot;)
+    assert abs(checker.average_word_length() - 3.0) &lt; 0.001
+    os.remove(&quot;test_sample.txt&quot;)
+    print(&quot;All TextAnalyzer tests passed.&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">All TextAnalyzer tests passed.
+1. The Mountain Village
+2. The Lighthouse Keeper
+3. The Desert Caravan
+Choose a book or q: 1
+The Mountain Village
+  words: 94 | unique: 71
+  longest word: sparkling
+  sentences: 7
+  words per sentence: 13.4
+  top words: [(&#x27;the&#x27;, 11), (&#x27;pema&#x27;, 3), (&#x27;and&#x27;, 3), (&#x27;mountain&#x27;, 2), (&#x27;village&#x27;, 2), (&#x27;in&#x27;, 2), (&#x27;her&#x27;, 2), (&#x27;to&#x27;, 2), (&#x27;high&#x27;, 1), (&#x27;above&#x27;, 1)]
+1. The Mountain Village
+2. The Lighthouse Keeper
+3. The Desert Caravan
+Choose a book or q: q</pre>
+						<img src="img/kidcode/p13-output.png" alt="Output of a student's Book Detective program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The chart this student&#x27;s program saves, as produced by the unmodified code.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Libraries, Modules &amp; Text as Data</em> (Weeks 6–8 (Days 26–40), 11 questions).</p><img src="img/kidcode/pre-2025-5.png" alt="First page of the Libraries, Modules &amp; Text as Data pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 5, Year 2 (2025). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The last day of Year 2 previews Year 3 with a sentence from the curriculum: the sentences that broke our code are what NLP and spaCy are built to solve. Year 3's first project, <a href="#modal-kidcode-p14">Tokenizer Showdown</a>, scores this kind of cleaning code against spaCy.</p>
+						<h2>Looking back</h2>
+						<p>Book Detective is where Year 2 and Year 3 meet. The <code>clean()</code> method below, which lowercases the text, strips punctuation and splits on spaces, is exactly the approach Year 3 opens by testing and breaking.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p12">← Project 12: Turtle Art Studio</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-2026-class1" class="kc-next">Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 14: Tokenizer Showdown -->
+				<div class="modal-overlay" id="modal-kidcode-p14" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p14-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p14').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p14-title">Project 14: Tokenizer Showdown</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Class 10 of 40</span><span>92 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Tokenizer Showdown is Project 14, on Day 10 of Year 3, the NLP year. After a week on what a token is, token attributes, stop words and lemmas, students test three ways of splitting text on twenty tricky sentences (contractions, abbreviations, URLs, numbers, punctuation): Python's <code>.split()</code>, their own Year 2 cleaning code, and spaCy.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 2: Tokenization</p><blockquote class="kc-quote"><p><strong>Day 6: Tokenization: Beyond split().</strong> What a token is. Comparing text.split() with spaCy&#x27;s tokens on punctuation, contractions (don&#x27;t becomes do and n&#x27;t), URLs, and numbers. A tokenizer-only pipeline with spacy.blank(&quot;en&quot;).</p><p><strong>Day 7: Token Attributes.</strong> token.text, token.is_alpha, token.is_punct, token.is_digit, token.like_num, and token.like_url. Indexing and slicing a Doc with doc[0] and doc[1:4]. Lab: &quot;Token Sorter&quot;.</p><p><strong>Day 8: Stop Words &amp; Text Cleaning.</strong> token.is_stop, token.lower_, and filtering tokens with list comprehensions. Building a cleaning recipe that lowercases text and drops punctuation and stop words. Practice: &quot;Clean-Up Crew&quot;.</p><p><strong>Day 9: Lemmas &amp; Normalization.</strong> token.lemma_: how &quot;running&quot;, &quot;ran&quot;, and &quot;runs&quot; all become &quot;run&quot;. Why the trained model is needed for lemmas, and how normalization makes counting fairer. Practice: &quot;Word Family Finder&quot;.</p><p><strong>Day 10: Lab: Tokenizer Showdown.</strong> Project 1. Testing .split(), Year 2&#x27;s cleaning code, and spaCy on twenty tricky sentences, scoring each on contractions, abbreviations, and punctuation, and charting the results.</p></blockquote>
+						<h2>What students built</h2>
+						<p>92 students ran the showdown. Every one uses <code>spacy.blank("en")</code>, a tokenizer-only pipeline, and charts the results. The program shown here scored <code>.split()</code> at 1 of 20, its own Year 2 cleaner at 0 of 20, and spaCy at 20 of 20.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def split_tokenizer(text):
+    return text.split()
+
+
+def cleaning_tokenizer(text):
+    text = text.lower()
+    for mark in string.punctuation:
+        text = text.replace(mark, &quot;&quot;)
+    return text.split()
+
+
+def spacy_tokenizer(text):
+    return [token.text for token in nlp(text)]
+
+
+def passes(tokens, case):
+    lowered = [t.lower() for t in tokens]
+    for wanted in case[&quot;expect&quot;]:
+        if wanted.lower() not in lowered:
+            return False
+    for bad in case[&quot;forbid&quot;]:
+        if bad.lower() in lowered:
+            return False
+    return True
+<span class="kc-gap">    …</span>
+class TokenizerTester:
+    def __init__(self, cases):
+        self.cases = cases
+        self.rows = []
+
+    def run(self, tokenizers):
+        for case in self.cases:
+            row = {&quot;sentence&quot;: case[&quot;text&quot;], &quot;category&quot;: case[&quot;category&quot;]}
+            for name, tokenizer in tokenizers.items():
+                row[name] = passes(tokenizer(case[&quot;text&quot;]), case)
+            self.rows.append(row)
+
+    def score(self, name):
+        return sum(1 for row in self.rows if row[name])
+
+    def save_csv(self, filename):
+        with open(filename, &quot;w&quot;, newline=&quot;&quot;) as f:
+            writer = csv.DictWriter(f, fieldnames=list(self.rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(self.rows)
+
+
+tester = TokenizerTester(TEST_CASES)
+tester.run(TOKENIZERS)
+tester.save_csv(&quot;showdown_results.csv&quot;)
+names = list(TOKENIZERS)
+for name in names:
+    print(f&quot;{name}: {tester.score(name)} of {len(tester.rows)}&quot;)
+best = max(names, key=tester.score)
+print(&quot;Winner:&quot;, best)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">split(): 1 of 20
+Year 2 cleaner: 0 of 20
+spaCy: 20 of 20
+Winner: spaCy</pre>
+						<img src="img/kidcode/p14-output.png" alt="Output of a student's Tokenizer Showdown program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The chart this student&#x27;s program saves: tricky sentences handled correctly by each approach.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Libraries, spaCy &amp; Tokens</em> (Weeks 1–2 (Days 1–10), 11 questions).</p><img src="img/kidcode/pre-2026-1.png" alt="First page of the Libraries, spaCy &amp; Tokens pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 1, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>From here on, every Year 3 program starts by handing text to spaCy. The next project, <a href="#modal-kidcode-p15">Keyword Detective</a>, redoes Book Detective's word counts on lemmas instead of raw words.</p>
+						<h2>Looking back</h2>
+						<p>I like that Year 3 opens by scoring the students' own Year 2 code rather than a strawman. Losing to spaCy on their own test sentences is a better argument for learning a library than anything I could say about it.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-2026-class1">← Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p15" class="kc-next">Project 15: Keyword Detective →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 15: Keyword Detective -->
+				<div class="modal-overlay" id="modal-kidcode-p15" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p15-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p15').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p15-title">Project 15: Keyword Detective</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 12–13 of 40</span><span>93 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Keyword Detective is Project 15, across Days 12 and 13 of Year 3. Students tokenize a chapter, drop stop words and punctuation, lemmatize, count with <code>Counter</code>, chart the top keywords, and compare the result with what their Year 2 Book Detective finds on the same text.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 3: Sentences &amp; Grammar</p><blockquote class="kc-quote"><p><strong>Day 11: Sentences &amp; Spans.</strong> Splitting text with doc.sents and working with Span objects such as doc[2:5], including .text, .start, and .end. Comparing spaCy&#x27;s results with Year 2&#x27;s .split(&quot;.&quot;).</p><p><strong>Day 12–13: Lab: Keyword Detective.</strong> Project 2. Tokenizing a chapter, dropping stop words and punctuation, lemmatizing, counting with Counter, and charting the top keywords. Comparing with Year 2&#x27;s Book Detective on the same text.</p><p><strong>Day 14: Parts of Speech.</strong> Nouns, verbs, adjectives, and adverbs, and how spaCy labels them with token.pos_ and token.tag_. Decoding labels with spacy.explain(). Unplugged game: &quot;Human Sentence&quot;.</p><p><strong>Day 15: Filtering by Part of Speech.</strong> Using comprehensions to pull out NOUN, VERB, and ADJ tokens. Finding the most common verbs in a fairy tale and exploring where the model is tricked (&quot;Time flies like an arrow&quot;).</p></blockquote>
+						<h2>What students built</h2>
+						<p>93 students built a keyword detective, the most submissions of any project in the program except KidBot Brain. Every one counts lemmas (<code>token.lemma_</code>) and saves a chart; some also split the chapter sentence by sentence with <code>doc.sents</code> or filter by part of speech.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def year2_keywords(text):
+    cleaned = text.lower()
+    for mark in string.punctuation:
+        cleaned = cleaned.replace(mark, &quot;&quot;)
+    return [w for w in cleaned.split() if w not in STOP_WORDS_Y2]
+
+
+doc = nlp(CHAPTER)
+overall = Counter()
+for number, sentence in enumerate(doc.sents, start=1):
+    lemmas = [t.lemma_.lower() for t in sentence if t.is_alpha and not t.is_stop]
+    overall.update(lemmas)
+    print(f&quot;Sentence {number}: {&#x27;, &#x27;.join(lemmas)}&quot;)
+
+print()
+print(&quot;Overall top keywords:&quot;)
+for word, count in overall.most_common(12):
+    print(f&quot;  {word:&lt;12} {&#x27;*&#x27; * count}&quot;)
+
+year2 = Counter(year2_keywords(CHAPTER))
+print()
+print(&quot;Year 2 top words:&quot;, year2.most_common(5))
+print(&quot;spaCy top words :&quot;, overall.most_common(5))</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Sentence 1: inspector, rosa, delgado, study, muddy, footprint, outside, blackfriars, museum, london
+Sentence 2: steal, jewel, crown, tuesday, night, guard, see
+Sentence 3: rosa, follow, print, narrow, bridge, quiet, garden
+Sentence 4: find, small, boy, hold, crown, hand
+Sentence 5: explain, crown, belong, grandmother, lose, year, ago
+Sentence 6: rosa, listen, kindly, museum, agree, share, story, newspaper
+
+Overall top keywords:
+  rosa         ***
+  crown        ***
+  museum       **
+  inspector    *
+  delgado      *
+  study        *
+  muddy        *
+  footprint    *
+  outside      *
+  blackfriars  *
+  london       *
+  steal        *
+
+Year 2 top words: [(&#x27;rosa&#x27;, 3), (&#x27;crown&#x27;, 3), (&#x27;museum&#x27;, 2), (&#x27;to&#x27;, 2), (&#x27;inspector&#x27;, 1)]
+spaCy top words : [(&#x27;rosa&#x27;, 3), (&#x27;crown&#x27;, 3), (&#x27;museum&#x27;, 2), (&#x27;inspector&#x27;, 1), (&#x27;delgado&#x27;, 1)]</pre>
+						<img src="img/kidcode/p15-output.png" alt="Output of a student's Keyword Detective program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The chart this student&#x27;s program saves.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Sentences, Grammar &amp; the Pipeline</em> (Weeks 3–4 (Days 11–20), 12 questions).</p><img src="img/kidcode/pre-2026-2.png" alt="First page of the Sentences, Grammar &amp; the Pipeline pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Parts of speech come right after this, and they drive the next project, <a href="#modal-kidcode-p16">Auto Mad Libs</a>.</p>
+						<h2>Looking back</h2>
+						<p>The comparison at the end of the sample run is the point of the project. Counting "lemmas" rather than raw words means "followed" and "follow" are the same keyword, and the Year 2 code has no way to know that.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p14">← Project 14: Tokenizer Showdown</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p16" class="kc-next">Project 16: Auto Mad Libs →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 16: Auto Mad Libs -->
+				<div class="modal-overlay" id="modal-kidcode-p16" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p16-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p16').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p16-title">Project 16: Auto Mad Libs</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 16–17 of 40</span><span>87 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Auto Mad Libs is Project 16, across Days 16 and 17 of Year 3, and it brings back the very first KidCode project. This time spaCy finds the nouns, verbs, adjectives or names in a story, the program asks the player for replacements, and the story is rebuilt with <code>token.text_with_ws</code> so the spacing and punctuation survive.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 4: Grammar Detectives</p><blockquote class="kc-quote"><p><strong>Day 16: Lab: Auto Mad Libs I.</strong> Project 3. Revisiting Year 1&#x27;s Mad Libs: spaCy finds the nouns, verbs, and adjectives in a story and blanks out a random sample. Planning the program with a flowchart first.</p><p><strong>Day 17: Lab: Auto Mad Libs II.</strong> Asking the player for words of the right type, then rebuilding the story with token.text_with_ws so spacing and punctuation stay correct. Swapping finished stories with classmates.</p><p><strong>Day 18: Dependency Parsing: Who Did What?.</strong> token.dep_, token.head, and token.children, and finding subjects and objects. Drawing sentence diagrams with displacy.render(). Practice: &quot;Sentence Skeletons&quot;.</p><p><strong>Day 19: The spaCy Pipeline.</strong> The pipeline as an assembly line: nlp.pipe_names and what each component adds. Processing many texts with nlp.pipe() and turning off unused components for speed.</p><p><strong>Day 20: Checkpoint: spaCy Cheat Sheet.</strong> Review games covering Weeks 1 to 4, a checkpoint quiz, and a personal spaCy cheat sheet. Pair debugging with error messages students have not seen before.</p></blockquote>
+						<h2>What students built</h2>
+						<p>87 students built Auto Mad Libs. Every one chooses blanks by part of speech (<code>token.pos_</code>) and rebuilds the story with <code>text_with_ws</code>. The median program is 46 lines, against 17 for the Year 1 Mad Libs, and the blanks are chosen by the program rather than written into it.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def find_blanks(doc):
+    found = []
+    for i, token in enumerate(doc):
+        if token.pos_ in WANTED_TAGS and token.is_alpha:
+            found.append(i)
+        if len(found) == MAX_BLANKS:
+            break
+    return found
+
+
+def ask_for_words(doc, blanks):
+    answers = []
+    for position, i in enumerate(blanks):
+        pos = doc[i].pos_
+        prompt = f&quot;Give me a {single_label} for word {position + 1}: &quot;
+        answers.append(input(prompt))
+    return answers
+
+
+def rebuild(doc, blanks, answers):
+    answer_map = dict(zip(blanks, answers))
+    pieces = []
+    for i, token in enumerate(doc):
+        if i in answer_map:
+            pieces.append(answer_map[i] + token.whitespace_)
+        else:
+            pieces.append(token.text_with_ws)
+    return &quot;&quot;.join(pieces)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">=== Auto Mad Libs: The Jungle Expedition ===
+spaCy found 8 blanks to fill.
+Give me a name for word 1: Zorbia
+Give me a name for word 2: Captain Waffles
+Give me a name for word 3: Mount Noodle
+Give me a name for word 4: Professor Owl
+Give me a name for word 5: Glimmerton
+Give me a name for word 6: Sir Biscuit
+Give me a name for word 7: Planet Zog
+Give me a name for word 8: Pickleburg
+
+Zorbia Captain Waffles Mount Noodle led a small expedition into the rainy jungle of Professor Owl. The team from the Glimmerton Sir Biscuit Planet Zog searched for a rare purple orchid that bloomed only once a year. They hiked past noisy monkeys, slippery rivers, and enormous trees. On the sixth morning Pickleburg spotted the flower glowing near a waterfall. He took careful photographs and left the orchid untouched. In December 2022 the foundation printed his pictures in a beautiful book, and thousands of readers learned about the hidden jungle.</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Sentences, Grammar &amp; the Pipeline</em> (Weeks 3–4 (Days 11–20), 12 questions).</p><img src="img/kidcode/pre-2026-2.png" alt="First page of the Sentences, Grammar &amp; the Pipeline pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 2, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Compare with <a href="#modal-kidcode-p01">Mad Libs Machine</a>. The token-by-token rebuilding introduced here is used again two projects later to redact names in <a href="#modal-kidcode-p18">Privacy Shield</a>.</p>
+						<h2>Looking back</h2>
+						<p>Putting the two Mad Libs programs next to each other is the shortest summary of the three years I have. In 2024 the student decides where every blank goes; in 2026 the student writes code that decides.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p15">← Project 15: Keyword Detective</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p17" class="kc-next">Project 17: Character Tracker →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 17: Character Tracker -->
+				<div class="modal-overlay" id="modal-kidcode-p17" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p17-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p17').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p17-title">Project 17: Character Tracker</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 24–25 of 40</span><span>52 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Character Tracker is Project 17, across Days 24 and 25 of Year 3, at the end of the week on named entities: <code>doc.ents</code>, entity labels like PERSON and GPE, and a day spent on why the model is sometimes wrong. Students run a story through spaCy chapter by chapter and count who and where appears.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 5: Named Entity Recognition</p><blockquote class="kc-quote"><p><strong>Day 21: What Are Named Entities?.</strong> Real-world names and facts hiding in text. Using doc.ents, ent.text, ent.label_, and ent.start_char, and decoding PERSON, ORG, GPE, DATE, and MONEY with spacy.explain().</p><p><strong>Day 22: Seeing Entities with displaCy.</strong> Highlighting entities with displacy.render(doc, style=&quot;ent&quot;) in a notebook or displacy.serve() in the browser, and saving results as HTML. Lab: &quot;Entity Gallery&quot; of student paragraphs.</p><p><strong>Day 23: When the Model Is Wrong.</strong> Why models guess: ambiguous names like … &quot;Apple&quot; …, names from many cultures, and text without capital letters. Hand-labeling 20 sentences for an &quot;NER Report Card&quot;.</p><p><strong>Day 24: Lab: Character Tracker I.</strong> Project 4. Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Counter.</p><p><strong>Day 25: Lab: Character Tracker II.</strong> Merging name variants like &quot;Dorothy&quot; and &quot;Dorothy Gale&quot;, tracking which characters appear in each chapter, and printing a &quot;Who&#x27;s Who&quot; report. Listing what the tool gets wrong.</p></blockquote>
+						<h2>What students built</h2>
+						<p>52 students built a tracker. Every one counts PERSON entities chapter by chapter, and 60% also track places (GPE). It is the least-completed project of Year 3.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">people = Counter()
+places = Counter()
+for number, chapter in enumerate(CHAPTERS, start=1):
+    doc = nlp(chapter)
+    for ent in doc.ents:
+        if ent.label_ == &quot;PERSON&quot;:
+            people[ent.text] += 1
+        elif ent.label_ == &quot;GPE&quot;:
+            places[ent.text] += 1
+    print(f&quot;Chapter {number}: {len(doc.ents)} entities found&quot;)
+
+print()
+print(&quot;=== Who&#x27;s Who: The Desert Caravan ===&quot;)
+for name, count in people.most_common():
+    print(f&quot;  {name}: appears {count} time(s)&quot;)
+print(&quot;Places mentioned:&quot;)
+for place, count in places.most_common():
+    print(f&quot;  {place}: {count} time(s)&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">Chapter 1: 3 entities found
+Chapter 2: 4 entities found
+
+=== Who&#x27;s Who: The Desert Caravan ===
+  Hassan Rahman: appears 1 time(s)
+  Samira: appears 1 time(s)
+  Hassan: appears 1 time(s)
+Places mentioned:
+  Cairo: 1 time(s)</pre>
+						<img src="img/kidcode/p17-output.png" alt="Output of a student's Character Tracker program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The chart this student&#x27;s program saves: character mentions found by named-entity recognition.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Named Entities &amp; Responsible NLP</em> (Week 5 + Days 33–34, 9 questions).</p><img src="img/kidcode/pre-2026-3.png" alt="First page of the Named Entities &amp; Responsible NLP pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 3, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>Named entities are the core of the next two projects: <a href="#modal-kidcode-p18">Privacy Shield</a> hides them, and <a href="#modal-kidcode-p19">KidBot Brain</a> uses them to work out which city a question is about.</p>
+						<h2>Looking back</h2>
+						<p>The day before this project is about the model's mistakes: ambiguous names, names from many cultures, text without capital letters. A tracker that counts entities is only as good as the entities, and the curriculum asks students to list what their tool gets wrong.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p16">← Project 16: Auto Mad Libs</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p18" class="kc-next">Project 18: Privacy Shield →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 18: Privacy Shield -->
+				<div class="modal-overlay" id="modal-kidcode-p18" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p18-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p18').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p18-title">Project 18: Privacy Shield</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 26–27 of 40</span><span>75 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>Privacy Shield is Project 18, across Days 26 and 27 of Year 3. Students plan which kinds of entity to hide and what the placeholders look like, then replace entities token by token with <code>token.ent_iob_</code> and <code>text_with_ws</code>, so that a two-word name becomes one <code>[PERSON]</code>, not two.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 6: Rules &amp; Custom Entities</p><blockquote class="kc-quote"><p><strong>Day 26: Lab: Privacy Shield I.</strong> Project 5. Planning a redaction tool: which entity types (PERSON, GPE, ORG, DATE) to hide, what placeholders like [PERSON] look like, and how to test on sample letters.</p><p><strong>Day 27: Lab: Privacy Shield II.</strong> Replacing entities while keeping the text readable, using token.ent_iob_ and token.text_with_ws so multi- word names are replaced once. Testing for names the model missed.</p><p><strong>Day 28: Rule-Based Matching.</strong> Building patterns from token attributes such as {&quot;LOWER&quot;: &quot;hello&quot;}, {&quot;IS_PUNCT&quot;: True}, and {&quot;POS&quot;: &quot;NOUN&quot;}. Using Matcher, matcher.add(), and matches as (match_id, start, end).</p><p><strong>Day 29: Teaching spaCy New Entities.</strong> Adding an entity ruler with nlp.add_pipe(&quot;entity_ruler&quot;, before=&quot;ner&quot;), writing patterns for custom labels like FOOD or PET, and seeing how rules and the model work together.</p><p><strong>Day 30: Lab: Fantasy Map Finder.</strong> Recognizing invented places, heroes, and creatures with entity ruler patterns, then highlighting them with displaCy. Testing what happens when a rule and the model disagree.</p></blockquote>
+						<h2>What students built</h2>
+						<p>75 students built a redaction tool. Every one hides PERSON entities and uses <code>ent_iob_</code> to keep multi-word names together; 60% also hide places and 40% hide dates.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">def redact_with_count(text):
+    doc = nlp(text)
+    pieces = []
+    counts = {t: 0 for t in HIDE_TYPES}
+    previous_label = None
+    for token in doc:
+        label = token.ent_type_ if token.ent_iob_ != &quot;O&quot; else None
+        if label in HIDE_TYPES:
+            if label != previous_label:
+                pieces.append(f&quot;[{label}]&quot; + token.whitespace_)
+                counts[label] += 1
+            previous_label = label
+        else:
+            pieces.append(token.text_with_ws)
+            previous_label = None
+    return &quot;&quot;.join(pieces), counts
+
+
+redacted, counts = redact_with_count(LETTER)
+print(&quot;The Desert Caravan - Privacy Shield report&quot;)
+print(redacted)
+print()
+for kind, n in counts.items():
+    print(f&quot;{kind} hidden: {n}&quot;)</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">The Desert Caravan - Privacy Shield report
+A long caravan of camels crossed the golden dunes near Cairo. The leader, an old trader named [PERSON] , guided the group by the bright stars. Every night his daughter [PERSON] cooked warm lentil soup over a small fire. On [DATE] they reached a green oasis where cool water bubbled from the sand. The travelers drank, rested, and told stories under the moon. In [DATE] the Desert Trade Company thanked [PERSON] with a silver compass. He tucked it gently into his pocket and smiled.
+
+PERSON hidden: 3
+DATE hidden: 2
+MONEY hidden: 0</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Rules, Custom Entities &amp; Chatbots</em> (Weeks 6–8 (Days 26–40), 8 questions).</p><img src="img/kidcode/pre-2026-4.png" alt="First page of the Rules, Custom Entities &amp; Chatbots pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>This is the most applied program in Year 3 and connects directly to Day 34's lesson on responsible NLP and privacy. It is also one of the capstone options, as "Privacy Shield Pro".</p>
+						<h2>Looking back</h2>
+						<p>I chose this project partly because it's honest about the tool. A redactor built on a statistical model will miss things, and the curriculum's second Privacy Shield day ends with testing for exactly the names the model missed.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p17">← Project 17: Character Tracker</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p19" class="kc-next">Project 19: KidBot Brain →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 19: KidBot Brain -->
+				<div class="modal-overlay" id="modal-kidcode-p19" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p19-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p19').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p19-title">Project 19: KidBot Brain</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 31–32 of 40</span><span>118 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>KidBot Brain is Project 19, across Days 31 and 32 of Year 3: a rule-based chatbot. Students list intents (greeting, joke, weather), write spaCy <code>Matcher</code> patterns for each, use named entities to pull out the city in "what's the weather in Paris", and add a fallback reply for everything else.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 7: Chatbots &amp; Responsible NLP</p><blockquote class="kc-quote"><p><strong>Day 31: Lab: KidBot Brain I.</strong> Project 6. Designing a rule-based chatbot: listing intents (greeting, joke, weather), writing Matcher patterns for each, and sketching the conversation loop.</p><p><strong>Day 32: Lab: KidBot Brain II.</strong> Using entities to pull out places and dates so &quot;What&#x27;s the weather in Paris tomorrow?&quot; gets a pretend forecast. Adding a friendly fallback reply and testing with classmates.</p><p><strong>Day 33: How Models Learn.</strong> How spaCy&#x27;s model learned from labeled examples, why training data shapes what a model gets right, and how mistakes and bias appear. Students annotate 20 sentences and compare with the model.</p><p><strong>Day 34: Responsible NLP: Bias &amp; Privacy.</strong> Fairness, privacy, and knowing when not to use NLP. Class roundtable: &quot;Should a school use NLP to read student essays?&quot; Writing a &quot;Limitations&quot; card for a personal project.</p><p><strong>Day 35: Capstone Pitch &amp; Plan.</strong> Choosing a project: &quot;Story Explorer&quot;, &quot;KidBot Pro&quot;, &quot;Privacy Shield Pro&quot;, &quot;Time Traveler&#x27;s News Desk&quot;, or an approved original idea. A one-page plan with goals, test texts, and a feature checklist.</p></blockquote>
+						<h2>What students built</h2>
+						<p>118 students built a KidBot, the most-completed project in the whole program. Every one uses <code>Matcher</code> patterns and reads GPE entities to answer weather questions. They wrote 68 different variants between them.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">matcher = Matcher(nlp.vocab)
+
+GREETING_PATTERNS = [
+    [{&quot;LOWER&quot;: {&quot;IN&quot;: [&quot;hi&quot;, &quot;hello&quot;, &quot;hey&quot;, &quot;yo&quot;, &quot;hiya&quot;]}}],
+]
+JOKE_PATTERNS = [
+    [{&quot;LOWER&quot;: &quot;tell&quot;}, {&quot;LOWER&quot;: &quot;me&quot;}, {&quot;LOWER&quot;: &quot;a&quot;}, {&quot;LOWER&quot;: &quot;joke&quot;}],
+    [{&quot;LOWER&quot;: &quot;joke&quot;}],
+]
+WEATHER_PATTERNS = [
+    [{&quot;LOWER&quot;: &quot;weather&quot;}],
+    [{&quot;LOWER&quot;: &quot;weather&quot;}, {&quot;LOWER&quot;: &quot;in&quot;}, {&quot;IS_ALPHA&quot;: True}],
+]
+BYE_PATTERNS = [
+    [{&quot;LOWER&quot;: {&quot;IN&quot;: [&quot;bye&quot;, &quot;goodbye&quot;, &quot;later&quot;]}}],
+]
+
+matcher.add(&quot;GREETING&quot;, GREETING_PATTERNS)
+matcher.add(&quot;JOKE&quot;, JOKE_PATTERNS)
+matcher.add(&quot;WEATHER&quot;, WEATHER_PATTERNS)
+matcher.add(&quot;BYE&quot;, BYE_PATTERNS)
+<span class="kc-gap">    …</span>
+    def classify(self, text):
+        doc = nlp(text)
+        matches = matcher(doc)
+        if not matches:
+            return &quot;UNKNOWN&quot;, doc
+        match_id, start, end = matches[-1]
+        return nlp.vocab.strings[match_id], doc
+
+    def reply(self, text):
+        intent, doc = self.classify(text)
+        self.history.append((text, intent))
+        if intent == &quot;GREETING&quot;:
+            return f&quot;Hey! I&#x27;m {self.name}.&quot;
+        if intent == &quot;JOKE&quot;:
+            return random.choice(JOKES)
+        if intent == &quot;WEATHER&quot;:
+            cities = [e.text for e in doc.ents if e.label_ == &quot;GPE&quot;]
+            if cities:
+                return f&quot;Checking the weather in {cities[0]}... it&#x27;s lovely!&quot;
+            return &quot;Which city?&quot;
+        if intent == &quot;BYE&quot;:
+            return &quot;Goodbye, friend!&quot;
+        return &quot;Sorry, I don&#x27;t know that one yet.&quot;</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">KidBot says hello!
+You: hello
+KidBot: Hey! I&#x27;m KidBot.
+You: tell me a joke
+KidBot: What do you call a fish with no eyes? A fsh!
+You: what&#x27;s the weather in Tokyo
+KidBot: Checking the weather in Tokyo... it&#x27;s lovely!
+You: what is your favorite color
+KidBot: Sorry, I don&#x27;t know that one yet.
+You: bye
+KidBot: Goodbye, friend!
+You: quit
+Conversation summary: {&#x27;GREETING&#x27;: 1, &#x27;JOKE&#x27;: 1, &#x27;WEATHER&#x27;: 1, &#x27;UNKNOWN&#x27;: 1, &#x27;BYE&#x27;: 1}</pre>
+						
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Rules, Custom Entities &amp; Chatbots</em> (Weeks 6–8 (Days 26–40), 8 questions).</p><img src="img/kidcode/pre-2026-4.png" alt="First page of the Rules, Custom Entities &amp; Chatbots pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The capstone, <a href="#modal-kidcode-p20">Project 20</a>, offers "KidBot Pro" as one of its options. The two days after this project are about how models learn and about bias and privacy.</p>
+						<h2>Looking back</h2>
+						<p>A chatbot built from explicit rules is a useful counterweight to the rest of Year 3: students can see exactly why it answers the way it does, which is exactly what they can't see inside the statistical model that finds the entities.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p18">← Project 18: Privacy Shield</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-kidcode-p20" class="kc-next">Project 20: NLP Capstone →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: Project 20: NLP Capstone -->
+				<div class="modal-overlay" id="modal-kidcode-p20" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-p20-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p20').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-p20-title">Project 20: NLP Capstone</h1>
+						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 36–39 of 40</span><span>55 students completed it</span><span>Deeptanshu Devatha</span></div>
+						<p>The Year 3 capstone is Project 20, the last numbered project in KidCode, across Days 36 to 39. Students pitch a project from a short list (Story Explorer, KidBot Pro, Privacy Shield Pro, Time Traveler's News Desk) or an approved idea of their own, then build it over four days, with a beta test, an NER audit, and "How It Works" and "Limitations" cards.</p>
+						<h2>What I taught that week</h2>
+						<p class="kc-label">From the Year 3 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone Build I.</strong> Project 7. Loading text from a file, running the spaCy pipeline, and organizing code into functions or classes. Daily stand-up check-ins: what I did, what is next, and what is blocking me.</p><p><strong>Day 37: Capstone Build II.</strong> Adding features: Counter charts, a displaCy HTML export, Matcher or entity ruler rules, and try/except for missing files. Writing a comment header that explains how to run the program.</p><p><strong>Day 38: Beta Test &amp; NER Audit.</strong> Swapping projects so testers can try to break them with tricky texts. Running an NER audit on each tool and logging every wrong guess in a bug list.</p><p><strong>Day 39: Polish &amp; Demo Rehearsal.</strong> Fixing bugs, cleaning up code, and writing &quot;How It Works&quot; and &quot;Limitations&quot; cards. Rehearsing a three-minute demo with a partner.</p><p><strong>Day 40: Showcase Day &amp; What&#x27;s Next.</strong> Presenting projects to classmates, families, and guests, and celebrating three years of KidCode with certificates. Next steps: machine learning with scikit-learn, web apps with Flask, and games with pygame.</p></blockquote>
+						<h2>What students built</h2>
+						<p>55 students finished a capstone. Every one is built around a class and saves a chart. The class names show what they chose: Story Explorer (13), KidBot Pro (11), Vocabulary Coach (11), Privacy Shield Pro (11), News Desk (9). The median capstone is 72 lines.</p>
+						<h2>One student's program</h2>
+						<p>This is one real submission, shown as the student wrote it but without their name. It's a typical one rather than the best: its length is close to the median for the project. Parts are skipped where marked with …</p>
+						<pre class="kc-code">class VocabularyCoach:
+
+    def __init__(self, path):
+        self.path = path
+        self.doc = None
+
+    def load(self):
+        with open(self.path) as f:
+            self.doc = nlp(f.read())
+
+    def hard_words(self, min_len=7, n=8):
+        words = sorted({t.text.lower() for t in self.doc if t.is_alpha and len(t.text) &gt;= min_len})
+        return words[:n]
+
+    def sentence_for(self, word):
+        for sent in self.doc.sents:
+            if word in sent.text.lower():
+                return sent.text.strip()
+        return &quot;(no example sentence found)&quot;
+
+    def quiz(self, words):
+        score = 0
+        for word in words:
+            guess = input(f&quot;How many letters does &#x27;{word}&#x27; have? &quot;)
+            try:
+                correct = int(guess) == len(word)
+            except ValueError:
+                correct = False
+            if correct:
+                score += 1
+                print(&quot;Correct!&quot;)
+            else:
+                print(f&quot;Nope, it has {len(word)} letters.&quot;)
+        return score</pre>
+						<p class="kc-label">A sample run of that program (the input was typed for this post)</p><pre class="kc-out">=== Vocabulary Coach: The Lighthouse Keeper ===
+against: Mira polished the lamp every evening while the stormy waves crashed against the rocks.
+alvarez: On March 3, 1921, Mira Alvarez climbed the tall lighthouse near Portland.
+balcony: Mira lit the great lamp and waved a red flag from the balcony.
+bravery: The Harbor Guild paid Mira $40 for her bravery, and Captain Brooks smiled proudly.
+captain: The old keeper, Captain Owen Brooks, handed her a brass lamp and said the light must never go out.
+climbed: On March 3, 1921, Mira Alvarez climbed the tall lighthouse near Portland.
+crashed: Mira polished the lamp every evening while the stormy waves crashed against the rocks.
+drifted: One night a small boat called the Silver Gull drifted toward the cliffs.
+How many letters does &#x27;against&#x27; have? 7
+Correct!
+How many letters does &#x27;alvarez&#x27; have? 7
+Correct!
+How many letters does &#x27;balcony&#x27; have? 6
+Nope, it has 7 letters.
+How many letters does &#x27;bravery&#x27; have? 7
+Correct!
+How many letters does &#x27;captain&#x27; have? 7
+Correct!
+How many letters does &#x27;climbed&#x27; have? 7
+Correct!
+How many letters does &#x27;crashed&#x27; have? 7
+Correct!
+How many letters does &#x27;drifted&#x27; have? 7
+Correct!
+Score: 7/8</pre>
+						<img src="img/kidcode/p20-output.png" alt="Output of a student's NLP Capstone program" class="modal-img kc-art" loading="lazy" /><p class="modal-caption">The chart this student&#x27;s capstone saves.</p>
+						<h2>The worksheet</h2><p>Each unit has a matched pre- and post-assessment written from the curriculum. This is the first page of the pre-assessment for the unit this project sits in: <em>Rules, Custom Entities &amp; Chatbots</em> (Weeks 6–8 (Days 26–40), 8 questions).</p><img src="img/kidcode/pre-2026-4.png" alt="First page of the Rules, Custom Entities &amp; Chatbots pre-assessment" class="modal-img" loading="lazy" /><p class="modal-caption">Pre-assessment 4, Year 3 (2026). The post-assessment tests the same skills with different code.</p>
+						<h2>Where it fits</h2>
+						<p>The final day of the curriculum points past KidCode: machine learning with scikit-learn, web apps with Flask, and games with pygame.</p>
+						<h2>Looking back</h2>
+						<p>Across the three capstones (a text adventure, a text analyzer, an NLP tool), the median program goes from about 130 lines of hand-written game logic to about 120 lines of classes, files and tests, and then to about 70 lines that lean on a library for the hard parts. What grows over three years isn't length. It's how much each line is able to do.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-p19">← Project 19: KidBot Brain</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><a href="#modal-crosscommunal" class="kc-next">Three Communities, One Meeting, and the Slow Work of Starting Something →</a></nav>
+					</div>
+				</div>
+				<!-- KidCode archive: 1,214 Programs Later: What Three Years of Student Code Showed -->
+				<div class="modal-overlay" id="modal-kidcode-student-code" role="dialog" aria-modal="true" aria-labelledby="modal-kidcode-student-code-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-kidcode-student-code').classList.remove('open')" aria-label="Close">&times;</button>
+						<h1 id="modal-kidcode-student-code-title">1,214 Programs Later: What Three Years of Student Code Showed</h1>
+						<div class="post-meta"><span>September 2026</span><span>KidCode</span><span>Deeptanshu Devatha</span></div>
+						<p>I have a folder with every numbered project KidCode students have turned in over three years: 1,214 Python files from 124 students, across the 20 projects in the curriculum. For a long time I treated it as an archive. This fall I treated it as data. I ran every program and looked at what was actually in them: which ideas students used, how long their programs got, and how that changed from one year to the next. This post is what I found, along with what my students' test scores showed.</p>
+						<h2>The count</h2>
+						<div class="kc-stats"><div><b>124</b><span>students with at least one project</span></div><div><b>1,214</b><span>working programs, one per student per project</span></div><div><b>3 / 10 / 18</b><span>fewest / median / most projects per student</span></div><div><b>20</b><span>projects across three curriculum years</span></div></div>
+						<p>Every one of the 1,214 programs runs, as long as it gets the kind of answer it asks for. A number-guessing game that calls <code>int()</code> on your answer doesn't cope with being told "dragon", which is fair enough.</p>
+						<p>The 1,214 break down into 138 programs from the six Year 1 projects, 504 from the seven in Year 2, and 572 from the seven in Year 3.</p>
+						<svg class="kc-chart" viewBox="0 0 700 492" role="img" aria-label="bar chart"><g><title>1. Mad Libs Machine: 29 students</title><text x="212" y="19" text-anchor="end" font-size="12.5" fill="#3b332c">1. Mad Libs Machine</text><rect x="220" y="8" width="103.9" height="15" rx="4" fill="#b86d4a"/><text x="329.9" y="20" font-size="12" fill="#62574d">29</text></g><g><title>2. Mystic Oracle: 18 students</title><text x="212" y="43" text-anchor="end" font-size="12.5" fill="#3b332c">2. Mystic Oracle</text><rect x="220" y="32" width="64.5" height="15" rx="4" fill="#b86d4a"/><text x="290.5" y="44" font-size="12" fill="#62574d">18</text></g><g><title>3. Guess the Number Deluxe: 25 students</title><text x="212" y="67" text-anchor="end" font-size="12.5" fill="#3b332c">3. Guess the Number Deluxe</text><rect x="220" y="56" width="89.6" height="15" rx="4" fill="#b86d4a"/><text x="315.6" y="68" font-size="12" fill="#62574d">25</text></g><g><title>4. Wish List Manager: 24 students</title><text x="212" y="91" text-anchor="end" font-size="12.5" fill="#3b332c">4. Wish List Manager</text><rect x="220" y="80" width="86.0" height="15" rx="4" fill="#b86d4a"/><text x="312.0" y="92" font-size="12" fill="#62574d">24</text></g><g><title>5. Trivia Quiz Show: 24 students</title><text x="212" y="115" text-anchor="end" font-size="12.5" fill="#3b332c">5. Trivia Quiz Show</text><rect x="220" y="104" width="86.0" height="15" rx="4" fill="#b86d4a"/><text x="312.0" y="116" font-size="12" fill="#62574d">24</text></g><g><title>6. Escape the Haunted School: 18 students</title><text x="212" y="139" text-anchor="end" font-size="12.5" fill="#3b332c">6. Escape the Haunted School</text><rect x="220" y="128" width="64.5" height="15" rx="4" fill="#b86d4a"/><text x="290.5" y="140" font-size="12" fill="#62574d">18</text></g><g><title>7. Secret Agent Cipher Lab: 82 students</title><text x="212" y="163" text-anchor="end" font-size="12.5" fill="#3b332c">7. Secret Agent Cipher Lab</text><rect x="220" y="152" width="293.8" height="15" rx="4" fill="#b86d4a"/><text x="519.8" y="164" font-size="12" fill="#62574d">82</text></g><g><title>8. Message Vault: 75 students</title><text x="212" y="187" text-anchor="end" font-size="12.5" fill="#3b332c">8. Message Vault</text><rect x="220" y="176" width="268.8" height="15" rx="4" fill="#b86d4a"/><text x="494.8" y="188" font-size="12" fill="#62574d">75</text></g><g><title>9. Trivia Quiz 2.0: 83 students</title><text x="212" y="211" text-anchor="end" font-size="12.5" fill="#3b332c">9. Trivia Quiz 2.0</text><rect x="220" y="200" width="297.4" height="15" rx="4" fill="#b86d4a"/><text x="523.4" y="212" font-size="12" fill="#62574d">83</text></g><g><title>10. Virtual Pet Care: 60 students</title><text x="212" y="235" text-anchor="end" font-size="12.5" fill="#3b332c">10. Virtual Pet Care</text><rect x="220" y="224" width="215.0" height="15" rx="4" fill="#b86d4a"/><text x="441.0" y="236" font-size="12" fill="#62574d">60</text></g><g><title>11. Monster Battle Arena: 81 students</title><text x="212" y="259" text-anchor="end" font-size="12.5" fill="#3b332c">11. Monster Battle Arena</text><rect x="220" y="248" width="290.2" height="15" rx="4" fill="#b86d4a"/><text x="516.2" y="260" font-size="12" fill="#62574d">81</text></g><g><title>12. Turtle Art Studio: 37 students</title><text x="212" y="283" text-anchor="end" font-size="12.5" fill="#3b332c">12. Turtle Art Studio</text><rect x="220" y="272" width="132.6" height="15" rx="4" fill="#b86d4a"/><text x="358.6" y="284" font-size="12" fill="#62574d">37</text></g><g><title>13. Book Detective: 86 students</title><text x="212" y="307" text-anchor="end" font-size="12.5" fill="#3b332c">13. Book Detective</text><rect x="220" y="296" width="308.2" height="15" rx="4" fill="#b86d4a"/><text x="534.2" y="308" font-size="12" fill="#62574d">86</text></g><g><title>14. Tokenizer Showdown: 92 students</title><text x="212" y="331" text-anchor="end" font-size="12.5" fill="#3b332c">14. Tokenizer Showdown</text><rect x="220" y="320" width="329.7" height="15" rx="4" fill="#b86d4a"/><text x="555.7" y="332" font-size="12" fill="#62574d">92</text></g><g><title>15. Keyword Detective: 93 students</title><text x="212" y="355" text-anchor="end" font-size="12.5" fill="#3b332c">15. Keyword Detective</text><rect x="220" y="344" width="333.2" height="15" rx="4" fill="#b86d4a"/><text x="559.2" y="356" font-size="12" fill="#62574d">93</text></g><g><title>16. Auto Mad Libs: 87 students</title><text x="212" y="379" text-anchor="end" font-size="12.5" fill="#3b332c">16. Auto Mad Libs</text><rect x="220" y="368" width="311.8" height="15" rx="4" fill="#b86d4a"/><text x="537.8" y="380" font-size="12" fill="#62574d">87</text></g><g><title>17. Character Tracker: 52 students</title><text x="212" y="403" text-anchor="end" font-size="12.5" fill="#3b332c">17. Character Tracker</text><rect x="220" y="392" width="186.3" height="15" rx="4" fill="#b86d4a"/><text x="412.3" y="404" font-size="12" fill="#62574d">52</text></g><g><title>18. Privacy Shield: 75 students</title><text x="212" y="427" text-anchor="end" font-size="12.5" fill="#3b332c">18. Privacy Shield</text><rect x="220" y="416" width="268.8" height="15" rx="4" fill="#b86d4a"/><text x="494.8" y="428" font-size="12" fill="#62574d">75</text></g><g><title>19. KidBot Brain: 118 students</title><text x="212" y="451" text-anchor="end" font-size="12.5" fill="#3b332c">19. KidBot Brain</text><rect x="220" y="440" width="422.8" height="15" rx="4" fill="#b86d4a"/><text x="648.8" y="452" font-size="12" fill="#62574d">118</text></g><g><title>20. NLP Capstone: 55 students</title><text x="212" y="475" text-anchor="end" font-size="12.5" fill="#3b332c">20. NLP Capstone</text><rect x="220" y="464" width="197.1" height="15" rx="4" fill="#b86d4a"/><text x="423.1" y="476" font-size="12" fill="#62574d">55</text></g></svg>
+						<h2>What changed in the code</h2>
+						<div class="table-scroll"><table><thead><tr><th>Share of student programs that…</th><th>Year 1 (2024)</th><th>Year 2 (2025)</th><th>Year 3 (2026)</th></tr></thead><tbody><tr><td>Define a function</td><td>13%</td><td>100%</td><td>95%</td></tr><tr><td>Define a class</td><td>0%</td><td>47%</td><td>24%</td></tr><tr><td>Handle errors with try/except</td><td>0%</td><td>50%</td><td>4%</td></tr><tr><td>Read or write files</td><td>0%</td><td>76%</td><td>16%</td></tr><tr><td>Use a comprehension</td><td>0%</td><td>27%</td><td>64%</td></tr><tr><td>Draw a matplotlib chart</td><td>0%</td><td>17%</td><td>51%</td></tr><tr><td>Use spaCy</td><td>0%</td><td>0%</td><td>100%</td></tr><tr><td>Use named entities</td><td>0%</td><td>0%</td><td>36%</td></tr></tbody></table></div>
+						<p><strong>Year 1</strong> programs are short, with a median of 31 lines. Every one of them uses an f-string. Loops show up in about 72% and conditionals in 79%. Functions show up in only 13%, and every one of those is in the last project, <a href="#modal-kidcode-p06">Escape the Haunted School</a>.</p>
+						<p><strong>Year 2</strong> is where the code changes character. Every Year 2 program defines functions. Nearly half define a class, and every <a href="#modal-kidcode-p11">Monster Battle Arena</a> program uses inheritance. Three quarters read or write files, half wrap risky code in <code>try</code>/<code>except</code>, and about half carry their own <code>assert</code> tests. The median Year 2 program is 96 lines, three times the Year 1 median.</p>
+						<p><strong>Year 3</strong>: every program uses spaCy. About a third work with named entities, and just under a quarter write their own rule-based patterns with spaCy's Matcher. The single most-completed project in the whole program is from Year 3: <a href="#modal-kidcode-p19">KidBot Brain</a>, with 118 submissions.</p>
+						<p>The number that surprised me is length. The median Year 3 program is 51 lines, <em>shorter</em> than Year 2. In Year 2, students wrote the text-cleaning and word-counting code themselves. In Year 3, spaCy does that work in one line, and the students' code goes into deciding what to do with the result. Lines of code turned out to be a bad measure of growth. Two things I taught in Year 3 appear in no student program at all: displaCy, spaCy's visualizer, and <code>entity_ruler</code>. Both are in the curriculum. Neither shows up in the code.</p>
+						<h2>What the tests show</h2>
+						<p>Code tells me what students built. It doesn't tell me what they learned, so each unit also had a curriculum-aligned pre- and post-assessment. The two forms test the same skills in the same formats with different code. I only analyze students who have both scores, so the comparison is the same students before and after. That's 104 students across the three years.</p>
+						<div class="kc-stats"><div><b>41.7% → 58.8%</b><span>mean score, before and after</span></div><div><b>+17.1</b><span>percentage points (95% interval 15.3 to 18.9)</span></div><div><b>99 of 104</b><span>improved (4 stayed the same, 1 went down)</span></div></div>
+						<p>104 students showed a mean increase from 41.7% to 58.8%, a 17.1-percentage-point gain. In relative terms that's a 41% increase over where they started, but I think the points gain is the more honest way to say it. The gain was similar for each starting cohort, between about 15 and 19 points.</p>
+						<svg class="kc-chart" viewBox="0 0 700 156" role="img" aria-label="bar chart"><g><title>declined (below 0): 1 students</title><text x="212" y="19" text-anchor="end" font-size="12.5" fill="#3b332c">declined (below 0)</text><rect x="220" y="8" width="9.6" height="15" rx="4" fill="#b86d4a"/><text x="235.6" y="20" font-size="12" fill="#62574d">1</text></g><g><title>flat (0): 4 students</title><text x="212" y="43" text-anchor="end" font-size="12.5" fill="#3b332c">flat (0)</text><rect x="220" y="32" width="38.2" height="15" rx="4" fill="#b86d4a"/><text x="264.2" y="44" font-size="12" fill="#62574d">4</text></g><g><title>+0 to &lt;10: 14 students</title><text x="212" y="67" text-anchor="end" font-size="12.5" fill="#3b332c">+0 to &lt;10</text><rect x="220" y="56" width="133.8" height="15" rx="4" fill="#b86d4a"/><text x="359.8" y="68" font-size="12" fill="#62574d">14</text></g><g><title>+10 to &lt;20: 42 students</title><text x="212" y="91" text-anchor="end" font-size="12.5" fill="#3b332c">+10 to &lt;20</text><rect x="220" y="80" width="401.3" height="15" rx="4" fill="#b86d4a"/><text x="627.3" y="92" font-size="12" fill="#62574d">42</text></g><g><title>+20 to &lt;30: 28 students</title><text x="212" y="115" text-anchor="end" font-size="12.5" fill="#3b332c">+20 to &lt;30</text><rect x="220" y="104" width="267.6" height="15" rx="4" fill="#b86d4a"/><text x="493.6" y="116" font-size="12" fill="#62574d">28</text></g><g><title>+30 or more: 15 students</title><text x="212" y="139" text-anchor="end" font-size="12.5" fill="#3b332c">+30 or more</text><rect x="220" y="128" width="143.3" height="15" rx="4" fill="#b86d4a"/><text x="369.3" y="140" font-size="12" fill="#62574d">15</text></g></svg>
+						<p>There's no comparison group here: no set of kids who didn't take KidCode and took the same tests. So this shows students scored higher at the end of a unit than at the start. It doesn't show that KidCode is why. I also don't have the individual unit-by-unit scores, only each student's pre and post percentage, so the result can't be broken down by unit.</p>
+						<h2>What these numbers don't show</h2>
+						<p>A program in the folder means a student built it. It doesn't tell me which classes they came to, or whether any of it sticks a year later. I have some attendance totals and some records of who came back the next year, but I'm not publishing numbers from them. The attendance figures are totals without class-by-class records behind them, and the return records cover only some of the students, not a random some. I'd rather leave those out than publish a number I can't defend.</p>
+						<h2>More</h2>
+						<p>Every project in the <a href="#kidcode-archive">KidCode archive</a> has its own post with one real student program and the numbers for that project. The program-wide statistics, the curriculum outline and how each number was calculated are in the <a href="https://github.com/ddevatha1/kidcode" target="_blank" rel="noopener">KidCode repository on GitHub</a>, which contains aggregate numbers only: no names and no student code.</p>
+<nav class="kc-pn"><a href="#modal-kidcode-day4">← Day 4: The Bug That Became the Best Part of Class</a><a href="#kidcode-archive" class="kc-up">KidCode archive</a><span></span></nav>
+					</div>
+				</div>
+				<!-- KC:MODALS:end -->
 	<script>
 		const progress = document.getElementById('progress');
 		const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
@@ -5765,6 +7773,27 @@
 				if (m && m.classList.contains('modal-overlay')) m.classList.add('open');
 			}
 		})();
+
+		// KC:JS:start (links between blog posts: #modal-... opens that post; #kidcode-... closes posts and scrolls to the archive)
+		const kcOpen = (id) => {
+			const m = document.getElementById(id);
+			if (!m) return false;
+			if (m.classList.contains('modal-overlay')) {
+				document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+				m.classList.add('open'); m.scrollTop = 0; const box = m.querySelector('.modal-box'); if (box) box.scrollTop = 0;
+				return true;
+			}
+			document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+			m.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			return true;
+		};
+		document.addEventListener('click', (e) => {
+			const a = e.target.closest('a[href^="#modal-"], a[href^="#kidcode-"]');
+			if (!a) return;
+			const id = a.getAttribute('href').slice(1);
+			if (kcOpen(id)) { e.preventDefault(); history.replaceState(null, '', '#' + id); }
+		});
+		// KC:JS:end
 
 		// Close modal on Escape key
 		document.addEventListener('keydown', (e) => {
