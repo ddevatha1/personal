@@ -4636,7 +4636,7 @@
 						The same pass turned up four in-text citations that used placeholder author names rather than verifiable papers for the findings I was describing. Each was replaced with the real paper that reports that finding, and several sources I was relying on without citing (LightGBM, Optuna, permutation importance, scikit-learn) got proper in-text citations. Every displayed equation got a number so the text could point to it, the feature list became a proper table, and every figure mention was tied to an actual figure file from the project instead of a description of one.
 					</p>
 					<p>
-						One thing the audit flagged without changing: the draft reported only cross-validation results. The held-out test result from <a href="#modal-dementia-18">March</a> and the early LSTM comparison both exist in the project files, but neither was in the draft. That was marked as a decision to make on purpose rather than something to leave out by accident.
+						One thing the audit flagged without changing: the draft reported only cross-validation results. The held-out test set from <a href="#modal-dementia-18">March</a> and the early LSTM comparison both exist in the project files, but neither was in the draft. That was marked as a decision to make on purpose rather than something to leave out by accident, and for the held-out set I did make it on purpose: it stayed out, and cross-validation is what the paper reports.
 					</p>
 
 					<h2>What We Learned</h2>
@@ -4741,12 +4741,12 @@
 					</p>
 
 					<p>
-						The results the paper reports are the cross-validated ones: R² = 0.840 ± 0.015, RMSE 2.75, MAE 2.02, and Pearson r = 0.917, computed from out-of-fold predictions across the five patient-grouped folds. The held-out test result from <a href="#modal-dementia-18">March</a> is not part of the submitted manuscript. The headline claim is the same narrower one the ablation supports: clinical history is the dominant predictor of future MMSE, and transformer-derived speech representations add complementary signal on top of it.
+						The results the paper reports are the cross-validated ones: R² = 0.840 ± 0.015, RMSE 2.75, MAE 2.02, and Pearson r = 0.917, computed from out-of-fold predictions across the five patient-grouped folds. My original plan was to report a held-out test set, and I set one aside in <a href="#modal-dementia-18">March</a>. In the end I removed it and switched to cross-validation, because I wanted a more realistic estimate of performance: with only 126 patients, a single held-out slice is small enough that its score depends heavily on which patients happen to land in it, while cross-validation evaluates every patient once, in a fold that never trained on them. That choice has a cost the paper states openly: cross-validation here came out higher than the held-out slice did (0.840 against 0.732), and the Methods section flags that it may be modestly optimistic because feature selection and tuning weren't nested. The headline claim is the same narrower one the ablation supports: clinical history is the dominant predictor of future MMSE, and transformer-derived speech representations add complementary signal on top of it.
 					</p>
 
 					<h2>The Submission</h2>
 					<p>
-						On August 4, 2026, the manuscript, "Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features," was submitted to <em>Frontiers in Aging Neuroscience</em> as an Original Research Article in the Alzheimer's Disease and Related Dementias section. Joe Xiao, who has mentored this project since <a href="#modal-dementia-02">May 2025</a>, is the co-author, and the author contributions credit him, among other roles, with supervision.
+						On August 4, 2026, the manuscript, "Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features," was submitted to <em>Frontiers in Aging Neuroscience</em> as an Original Research Article in the Alzheimer's Disease and Related Dementias section. Joe Xiao, the PhD scholar who has mentored this project since <a href="#modal-dementia-02">May 2025</a>, is the co-author, and the author contributions credit him, among other roles, with supervision.
 					</p>
 					<p>
 						The same day, the code went public in a <a href="https://github.com/ddevatha1/dementia-mmse-prediction" target="_blank" rel="noopener">GitHub repository</a>: the feature extraction, the evaluation pipeline, the ablation script, and aggregate results. The DementiaBank transcripts themselves are not in it. Access to the Pitt Corpus is restricted, and anyone reproducing the work needs to request it from DementiaBank directly.
