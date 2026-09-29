@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ShopAI: Multi-Retailer Grocery Search and Trip Planning · Deeptanshu Devatha</title>
+	<meta name="description" content="Engineering case study of ShopAI, a grocery price-comparison app on the Apple App Store: nine retailer adapters, concurrent search under a response budget, and a deterministic planner that scores all 127 store combinations.">
+	<link rel="canonical" href="https://www.deeptanshudevatha.com/projects/shopai/">
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Deeptanshu Devatha">
+	<meta property="og:title" content="ShopAI: Multi-Retailer Grocery Search and Trip Planning">
+	<meta property="og:description" content="Nine retailer integrations, one product schema, and a planner that checks every store combination exactly.">
+	<meta property="og:url" content="https://www.deeptanshudevatha.com/projects/shopai/">
+	<meta property="og:image" content="https://www.deeptanshudevatha.com/img/shopai/retailer-normalization.svg">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css">
+	<script type="application/ld+json">
+	{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ShopAI","applicationCategory":"ShoppingApplication","operatingSystem":"iOS","url":"https://apps.apple.com/app/shopai/id6797083809","author":{"@type":"Person","name":"Deeptanshu Devatha"}}
+	</script>
+</head>
+<body class="s-page">
+<a class="s-skip" href="#main">Skip to content</a>
+<nav class="s-nav" aria-label="Site">
+	<div class="s-wrap">
+		<a class="s-brand" href="/">Deeptanshu Devatha</a>
+		<ul>
+			<li><a class="s-navlink" href="/#research">Research</a></li>
+			<li><a class="s-navlink" href="/#teaching">Teaching</a></li>
+			<li><a class="s-navlink" href="/#engineering" aria-current="page">Engineering</a></li>
+			<li><a class="s-navlink" href="/#blog">Writing</a></li>
+			<li><a class="s-navlink" href="/resume/">Resume</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main id="main">
+	<header class="s-page-head">
+		<div class="s-wrap">
+			<p class="s-back"><a href="/#engineering">← Engineering</a></p>
+			<span class="s-kicker">Engineering · Sole developer · 2025 – present</span>
+			<h1 class="s-h1">ShopAI: one grocery search across nine retailers</h1>
+			<p class="s-lede">Search once and see live prices for the same item at every nearby store. Then turn a whole shopping list into a multi-store trip. Search and planning are deterministic: the shipped app makes no language-model calls.</p>
+			<span class="s-status">Live on the Apple App Store</span>
+			<ul class="s-links">
+				<li><a class="s-primary" href="https://apps.apple.com/app/shopai/id6797083809">App Store</a></li>
+				<li><a href="/#modal-shopai-architecture">Full architecture write-up</a></li>
+				<li><a href="https://devpost.com/software/smartshop-gj4q59">Hackathon prototype (Devpost)</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<div class="s-wrap s-layout">
+		<aside class="s-toc" aria-label="On this page">
+			<ol>
+				<li><a href="#architecture">Architecture</a></li>
+				<li><a href="#retailers">Retailer adapters</a></li>
+				<li><a href="#search">Search path</a></li>
+				<li><a href="#planner">Planner</a></li>
+				<li><a href="#incidents">Production issues</a></li>
+				<li><a href="#scope">Scope and origins</a></li>
+			</ol>
+		</aside>
+
+		<div class="s-prose">
+			<section class="s-block" id="architecture">
+				<h2 class="s-h2">Architecture</h2>
+				<p>A React Native / Expo client sits in front of a standalone Express + TypeScript backend, which runs on AWS EC2 behind Nginx. The app itself contains no search logic. Every search, planner request and warm-up check goes to the backend, and all ranking and filtering happens there.</p>
+				<figure class="s-figure">
+					<img src="/img/shopai/mvp-architecture.svg" alt="Architecture diagram: mobile client, one backend process, a search and aggregation layer, and nine retailer-specific adapters." loading="lazy" width="1180" height="960">
+					<figcaption>The shipped pipeline has four layers and one direction of data flow.</figcaption>
+				</figure>
+			</section>
+
+			<section class="s-block" id="retailers">
+				<h2 class="s-h2">Retailer adapters</h2>
+				<p>None of the nine retailers built their systems for an app like this. Most of the work is making structurally different sources look like one.</p>
+				<div class="s-table-wrap">
+					<table class="s-table">
+						<thead><tr><th>Integration</th><th>Retailers</th></tr></thead>
+						<tbody>
+							<tr><td>REST API, OAuth2 client credentials</td><td>Kroger, Harris Teeter</td></tr>
+							<tr><td>Frontend GraphQL, anonymous session cookie</td><td>Aldi, Sprouts, Publix (via Instacart)</td></tr>
+							<tr><td>Headless browser (Playwright)</td><td>Trader Joe's</td></tr>
+							<tr><td>Server-rendered HTML parsing</td><td>Whole Foods</td></tr>
+							<tr><td>Store locations only; no live product source yet</td><td>Albertsons, Tom Thumb (reported as <code>unavailable</code>)</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p>Every adapter emits the same <code>ApiProduct</code> shape (name, size, price, store, rating, image, optional nutrition). Nothing above the adapter layer ever special-cases a store, so adding a retailer means writing one more adapter. A declarative onboarding path for browser-based stores was validated on Trader Joe's and Aldi. Target was evaluated and left out because its terms of service prohibit automated collection.</p>
+				<figure class="s-figure">
+					<img src="/img/shopai/retailer-normalization.svg" alt="Diagram of three integration strategies converging into one normalized product shape." loading="lazy" width="1180" height="460">
+				</figure>
+			</section>
+
+			<section class="s-block" id="search">
+				<h2 class="s-h2">Search path</h2>
+				<ul class="s-pipeline">
+					<li><b>Query correction</b> normalizes typos and plurals once, so every adapter searches the same term.</li>
+					<li><b>Concurrent fan-out.</b> All retailer calls start together (<code>Promise.all</code>) and race a <em>shared</em> response-time budget, so one slow store comes back as <code>pending</code> instead of delaying the other eight.</li>
+					<li><b>Filtering and ranking.</b> Each store's raw results pass the same food filter, relevance filter and per-store selection, followed by a cross-store image backfill.</li>
+					<li><b>Explicit status.</b> Each store is reported as <code>ok</code>, <code>error</code>, <code>unavailable</code> or <code>pending</code>, so the app never has to guess why a section is empty.</li>
+					<li><b>Warm-up.</b> OAuth tokens, session cookies and the browser session are set up at boot and per ZIP code by a small state machine (<i>starting → warming → ready</i>), keeping that cost off shoppers' requests.</li>
+				</ul>
+				<figure class="s-figure">
+					<img src="/img/shopai/search-flow.svg" alt="Sequence of one search: query correction, parallel retailer calls under a shared budget, filtering, and a response with per-store status." loading="lazy" width="1180" height="620">
+				</figure>
+			</section>
+
+			<section class="s-block" id="planner">
+				<h2 class="s-h2">Planner</h2>
+				<p>The Smart Shopping Planner resolves each list item against live search results and then decides which stores to visit. With seven stores carrying live product data, there are 2<sup>7</sup> − 1 = 127 non-empty store combinations. That is few enough to score every one exactly, so "cheapest" really is the cheapest of all options rather than the output of a heuristic.</p>
+				<ul>
+					<li><b>Cheapest, fastest and fewest stops</b> are single-field sorts: total cost, then drive time, then store count.</li>
+					<li><b>Balanced</b> is the one weighted multi-factor score.</li>
+					<li>Gas cost uses a stated approximation: 25 mpg at $3.50 per gallon.</li>
+					<li>A "healthiest" mode only scores products with real nutrition data from Open Food Facts. Missing data is treated as missing, not as the worst score.</li>
+					<li>A store is excluded only when it is confirmed closed, which currently only Kroger's posted hours can show. Unknown hours never count as closed.</li>
+				</ul>
+				<p>I originally described every plan as using the weighted score. Reviewing the code against my own design notes showed that only "balanced" does, so the write-up was corrected.</p>
+			</section>
+
+			<section class="s-block" id="incidents">
+				<h2 class="s-h2">Production issues</h2>
+				<ul>
+					<li>A Node.js <code>setTimeout</code> delay overflow in a 30-day location cache stalled the event loop, turning ~1.5-second searches into 27-second ones. I fixed it by capping the sweep interval.</li>
+					<li>On the previous host, a Playwright browser-path setting was silently ignored because the service predated its config file. This surfaced as a live Chromium failure in production.</li>
+				</ul>
+			</section>
+
+			<section class="s-block" id="scope">
+				<h2 class="s-h2">Scope and origins</h2>
+				<p>ShopAI grew out of ShopSmart, a four-person hackathon prototype from August 2025 that won 1st place at TechLit Bridging the Gap 2025, the Innovation Prize at PeddieHacks 2025 and 3rd place at Hack 4 Humanity 2025 (<a href="https://devpost.com/software/smartshop-gj4q59">Devpost</a>). Those were team awards for the prototype. ShopAI is my solo rebuild.</p>
+				<p>For the App Store release I cut meal planning, an AI assistant, OCR, barcode scanning and several other features behind a single feature-flag file. The code still exists, but it isn't shipped. The <a href="/#modal-shopai-architecture">architecture write-up</a> covers what was cut and the layered design it's meant to grow into. The app has a small number of App Store ratings, and I don't have usage figures to report.</p>
+			</section>
+		</div>
+	</div>
+</main>
+
+<footer class="s-footer">
+	<div class="s-wrap">
+		<span>Deeptanshu Devatha · Frisco, Texas</span>
+		<ul>
+			<li><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a></li>
+			<li><a href="https://github.com/ddevatha1">GitHub</a></li>
+		</ul>
+	</div>
+</footer>
+</body>
+</html>

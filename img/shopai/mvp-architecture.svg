@@ -33,7 +33,7 @@
   <!-- Band 2: Backend -->
   <rect x="60" y="196" width="1060" height="108" rx="12" fill="#ffffff" stroke="#e4d7c9" stroke-width="1.5"/>
   <text x="90" y="228" font-size="21" font-weight="700" fill="#1d1a17">Backend API</text>
-  <text x="90" y="250" font-size="13.5" fill="#62574d">Standalone Express + TypeScript server &#183; deployed on Render &#183; own package.json, own process</text>
+  <text x="90" y="250" font-size="13.5" fill="#62574d">Standalone Express + TypeScript server &#183; on AWS EC2 behind Nginx &#183; own package.json, own process</text>
   <g font-size="12" fill="#8f4e31">
     <rect x="90" y="264" width="112" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="146" y="281" text-anchor="middle">/api/search</text>
     <rect x="212" y="264" width="116" height="26" rx="13" fill="rgba(184,109,74,0.12)"/><text x="270" y="281" text-anchor="middle">/api/planner</text>

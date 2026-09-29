@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Forecasting Cognitive Function From Speech · Deeptanshu Devatha</title>
+	<meta name="description" content="First-author research forecasting future MMSE scores from dementia patients' speech: Sentence-BERT coherence features, LightGBM, patient-grouped cross-validation, a leakage fix, and a controlled ablation.">
+	<link rel="canonical" href="https://www.deeptanshudevatha.com/research/speech-cognition/">
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Deeptanshu Devatha">
+	<meta property="og:title" content="Forecasting Cognitive Function From Speech">
+	<meta property="og:description" content="Predicting a patient's next MMSE score from earlier recorded speech and clinical history: method, evaluation, ablation and limitations.">
+	<meta property="og:url" content="https://www.deeptanshudevatha.com/research/speech-cognition/">
+	<meta property="og:image" content="https://www.deeptanshudevatha.com/img/dementia/dementia-12-leakage-diagram.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css">
+	<script type="application/ld+json">
+	{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features","author":[{"@type":"Person","name":"Deeptanshu Devatha"},{"@type":"Person","name":"Joe Xiao"}],"datePublished":"2026-08-06","url":"https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1"}
+	</script>
+</head>
+<body class="s-page">
+<a class="s-skip" href="#main">Skip to content</a>
+<nav class="s-nav" aria-label="Site">
+	<div class="s-wrap">
+		<a class="s-brand" href="/">Deeptanshu Devatha</a>
+		<ul>
+			<li><a class="s-navlink" href="/#research" aria-current="page">Research</a></li>
+			<li><a class="s-navlink" href="/#teaching">Teaching</a></li>
+			<li><a class="s-navlink" href="/#engineering">Engineering</a></li>
+			<li><a class="s-navlink" href="/#blog">Writing</a></li>
+			<li><a class="s-navlink" href="/resume/">Resume</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main id="main">
+	<header class="s-page-head">
+		<div class="s-wrap">
+			<p class="s-back"><a href="/#research">← Research</a></p>
+			<span class="s-kicker">Research · May 2025 – present</span>
+			<h1 class="s-h1">Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features</h1>
+			<p class="s-meta"><b>Deeptanshu Devatha</b> (first author) and Joe Xiao (PhD student, mentor)</p>
+			<p class="s-meta">Preprint posted on medRxiv, August 6, 2026 · Submitted to <i>Frontiers in Aging Neuroscience</i> August 4, 2026</p>
+			<span class="s-status">In review · no decision yet</span>
+			<ul class="s-links">
+				<li><a class="s-primary" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint</a></li>
+				<li><a href="https://github.com/ddevatha1/dementia-mmse-prediction">Code</a></li>
+				<li><a href="#log">Research log (26 posts)</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<div class="s-wrap s-layout">
+		<aside class="s-toc" aria-label="On this page">
+			<ol>
+				<li><a href="#question">Question</a></li>
+				<li><a href="#data">Data</a></li>
+				<li><a href="#representation">Representation</a></li>
+				<li><a href="#model">Model</a></li>
+				<li><a href="#evaluation">Evaluation and leakage</a></li>
+				<li><a href="#results">Results</a></li>
+				<li><a href="#ablation">Ablation</a></li>
+				<li><a href="#limitations">Limitations</a></li>
+				<li><a href="#log">Research log</a></li>
+			</ol>
+		</aside>
+
+		<div class="s-prose">
+			<section class="s-block" id="question">
+				<h2 class="s-h2">Question</h2>
+				<p>Dementia is usually tracked with short cognitive tests such as the Mini-Mental State Examination (MMSE, scored 0–30), given at clinic visits months apart. The Pitt Corpus visits also include recorded, transcribed speech. The question here is whether that speech, together with the clinical history already on file, can forecast the patient's MMSE score at a <em>later</em> visit.</p>
+				<p>This is framed as a regression problem: given everything known up to one visit, predict the MMSE at the next one. It is a forecast, not a diagnosis.</p>
+			</section>
+
+			<section class="s-block" id="data">
+				<h2 class="s-h2">Data</h2>
+				<p>Transcripts come from the DementiaBank Pitt Corpus, used under DementiaBank's controlled-access agreement; the repository contains no corpus data. Patients with only one visit, no transcript, or a missing MMSE at the target visit were excluded.</p>
+				<div class="s-table-wrap">
+					<table class="s-table">
+						<tbody>
+							<tr><th scope="row">Patients</th><td class="n">126</td><td>69 dementia, 57 control</td></tr>
+							<tr><th scope="row">Visits per patient</th><td class="n">2–5</td><td>most had 2 or 3</td></tr>
+							<tr><th scope="row">Prediction samples</th><td class="n">173</td><td>1–4 prior visits → MMSE at a later visit</td></tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="s-block" id="representation">
+				<h2 class="s-h2">Representation</h2>
+				<p>Each prediction sample becomes a 53-dimensional vector built from three blocks.</p>
+				<div class="s-grid-2">
+					<div class="s-tile">
+						<h3 class="s-h3">Discourse coherence (Sentence-BERT)</h3>
+						<p>Every sentence is embedded with Sentence-BERT. Adjacent cosine similarity measures local continuity; global coherence compares the first and last sentences; semantic slope fits the trend of each sentence's similarity to the opening sentence (negative means drifting away); topic drift measures distance from the transcript's mean embedding; embedding variance captures erratic jumps.</p>
+					</div>
+					<div class="s-tile">
+						<h3 class="s-h3">Lexical and syntactic (spaCy)</h3>
+						<p>Filler rate, 50-token moving-average type-token ratio (MATTR), inter-sentence repetition, mean sentence length, fragment ratio (sentences with no verb, from POS tags), named-entity rate and generic-word rate. Together with the five coherence features, these are the 12 per-visit features.</p>
+					</div>
+				</div>
+				<ul class="s-pipeline">
+					<li><b>12 linguistic features</b> from the most recent prior visit: the patient's current speech state, not an average over history.</li>
+					<li><b>8 change features</b>: visit-to-visit differences (Δ) for eight of the twelve.</li>
+					<li><b>4 temporal features</b>: number of prior visits, gap to the target visit, mean gap, total observation span.</li>
+					<li><b>20 semantic components</b>: 384-dimensional SBERT transcript embeddings reduced with PCA.</li>
+					<li><b>9 clinical and demographic features</b>: entry MMSE, Blessed Dementia Rating, CDR, NYU staging, Mattis DRS, baseline diagnosis, age, education, sex.</li>
+				</ul>
+			</section>
+
+			<section class="s-block" id="model">
+				<h2 class="s-h2">Model</h2>
+				<p>The model is LightGBM, a gradient-boosted tree ensemble, chosen for a small tabular dataset with mixed feature types. Before training, the pipeline runs these steps:</p>
+				<ul class="s-pipeline">
+					<li><b>RobustScaler</b> normalization, which limits the influence of outliers.</li>
+					<li><b>Correlation pruning</b>: one of any pair with |r| &gt; 0.8 is dropped; clinical variables are kept.</li>
+					<li><b>Permutation-importance selection</b> with a preliminary LightGBM keeps the 15 most useful features, and the clinical variables are added back.</li>
+					<li><b>Quantile binning</b> (KBinsDiscretizer) appends a discretized copy of each feature.</li>
+					<li><b>Gaussian augmentation</b>: three noisy copies per sample (noise at 2% of each feature's SD), each tagged with its parent patient.</li>
+					<li><b>Optuna</b> (Tree-structured Parzen Estimator, 200 trials, 10 hyperparameters), scored by mean validation R² across the patient-grouped folds.</li>
+				</ul>
+			</section>
+
+			<section class="s-block" id="evaluation">
+				<h2 class="s-h2">Evaluation and the leakage problem</h2>
+				<p>In October 2025, while checking the cross-validation code, I found that it split the data by <em>visit</em> rather than by <em>patient</em>. With several visits per person, one visit could land in training and another in validation. The model could then score well partly by recognizing a person, not by learning anything general about speech and cognition.</p>
+				<figure class="s-figure">
+					<img src="/img/dementia/dementia-12-leakage-diagram.png" alt="Diagram comparing a random visit-level split, where one patient appears in both training and validation folds, with a patient-grouped split, where each patient is entirely in one fold." loading="lazy" width="1366" height="792">
+					<figcaption>Visit-level splitting (left) lets one patient's visits appear on both sides of the split. Patient-grouped splitting (right) keeps each patient in one fold.</figcaption>
+				</figure>
+				<div class="s-callout">
+					<p><b>The fix:</b> 5-fold <code>GroupKFold</code> grouped by patient ID. The augmented copies carry their parent's ID, so they stay in their parent's fold, and metrics are computed only on out-of-fold predictions for the original, unaugmented samples. The scores went down after the fix, which is what removing leaked information should do.</p>
+				</div>
+				<p>A second problem surfaced in December 2025. Entry MMSE, which should be the strongest single predictor, was contributing almost nothing. Two silent data-joining bugs were responsible: a renamed spreadsheet column and a string-versus-integer patient-ID mismatch. Because of them, every patient received the same imputed value. Fixing them produced the largest single improvement in the project (<a href="/#modal-dementia-14">write-up</a>).</p>
+				<p>In July 2026, before submission, I checked the draft line by line against the code. It still described six coreference and entity-transition features that the trained model never used. The Methods section was rewritten to describe the twelve features the model was actually trained on (<a href="/#modal-dementia-23">write-up</a>).</p>
+			</section>
+
+			<section class="s-block" id="results">
+				<h2 class="s-h2">Results</h2>
+				<div class="s-table-wrap">
+					<table class="s-table">
+						<caption>Tuned model, patient-grouped 5-fold cross-validation, out-of-fold predictions on original samples</caption>
+						<thead><tr><th>Metric</th><th class="n">Value</th></tr></thead>
+						<tbody>
+							<tr><td>R²</td><td class="n">0.840 ± 0.015</td></tr>
+							<tr><td>RMSE (MMSE points)</td><td class="n">2.75</td></tr>
+							<tr><td>MAE (MMSE points)</td><td class="n">2.02</td></tr>
+							<tr><td>Pearson r</td><td class="n">0.917</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p>An average error of about two MMSE points is similar in size to the scoring variability reported between human raters on the MMSE itself. An earlier held-out test split (March 2026) gave R² 0.732. The paper reports patient-grouped cross-validation instead, which comes out higher. Because selection and tuning were not nested (see Limitations), the paper notes that the cross-validation figure may be optimistic.</p>
+			</section>
+
+			<section class="s-block" id="ablation">
+				<h2 class="s-h2">Ablation: what actually contributes</h2>
+				<p>To see where the accuracy comes from, each feature group was retrained alone. Every run used the same fixed, untuned LightGBM (300 trees, depth 3, learning rate 0.05) under the same patient-grouped folds, so any difference between rows comes from the features alone.</p>
+				<div class="s-bars" role="img" aria-label="Bar chart of mean R squared by feature subset; the values are listed in the table below.">
+					<div class="s-bar"><span class="s-bar-label">Linguistic features only</span><span class="s-bar-track"><span class="s-bar-fill" style="width:11.8%"></span></span><span class="s-bar-val">0.118</span></div>
+					<div class="s-bar"><span class="s-bar-label">Speech (linguistic + SBERT)</span><span class="s-bar-track"><span class="s-bar-fill" style="width:43.7%"></span></span><span class="s-bar-val">0.437</span></div>
+					<div class="s-bar"><span class="s-bar-label">SBERT embeddings only</span><span class="s-bar-track"><span class="s-bar-fill" style="width:45.8%"></span></span><span class="s-bar-val">0.458</span></div>
+					<div class="s-bar"><span class="s-bar-label">Clinical/demographic only</span><span class="s-bar-track"><span class="s-bar-fill" style="width:71.6%"></span></span><span class="s-bar-val">0.716</span></div>
+					<div class="s-bar"><span class="s-bar-label">All features</span><span class="s-bar-track"><span class="s-bar-fill" style="width:74%"></span></span><span class="s-bar-val">0.740</span></div>
+					<div class="s-bar s-best"><span class="s-bar-label">Clinical + SBERT</span><span class="s-bar-track"><span class="s-bar-fill" style="width:75.9%"></span></span><span class="s-bar-val">0.759</span></div>
+				</div>
+				<div class="s-table-wrap">
+					<table class="s-table">
+						<caption>Feature-source ablation (fixed, untuned LightGBM; patient-grouped 5-fold CV)</caption>
+						<thead><tr><th>Feature subset</th><th class="n">R² (mean ± SD)</th><th class="n">RMSE</th><th class="n">MAE</th><th class="n">r</th></tr></thead>
+						<tbody>
+							<tr><td>Linguistic features only</td><td class="n">0.118 ± 0.140</td><td class="n">6.38</td><td class="n">4.91</td><td class="n">0.429</td></tr>
+							<tr><td>SBERT embeddings only</td><td class="n">0.458 ± 0.170</td><td class="n">4.94</td><td class="n">3.91</td><td class="n">0.699</td></tr>
+							<tr><td>Clinical/demographic only</td><td class="n">0.716 ± 0.080</td><td class="n">3.56</td><td class="n">2.52</td><td class="n">0.859</td></tr>
+							<tr><td>Speech (linguistic + SBERT)</td><td class="n">0.437 ± 0.180</td><td class="n">5.04</td><td class="n">3.80</td><td class="n">0.683</td></tr>
+							<tr class="s-hl"><td>Clinical + SBERT</td><td class="n">0.759 ± 0.086</td><td class="n">3.26</td><td class="n">2.42</td><td class="n">0.880</td></tr>
+							<tr><td>All features</td><td class="n">0.740 ± 0.080</td><td class="n">3.39</td><td class="n">2.41</td><td class="n">0.869</td></tr>
+							<tr><td>All features, no longitudinal change features</td><td class="n">0.740 ± 0.077</td><td class="n">3.39</td><td class="n">2.45</td><td class="n">0.868</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p>Clinical history is the strongest single source by a wide margin. SBERT embeddings carry far more signal than the handcrafted linguistic features, and combining the two speech sources doesn't beat SBERT alone. Adding SBERT to the clinical features gives the best subset (0.759 against 0.716), but the standard deviations overlap, so this is directional evidence of complementary signal, not a demonstrated gain. Removing the visit-to-visit change features changed nothing (0.740 both ways). A January 2026 conclusion that depended on them did not survive this controlled rerun (<a href="/#modal-dementia-24">write-up</a>).</p>
+			</section>
+
+			<section class="s-block" id="limitations">
+				<h2 class="s-h2">Limitations</h2>
+				<ul>
+					<li><b>Non-nested selection and tuning.</b> Correlation pruning, permutation-importance selection, PCA and the Optuna search were each run once on the full dataset, not refit inside the folds. Selection and tuning depend on the labels, so the reported cross-validation metrics may be optimistic.</li>
+					<li><b>Small, single cohort.</b> The study has 126 patients and 173 samples from one corpus, with no external validation. Very few patients score below 10, and the model over-predicts for them.</li>
+					<li><b>Speech's contribution is modest.</b> Most of the accuracy comes from clinical history. The case for speech rests on the SBERT increment in the ablation.</li>
+					<li><b>Missing data sources.</b> The data include no imaging, biomarkers or medication history. The paper also lists benchmarking against simpler baselines, such as linear regression on clinical features, as future work.</li>
+				</ul>
+			</section>
+
+			<section class="s-block" id="log">
+				<h2 class="s-h2">Research log</h2>
+				<p>I wrote these posts as the work happened, and the dates are the original posting dates. The early entries describe approaches that were later dropped, including an LSTM and the coreference features.</p>
+				<ul class="s-log">
+					<li class="s-phase">Framing the problem</li>
+					<li><time datetime="2025-05-12">May 12, 2025</time><a href="/#modal-dementia-01">Starting From Zero: Learning How Research Problems Get Made</a></li>
+					<li><time datetime="2025-05-27">May 27, 2025</time><a href="/#modal-dementia-02">Narrowing In: Why Speech, and Why Dementia</a></li>
+					<li><time datetime="2025-06-09">Jun 9, 2025</time><a href="/#modal-dementia-03">Discourse Coherence 101</a></li>
+					<li><time datetime="2025-06-20">Jun 20, 2025</time><a href="/#modal-dementia-04">Finding a Dataset: DementiaBank and the Pitt Corpus</a></li>
+					<li class="s-phase">Building the pipeline</li>
+					<li><time datetime="2025-07-03">Jul 3, 2025</time><a href="/#modal-dementia-05">From Transcripts to Tables: First Preprocessing Pass</a></li>
+					<li><time datetime="2025-07-18">Jul 18, 2025</time><a href="/#modal-dementia-06">Teaching a Model to "Read" Meaning: Adding SBERT</a></li>
+					<li><time datetime="2025-08-01">Aug 1, 2025</time><a href="/#modal-dementia-07">Coreference, Entity Tracking, and a Frustrating Virtual Environment</a></li>
+					<li><time datetime="2025-08-14">Aug 14, 2025</time><a href="/#modal-dementia-08">First Modeling Attempt: The LSTM That Wasn't Ready</a></li>
+					<li><time datetime="2025-08-29">Aug 29, 2025</time><a href="/#modal-dementia-09">Back to Basics: Random Forests Beat the Neural Net</a></li>
+					<li><time datetime="2025-09-15">Sep 15, 2025</time><a href="/#modal-dementia-10">Building Out the Feature Set: Trajectories, Gaps, and History</a></li>
+					<li class="s-phase">Evaluation, bugs and the model</li>
+					<li><time datetime="2025-10-02">Oct 2, 2025</time><a href="/#modal-dementia-11">Moving to LightGBM and Meeting Optuna</a></li>
+					<li><time datetime="2025-10-21">Oct 21, 2025</time><a href="/#modal-dementia-12">The Leakage Problem: Rebuilding Cross-Validation From Scratch</a></li>
+					<li><time datetime="2025-11-10">Nov 10, 2025</time><a href="/#modal-dementia-13">Adding the Clinical Picture</a></li>
+					<li><time datetime="2025-12-01">Dec 1, 2025</time><a href="/#modal-dementia-14">A Silent Bug and the Biggest Single Improvement</a></li>
+					<li><time datetime="2025-12-18">Dec 18, 2025</time><a href="/#modal-dementia-15">What's Actually Driving the Predictions? Feature Importance Deep Dive</a></li>
+					<li><time datetime="2026-01-19">Jan 19, 2026</time><a href="/#modal-dementia-16">Ablation Studies: How Much Do Speech Features Really Add?</a></li>
+					<li><time datetime="2026-02-09">Feb 9, 2026</time><a href="/#modal-dementia-17">Ensembles, Noise Augmentation, and Rejecting a Long List of Ideas</a></li>
+					<li><time datetime="2026-03-02">Mar 2, 2026</time><a href="/#modal-dementia-18">Locking In the Final Model and a Held-Out Test Set</a></li>
+					<li class="s-phase">Writing and submission</li>
+					<li><time datetime="2026-04-06">Apr 6, 2026</time><a href="/#modal-dementia-19">Starting to Write: Learning the Shape of a Research Paper</a></li>
+					<li><time datetime="2026-05-18">May 18, 2026</time><a href="/#modal-dementia-20">Drafting Methods and Results</a></li>
+					<li><time datetime="2026-06-15">Jun 15, 2026</time><a href="/#modal-dementia-21">Wrestling With the Discussion Section</a></li>
+					<li><time datetime="2026-07-12">Jul 12, 2026</time><a href="/#modal-dementia-22">First Full Draft Done</a></li>
+					<li><time datetime="2026-07-28">Jul 28, 2026</time><a href="/#modal-dementia-23">Checking the Draft Against the Code</a></li>
+					<li><time datetime="2026-08-01">Aug 1, 2026</time><a href="/#modal-dementia-24">Rerunning the Ablation for the Paper</a></li>
+					<li><time datetime="2026-08-04">Aug 4, 2026</time><a href="/#modal-dementia-25">Submitting to Frontiers in Aging Neuroscience</a></li>
+					<li><time datetime="2026-09-26">Sep 26, 2026</time><a href="/#modal-dementia-26">Where the Paper Stands</a></li>
+				</ul>
+			</section>
+		</div>
+	</div>
+</main>
+
+<footer class="s-footer">
+	<div class="s-wrap">
+		<span>Deeptanshu Devatha · Frisco, Texas</span>
+		<ul>
+			<li><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a></li>
+			<li><a href="https://github.com/ddevatha1">GitHub</a></li>
+		</ul>
+	</div>
+</footer>
+</body>
+</html>

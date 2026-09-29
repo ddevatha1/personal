@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Deeptanshu Devatha — Résumé</title>
+<meta name="author" content="Deeptanshu Devatha">
+<style>
+/* Static instances of Source Sans 3 / Source Serif 4 (made from the variable fonts in fonts/),
+   so Chrome embeds real TrueType fonts in the PDF instead of Type 3 glyphs. */
+@font-face { font-family: "RS Sans"; src: url("fonts/SourceSans3-Regular.ttf"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "RS Sans"; src: url("fonts/SourceSans3-Semibold.ttf"); font-weight: 600; font-style: normal; }
+@font-face { font-family: "RS Sans"; src: url("fonts/SourceSans3-It.ttf"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "RS Serif"; src: url("fonts/SourceSerif4-Semibold12.ttf"); font-weight: 600; font-style: normal; }
+@font-face { font-family: "RS Display"; src: url("fonts/SourceSerif4-Semibold36.ttf"); font-weight: 600; font-style: normal; }
+
+:root {
+  --ink: #141418;
+  --ink-2: #404148;
+  --ink-3: #6d6e75;
+  --accent: #7a2230;          /* oxblood: section labels and links only */
+  --accent-soft: #b98790;
+  --rule: #cbc8c3;
+  --sans: "RS Sans", "Helvetica Neue", Arial, sans-serif;
+  --serif: "RS Serif", Georgia, serif;
+  --body: 8.9pt;
+  --lead: 1.158;
+}
+
+@page { size: 8.5in 11in; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body {
+  font-family: var(--sans); font-size: var(--body); line-height: var(--lead);
+  color: var(--ink); font-kerning: normal;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.page { width: 8.5in; height: 11in; overflow: hidden; padding: 0.35in 0.47in 0.3in; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+.dot { color: var(--ink-3); padding: 0 0.3em; }
+
+/* ---------- header ---------- */
+header {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 16pt;
+  border-bottom: 0.9pt solid var(--ink); padding-bottom: 4pt;
+}
+h1 {
+  font-family: "RS Display", var(--serif); font-weight: 600;
+  font-size: 20pt; line-height: 1; margin: 0; letter-spacing: 0.075em; white-space: nowrap;
+}
+.contact { font-size: 8.8pt; line-height: 1.3; color: var(--ink-2); text-align: right; white-space: nowrap; }
+.contact a { color: var(--ink); }
+
+/* ---------- sections ---------- */
+section { margin-top: 6pt; }
+h2 {
+  display: flex; align-items: center; gap: 7pt;
+  font-weight: 600; font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; font-kerning: none;
+  color: var(--accent); margin: 0 0 2pt; line-height: 1.1;
+}
+h2::after { content: ""; flex: 1; border-top: 0.5pt solid var(--rule); }
+
+/* ---------- entries ---------- */
+.entry { margin-top: 4.4pt; }
+h2 + .entry { margin-top: 0; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 14pt; }
+.title { font-family: var(--serif); font-weight: 600; font-size: 9.9pt; line-height: 1.18; }
+.title .role { font-family: var(--sans); font-weight: 400; font-style: italic; font-size: 9.2pt; color: var(--ink); }
+.title .where { font-family: var(--sans); font-weight: 400; font-size: 9pt; color: var(--ink-2); }
+.date { flex: none; white-space: nowrap; font-size: 8.8pt; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.meta { font-size: 8.8pt; color: var(--ink-2); margin-top: 0.5pt; }
+.meta b { font-weight: 600; color: var(--ink); }
+
+/* evidence links: claims link to their proof. Ink text + oxblood hairline underline (survives grayscale);
+   linked titles get a small arrow instead of an underline. */
+a.ev { text-decoration: underline; text-decoration-color: var(--accent-soft); text-decoration-thickness: 0.55pt; text-underline-offset: 1.6pt; text-decoration-skip-ink: auto; }
+a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font-size: 0.72em; color: var(--accent); padding-left: 0.18em; vertical-align: 0.28em; }
+
+ul { margin: 1.5pt 0 0; padding: 0 0 0 10pt; list-style: none; }
+li { position: relative; margin: 0 0 0.55pt; }
+li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 2.5pt; height: 2.5pt; border-radius: 50%; background: var(--ink-3); }
+li.honor { color: var(--ink-2); }
+li.honor::before { background: var(--accent); }
+
+/* quantitative results: semibold + tabular figures, no size change */
+.m { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.k { font-weight: 600; color: var(--ink); }
+.edu p + p { margin-top: 0.6pt; }
+.edu .head + p { margin-top: 0.8pt; }
+.skills p { margin: 0 0 0.6pt; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>DEEPTANSHU DEVATHA</h1>
+  <div class="contact">Frisco, TX<span class="dot">·</span><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a><br><a href="https://www.deeptanshudevatha.com">deeptanshudevatha.com</a><span class="dot">·</span><a href="https://github.com/ddevatha1">github.com/ddevatha1</a></div>
+</header>
+
+<!-- ================= EDUCATION ================= -->
+<section class="edu">
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="head">
+      <div class="title">Heritage High School, Frisco, TX</div>
+      <div class="date">Class of 2027</div>
+    </div>
+    <p class="stats"><span class="k">GPA:</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>Nine AP scores of <span class="m">5</span><span class="dot">·</span>AP Scholar with Distinction</p>
+    <p><span class="k">Senior Coursework:</span> AP Calculus BC, AP Physics 2, Computer Science III, Mobile App Programming</p>
+    <p><span class="k">UT Dallas NLP with Python Workshop, Summer 2025</span> — Implemented rule-based text simplification using dependency parsing, frequency-based lexical substitution, clause splitting, and passive-to-active transformation</p>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section>
+  <h2>Research</h2>
+
+  <div class="entry major">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features</a> <span class="role">— First Author</span></div>
+      <div class="date">2025–Present</div>
+    </div>
+    <p class="meta">Mentor: Joe Xiao (PhD student)<span class="dot">·</span><b><a class="ev" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint (Aug. 2026)</a></b><span class="dot">·</span><b><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-25">Under review, Frontiers in Aging Neuroscience</a></b></p>
+    <ul>
+      <li>Formulated next-visit MMSE forecasting as supervised regression on DementiaBank Pitt Corpus (<span class="m">173</span> longitudinal prediction samples, <span class="m">126</span> patients); extracted 12 per-visit linguistic features including POS-based fragment ratio, named-entity rate, 50-token MATTR, filler rate, and perseveration.</li>
+      <li>Engineered <a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-06">Sentence-BERT discourse representations</a> using adjacent-sentence cosine similarity, global coherence, semantic slope, topic drift, embedding variance, visit-to-visit Δ features, and temporal metadata.</li>
+      <li>Built a <a class="ev" href="https://github.com/ddevatha1/dementia-mmse-prediction">53-dimensional feature representation</a> combining 20 PCA components of 384-dimensional SBERT embeddings with 9 clinical/demographic covariates; applied RobustScaler, correlation pruning, permutation-importance selection, and <a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-11">Optuna/TPE optimization of LightGBM</a> across 200 trials.</li>
+      <li><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-12">Diagnosed patient-identity leakage</a> and rebuilt evaluation with patient-grouped 5-fold GroupKFold, retaining augmented copies within patient folds and scoring original samples only: <span class="m">R² 0.840 ± 0.015</span>, <span class="m">RMSE 2.75</span>, <span class="m">MAE 2.02</span>, <span class="m">Pearson r 0.917</span>.</li>
+      <li><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-24">Controlled feature-source ablation</a> showed clinical-only <span class="m">R² 0.72</span>, SBERT-only <span class="m">0.46</span>, linguistic-only <span class="m">0.12</span>, and clinical+SBERT <span class="m">0.76</span>; reported non-nested feature selection/tuning as an optimism limitation.</li>
+    </ul>
+  </div>
+
+  <div class="entry major">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/#research">X-Step: Four-Site Plantar-Pressure Insole</a> <span class="role">— ML Lead, 2nd of 5 Authors</span></div>
+      <div class="date">2025–Present</div>
+    </div>
+    <p class="meta"><a class="ev" href="https://aiea-lab.github.io/">UC Santa Cruz AIEA Lab</a> (Prof. Leilani Gilpin)<span class="dot">·</span>MIT CSAIL co-authors<span class="dot">·</span><b>Under review, IEEE-EMBS IECBES 2026</b></p>
+    <ul>
+      <li>Implemented a 59-feature plantar-pressure representation from four FSR402 sensors sampled at 25 Hz over BLE from an ESP32, including per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, and anterior load share, with a 540-parameter logistic-regression head.</li>
+      <li>Designed a sparse-vs-dense sensing study on <span class="m">149 recordings</span> from <span class="m">15 adults</span> using a public 32-cell insole: four sites preserved waveform shape (<span class="m">median r = 0.72–0.99</span>) but not magnitude (<span class="m">peak-to-peak r = 0.43–0.74</span>); center-of-pressure tracking preserved anteroposterior motion (<span class="m">r = 0.81</span>) but not mediolateral motion (<span class="m">r = 0.01</span>).</li>
+      <li>Quantified subject-identity leakage on a synthetic 24-subject cohort: <span class="m">macro-F1 0.885</span> under subject-grouped evaluation vs. <span class="m">0.931</span> ungrouped; documented the resulting generalization constraint.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= COMPUTING EDUCATION ================= -->
+<section>
+  <h2>Computing Education</h2>
+
+  <div class="entry major">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://github.com/ddevatha1/kidcode">KidCode</a> <span class="role">— Founder &amp; Lead Instructor</span> <span class="where"><span class="dot">·</span>Frisco, TX</span></div>
+      <div class="date">2024–Present</div>
+    </div>
+    <ul>
+      <li>Designed a 3-year, <a class="ev" href="https://github.com/ddevatha1/kidcode/blob/main/CURRICULUM.md">120-class-day, <span class="m">20-project</span> Python/NLP curriculum</a> spanning control flow, file I/O, JSON, exceptions, OOP/inheritance, assert-based unit testing, and spaCy NLP: tokenization, lemmatization, POS tagging, sentence segmentation, NER, Matcher patterns, and rule-based chatbots.</li>
+      <li>Taught <span class="m">124 students</span> from 10 Frisco neighborhoods across <a class="ev" href="https://www.deeptanshudevatha.com/#kidcode-archive">three cohorts</a> (<span class="m">35/53/36</span>); designed <a class="ev" href="https://github.com/ddevatha1/kidcode/blob/main/STATISTICS.md">13 curriculum-aligned pre/post assessment pairs</a>. Paired results (<span class="m">n=104</span>): <span class="m">41.7% → 58.8%</span> (<span class="m">+17.1 pp</span>; <span class="m">99/104</span> improved); no comparison group.</li>
+      <li>Published <a class="ev" href="https://github.com/ddevatha1/kidcode/tree/main/programs"><span class="m">1,214</span> normalized, anonymized working student programs</a> (<span class="m">572</span> using spaCy) with <a class="ev" href="https://github.com/ddevatha1/kidcode/blob/main/PRIVACY.md">guardian permission</a> and a <a class="ev" href="https://github.com/ddevatha1/kidcode/blob/main/scripts/reproduce.py">reproducible script</a> for regenerating corpus statistics: <a class="ev" href="https://github.com/ddevatha1/kidcode">github.com/ddevatha1/kidcode</a>.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/#modal-india-38">Ayusha Nilayam</a> <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India (remote)</span></div>
+      <div class="date">Nov. 2025–Jul. 2026</div>
+    </div>
+    <ul>
+      <li>Taught <a class="ev" href="https://www.deeptanshudevatha.com/#modal-india-01"><span class="m">38</span> weekly Zoom sessions</a> of Python and mathematics to <span class="m">11</span> children at a Hyderabad children's home, adapting instruction around one shared laptop, unreliable internet, and a Telugu–English language gap; taught in person for two weeks.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ENGINEERING ================= -->
+<section>
+  <h2>Engineering</h2>
+
+  <div class="entry">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/#engineering">X-Step</a> <span class="role">— Co-Founder &amp; ML/Mobile Lead</span></div>
+      <div class="date">2025–Present</div>
+    </div>
+    <ul>
+      <li>Engineered a four-site plantar-pressure insole prototype using ESP32 + FSR402 sensors, 25 Hz BLE acquisition, temporal windowing, biomechanical feature extraction, and real-time gait visualization/inference through a React Native mobile application.</li>
+      <li>Integrated hardware sensing, ML inference, and mobile software into an end-to-end prototype; led ML and mobile development across the product stack.</li>
+      <li class="honor">Team: Diamond Challenge Semifinalist; <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas A&amp;M Ideas Challenge Finalist</a>.</li>
+    </ul>
+  </div>
+
+  <div class="entry major">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://apps.apple.com/app/shopai/id6797083809">ShopAI</a> <span class="role">— Creator &amp; Sole Developer</span></div>
+      <div class="date">2025–Present</div>
+    </div>
+    <ul>
+      <li>Architected a React Native/Expo + Express/TypeScript system on AWS EC2 behind Nginx with a <a class="ev" href="https://www.deeptanshudevatha.com/#modal-shopai-architecture">retailer-adapter abstraction</a> normalizing <span class="m">nine chains</span> across OAuth2 REST, cookie-session GraphQL, Playwright, and server-rendered HTML integrations.</li>
+      <li>Engineered concurrent fan-out search, per-store failure states, query-correction/relevance/ranking pipelines, and a per-ZIP authentication/session warm-up state machine; live on the <a class="ev" href="https://apps.apple.com/app/shopai/id6797083809">Apple App Store</a>.</li>
+      <li>Implemented a deterministic optimizer exhaustively enumerating <span class="m">127</span> non-empty store subsets, producing cost-, drive-time-, stop-count-, and weighted multi-criteria plans; planning/search path makes <span class="m">zero</span> LLM calls.</li>
+      <li class="honor"><a class="ev" href="https://devpost.com/software/smartshop-gj4q59">Prototype predecessor</a>: <a class="ev" href="https://www.deeptanshudevatha.com/#modal-shopsmart">TechLit Hackathon 1st</a><span class="dot">·</span>Hack4Humanity 3rd<span class="dot">·</span>PeddieHacks Innovation Prize.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills">
+  <h2>Technical Skills</h2>
+  <p><span class="k">Languages:</span> Python, TypeScript/JavaScript, Java, SQL</p>
+  <p><span class="k">ML/NLP:</span> LightGBM, scikit-learn, Optuna, Sentence-BERT, spaCy, PCA, GroupKFold, permutation importance, PyTorch</p>
+  <p><span class="k">Systems:</span> React Native/Expo, Node.js/Express, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx<span class="dot">·</span><span class="k">Embedded:</span> ESP32, BLE, FSR sensing</p>
+</section>
+
+</div>
+<script>
+// Layout check used by render.sh: bottom of content vs. bottom margin (CSS px). Has no effect on print.
+document.fonts.ready.then(() => {
+  const p = document.querySelector('.page'), r = p.getBoundingClientRect();
+  const last = p.lastElementChild.getBoundingClientRect().bottom;
+  document.body.setAttribute('data-h', Math.round(last) + ' of ' + Math.round(r.bottom - parseFloat(getComputedStyle(p).paddingBottom)));
+});
+</script>
+</body>
+</html>

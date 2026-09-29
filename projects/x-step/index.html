@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>X-Step: A Plantar-Pressure Insole and App · Deeptanshu Devatha</title>
+	<meta name="description" content="X-Step is a four-sensor plantar-pressure insole with ESP32 firmware, a Bluetooth Low Energy link, a feature-based ML pipeline and a React Native app. Texas A&amp;M Ideas Challenge finalist.">
+	<link rel="canonical" href="https://www.deeptanshudevatha.com/projects/x-step/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Deeptanshu Devatha">
+	<meta property="og:title" content="X-Step: A Plantar-Pressure Insole and App">
+	<meta property="og:description" content="Hardware, BLE, ML and mobile: the X-Step insole as a product, built by a student team.">
+	<meta property="og:url" content="https://www.deeptanshudevatha.com/projects/x-step/">
+	<meta name="twitter:card" content="summary">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="s-page">
+<a class="s-skip" href="#main">Skip to content</a>
+<nav class="s-nav" aria-label="Site">
+	<div class="s-wrap">
+		<a class="s-brand" href="/">Deeptanshu Devatha</a>
+		<ul>
+			<li><a class="s-navlink" href="/#research">Research</a></li>
+			<li><a class="s-navlink" href="/#teaching">Teaching</a></li>
+			<li><a class="s-navlink" href="/#engineering" aria-current="page">Engineering</a></li>
+			<li><a class="s-navlink" href="/#blog">Writing</a></li>
+			<li><a class="s-navlink" href="/resume/">Resume</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main id="main">
+	<header class="s-page-head">
+		<div class="s-wrap">
+			<p class="s-back"><a href="/#engineering">← Engineering</a></p>
+			<span class="s-kicker">Engineering · Student team · 2025 – present</span>
+			<h1 class="s-h1">X-Step: a plantar-pressure insole and app</h1>
+			<p class="s-lede">X-Step is a student team's four-sensor insole for people at risk of diabetic foot problems. It streams foot pressure over Bluetooth to a phone app that shows live loading, trends and alerts.</p>
+			<p class="s-meta"><b>My role:</b> co-founder; machine-learning and mobile lead</p>
+		</div>
+	</header>
+
+	<div class="s-wrap s-layout">
+		<aside class="s-toc" aria-label="On this page">
+			<ol>
+				<li><a href="#system">System</a></li>
+				<li><a href="#ml">ML pipeline</a></li>
+				<li><a href="#status">Status</a></li>
+				<li><a href="#recognition">Recognition</a></li>
+			</ol>
+		</aside>
+
+		<div class="s-prose">
+			<section class="s-block" id="system">
+				<h2 class="s-h2">System, end to end</h2>
+				<ul class="s-pipeline">
+					<li><b>Insole.</b> Four FSR402 force sensors under the first, second and fifth metatarsal heads and the heel, one board per foot.</li>
+					<li><b>Firmware.</b> An ESP32 samples each sensor at 25 Hz and advertises as <code>XSTEP-L</code> or <code>XSTEP-R</code>.</li>
+					<li><b>Link.</b> A 28-byte Bluetooth Low Energy frame carries four ADC readings, a timestamp and a sequence counter, so dropped packets are detected rather than hidden.</li>
+					<li><b>Features and model.</b> On the host side, rolling 4-second windows are turned into 59 pressure and gait features and scored by a logistic-regression model.</li>
+					<li><b>App.</b> A React Native (Expo) app pairs with both insoles and shows live pressure, cadence, trends and alerts, with a separate clinician view.</li>
+				</ul>
+			</section>
+
+			<section class="s-block" id="ml">
+				<h2 class="s-h2">ML pipeline</h2>
+				<p>My main technical contribution is the feature pipeline and model. Per site, the pipeline computes peak and mean pressure, the coefficient of variation and the pressure–time integral. Per window, it computes cadence, stance ratio and anterior load share. A 540-parameter logistic-regression head runs on these features. The whole path takes well under a millisecond per window, so it fits between 40 ms samples.</p>
+				<p>We've kept the claims deliberately narrow. The team's paper evaluates the insole as a measurement instrument: calibration error, which features survive sensor drift, and what four sensors can and can't recover compared with a 32-sensor insole. It makes no ulcer-prediction claim. That analysis is on the <a href="/research/x-step/">X-Step research page</a>.</p>
+			</section>
+
+			<section class="s-block" id="status">
+				<h2 class="s-h2">Status</h2>
+				<p>X-Step is a working prototype. No walking data from X-Step wearers have been collected yet. A prospective study under ethics approval is the step between this prototype and any clinical use.</p>
+			</section>
+
+			<section class="s-block" id="recognition">
+				<h2 class="s-h2">Recognition</h2>
+				<p>These are team results for the X-Step product and pitch in entrepreneurship competitions. They are not awards for the research paper.</p>
+				<ul>
+					<li>Texas High School Ideas Challenge (Texas A&amp;M McFerrin Center), 2026 finalist: <a href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">official finalist list</a></li>
+					<li>Diamond Challenge, 2025 semifinalist</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+</main>
+
+<footer class="s-footer">
+	<div class="s-wrap">
+		<span>Deeptanshu Devatha · Frisco, Texas</span>
+		<ul>
+			<li><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a></li>
+			<li><a href="https://github.com/ddevatha1">GitHub</a></li>
+		</ul>
+	</div>
+</footer>
+</body>
+</html>
