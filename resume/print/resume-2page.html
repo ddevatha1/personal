@@ -124,10 +124,9 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="date">Class of 2027</div>
     </div>
     <p><span class="k">GPA</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>AP Scholar with Distinction</p>
-    <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Human Geography, World History, Seminar, Psychology, U.S. History, English Language &amp; Composition, Statistics, Physics 1, Computer Science A</p>
-    <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 1 and 2, AP Computer Science A, Computer Science III, Mobile App Programming; AP English Language and Literature, AP Government, AP Economics, Spanish 2</p>
-    <p><span class="k">Competitions:</span> <span class="m">1st</span>, TechLit Bridging the Gap Hackathon (<a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a>, Aug. 2025)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity<span class="dot">·</span>Innovation Prize, PeddieHacks (235 participants)<span class="dot">·</span>Finalist, <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge</a> at Texas A&amp;M (X-Step, May 2026)<span class="dot">·</span>Semifinalist, Diamond Challenge 2026 (X-Step) <a class="u" href="https://www.deeptanshudevatha.com/projects/competitions/">deeptanshudevatha.com/projects/competitions</a></p>
-    <p><span class="k">UT Dallas NLP with Python Workshop, Summer 2025</span> — Rule-based text simplifier: dependency parsing, lexical substitution, clause splitting, passive-to-active rewriting.</p>
+    <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
+    <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
+    <p><span class="k">Competitions:</span> Semifinalist, Diamond Challenge 2026 (X-Step)<span class="dot">·</span>Finalist, <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge</a> at Texas A&amp;M (X-Step, May 2026)<span class="dot">·</span><span class="m">1st</span>, TechLit Bridging the Gap Hackathon (<a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a>, Aug. 2025)<span class="dot">·</span>Innovation Prize, PeddieHacks (235 participants)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity <a class="u" href="https://www.deeptanshudevatha.com/projects/competitions/">deeptanshudevatha.com/projects/competitions</a></p>
   </div>
 </section>
 
@@ -180,8 +179,22 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 <div class="runhead"><b>DEEPTANSHU DEVATHA</b><span>deeptanshudevatha.com<span class="dot">·</span>github.com/ddevatha1</span></div>
 
 <section>
-  <h2>Computing Education</h2>
+  <h2>Projects &amp; Leadership</h2>
 
+  <div class="entry">
+    <div class="head">
+      <div class="title"><a class="tl" href="https://apps.apple.com/app/shopai/id6797083809">ShopAI</a> <span class="role">— Creator &amp; Sole Developer</span> <span class="where"><span class="dot">·</span>live on the <a class="ev" href="https://apps.apple.com/app/shopai/id6797083809">Apple App Store</a></span></div>
+      <div class="date">2025–Present</div>
+    </div>
+    <p class="meta">One grocery search across nine retailers, plus multi-store trip planning<span class="dot">·</span>solo rebuild of a team hackathon prototype<span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/#modal-shopai-architecture">Architecture write-up</a></p>
+    <div class="rows">
+      <div class="r"><span class="l">Architecture</span><p>React Native/Expo client over a standalone Express/TypeScript backend on <span class="k">AWS EC2 behind Nginx</span>; the client holds no search logic — every search, plan and warm-up check runs server-side through a four-layer, one-direction pipeline.</p></div>
+      <div class="r key"><span class="l">Adapters</span><p>Designed a <span class="k">retailer-adapter abstraction</span> normalizing <span class="m">nine chains</span> (seven with live data) into one schema via four integration strategies: OAuth2 client-credentials REST (Kroger, Harris Teeter), anonymous-session GraphQL (Aldi, Sprouts, Publix via Instacart), headless Playwright (Trader Joe’s), server-rendered HTML (Whole Foods). Target excluded (terms of service).</p></div>
+      <div class="r"><span class="l">Search path</span><p>Query correction → <span class="k">concurrent fan-out</span> racing a shared response-time budget → per-store food/relevance filtering and ranking → explicit ok / error / unavailable / pending status per store. A per-ZIP <span class="k">state machine</span> (starting → warming → ready) pre-warms OAuth tokens, cookies and the browser session off the request path.</p></div>
+      <div class="r key"><span class="l">Planner</span><p>A <span class="k">deterministic optimizer</span> exhaustively scores all 2⁷ − 1 = <span class="m">127</span> non-empty store subsets, so “cheapest” is exact; cheapest, fastest and fewest-stops are single-field sorts; only “balanced” is weighted multi-criteria. <span class="m">Zero</span> LLM calls in search or planning.</p></div>
+      <div class="r"><span class="l">Production</span><p>Debugged a Node.js setTimeout overflow in a 30-day location cache that stalled the event loop (≈1.5 s → 27 s searches) by capping the sweep interval; shipped by feature-flagging off unfinished meal planning, AI assistant, OCR and barcode scanning.</p></div>
+    </div>
+  </div>
   <div class="entry">
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/kidcode/">KidCode</a> <span class="role">— Founder &amp; Lead Instructor</span> <span class="where"><span class="dot">·</span>Frisco, TX</span></div>
@@ -195,23 +208,6 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="r key"><span class="l">Student work</span><p>Students completed <span class="m">1,214</span> working programs across the <a class="ev" href="https://www.deeptanshudevatha.com/projects/kidcode/projects/">20 projects</a>, from Python basics in Year 1 to spaCy NLP in Year 3 (all <span class="m">572</span> Year 3 programs use spaCy).</p></div>
     </div>
   </div>
-
-  <div class="entry">
-    <div class="head">
-      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">Ayusha Nilayam</a> <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India (remote)</span></div>
-      <div class="date">Nov. 2025–Jul. 2026</div>
-    </div>
-    <p class="meta"><a class="u" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">deeptanshudevatha.com/projects/ayusha-nilayam</a></p>
-    <div class="rows">
-      <div class="r"><span class="l">Scope</span><p>Taught <a class="ev" href="https://www.deeptanshudevatha.com/#modal-india-01"><span class="m">38</span> weekly Zoom sessions</a> of Python and math to <span class="m">11 children</span> at a children’s home, plus two weeks in person.</p></div>
-      <div class="r"><span class="l">Content</span><p>Python from <span class="nw">print()</span> through conditionals, loops and functions to independent projects (calculator, number-guessing game); math from equations and inequalities through the unit circle, and statistics through standard deviation.</p></div>
-      <div class="r"><span class="l">Constraints</span><p>Adapted to one shared laptop, unreliable internet and a Telugu–English language gap with frequent checks for understanding and student explain-backs.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Engineering</h2>
 
   <div class="entry">
     <div class="kicker">X-Step startup · product built on the Paper 2 insole</div>
@@ -228,25 +224,30 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 
   <div class="entry">
     <div class="head">
-      <div class="title"><a class="tl" href="https://apps.apple.com/app/shopai/id6797083809">ShopAI</a> <span class="role">— Creator &amp; Sole Developer</span> <span class="where"><span class="dot">·</span>live on the <a class="ev" href="https://apps.apple.com/app/shopai/id6797083809">Apple App Store</a></span></div>
-      <div class="date">2025–Present</div>
+      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">Ayusha Nilayam</a> <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India (remote)</span></div>
+      <div class="date">Nov. 2025–Jul. 2026</div>
     </div>
-    <p class="meta">One grocery search across nine retailers, plus multi-store trip planning<span class="dot">·</span>solo rebuild of a team hackathon prototype<span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/#modal-shopai-architecture">Architecture write-up</a></p>
+    <p class="meta"><a class="u" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">deeptanshudevatha.com/projects/ayusha-nilayam</a></p>
     <div class="rows">
-      <div class="r"><span class="l">Architecture</span><p>React Native/Expo client over a standalone Express/TypeScript backend on <span class="k">AWS EC2 behind Nginx</span>; the client holds no search logic — every search, plan and warm-up check runs server-side through a four-layer, one-direction pipeline.</p></div>
-      <div class="r key"><span class="l">Adapters</span><p>Designed a <span class="k">retailer-adapter abstraction</span> normalizing <span class="m">nine chains</span> (seven with live data) into one schema via four integration strategies: OAuth2 client-credentials REST (Kroger, Harris Teeter), anonymous-session GraphQL (Aldi, Sprouts, Publix via Instacart), headless Playwright (Trader Joe’s), server-rendered HTML (Whole Foods). Target excluded (terms of service).</p></div>
-      <div class="r"><span class="l">Search path</span><p>Query correction → <span class="k">concurrent fan-out</span> racing a shared response-time budget → per-store food/relevance filtering and ranking → explicit ok / error / unavailable / pending status per store. A per-ZIP <span class="k">state machine</span> (starting → warming → ready) pre-warms OAuth tokens, cookies and the browser session off the request path.</p></div>
-      <div class="r key"><span class="l">Planner</span><p>A <span class="k">deterministic optimizer</span> exhaustively scores all 2⁷ − 1 = <span class="m">127</span> non-empty store subsets, so “cheapest” is exact; cheapest, fastest and fewest-stops are single-field sorts; only “balanced” is weighted multi-criteria. <span class="m">Zero</span> LLM calls in search or planning.</p></div>
-      <div class="r"><span class="l">Production</span><p>Debugged a Node.js setTimeout overflow in a 30-day location cache that stalled the event loop (≈1.5 s → 27 s searches) by capping the sweep interval; shipped by feature-flagging off unfinished meal planning, AI assistant, OCR and barcode scanning.</p></div>
+      <div class="r"><span class="l">Scope</span><p>Taught <a class="ev" href="https://www.deeptanshudevatha.com/#modal-india-01"><span class="m">38</span> weekly Zoom sessions</a> of Python and math to <span class="m">11 children</span> at a children’s home, plus two weeks in person.</p></div>
+      <div class="r"><span class="l">Content</span><p>Python from <span class="nw">print()</span> through conditionals, loops and functions to independent projects (calculator, number-guessing game); math from equations and inequalities through the unit circle, and statistics through standard deviation.</p></div>
+      <div class="r"><span class="l">Constraints</span><p>Adapted to one shared laptop, unreliable internet and a Telugu–English language gap with frequent checks for understanding and student explain-backs.</p></div>
     </div>
+  </div>
+  <div class="entry">
+    <div class="head">
+      <div class="title">UT Dallas NLP with Python Workshop <span class="role">— Participant</span></div>
+      <div class="date">Summer 2025</div>
+    </div>
+    <p class="meta">Instructor: Dr. Chris Davis<span class="dot">·</span>Built a rule-based text simplifier: dependency parsing, lexical substitution, clause splitting, passive-to-active rewriting.</p>
   </div>
 </section>
 
 <section>
   <h2>Technical Skills</h2>
   <div class="rows">
-    <div class="r"><span class="l">Languages</span><p>Python, TypeScript/JavaScript, Java, SQL</p></div>
     <div class="r"><span class="l">ML &amp; NLP</span><p>LightGBM, scikit-learn, Optuna (TPE), PyTorch, PCA, permutation importance, GroupKFold, ablation design; spaCy (tokenization, POS, NER, Matcher, dependency parsing), Sentence-BERT; windowed sensor-feature extraction</p></div>
+    <div class="r"><span class="l">Languages</span><p>Python, TypeScript/JavaScript, Java, SQL</p></div>
     <div class="r"><span class="l">Systems</span><p>React Native/Expo, Node.js/Express, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx</p></div>
   </div>
 </section>
