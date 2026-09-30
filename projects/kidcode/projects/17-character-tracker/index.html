@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Project 17: Character Tracker · Deeptanshu Devatha</title>
+	<meta name="description" content="KidCode project 17 of 20: Character Tracker. Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Count">
+	<link rel="canonical" href="https://www.deeptanshudevatha.com/projects/kidcode/projects/17-character-tracker/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Deeptanshu Devatha">
+	<meta property="og:title" content="Project 17: Character Tracker">
+	<meta property="og:description" content="KidCode project 17 of 20: Character Tracker. Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Count">
+	<meta property="og:url" content="https://www.deeptanshudevatha.com/projects/kidcode/projects/17-character-tracker/">
+	<meta name="twitter:card" content="summary">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css?v=20260929e">
+</head>
+<body class="s-page">
+<a class="s-skip" href="#main">Skip to content</a>
+<nav class="s-nav" aria-label="Site">
+	<div class="s-wrap">
+		<a class="s-brand" href="/">Deeptanshu Devatha</a>
+		<ul>
+			<li><a class="s-navlink" href="/#research">Research</a></li>
+			<li><a class="s-navlink" href="/#teaching" aria-current="page">Teaching</a></li>
+			<li><a class="s-navlink" href="/#engineering">Engineering</a></li>
+			<li><a class="s-navlink" href="/#blog">Writing</a></li>
+			<li><a class="s-navlink" href="/resume/">Resume</a></li>
+		</ul>
+	</div>
+</nav>
+
+<main id="main">
+<header class="p-hero" style="padding-bottom:28px"><div class="p-wrap"><p class="s-back"><a href="/projects/kidcode/">&larr; KidCode</a></p><span class="p-kicker">Project 17 of 20 &middot; Year 3 &middot; 2026</span><h1 class="p-h1" style="font-size:clamp(34px,5vw,60px)">Character Tracker</h1><p class="p-lede">Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Counter.</p><ul class="s-links p-subnav"><li><a href="/projects/kidcode/">KidCode</a></li><li><a href="/projects/kidcode/curriculum/">Curriculum</a></li><li><a href="/projects/kidcode/projects/">The 20 projects</a></li><li><a href="/projects/kidcode/assessment/">Assessment</a></li><li><a href="/projects/kidcode/about/">About the program</a></li></ul></div></header><div class="p-wrap s-layout" style="grid-template-columns:minmax(0,1fr);padding-top:20px"><div class="s-prose" style="max-width:720px"><section class="s-block"><h2 class="s-h2">Where it falls</h2><p>Week 5, <b>Named Entity Recognition</b>, Day 24 of 40 in the 2026 curriculum (Natural-language processing).</p></section><section class="s-block"><h2 class="s-h2">What students learned</h2><p>Extract and count PERSON/GPE entities from a story chapter by chapter.</p><h3 class="s-h3" style="margin-top:18px">Concepts</h3><p>public-domain story; one chapter at a time through nlp; PERSON and GPE; Counter.</p></section><section class="s-block"><h2 class="s-h2">What it asks of students</h2><p>To finish this project a student has to bring the ideas above together in one working program that runs from start to finish.</p></section><section class="s-block"><h2 class="s-h2">The lessons that lead into it</h2><p style="margin-bottom:8px"><b>Day 17: Lab: Auto Mad Libs II.</b> <span class="p-muted">Asking the player for words of the right type, then rebuilding the story with token.text_with_ws so spacing and punctuation stay correct. Swapping finished stories with classmates.</span></p><p style="margin-bottom:8px"><b>Day 18: Dependency Parsing: Who Did What?.</b> <span class="p-muted">token.dep_, token.head, and token.children, and finding subjects and objects. Drawing sentence diagrams with displacy.render(). Practice: &quot;Sentence Skeletons&quot;.</span></p><p style="margin-bottom:8px"><b>Day 19: The spaCy Pipeline.</b> <span class="p-muted">The pipeline as an assembly line: nlp.pipe_names and what each component adds. Processing many texts with nlp.pipe() and turning off unused components for speed.</span></p><p style="margin-bottom:8px"><b>Day 20: Checkpoint: spaCy Cheat Sheet.</b> <span class="p-muted">Review games covering Weeks 1 to 4, a checkpoint quiz, and a personal spaCy cheat sheet. Pair debugging with error messages students have not seen before.</span></p><p style="margin-bottom:8px"><b>Day 21: What Are Named Entities?.</b> <span class="p-muted">Real-world names and facts hiding in text. Using doc.ents, ent.text, ent.label_, and ent.start_char, and decoding PERSON, ORG, GPE, DATE, and MONEY with spacy.explain().</span></p><p style="margin-bottom:8px"><b>Day 22: Seeing Entities with displaCy.</b> <span class="p-muted">Highlighting entities with displacy.render(doc, style=&quot;ent&quot;) in a notebook or displacy.serve() in the browser, and saving results as HTML. Lab: &quot;Entity Gallery&quot; of student paragraphs.</span></p><p style="margin-bottom:8px"><b>Day 23: When the Model Is Wrong.</b> <span class="p-muted">Why models guess: ambiguous names like &quot;Washington&quot;, &quot;Apple&quot;, and &quot;Jordan&quot;, names from many cultures, and text without capital letters. Hand-labeling 20 sentences for an &quot;NER Report Card&quot;.</span></p></section><section class="s-block"><h2 class="s-h2">How it is assessed</h2><p>The project sits inside pre/post assessment pair 3 of 4 for 2026, &ldquo;Named Entities &amp; Responsible NLP&rdquo; (Week 5 + Days 33–34). <a href="/projects/kidcode/assessment/">More on the assessments</a>.</p></section><section class="s-block"><h2 class="s-h2">Where it goes next</h2><p>Before this: <a href="/projects/kidcode/projects/16-auto-mad-libs/">Project 16, Auto Mad Libs</a>. After this: <a href="/projects/kidcode/projects/18-privacy-shield/">Project 18, Privacy Shield</a>.</p><p><a href="/#modal-kidcode-p17">Read the class post for this project</a>.</p></section></div></div>
+</main>
+
+
+
+
+
+
+
+
+
+<footer class="s-footer">
+	<div class="s-wrap">
+		<span>Deeptanshu Devatha · Frisco, Texas</span>
+		<ul>
+			<li><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a></li>
+			<li><a href="https://github.com/ddevatha1">GitHub</a></li>
+		</ul>
+	</div>
+</footer>
+</body>
+</html>
