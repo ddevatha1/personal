@@ -492,13 +492,13 @@
 		@media (max-width: 860px) { .kc-years { grid-template-columns: 1fr; } .kc-archive { padding: 20px 18px; } .kc-pn a { max-width: 100%; } }
 		/* KC:CSS:end */
 	</style>
-	<link rel="stylesheet" href="/assets/site.css">
+	<link rel="stylesheet" href="/assets/site.css?v=20260929j">
 	<style>
 		/* Blog and post styles, re-themed to match the rest of the site */
 		:root {
 			--bg: var(--paper); --surface: #fff; --surface-strong: #fff;
 			--text: var(--ink); --muted: var(--ink-2); --line: var(--rule);
-			--accent: #1f4f8a; --accent-dark: #163b69; --accent-soft: #e7edf6;
+			--accent: #9c3f24; --accent-dark: #7a2f19; --accent-soft: #f3e3da;
 			--shadow: none; --radius-xl: 6px; --radius-lg: 6px; --radius-md: 4px; --content: 1080px;
 		}
 		body.s-page { background: var(--paper); }
@@ -544,127 +544,113 @@
 		</nav>
 
 		<main id="main">
-			<header class="s-hero" id="home">
-				<div class="s-wrap">
-					<span class="s-kicker">Frisco, Texas · Class of 2027</span>
-					<h1 class="s-h1">Deeptanshu Devatha</h1>
-					<p class="s-lede">I work on natural-language processing and machine learning. My research forecasts cognitive decline from patients' speech. I also teach Python and NLP to kids, and I build software and sensing systems.</p>
-					<ul class="s-links">
-						<li><a class="s-primary" href="/research/speech-cognition/">Research</a></li>
-						<li><a href="/resume/">Resume</a></li>
-						<li><a href="https://github.com/ddevatha1">GitHub</a></li>
-						<li><a href="mailto:deeptanshudevatha@gmail.com">Email</a></li>
-					</ul>
-					<dl class="s-facts">
-						<div><dt>1st author</dt><dd>medRxiv preprint on forecasting MMSE from speech; in review at <i>Frontiers in Aging Neuroscience</i></dd></div>
-						<div><dt>124</dt><dd>KidCode students since 2024, taught from <code>print()</code> to spaCy</dd></div>
-						<div><dt>1,214</dt><dd>student programs published: normalized and anonymized, with guardian permission</dd></div>
-						<div><dt>127</dt><dd>store combinations ShopAI's planner scores exactly; live on the App Store</dd></div>
-					</dl>
+			<header class="p-hero" id="home">
+				<div class="p-wrap p-hero-grid">
+					<div class="p-hero-text">
+						<span class="p-kicker">Frisco, Texas &middot; Class of 2027</span>
+						<h1 class="p-h1">Deeptanshu Devatha</h1>
+						<p class="p-lede">I build things, research questions, and teach. My research forecasts cognitive decline from how people speak. I run KidCode, a Python program that has taught 124 students from <code>print()</code> to NLP. And I build software and sensors, from a grocery-price app on the App Store to a smart insole.</p>
+						<ul class="p-intro-links s-links">
+							<li><a class="s-primary" href="/projects/kidcode/">KidCode</a></li>
+							<li><a href="/research/speech-cognition/">Research</a></li>
+							<li><a href="/resume/">Resume</a></li>
+							<li><a href="https://github.com/ddevatha1">GitHub</a></li>
+							<li><a href="mailto:deeptanshudevatha@gmail.com">Email</a></li>
+						</ul>
+					</div>
+					<div class="p-collage" role="group" aria-label="Photographs and work">
+						<figure class="c1"><img src="/img/kidcode/photo-group.jpg" alt="Students gathered around a chalkboard that reads Python Bootcamp Day 1" width="1600" height="1200"><figcaption>KidCode, in person.</figcaption></figure>
+						<figure class="c2"><img src="/img/kidcode/photo-presenting.jpg" alt="Deeptanshu teaching outdoors at a picnic table" width="1179" height="1011"><figcaption>Teaching.</figcaption></figure>
+						<figure class="c3 p-figwhite"><img src="/img/dementia/paper-trajectories-by-group.jpg" alt="Chart of average MMSE scores across visits for control and dementia groups" width="800" height="740"><figcaption>Research: MMSE trajectories.</figcaption></figure>
+						<figure class="c4"><img src="/img/shopai/shopai-web-search.jpg" alt="The ShopAI grocery search page showing prices across stores" width="1800" height="934"><figcaption>ShopAI.</figcaption></figure>
+						<figure class="c5"><img src="/img/x-step/xstep-slide-how-it-works.jpg" alt="An X-Step team slide describing how the insole and app work" width="1400" height="788"><figcaption>X-Step.</figcaption></figure>
+					</div>
 				</div>
 			</header>
 
-			<section class="s-section" id="research" aria-labelledby="research-title">
-				<div class="s-wrap">
-					<div class="s-section-head">
-						<h2 class="s-h2" id="research-title">Research</h2>
-						<p>Two projects, both about what a model or a sensor can actually measure, and about checking that before reporting a number.</p>
+			<section class="p-section p-tint" id="research" aria-labelledby="research-title">
+				<div class="p-wrap">
+					<div class="p-section-head">
+						<span class="p-kicker">Research</span>
+						<h2 class="p-h2" id="research-title">What can a model, or a sensor, actually measure?</h2>
+						<p>Two projects that ask that question, and check the answer before reporting a number.</p>
 					</div>
-					<div class="s-work">
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>First author</strong>2025 – present<br>with Joe Xiao (PhD student, mentor)</div>
-							<div>
-								<h3 class="s-h3"><a href="/research/speech-cognition/">Forecasting cognitive function from speech</a></h3>
-								<p>The model predicts a patient's MMSE score at a later visit. Its inputs are Sentence-BERT coherence features from the patient's earlier recorded speech, plus clinical history (DementiaBank Pitt Corpus, 126 patients). Along the way I found and fixed patient-level leakage in my own cross-validation. A controlled ablation then showed that clinical history does most of the work, and SBERT adds a smaller, complementary signal.</p>
-								<p class="s-nums"><span>R² 0.840 ± 0.015</span><span>MAE 2.02 MMSE points</span><span>patient-grouped 5-fold CV</span><span>ablation: clinical 0.716 → + SBERT 0.759</span></p>
-								<ul class="s-links">
-									<li><a class="s-primary" href="/research/speech-cognition/">Research page</a></li>
-									<li><a href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint</a></li>
-									<li><a href="https://github.com/ddevatha1/dementia-mmse-prediction">Code</a></li>
-									<li><a href="/research/speech-cognition/#log">Research log</a></li>
-								</ul>
-							</div>
-						</article>
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>2nd of 5 authors</strong>2025 – present<br>UC Santa Cruz AIEA Lab</div>
-							<div>
-								<h3 class="s-h3"><a href="/research/x-step/">What four pressure sensors can measure</a></h3>
-								<p>This paper treats the X-Step insole as a measurement instrument, not a clinical classifier. My parts were the 59-feature pressure pipeline and a sparse-versus-dense study against a public 32-sensor insole. The study found that four sites keep a waveform's shape but lose its magnitude, and they can't track side-to-side centre-of-pressure motion.</p>
-								<p class="s-note">Submitted to IEEE-EMBS IECBES 2026; under review.</p>
-								<ul class="s-links">
-									<li><a class="s-primary" href="/research/x-step/">Paper summary</a></li>
-								</ul>
-							</div>
-						</article>
+					<div class="p-work">
+						<a class="p-card" href="/research/speech-cognition/">
+							<div class="p-card-img p-contain"><img src="/img/dementia/paper-trajectories-by-group.jpg" alt="Chart of average MMSE scores across visits for control and dementia groups" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">First author &middot; 2025&ndash;present</span>
+							<h3>Forecasting cognitive function from speech</h3>
+							<p>The model predicts a patient's MMSE score at a later visit from Sentence-BERT features of their earlier speech, plus clinical history (DementiaBank Pitt Corpus, 126 patients). Along the way I found and fixed leakage in my own cross-validation, and an ablation showed that clinical history does most of the work while speech adds a smaller, complementary signal.</p>
+							<p class="p-muted" style="font-family:var(--sans);font-size:14px">R&sup2; 0.840 &plusmn; 0.015 &middot; MAE 2.02 MMSE points &middot; patient-grouped 5-fold CV &middot; with Joe Xiao (PhD student, mentor)</p>
+							<span class="p-more">Research page, preprint and code &rarr;</span></div>
+						</a>
+						<a class="p-card" href="/research/x-step/">
+							<div class="p-card-img"><img src="/img/x-step/xstep-slide-technology.jpg" alt="An X-Step team slide listing the technology: React Native, JavaScript and TypeScript, Tailwind CSS" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">2nd of 5 authors &middot; UC Santa Cruz AIEA Lab</span>
+							<h3>What four pressure sensors can measure</h3>
+							<p>This paper treats the X-Step insole as a measurement instrument, not a clinical classifier. My parts were the 59-feature pressure pipeline and a sparse-versus-dense study against a public 32-sensor insole. Four sites keep a waveform's shape but lose its magnitude, and they can't track side-to-side centre-of-pressure motion.</p>
+							<p class="p-muted" style="font-family:var(--sans);font-size:14px">Submitted to IEEE-EMBS IECBES 2026; under review.</p>
+							<span class="p-more">Paper summary &rarr;</span></div>
+						</a>
 					</div>
 				</div>
 			</section>
 
-			<section class="s-section" id="teaching" aria-labelledby="teaching-title">
-				<div class="s-wrap">
-					<div class="s-section-head">
-						<h2 class="s-h2" id="teaching-title">Teaching</h2>
-						<p>Curricula I wrote and taught, with the students' work published where it can be.</p>
+			<section class="p-section" id="teaching" aria-labelledby="teaching-title">
+				<div class="p-wrap">
+					<div class="p-section-head">
+						<span class="p-kicker">Teaching</span>
+						<h2 class="p-h2" id="teaching-title">Curricula I wrote, and classes I taught</h2>
 					</div>
-					<div class="s-work">
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>Founder and lead instructor</strong>June 2024 – present<br>Frisco, Texas</div>
-							<div>
-								<h3 class="s-h3"><a href="/projects/kidcode/">KidCode</a></h3>
-								<p>KidCode is a three-year Python program I wrote and teach. Year 1 covers the basics; Year 2 covers files, classes and tests; Year 3 is NLP with spaCy (tokenization, POS tags, named entities, rule-based matching). All 1,214 student programs are public (normalized and anonymized), along with a script that recomputes every published number.</p>
-								<p class="s-nums"><span>124 students</span><span>20 projects</span><span>pre/post 41.7% → 58.8% (n = 104, no comparison group)</span></p>
-								<ul class="s-links">
-									<li><a class="s-primary" href="/projects/kidcode/">Project page</a></li>
-									<li><a href="https://github.com/ddevatha1/kidcode">Repository and evidence index</a></li>
-									<li><a href="#kidcode-archive">Class-by-class posts</a></li>
-								</ul>
-							</div>
-						</article>
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>Instructor</strong>Nov 2025 – Jul 2026<br>Hyderabad, India (remote, plus a visit)</div>
-							<div>
-								<h3 class="s-h3"><a href="#modal-india-38">Python and math at a Hyderabad children's home</a></h3>
-								<p>I taught 38 weekly Zoom classes to a small group sharing one laptop over an unreliable connection. The Python side ran from a first <code>print()</code> to a number-guessing game, and the math side from simple equations to trigonometry. Then I taught in person for two and a half weeks.</p>
-								<ul class="s-links">
-									<li><a href="#modal-india-38">Eight months, thirty-eight classes</a></li>
-									<li><a href="#modal-india-01">The first Zoom call</a></li>
-								</ul>
-							</div>
-						</article>
+					<div class="p-work">
+						<a class="p-card p-wide" href="/projects/kidcode/">
+							<div class="p-card-img"><img src="/img/kidcode/photo-group.jpg" alt="Students gathered around a chalkboard that reads Python Bootcamp Day 1" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">Founder &amp; lead instructor &middot; 2024&ndash;present</span>
+							<h3>KidCode</h3>
+							<p>I started KidCode in 2024 to teach programming to students in Frisco, Texas. It grew into a three-year curriculum: Python fundamentals, then files, classes and tests, then natural-language processing with spaCy. 124 students, 20 projects, and more than 1,200 student programs, all published.</p>
+							<p class="p-muted" style="font-family:var(--sans);font-size:14px">Average score before and after each unit: 41.7% &rarr; 58.8% across 104 students.</p>
+							<span class="p-more">The KidCode story &rarr;</span></div>
+						</a>
+						<a class="p-card" href="#kidcode-archive">
+							<div class="p-card-img"><img src="/img/kidcode-day4-what-is-if-slide.png" alt="A KidCode lesson slide titled What Is an If Statement" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">Class posts</span>
+							<h3>Inside the KidCode classroom</h3>
+							<p>A post for the first class of each year and for every project, plus what happened in the summer 2026 bootcamp, session by session.</p>
+							<span class="p-more">Read the class posts &rarr;</span></div>
+						</a>
+						<a class="p-card" href="#modal-india-38">
+							<div class="p-card-img"><img src="/img/india/india-26-whiteboard.png" alt="Illustration of a whiteboard reading Welcome, Namaste, today no laptops, just us, a board, and chalk" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">Instructor &middot; Nov 2025&ndash;Jul 2026 &middot; Hyderabad, India</span>
+							<h3>Python and math at a Hyderabad children's home</h3>
+							<p>I taught 38 weekly Zoom classes to a small group sharing one laptop over an unreliable connection, from a first <code>print()</code> to a number-guessing game, and from simple equations to trigonometry. Then I taught in person for two and a half weeks.</p>
+							<span class="p-more">Eight months, thirty-eight classes &rarr;</span></div>
+						</a>
 					</div>
 				</div>
 			</section>
 
-			<section class="s-section" id="engineering" aria-labelledby="engineering-title">
-				<div class="s-wrap">
-					<div class="s-section-head">
-						<h2 class="s-h2" id="engineering-title">Engineering</h2>
-						<p>Systems built to run outside a notebook: a shipped app and a hardware prototype.</p>
+			<section class="p-section p-tint" id="engineering" aria-labelledby="engineering-title">
+				<div class="p-wrap">
+					<div class="p-section-head">
+						<span class="p-kicker">Building</span>
+						<h2 class="p-h2" id="engineering-title">Software and hardware that run outside a notebook</h2>
 					</div>
-					<div class="s-work">
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>Sole developer</strong>2025 – present</div>
-							<div>
-								<h3 class="s-h3"><a href="/projects/shopai/">ShopAI</a></h3>
-								<p>ShopAI compares grocery prices across nine retailers behind one product schema, using OAuth2 REST, GraphQL, Playwright and HTML-parsing adapters. Search fans out concurrently under a shared response budget, and a deterministic planner scores all 127 store combinations. Search and planning make no language-model calls.</p>
-								<ul class="s-links">
-									<li><a class="s-primary" href="/projects/shopai/">Case study</a></li>
-									<li><a href="https://apps.apple.com/app/shopai/id6797083809">App Store</a></li>
-									<li><a href="#modal-shopai-architecture">Architecture write-up</a></li>
-								</ul>
-							</div>
-						</article>
-						<article class="s-entry">
-							<div class="s-entry-side"><strong>Co-founder</strong>ML and mobile lead<br>student team · 2025 – present</div>
-							<div>
-								<h3 class="s-h3"><a href="/projects/x-step/">X-Step</a></h3>
-								<p>This is the product side of the insole: ESP32 firmware, a 28-byte Bluetooth Low Energy protocol, feature extraction and inference, and a React Native app for live pressure and trends.</p>
-								<p class="s-note">Team recognition: <a href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas A&amp;M Ideas Challenge finalist (2026)</a>; Diamond Challenge semifinalist. These are entrepreneurship results for the product, not for the paper.</p>
-								<ul class="s-links">
-									<li><a class="s-primary" href="/projects/x-step/">Project page</a></li>
-								</ul>
-							</div>
-						</article>
+					<div class="p-work">
+						<a class="p-card" href="/projects/shopai/">
+							<div class="p-card-img"><img src="/img/shopai/shopai-web-search.jpg" alt="The ShopAI grocery search page showing prices across stores" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">Sole developer &middot; live on the App Store</span>
+							<h3>ShopAI</h3>
+							<p>ShopAI compares grocery prices across nine retailers behind one product schema, using OAuth2 REST, GraphQL, Playwright and HTML-parsing adapters. Search fans out concurrently under a shared response budget, and a deterministic planner scores all 127 store combinations. Search and planning make no language-model calls.</p>
+							<span class="p-more">Case study &rarr;</span></div>
+						</a>
+						<a class="p-card" href="/projects/x-step/">
+							<div class="p-card-img"><img src="/img/x-step/xstep-slide-how-it-works.jpg" alt="An X-Step team slide describing how the insole and app work" loading="lazy"></div>
+						<div class="p-card-body"><span class="p-tag">Co-founder &middot; ML and mobile lead &middot; student team</span>
+							<h3>X-Step</h3>
+							<p>The product side of the insole: ESP32 firmware, a 28-byte Bluetooth Low Energy protocol, feature extraction and inference, and a React Native app for live pressure and trends.</p>
+							<p class="p-muted" style="font-family:var(--sans);font-size:14px">Team: <span>Texas A&amp;M Ideas Challenge finalist (2026)</span>; Diamond Challenge semifinalist. Entrepreneurship results for the product, not for the paper.</p>
+							<span class="p-more">Project page &rarr;</span></div>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -674,13 +660,13 @@
 					<div>
 						<h2 id="blog-title" class="s-h2">Writing</h2>
 					</div>
-					<p>The research, India Outreach and ShopAI posts were written as the work happened. The KidCode posts for the summer 2026 bootcamp were written as the classes happened; the KidCode posts for the 2024 and 2025 classes and for each project were written in September 2026 from the curriculum documents and the published student programs, and each one says so.</p>
+					<p>The research, India Outreach and ShopAI posts were written as the work happened. The KidCode posts for the 2024 and 2025 classes and for each project look back through the curriculum and the students' programs; the summer 2026 bootcamp posts were written right after each class.</p>
 				</div>
 
 				<!-- KC:ARCHIVE:start -->
 				<div class="kc-archive reveal" id="kidcode-archive">
-					<p class="kc-intro">KidCode is the Python program I've taught in Frisco since June 2024, and its posts here follow the program year by year: the first class of each year, every project class from <code>print()</code> to spaCy with one published student program (normalized and anonymized, shown without a name), and the 2026 bootcamp sessions I wrote up as they happened. The 2024 and 2025 class posts and the project posts were written in September 2026 from the curriculum documents and the student programs, not at the time, and say so. Project classes are listed in curriculum order. <a href="#modal-kidcode-student-code">What three years of student code showed</a> · <a href="https://github.com/ddevatha1/kidcode" target="_blank" rel="noopener">All 1,214 student programs on GitHub</a></p>
-					<div class="kc-years"><div class="kc-year" id="kidcode-2024"><h3>KidCode · 2024</h3><p class="kc-theme">Year 1: Foundations · 6 projects</p><ul><li><a href="#modal-kidcode-2024-class1"><span class="kc-when">Class 1 · year began June 5, 2024 (my account)</span>First class: welcome to coding</a></li><li><a href="#modal-kidcode-p01"><span class="kc-when">Class 6</span>Project 1: Mad Libs Machine</a></li><li><a href="#modal-kidcode-p02"><span class="kc-when">Class 15</span>Project 2: Mystic Oracle</a></li><li><a href="#modal-kidcode-p03"><span class="kc-when">Class 20</span>Project 3: Guess the Number Deluxe</a></li><li><a href="#modal-kidcode-p04"><span class="kc-when">Class 25</span>Project 4: Wish List Manager</a></li><li><a href="#modal-kidcode-p05"><span class="kc-when">Class 30</span>Project 5: Trivia Quiz Show</a></li><li><a href="#modal-kidcode-p06"><span class="kc-when">Classes 36–39</span>Project 6: Escape the Haunted School</a></li></ul></div><div class="kc-year" id="kidcode-2025"><h3>KidCode · 2025</h3><p class="kc-theme">Year 2: Deeper Programming · 7 projects</p><ul><li><a href="#modal-kidcode-2025-class1"><span class="kc-when">Class 1 · year began June 5, 2025 (my account)</span>First class: welcome back and skills check-up</a></li><li><a href="#modal-kidcode-p07"><span class="kc-when">Class 7</span>Project 7: Secret Agent Cipher Lab</a></li><li><a href="#modal-kidcode-p08"><span class="kc-when">Class 10</span>Project 8: Message Vault</a></li><li><a href="#modal-kidcode-p09"><span class="kc-when">Class 15</span>Project 9: Trivia Quiz 2.0</a></li><li><a href="#modal-kidcode-p10"><span class="kc-when">Class 20</span>Project 10: Virtual Pet Care</a></li><li><a href="#modal-kidcode-p11"><span class="kc-when">Classes 23–24</span>Project 11: Monster Battle Arena</a></li><li><a href="#modal-kidcode-p12"><span class="kc-when">Class 28</span>Project 12: Turtle Art Studio</a></li><li><a href="#modal-kidcode-p13"><span class="kc-when">Classes 36–39</span>Project 13: Book Detective</a></li></ul></div><div class="kc-year" id="kidcode-2026"><h3>KidCode · 2026</h3><p class="kc-theme">Year 3: NLP · 7 projects</p><ul><li><a href="#modal-kidcode-2026-class1"><span class="kc-when">Class 1 · year began June 5, 2026 (my account)</span>First class: welcome back and Bug Safari revisited</a></li><li><a href="#modal-kidcode-p14"><span class="kc-when">Class 10</span>Project 14: Tokenizer Showdown</a></li><li><a href="#modal-kidcode-p15"><span class="kc-when">Classes 12–13</span>Project 15: Keyword Detective</a></li><li><a href="#modal-kidcode-p16"><span class="kc-when">Classes 16–17</span>Project 16: Auto Mad Libs</a></li><li><a href="#modal-kidcode-p17"><span class="kc-when">Classes 24–25</span>Project 17: Character Tracker</a></li><li><a href="#modal-kidcode-p18"><span class="kc-when">Classes 26–27</span>Project 18: Privacy Shield</a></li><li><a href="#modal-kidcode-p19"><span class="kc-when">Classes 31–32</span>Project 19: KidBot Brain</a></li><li><a href="#modal-kidcode-p20"><span class="kc-when">Classes 36–39</span>Project 20: NLP Capstone</a></li></ul><p class="kc-sub">Summer 2026 online bootcamp</p><ul><li><a href="#modal-crosscommunal"><span class="kc-when">June 2026 · Introductory meeting</span>Three Communities, One Meeting, and the Slow Work of Starting Something</a></li><li><a href="#modal-kidcode-online"><span class="kc-when">June 2026 · Bootcamp session 1</span>The First Class of Our Online Python Bootcamp</a></li><li><a href="#modal-kidcode-day2"><span class="kc-when">July 5, 2026 · Bootcamp session 2</span>Day 2: When I Tried to Teach Too Much in One Hour</a></li><li><a href="#modal-kidcode-day3"><span class="kc-when">July 11, 2026 · Bootcamp session 3</span>Day 3: What Happens When You Slow Down</a></li><li><a href="#modal-kidcode-day4"><span class="kc-when">July 18, 2026 · Bootcamp session 4</span>Day 4: The Bug That Became the Best Part of Class</a></li></ul></div></div>
+					<p class="kc-intro">KidCode is the Python program I've taught in Frisco since June 2024, and its posts here follow the program year by year: the first class of each year, every project class from <code>print()</code> to spaCy with one published student program (normalized and anonymized, shown without a name), and the 2026 bootcamp sessions I wrote up as they happened. The 2024 and 2025 class posts and the project posts look back on each class through the curriculum documents and the student programs; the 2026 bootcamp posts were written as the classes happened. Project classes are listed in curriculum order. <a href="#modal-kidcode-student-code">What three years of student code showed</a> · <a href="https://github.com/ddevatha1/kidcode" target="_blank" rel="noopener">All 1,214 student programs on GitHub</a></p>
+					<div class="kc-years"><div class="kc-year" id="kidcode-2024"><h3>KidCode · 2024</h3><p class="kc-theme">Year 1: Foundations · 6 projects</p><ul><li><a href="#modal-kidcode-2024-class1"><span class="kc-when">Class 1 · June 5, 2024</span>First class: welcome to coding</a></li><li><a href="#modal-kidcode-p01"><span class="kc-when">Class 6</span>Project 1: Mad Libs Machine</a></li><li><a href="#modal-kidcode-p02"><span class="kc-when">Class 15</span>Project 2: Mystic Oracle</a></li><li><a href="#modal-kidcode-p03"><span class="kc-when">Class 20</span>Project 3: Guess the Number Deluxe</a></li><li><a href="#modal-kidcode-p04"><span class="kc-when">Class 25</span>Project 4: Wish List Manager</a></li><li><a href="#modal-kidcode-p05"><span class="kc-when">Class 30</span>Project 5: Trivia Quiz Show</a></li><li><a href="#modal-kidcode-p06"><span class="kc-when">Classes 36–39</span>Project 6: Escape the Haunted School</a></li></ul></div><div class="kc-year" id="kidcode-2025"><h3>KidCode · 2025</h3><p class="kc-theme">Year 2: Deeper Programming · 7 projects</p><ul><li><a href="#modal-kidcode-2025-class1"><span class="kc-when">Class 1 · June 5, 2025</span>First class: welcome back and skills check-up</a></li><li><a href="#modal-kidcode-p07"><span class="kc-when">Class 7</span>Project 7: Secret Agent Cipher Lab</a></li><li><a href="#modal-kidcode-p08"><span class="kc-when">Class 10</span>Project 8: Message Vault</a></li><li><a href="#modal-kidcode-p09"><span class="kc-when">Class 15</span>Project 9: Trivia Quiz 2.0</a></li><li><a href="#modal-kidcode-p10"><span class="kc-when">Class 20</span>Project 10: Virtual Pet Care</a></li><li><a href="#modal-kidcode-p11"><span class="kc-when">Classes 23–24</span>Project 11: Monster Battle Arena</a></li><li><a href="#modal-kidcode-p12"><span class="kc-when">Class 28</span>Project 12: Turtle Art Studio</a></li><li><a href="#modal-kidcode-p13"><span class="kc-when">Classes 36–39</span>Project 13: Book Detective</a></li></ul></div><div class="kc-year" id="kidcode-2026"><h3>KidCode · 2026</h3><p class="kc-theme">Year 3: NLP · 7 projects</p><ul><li><a href="#modal-kidcode-2026-class1"><span class="kc-when">Class 1 · June 5, 2026</span>First class: welcome back and Bug Safari revisited</a></li><li><a href="#modal-kidcode-p14"><span class="kc-when">Class 10</span>Project 14: Tokenizer Showdown</a></li><li><a href="#modal-kidcode-p15"><span class="kc-when">Classes 12–13</span>Project 15: Keyword Detective</a></li><li><a href="#modal-kidcode-p16"><span class="kc-when">Classes 16–17</span>Project 16: Auto Mad Libs</a></li><li><a href="#modal-kidcode-p17"><span class="kc-when">Classes 24–25</span>Project 17: Character Tracker</a></li><li><a href="#modal-kidcode-p18"><span class="kc-when">Classes 26–27</span>Project 18: Privacy Shield</a></li><li><a href="#modal-kidcode-p19"><span class="kc-when">Classes 31–32</span>Project 19: KidBot Brain</a></li><li><a href="#modal-kidcode-p20"><span class="kc-when">Classes 36–39</span>Project 20: NLP Capstone</a></li></ul><p class="kc-sub">Summer 2026 online bootcamp</p><ul><li><a href="#modal-crosscommunal"><span class="kc-when">June 2026 · Introductory meeting</span>Three Communities, One Meeting, and the Slow Work of Starting Something</a></li><li><a href="#modal-kidcode-online"><span class="kc-when">June 2026 · Bootcamp session 1</span>The First Class of Our Online Python Bootcamp</a></li><li><a href="#modal-kidcode-day2"><span class="kc-when">July 5, 2026 · Bootcamp session 2</span>Day 2: When I Tried to Teach Too Much in One Hour</a></li><li><a href="#modal-kidcode-day3"><span class="kc-when">July 11, 2026 · Bootcamp session 3</span>Day 3: What Happens When You Slow Down</a></li><li><a href="#modal-kidcode-day4"><span class="kc-when">July 18, 2026 · Bootcamp session 4</span>Day 4: The Bug That Became the Best Part of Class</a></li></ul></div></div>
 				</div>
 				<!-- KC:ARCHIVE:end -->
 				<div class="blog-filter-bar reveal" role="group" aria-label="Filter posts by category">
@@ -906,7 +892,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p20').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 36–39 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 36–39 · a look back</span></div>
 						<h3>Project 20: NLP Capstone</h3>
 						<p>
 							The Year 3 capstone is Project 20, the last numbered project in KidCode, across Days 36 to 39. Students pitch a project from a short list (Story Explorer, KidBot Pro, Privacy Shield Pro, Time Traveler's News Desk) or an approved idea of their own, then build it over four days, with a beta test, an NER audit, and "How It Works" and "Limitations" cards.
@@ -917,7 +903,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p19').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 31–32 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 31–32 · a look back</span></div>
 						<h3>Project 19: KidBot Brain</h3>
 						<p>
 							KidBot Brain is Project 19, across Days 31 and 32 of Year 3: a rule-based chatbot. Students list intents (greeting, joke, weather), write spaCy Matcher patterns for each, use named entities to pull out the city in "what's the weather in Paris", and add a fallback reply for everything else.
@@ -928,7 +914,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p18').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 26–27 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 26–27 · a look back</span></div>
 						<h3>Project 18: Privacy Shield</h3>
 						<p>
 							Privacy Shield is Project 18, across Days 26 and 27 of Year 3. Students plan which kinds of entity to hide and what the placeholders look like, then replace entities token by token with token.ent_iob_ and text_with_ws, so that a two-word name becomes one [PERSON], not two.
@@ -939,7 +925,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p17').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 24–25 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 24–25 · a look back</span></div>
 						<h3>Project 17: Character Tracker</h3>
 						<p>
 							Character Tracker is Project 17, across Days 24 and 25 of Year 3, at the end of the week on named entities: doc.ents, entity labels like PERSON and GPE, and a day spent on why the model is sometimes wrong. Students run a story through spaCy chapter by chapter and count who and where appears.
@@ -950,7 +936,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p16').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 16–17 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 16–17 · a look back</span></div>
 						<h3>Project 16: Auto Mad Libs</h3>
 						<p>
 							Auto Mad Libs is Project 16, across Days 16 and 17 of Year 3, and it brings back the very first KidCode project. This time spaCy finds the nouns, verbs, adjectives or names in a story, the program asks the player for replacements, and the story is rebuilt with token.text_with_ws so the spacing and punctuation survive.
@@ -961,7 +947,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p15').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 12–13 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Classes 12–13 · a look back</span></div>
 						<h3>Project 15: Keyword Detective</h3>
 						<p>
 							Keyword Detective is Project 15, across Days 12 and 13 of Year 3. Students tokenize a chapter, drop stop words and punctuation, lemmatize, count with Counter, chart the top keywords, and compare the result with what their Year 2 Book Detective finds on the same text.
@@ -972,7 +958,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p14').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Class 10 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2026 · Year 3, Class 10 · a look back</span></div>
 						<h3>Project 14: Tokenizer Showdown</h3>
 						<p>
 							Tokenizer Showdown is Project 14, on Day 10 of Year 3, the NLP year. After a week on what a token is, token attributes, stop words and lemmas, students test three ways of splitting text on twenty tricky sentences (contractions, abbreviations, URLs, numbers, punctuation): Python's .split(), their own Year 2 cleaning code, and spaCy.
@@ -983,7 +969,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2026-class1').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">About June 5, 2026 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 2026 · a look back</span></div>
 						<h3>Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong</h3>
 						<p>
 							Year 3 began on June 5, 2026. The first class reviews Years 1 and 2 (Python Olympics 2.0) and then returns to the Year 2 lesson that broke on purpose: Bug Safari, where splitting text on spaces and periods fails on sentences with abbreviations like "U.S.A." and contractions like "don't". 36 new students joined KidCode in 2026.
@@ -1427,7 +1413,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p13').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 36–39 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 36–39 · a look back</span></div>
 						<h3>Project 13: Book Detective</h3>
 						<p>
 							Book Detective is the Year 2 capstone, Project 13, across Days 36 to 39. Students plan and build a TextAnalyzer class that loads a book, cleans the text, counts words with Counter, reports statistics, tests itself with assert, and saves a chart. The week before, the lesson called Bug Safari feeds sentences full of abbreviations like "U.S.A." to this kind of code and logs every way it breaks.
@@ -1438,7 +1424,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p12').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 28 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 28 · a look back</span></div>
 						<h3>Project 12: Turtle Art Studio</h3>
 						<p>
 							Turtle Art Studio is Project 12, on Day 28 of Year 2, in the week on modules and libraries. Students use Python's built-in turtle module (turtle objects with methods like forward(), left() and begin_fill()) and write loops and functions that draw spirals, stars and a draw_flower() function.
@@ -1449,7 +1435,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p11').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 23–24 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Classes 23–24 · a look back</span></div>
 						<h3>Project 11: Monster Battle Arena</h3>
 						<p>
 							Monster Battle Arena is Project 11, across Days 23 and 24 of Year 2. A Monster parent class holds name, hit points and attack; FireMonster and WaterMonster inherit from it and override how damage works; a turn-based battle loop uses random damage and type advantages; and winners go into a saved Hall of Fame.
@@ -1460,7 +1446,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p10').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 20 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 20 · a look back</span></div>
 						<h3>Project 10: Virtual Pet Care</h3>
 						<p>
 							Virtual Pet Care is Project 10, on Day 20 of Year 2, at the end of the first week of object-oriented programming: class, __init__, self, methods, and __str__. Students design the pet on paper, then code its hunger and happiness meters, a daily menu, and saving to JSON.
@@ -1471,7 +1457,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p09').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 15 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 15 · a look back</span></div>
 						<h3>Project 9: Trivia Quiz 2.0</h3>
 						<p>
 							Trivia Quiz 2.0 is Project 9, on Day 15 of Year 2, and it is an upgrade of a Year 1 project on purpose. The questions move into a JSON file, high scores are saved to disk, input is protected with try/except, and every job gets its own function.
@@ -1482,7 +1468,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p08').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 10 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 10 · a look back</span></div>
 						<h3>Project 8: Message Vault</h3>
 						<p>
 							Message Vault is Project 8, on Day 10 of Year 2. It combines the cipher from Project 7 with the week's file lessons (open(), with, read, write and append modes) into a password-protected diary that survives after the program closes.
@@ -1493,7 +1479,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p07').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 7 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2025 · Year 2, Class 7 · a look back</span></div>
 						<h3>Project 7: Secret Agent Cipher Lab</h3>
 						<p>
 							Secret Agent Cipher Lab opens Year 2 as Project 7, on Day 7. Students learn that letters are numbers (ord() and chr()), wrap around the alphabet with %, and write encrypt(text, shift) and decrypt(text, shift). Both functions are checked with assert tests.
@@ -1504,7 +1490,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2025-class1').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">About June 5, 2025 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 2025 · a look back</span></div>
 						<h3>Class 1 of Year 2: Welcome Back</h3>
 						<p>
 							Year 2 began on June 5, 2025. Its first class is a review of all of Year 1, run as a relay of short challenges the curriculum calls the Python Olympics, plus setting up a tidy project folder for a year of longer programs. 53 new students joined KidCode in 2025.
@@ -1532,7 +1518,7 @@
 					</article>
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p06').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Classes 36–39 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Classes 36–39 · a look back</span></div>
 						<h3>Project 6: Escape the Haunted School</h3>
 						<p>
 							Escape the Haunted School is the Year 1 capstone, Project 6. It runs across Days 36 to 39: planning the map on paper, storing rooms in a dictionary, a game loop with go north-style commands, an inventory, locked doors, and a win condition, followed by a day of peer playtesting.
@@ -1543,7 +1529,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p05').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 30 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 30 · a look back</span></div>
 						<h3>Project 5: Trivia Quiz Show</h3>
 						<p>
 							Trivia Quiz Show is Project 5, on Day 30 of Year 1, at the end of the week on dictionaries. Questions and answers are stored as a list of dictionaries, answers are cleaned up with .lower() and .strip(), and the score prints at the end.
@@ -1554,7 +1540,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p04').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 25 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 25 · a look back</span></div>
 						<h3>Project 4: Wish List Manager</h3>
 						<p>
 							Wish List Manager is Project 4, on Day 25 of Year 1. It follows a week on lists: indexing, slicing, list methods, looping over lists, and turning sentences into word lists. The curriculum asks students to design the menu on paper first and then test it in pairs.
@@ -1565,7 +1551,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p03').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 20 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 20 · a look back</span></div>
 						<h3>Project 3: Guess the Number Deluxe</h3>
 						<p>
 							Guess the Number Deluxe is Project 3, on Day 20 of Year 1, at the end of the week on loops: while, for and range(), counters, break and continue.
@@ -1576,7 +1562,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p02').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 15 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 15 · a look back</span></div>
 						<h3>Project 2: Mystic Oracle</h3>
 						<p>
 							Mystic Oracle is Project 2, on Day 15 of Year 1. It closes a week about decisions (booleans, if/else, elif, and reading error messages) and introduces the first library students ever import: random.
@@ -1587,7 +1573,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-p01').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 6 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">2024 · Year 1, Class 6 · a look back</span></div>
 						<h3>Project 1: Mad Libs Machine</h3>
 						<p>
 							Mad Libs Machine is the first complete program in KidCode. It comes on Day 6 of Year 1, after a week of print(), variables, arithmetic and input(), and it is the first time those pieces have to work together to make something another person would actually want to run.
@@ -1598,7 +1584,7 @@
 
 					<!-- KC:CARD -->
 					<article class="blog-card reveal" data-category="kidcode" style="cursor:pointer;" onclick="document.getElementById('modal-kidcode-2024-class1').classList.add('open')">
-						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">About June 5, 2024 · written Sept 2026</span></div>
+						<div class="meta"><span class="cat-pill cat-kidcode">KidCode</span><span class="meta-date">June 2024 · a look back</span></div>
 						<h3>Class 1: Welcome to Coding</h3>
 						<p>
 							KidCode's first class was on June 5, 2024. It was Day 1 of a 40-day Year 1 curriculum I wrote for students who had never programmed. The first class sets up everything that follows: what a program is, a working Python install, and a first line of code.
@@ -4263,7 +4249,7 @@
 						<span>Community Initiative</span>
 						<span>Deeptanshu Devatha</span>
 					</div>
-					<p class="kc-retro"><em>Note added September 29, 2026: this post describes the first gathering of the summer 2026 online bootcamp, for the families who joined that summer. It was not the start of KidCode, which I date to June 2024 on my own account; nothing dated from 2024 or 2025 survives (see the repository's timeline). The post has been edited since June 2026, and the earlier versions are in this site's public git history.</em></p>
+					<p class="kc-retro"><em>A note on this post: it describes the first gathering of the summer 2026 bootcamp, for the families who joined that summer. KidCode itself began in 2024.</em></p>
 
 					<p>
 						Avondale, The Heights at Westridge, and Ridgeview at Panther Creek are close to each other in the way that many neighborhoods are close—geographically near, socially separate. Students who live in these communities might go to the same stores, drive the same roads, and still never interact in any meaningful way. That gap is ordinary, and most of the time, nobody thinks much about it.
@@ -5458,8 +5444,8 @@
 					<div class="modal-box">
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2024-class1').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-2024-class1-title">Class 1: Welcome to Coding</h1>
-						<div class="post-meta"><span>About June 5, 2024 · written September 2026</span><span>KidCode · Year 1 · Class 1</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document, not during the class. The date is my account of when the year began; no dated record of this class survives.</em></p>
+						<div class="post-meta"><span>June 5, 2024 · a look back, written September 2026</span><span>KidCode · Year 1 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p class="kc-retro"><em>Written in September 2026, looking back at the first class of the year through the curriculum.</em></p>
 						<p>KidCode's first class was on June 5, 2024. It was Day 1 of a 40-day Year 1 curriculum I wrote for students who had never programmed. The first class sets up everything that follows: what a program is, a working Python install, and a first line of code.</p>
 						<h2>What I taught</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 1: Meet Python &amp; Setup</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome to Coding &amp; Setup.</strong> What a program is, and the Input → Process → Output idea. Installing Python with the Thonny editor and touring the editor and the Shell. Writing a first program: print(&quot;Hello, KidCode!&quot;).</p><p><strong>Day 2: Print, Escapes &amp; Comments.</strong> Mastering print(), fixing quote errors, and using escape characters (\n, \t, \&#x27;). Adding # comments. Lab: &quot;Name Banner&quot; ASCII art.</p><p><strong>Day 3: Variables: Labeled Boxes.</strong> Storing information with =. Variable naming rules and snake_case, changing values, and checking data types with type() (str, int, float). Lab: &quot;About Me Card&quot; built from variables.</p><p><strong>Day 4: Number Crunching.</strong> Arithmetic operators (+, -, *, /, //, %, **) and PEMDAS. Integers vs. floats, and the TypeError from mixing text and numbers. Lab: &quot;Snack Shop Calculator&quot;.</p><p><strong>Day 5: Talking to the User.</strong> Asking questions with input(), converting answers with int() and float(), and formatting output with f-strings like f&quot;Hi, {name}!&quot;. Practice: &quot;Age in Dog Years&quot; and &quot;Tip Helper&quot;.</p></blockquote>
@@ -5478,8 +5464,8 @@
 					<div class="modal-box">
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2025-class1').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-2025-class1-title">Class 1 of Year 2: Welcome Back</h1>
-						<div class="post-meta"><span>About June 5, 2025 · written September 2026</span><span>KidCode · Year 2 · Class 1</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document, not during the class. The date is my account of when the year began; no dated record of this class survives.</em></p>
+						<div class="post-meta"><span>June 5, 2025 · a look back, written September 2026</span><span>KidCode · Year 2 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p class="kc-retro"><em>Written in September 2026, looking back at the first class of the year through the curriculum.</em></p>
 						<p>Year 2 began on June 5, 2025. Its first class is a review of all of Year 1, run as a relay of short challenges the curriculum calls the Python Olympics, plus setting up a tidy project folder for a year of longer programs. 53 new students joined KidCode in 2025.</p>
 						<h2>What I taught</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 1: Level Up: Functions &amp; Lists</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome Back &amp; Skills Check-Up.</strong> Reviewing Year 1: variables, strings and methods, if statements, loops, lists, dictionaries, and functions. &quot;Python Olympics&quot; relay of short challenges. Setting up the workspace and a tidy KidCode project folder.</p><p><strong>Day 2: Functions Power-Up.</strong> Default values, keyword arguments such as greet(name=&quot;friend&quot;), and returning several values as a tuple. Functions that call other functions. Practice: &quot;Mini Math Toolkit&quot;.</p><p><strong>Day 3: Scope, Docstrings &amp; Testing.</strong> Local vs. global variables, docstrings, and testing with assert: write the test first, then the function. Lab: &quot;Bug- Proof Calculator&quot;, where every function passes its own tests.</p><p><strong>Day 4: List Power Tools.</strong> Nested lists, sorted() and .sort(key=...), enumerate(), zip(), and sets for unique values with set() and .add(). Practice: &quot;Class Leaderboard&quot; sorted by score.</p><p><strong>Day 5: List Comprehensions.</strong> One-line list builders like [x * 2 for x in numbers], filtering with if, and comprehensions over strings and words. Converting for loops into comprehensions. Practice: &quot;Word Shouter&quot; and &quot;Even Filter&quot;.</p></blockquote>
@@ -5498,8 +5484,8 @@
 					<div class="modal-box">
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-2026-class1').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-2026-class1-title">Class 1 of Year 3: Welcome Back, and What .split() Gets Wrong</h1>
-						<div class="post-meta"><span>About June 5, 2026 · written September 2026</span><span>KidCode · Year 3 · Class 1</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document, not during the class. The date is my account of when the year began; no dated record of this class survives.</em></p>
+						<div class="post-meta"><span>June 5, 2026 · a look back, written September 2026</span><span>KidCode · Year 3 · Class 1</span><span>Deeptanshu Devatha</span></div>
+						<p class="kc-retro"><em>Written in September 2026, looking back at the first class of the year through the curriculum.</em></p>
 						<p>Year 3 began on June 5, 2026. The first class reviews Years 1 and 2 (Python Olympics 2.0) and then returns to the Year 2 lesson that broke on purpose: Bug Safari, where splitting text on spaces and periods fails on sentences with abbreviations like "U.S.A." and contractions like "don't". 36 new students joined KidCode in 2026.</p>
 						<h2>What I taught</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 1: Libraries, NLP &amp; Setup</p><blockquote class="kc-quote"><p><strong>Day 1: Welcome Back &amp; Skills Check-Up.</strong> Reviewing Years 1 and 2 with &quot;Python Olympics 2.0&quot;: functions, classes, files, Counter, and comprehensions. Revisiting Bug Safari: why .split() fails on sentences with abbreviations like &quot;U.S.A.&quot; and &quot;don&#x27;t&quot;.</p><p><strong>Day 2: What Is a Library, Really?.</strong> Library vs. package vs. module vs. API. The anatomy of an import, and how libraries are built from the same functions and classes students wrote in Year 2. A &quot;Standing on Shoulders&quot; scavenger hunt on PyPI.</p><p><strong>Day 3: Installing Libraries Safely.</strong> Using pip install, pip list, and pip show, creating a virtual environment with python -m venv, and saving requirements.txt. Reading install errors. Lab: &quot;Project Sandbox&quot;, a clean environment for the year.</p><p><strong>Day 4: What Is NLP?.</strong> Natural Language Processing in daily life: autocorrect, voice assistants, translation, and search. Why language is hard for computers: ambiguity (&quot;I saw her duck&quot;), slang, and punctuation.</p><p><strong>Day 5: Meet spaCy.</strong> Installing spacy and the en_core_web_sm model, loading it with spacy.load(), and passing text to the nlp object to get a Doc made of Token objects. Lab: &quot;Hello, spaCy&quot;.</p></blockquote>
@@ -5519,7 +5505,7 @@
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p01').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p01-title">Project 1: Mad Libs Machine</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 6 of 40</span><span>29 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Mad Libs Machine is the first complete program in KidCode. It comes on Day 6 of Year 1, after a week of <code>print()</code>, variables, arithmetic and <code>input()</code>, and it is the first time those pieces have to work together to make something another person would actually want to run.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 2: Words As Data</p><blockquote class="kc-quote"><p><strong>Day 6: Lab: Mad Libs Machine.</strong> Project 1. Combining input(), variables, and f-strings into a complete program: a silly story with blanks that players fill in. Pair programming with driver and navigator roles.</p><p><strong>Day 7: Strings: Beads on a String.</strong> Strings as ordered characters. Measuring with len(), joining with +, repeating with *, and picking characters with word[0] and word[-1]. Understanding IndexError. Practice: &quot;Secret Initials&quot;.</p><p><strong>Day 8: Slicing &amp; Dicing Text.</strong> Slicing with [start:end] and reversing with [::-1]. Why strings are immutable, so new strings are built instead of edited. Practice: &quot;Nickname Maker&quot; and &quot;Backwards Words&quot;.</p><p><strong>Day 9: String Methods: Dot Magic.</strong> The idea of a method: an action that belongs to a piece of data, called with a dot. Using .upper(), .lower(), .title(), .strip(), .replace(), and .count(). Lab: &quot;Text Cleaner&quot;.</p><p><strong>Day 10: More Methods &amp; Text Toolbox.</strong> Using .split(), .join(), .find(), .startswith(), and in. Lab: &quot;Text Toolbox&quot;, which reports a sentence&#x27;s length, word count, and shout and whisper versions.</p></blockquote>
@@ -5577,7 +5563,7 @@ We saw 12 more animals before the bus came back.</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p02').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p02-title">Project 2: Mystic Oracle</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 15 of 40</span><span>18 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Mystic Oracle is Project 2, on Day 15 of Year 1. It closes a week about decisions (booleans, <code>if</code>/<code>else</code>, <code>elif</code>, and reading error messages) and introduces the first library students ever import: <code>random</code>.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 3: Making Decisions</p><blockquote class="kc-quote"><p><strong>Day 11: Booleans &amp; Comparisons.</strong> The bool type, comparison operators (==, !=, &lt;, &gt;, &lt;=, &gt;=), and the difference between = and ==. &quot;Predict, Run, Explain&quot; cards.</p><p><strong>Day 12: if &amp; else: Choosing a Path.</strong> Writing if and else blocks, colons, and indentation as Python&#x27;s grammar. Fixing IndentationError. Practice: &quot;Password Checker&quot; and &quot;Can You Ride?&quot;, a theme park height checker.</p><p><strong>Day 13: elif, and, or, not.</strong> Multi-way choices with elif, combining conditions with and, or, and not, and placing an if inside another if. Practice: &quot;Grade Calculator&quot; and &quot;Movie Night Picker&quot;.</p><p><strong>Day 14: Bug Hunters: Debugging Skills.</strong> Reading error messages (SyntaxError, NameError, TypeError) from the bottom line up. Print debugging and stepping through code in Thonny. Lab: &quot;Bug Zoo&quot;, ten broken programs to fix.</p><p><strong>Day 15: Lab: Mystic Oracle.</strong> Project 2. A first library: import random, random.randint(), and random.choice(). A fortune- telling program with if/elif logic. Big idea: import borrows code someone else wrote.</p></blockquote>
@@ -5637,7 +5623,7 @@ You asked 3 questions. Merlin tips his pointy hat.</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p03').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p03-title">Project 3: Guess the Number Deluxe</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 20 of 40</span><span>25 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Guess the Number Deluxe is Project 3, on Day 20 of Year 1, at the end of the week on loops: <code>while</code>, <code>for</code> and <code>range()</code>, counters, <code>break</code> and <code>continue</code>.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 4: Loops</p><blockquote class="kc-quote"><p><strong>Day 16: while Loops: Repeat Until.</strong> Repeating code with while, loop conditions, and counters. Stopping runaway loops with Thonny&#x27;s Stop button. Practice: &quot;Countdown Rocket&quot; and &quot;Three Tries Password&quot;.</p><p><strong>Day 17: for Loops &amp; range().</strong> Looping with for and range() using one, two, and three arguments. Choosing between for (known count) and while (unknown count). Practice: &quot;Times Table Printer&quot;.</p><p><strong>Day 18: Counting &amp; Looping Through Text.</strong> The accumulator pattern for running totals and counters, and looping through every character of a string. Practice: &quot;Vowel Counter&quot;, &quot;Palindrome Checker&quot;, and &quot;Average Calculator&quot;.</p><p><strong>Day 19: break, continue &amp; Nested Loops.</strong> Leaving a loop early with break, skipping a round with continue, and loops inside loops for grids and patterns. Practice: &quot;Multiplication Grid&quot; and &quot;Star Triangle&quot;.</p><p><strong>Day 20: Lab: Guess the Number Deluxe.</strong> Project 3. Combining while, if/elif/else, random.randint(), and counters into a game with hints, a guess counter, and a play-again option.</p></blockquote>
@@ -5712,7 +5698,7 @@ Best game: 3 guesses. Well played, Player.</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p04').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p04-title">Project 4: Wish List Manager</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 25 of 40</span><span>24 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Wish List Manager is Project 4, on Day 25 of Year 1. It follows a week on lists: indexing, slicing, list methods, looping over lists, and turning sentences into word lists. The curriculum asks students to design the menu on paper first and then test it in pairs.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 5: Lists &amp; Tuples</p><blockquote class="kc-quote"><p><strong>Day 21: Lists: Organizing Many Things.</strong> Creating lists with [], zero-based indexing, negative indexes, len(), and slicing with [start:end]. Comparing lists with strings. Practice: &quot;Top 5 Ranker&quot;.</p><p><strong>Day 22: List Methods &amp; Mutability.</strong> Changing lists in place with .append(), .insert(), .remove(), .pop(), .sort(), and .reverse(). Membership tests with in and not in. Practice: &quot;Playlist Editor&quot;.</p><p><strong>Day 23: Looping Over Lists &amp; Tuples.</strong> Using for item in my_list, building new lists in a loop, and finding totals, maximums, and minimums. Tuples as read-only lists, and unpacking like x, y = point.</p><p><strong>Day 24: Words in a List.</strong> Turning text into lists with .split() and back into text with .join(). Sorting words and finding the longest word. Lab: &quot;Sentence Scrambler&quot; that shuffles a sentence.</p><p><strong>Day 25: Lab: Wish List Manager.</strong> Project 4. A menu-driven program that combines while, input(), if/elif, and lists to add, remove, and show items. Design the menu on paper first, then test in pairs.</p></blockquote>
@@ -5818,7 +5804,7 @@ Happy shopping!</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p05').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p05-title">Project 5: Trivia Quiz Show</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Class 30 of 40</span><span>24 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Trivia Quiz Show is Project 5, on Day 30 of Year 1, at the end of the week on dictionaries. Questions and answers are stored as a list of dictionaries, answers are cleaned up with <code>.lower()</code> and <code>.strip()</code>, and the score prints at the end.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 6: Dictionaries &amp; Data</p><blockquote class="kc-quote"><p><strong>Day 26: Dictionaries: Key-Value Pairs.</strong> Creating dictionaries with {}, looking up values by key, and adding, changing, and deleting entries. Checking keys with in, and why KeyError appears. Practice: &quot;Pet Profile&quot;.</p><p><strong>Day 27: Looping Through Dictionaries.</strong> Using .keys(), .values(), .items(), and .get() with default values. Counting with dictionaries and choosing between a list and a dictionary.</p><p><strong>Day 28: Lab: Word Counter.</strong> Using .split(), loops, and a dictionary to count how often each word appears in a sentence, then finding the most common word. A first taste of text analysis.</p><p><strong>Day 29: Lists of Dictionaries.</strong> Storing many records, such as students or trivia questions, as a list of dictionaries. Looping through records and reading fields by key. Practice: &quot;Class Directory&quot;.</p><p><strong>Day 30: Lab: Trivia Quiz Show.</strong> Project 5. Questions and answers stored in a list of dictionaries, with score keeping. Accepting messy answers with .lower() and .strip(), and printing the score with an f-string.</p></blockquote>
@@ -5889,7 +5875,7 @@ Final score: 4/5</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p06').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p06-title">Project 6: Escape the Haunted School</h1>
 						<div class="post-meta"><span>2024 · Year 1</span><span>KidCode · Classes 36–39 of 40</span><span>18 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Escape the Haunted School is the Year 1 capstone, Project 6. It runs across Days 36 to 39: planning the map on paper, storing rooms in a dictionary, a game loop with <code>go north</code>-style commands, an inventory, locked doors, and a win condition, followed by a day of peer playtesting.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 1 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone I: Haunted School Plan.</strong> Project 6. Planning a text adventure called &quot;Escape the Haunted School&quot;: sketching the map, listing rooms, items, and win and lose conditions, and drawing a flowchart of the game loop.</p><p><strong>Day 37: Capstone II: Rooms &amp; Movement.</strong> Storing rooms in a dictionary, moving with go north commands, and writing the while game loop. Handling unknown commands politely, with a helper function for each action.</p><p><strong>Day 38: Capstone III: Items &amp; Inventory.</strong> Adding an inventory list, take and use commands, locked doors, and a win condition. Testing each feature as it is added and keeping a bug list.</p><p><strong>Day 39: Playtest &amp; Polish.</strong> Peer playtesting with &quot;Two Stars and a Wish&quot; feedback cards, bug fixing, and adding room descriptions and ASCII art. Stretch goals: health points and a secret ending.</p><p><strong>Day 40: Showcase Day &amp; Year Review.</strong> Presenting games to classmates and guests. A &quot;Python Trivia&quot; review relay of Weeks 1 to 8, a skills checklist, and a preview of Year 2: files, classes, and libraries.</p></blockquote>
@@ -6002,7 +5988,7 @@ Rating: Ghost Buster</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p07').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p07-title">Project 7: Secret Agent Cipher Lab</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 7 of 40</span><span>82 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Secret Agent Cipher Lab opens Year 2 as Project 7, on Day 7. Students learn that letters are numbers (<code>ord()</code> and <code>chr()</code>), wrap around the alphabet with <code>%</code>, and write <code>encrypt(text, shift)</code> and <code>decrypt(text, shift)</code>. Both functions are checked with <code>assert</code> tests.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 2: Secret Codes &amp; Files</p><blockquote class="kc-quote"><p><strong>Day 6: Character Codes &amp; Caesar Shifts.</strong> How computers store letters as numbers with ord() and chr(). Shifting letters with % to wrap around the alphabet and looping through strings. Practice: &quot;Letter Shifter&quot;.</p><p><strong>Day 7: Lab: Secret Agent Cipher Lab.</strong> Project 1. Building encrypt(text, shift) and decrypt(text, shift) with assert tests. Swapping coded messages, then a crack-the-code challenge that tries all 25 shifts.</p><p><strong>Day 8: Reading Files.</strong> Opening files with open() and with, then .read(), .readlines(), and for line in file. File paths, the working folder, and FileNotFoundError. Practice: &quot;Story Reader&quot;.</p><p><strong>Day 9: Writing &amp; Appending Files.</strong> File modes &quot;w&quot; and &quot;a&quot;, .write(), newline characters, and why write mode erases old data. Practice: &quot;Diary Logger&quot; adds an entry each run, and &quot;High Score Keeper&quot; remembers scores.</p><p><strong>Day 10: Lab: Message Vault.</strong> Project 2. Combining the cipher with file reading and writing: save secret messages to a file and unlock them with a password. Swap vaults and try to crack them.</p></blockquote>
@@ -6093,7 +6079,7 @@ Rival spy cracking attempt:
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p08').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p08-title">Project 8: Message Vault</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 10 of 40</span><span>75 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Message Vault is Project 8, on Day 10 of Year 2. It combines the cipher from Project 7 with the week's file lessons (<code>open()</code>, <code>with</code>, read, write and append modes) into a password-protected diary that survives after the program closes.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 2: Secret Codes &amp; Files</p><blockquote class="kc-quote"><p><strong>Day 6: Character Codes &amp; Caesar Shifts.</strong> How computers store letters as numbers with ord() and chr(). Shifting letters with % to wrap around the alphabet and looping through strings. Practice: &quot;Letter Shifter&quot;.</p><p><strong>Day 7: Lab: Secret Agent Cipher Lab.</strong> Project 1. Building encrypt(text, shift) and decrypt(text, shift) with assert tests. Swapping coded messages, then a crack-the-code challenge that tries all 25 shifts.</p><p><strong>Day 8: Reading Files.</strong> Opening files with open() and with, then .read(), .readlines(), and for line in file. File paths, the working folder, and FileNotFoundError. Practice: &quot;Story Reader&quot;.</p><p><strong>Day 9: Writing &amp; Appending Files.</strong> File modes &quot;w&quot; and &quot;a&quot;, .write(), newline characters, and why write mode erases old data. Practice: &quot;Diary Logger&quot; adds an entry each run, and &quot;High Score Keeper&quot; remembers scores.</p><p><strong>Day 10: Lab: Message Vault.</strong> Project 2. Combining the cipher with file reading and writing: save secret messages to a file and unlock them with a password. Swap vaults and try to crack them.</p></blockquote>
@@ -6212,7 +6198,7 @@ Diary locked. Sweet dreams!</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p09').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p09-title">Project 9: Trivia Quiz 2.0</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 15 of 40</span><span>83 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Trivia Quiz 2.0 is Project 9, on Day 15 of Year 2, and it is an upgrade of a Year 1 project on purpose. The questions move into a JSON file, high scores are saved to disk, input is protected with <code>try</code>/<code>except</code>, and every job gets its own function.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 3: Errors &amp; Data Formats</p><blockquote class="kc-quote"><p><strong>Day 11: try/except: When Things Go Wrong.</strong> Catching errors with try and except, and common exceptions (ValueError, ZeroDivisionError, KeyError, FileNotFoundError). Reading tracebacks. Practice: &quot;Safe Divider&quot;.</p><p><strong>Day 12: Bulletproof Input.</strong> Validation loops that re-ask until the input is good, else and finally blocks, and a reusable ask_number() function that no silly answer can break.</p><p><strong>Day 13: CSV Files.</strong> Reading and writing spreadsheet-style .csv files with the csv module, rows as lists, and DictReader for rows as dictionaries. Practice: &quot;Pet Registry&quot;.</p><p><strong>Day 14: JSON Files.</strong> Saving and loading structured data with json.dump() and json.load(). How dictionaries and lists map onto JSON. Practice: &quot;Game Settings&quot; and a &quot;Quiz Question Bank&quot;.</p><p><strong>Day 15: Lab: Trivia Quiz 2.0.</strong> Project 3. Upgrading Year 1&#x27;s quiz: questions loaded from a JSON file, high scores saved to disk, input protected with try/except, and one function per job. Pair review with a checklist.</p></blockquote>
@@ -6316,7 +6302,7 @@ Play again? (yes/no) no</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p10').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p10-title">Project 10: Virtual Pet Care</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 20 of 40</span><span>60 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Virtual Pet Care is Project 10, on Day 20 of Year 2, at the end of the first week of object-oriented programming: <code>class</code>, <code>__init__</code>, <code>self</code>, methods, and <code>__str__</code>. Students design the pet on paper, then code its hunger and happiness meters, a daily menu, and saving to JSON.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 4: Objects &amp; Classes</p><blockquote class="kc-quote"><p><strong>Day 16: Everything Is an Object.</strong> Discovering that str, list, and dict are classes and that methods are functions belonging to objects. Exploring with type(), dir(), and help(). A class is a blueprint, like a cookie cutter.</p><p><strong>Day 17: Your First Class.</strong> Writing a class with class, __init__, self, and attributes, then creating several instances. Practice: a Pet class with name, species, and energy.</p><p><strong>Day 18: Methods &amp; Readable Objects.</strong> Giving objects behaviors: methods like feed() and play() that change attributes, and methods that return values. Using __str__ so print(pet) is readable.</p><p><strong>Day 19: Objects Working Together.</strong> Storing objects in lists, objects that hold other objects (a Team with Players), and class vs. instance attributes. Practice: &quot;Zoo Manager&quot;.</p><p><strong>Day 20: Lab: Virtual Pet Care.</strong> Project 4. Designing a pet on paper, then coding hunger and happiness meters, a daily menu of actions, and saving the pet to a JSON file. Classmates trade pets and keep them alive.</p></blockquote>
@@ -6420,7 +6406,7 @@ Mochi devours tuna. Meow!
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p11').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p11-title">Project 11: Monster Battle Arena</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Classes 23–24 of 40</span><span>81 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Monster Battle Arena is Project 11, across Days 23 and 24 of Year 2. A <code>Monster</code> parent class holds name, hit points and attack; <code>FireMonster</code> and <code>WaterMonster</code> inherit from it and override how damage works; a turn-based battle loop uses random damage and type advantages; and winners go into a saved Hall of Fame.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 5: Inheritance &amp; The Arena</p><blockquote class="kc-quote"><p><strong>Day 21: Inheritance: Parents &amp; Children.</strong> Child classes that inherit from a parent class, super().__init__(), and overriding methods. Practice: an Animal parent with Dog and Cat children that each speak() differently.</p><p><strong>Day 22: Polymorphism &amp; isinstance().</strong> Treating different objects the same way: looping through a mixed list of animals and calling the same method. Using isinstance() and planning class families on paper.</p><p><strong>Day 23–24: Lab: Monster Battle Arena.</strong> Project 5. A Monster parent class with name, hp, and attack, plus FireMonster and WaterMonster children. A turn-based battle loop with random damage, type advantages, and a saved &quot;Hall of Fame&quot;.</p><p><strong>Day 25: Code Review &amp; Bug Bounty.</strong> Swapping projects and hunting bugs with a checklist: clear names, docstrings, functions that do one job, and passing tests. Kind, specific feedback, then refactoring.</p></blockquote>
@@ -6525,7 +6511,7 @@ Puddle Pete hits Sprinkler Sam for 10 damage!
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p12').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p12-title">Project 12: Turtle Art Studio</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Class 28 of 40</span><span>37 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Turtle Art Studio is Project 12, on Day 28 of Year 2, in the week on modules and libraries. Students use Python's built-in <code>turtle</code> module (turtle objects with methods like <code>forward()</code>, <code>left()</code> and <code>begin_fill()</code>) and write loops and functions that draw spirals, stars and a <code>draw_flower()</code> function.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 6: Libraries &amp; Modules</p><blockquote class="kc-quote"><p><strong>Day 26: Modules &amp; the Standard Library.</strong> A module is a .py file of ready-made tools and a library is a collection of them. Using import, from ... import, and as. Touring math, random, datetime, string, and collections.</p><p><strong>Day 27: Your Own Module &amp; the Docs.</strong> Moving helpers like the cipher and ask_number() into kidtools.py and importing them. Reading Python&#x27;s official documentation: finding a function and reading its signature.</p><p><strong>Day 28: Lab: Turtle Art Studio.</strong> Project 6. Using the built-in turtle library: turtle objects with methods such as forward(), left(), and begin_fill(). Loops and functions draw spirals, stars, and a draw_flower() function.</p><p><strong>Day 29: pip &amp; Third-Party Libraries.</strong> What PyPI is and how pip install works, and the difference between a module, package, and library. Installing rich for colorful text, reading a README, and fixing a failed install safely.</p><p><strong>Day 30: Lab: Class Survey Dashboard.</strong> Installing matplotlib and drawing bar charts with plt.bar(), titles, labels, and plt.show(). Loading survey answers from a CSV file and charting the results.</p></blockquote>
@@ -6593,7 +6579,7 @@ def scene(t):
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p13').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p13-title">Project 13: Book Detective</h1>
 						<div class="post-meta"><span>2025 · Year 2</span><span>KidCode · Classes 36–39 of 40</span><span>86 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Book Detective is the Year 2 capstone, Project 13, across Days 36 to 39. Students plan and build a <code>TextAnalyzer</code> class that loads a book, cleans the text, counts words with <code>Counter</code>, reports statistics, tests itself with <code>assert</code>, and saves a chart. The week before, the lesson called Bug Safari feeds sentences full of abbreviations like "U.S.A." to this kind of code and logs every way it breaks.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 2 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone I: Book Detective Plan.</strong> Project 7. Planning a TextAnalyzer class that loads a book and reports total words, unique words, longest word, average word length, and top words. Sketching attributes and methods on paper.</p><p><strong>Day 37: Capstone II: Building the Core.</strong> Coding the class: loading a file with try/except, cleaning text, counting with Counter, and one method per statistic. Testing each method with assert.</p><p><strong>Day 38: Capstone III: Charts &amp; Reports.</strong> Adding a matplotlib chart method, saving a full text report to a file, and letting users pick a book from a menu. Reusing functions from kidtools.py.</p><p><strong>Day 39: Playtest, Polish &amp; Debug.</strong> Swapping projects so testers can try to break them with odd files. Fixing bugs, adding docstrings, and rehearsing a three-minute demo.</p><p><strong>Day 40: Showcase Day &amp; Year 3 Preview.</strong> Presenting Book Detective reports to classmates and guests, plus a skills checklist. Preview of KidCode 3: the sentences that broke our code are what NLP and the spaCy library are built to solve.</p></blockquote>
@@ -6699,7 +6685,7 @@ Choose a book or q: q</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p14').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p14-title">Project 14: Tokenizer Showdown</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Class 10 of 40</span><span>92 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Tokenizer Showdown is Project 14, on Day 10 of Year 3, the NLP year. After a week on what a token is, token attributes, stop words and lemmas, students test three ways of splitting text on twenty tricky sentences (contractions, abbreviations, URLs, numbers, punctuation): Python's <code>.split()</code>, their own Year 2 cleaning code, and spaCy.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 2: Tokenization</p><blockquote class="kc-quote"><p><strong>Day 6: Tokenization: Beyond split().</strong> What a token is. Comparing text.split() with spaCy&#x27;s tokens on punctuation, contractions (don&#x27;t becomes do and n&#x27;t), URLs, and numbers. A tokenizer-only pipeline with spacy.blank(&quot;en&quot;).</p><p><strong>Day 7: Token Attributes.</strong> token.text, token.is_alpha, token.is_punct, token.is_digit, token.like_num, and token.like_url. Indexing and slicing a Doc with doc[0] and doc[1:4]. Lab: &quot;Token Sorter&quot;.</p><p><strong>Day 8: Stop Words &amp; Text Cleaning.</strong> token.is_stop, token.lower_, and filtering tokens with list comprehensions. Building a cleaning recipe that lowercases text and drops punctuation and stop words. Practice: &quot;Clean-Up Crew&quot;.</p><p><strong>Day 9: Lemmas &amp; Normalization.</strong> token.lemma_: how &quot;running&quot;, &quot;ran&quot;, and &quot;runs&quot; all become &quot;run&quot;. Why the trained model is needed for lemmas, and how normalization makes counting fairer. Practice: &quot;Word Family Finder&quot;.</p><p><strong>Day 10: Lab: Tokenizer Showdown.</strong> Project 1. Testing .split(), Year 2&#x27;s cleaning code, and spaCy on twenty tricky sentences, scoring each on contractions, abbreviations, and punctuation, and charting the results.</p></blockquote>
@@ -6782,7 +6768,7 @@ Winner: spaCy</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p15').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p15-title">Project 15: Keyword Detective</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 12–13 of 40</span><span>93 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Keyword Detective is Project 15, across Days 12 and 13 of Year 3. Students tokenize a chapter, drop stop words and punctuation, lemmatize, count with <code>Counter</code>, chart the top keywords, and compare the result with what their Year 2 Book Detective finds on the same text.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 3: Sentences &amp; Grammar</p><blockquote class="kc-quote"><p><strong>Day 11: Sentences &amp; Spans.</strong> Splitting text with doc.sents and working with Span objects such as doc[2:5], including .text, .start, and .end. Comparing spaCy&#x27;s results with Year 2&#x27;s .split(&quot;.&quot;).</p><p><strong>Day 12–13: Lab: Keyword Detective.</strong> Project 2. Tokenizing a chapter, dropping stop words and punctuation, lemmatizing, counting with Counter, and charting the top keywords. Comparing with Year 2&#x27;s Book Detective on the same text.</p><p><strong>Day 14: Parts of Speech.</strong> Nouns, verbs, adjectives, and adverbs, and how spaCy labels them with token.pos_ and token.tag_. Decoding labels with spacy.explain(). Unplugged game: &quot;Human Sentence&quot;.</p><p><strong>Day 15: Filtering by Part of Speech.</strong> Using comprehensions to pull out NOUN, VERB, and ADJ tokens. Finding the most common verbs in a fairy tale and exploring where the model is tricked (&quot;Time flies like an arrow&quot;).</p></blockquote>
@@ -6852,7 +6838,7 @@ spaCy top words : [(&#x27;rosa&#x27;, 3), (&#x27;crown&#x27;, 3), (&#x27;museum&
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p16').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p16-title">Project 16: Auto Mad Libs</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 16–17 of 40</span><span>87 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Auto Mad Libs is Project 16, across Days 16 and 17 of Year 3, and it brings back the very first KidCode project. This time spaCy finds the nouns, verbs, adjectives or names in a story, the program asks the player for replacements, and the story is rebuilt with <code>token.text_with_ws</code> so the spacing and punctuation survive.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 4: Grammar Detectives</p><blockquote class="kc-quote"><p><strong>Day 16: Lab: Auto Mad Libs I.</strong> Project 3. Revisiting Year 1&#x27;s Mad Libs: spaCy finds the nouns, verbs, and adjectives in a story and blanks out a random sample. Planning the program with a flowchart first.</p><p><strong>Day 17: Lab: Auto Mad Libs II.</strong> Asking the player for words of the right type, then rebuilding the story with token.text_with_ws so spacing and punctuation stay correct. Swapping finished stories with classmates.</p><p><strong>Day 18: Dependency Parsing: Who Did What?.</strong> token.dep_, token.head, and token.children, and finding subjects and objects. Drawing sentence diagrams with displacy.render(). Practice: &quot;Sentence Skeletons&quot;.</p><p><strong>Day 19: The spaCy Pipeline.</strong> The pipeline as an assembly line: nlp.pipe_names and what each component adds. Processing many texts with nlp.pipe() and turning off unused components for speed.</p><p><strong>Day 20: Checkpoint: spaCy Cheat Sheet.</strong> Review games covering Weeks 1 to 4, a checkpoint quiz, and a personal spaCy cheat sheet. Pair debugging with error messages students have not seen before.</p></blockquote>
@@ -6916,7 +6902,7 @@ Zorbia Captain Waffles Mount Noodle led a small expedition into the rainy jungle
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p17').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p17-title">Project 17: Character Tracker</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 24–25 of 40</span><span>52 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Character Tracker is Project 17, across Days 24 and 25 of Year 3, at the end of the week on named entities: <code>doc.ents</code>, entity labels like PERSON and GPE, and a day spent on why the model is sometimes wrong. Students run a story through spaCy chapter by chapter and count who and where appears.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 5: Named Entity Recognition</p><blockquote class="kc-quote"><p><strong>Day 21: What Are Named Entities?.</strong> Real-world names and facts hiding in text. Using doc.ents, ent.text, ent.label_, and ent.start_char, and decoding PERSON, ORG, GPE, DATE, and MONEY with spacy.explain().</p><p><strong>Day 22: Seeing Entities with displaCy.</strong> Highlighting entities with displacy.render(doc, style=&quot;ent&quot;) in a notebook or displacy.serve() in the browser, and saving results as HTML. Lab: &quot;Entity Gallery&quot; of student paragraphs.</p><p><strong>Day 23: When the Model Is Wrong.</strong> Why models guess: ambiguous names like … &quot;Apple&quot; …, names from many cultures, and text without capital letters. Hand-labeling 20 sentences for an &quot;NER Report Card&quot;.</p><p><strong>Day 24: Lab: Character Tracker I.</strong> Project 4. Loading a public-domain story and running one chapter at a time through nlp. Extracting PERSON and GPE entities and counting them with Counter.</p><p><strong>Day 25: Lab: Character Tracker II.</strong> Merging name variants like &quot;Dorothy&quot; and &quot;Dorothy Gale&quot;, tracking which characters appear in each chapter, and printing a &quot;Who&#x27;s Who&quot; report. Listing what the tool gets wrong.</p></blockquote>
@@ -6967,7 +6953,7 @@ Places mentioned:
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p18').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p18-title">Project 18: Privacy Shield</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 26–27 of 40</span><span>75 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>Privacy Shield is Project 18, across Days 26 and 27 of Year 3. Students plan which kinds of entity to hide and what the placeholders look like, then replace entities token by token with <code>token.ent_iob_</code> and <code>text_with_ws</code>, so that a two-word name becomes one <code>[PERSON]</code>, not two.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 6: Rules &amp; Custom Entities</p><blockquote class="kc-quote"><p><strong>Day 26: Lab: Privacy Shield I.</strong> Project 5. Planning a redaction tool: which entity types (PERSON, GPE, ORG, DATE) to hide, what placeholders like [PERSON] look like, and how to test on sample letters.</p><p><strong>Day 27: Lab: Privacy Shield II.</strong> Replacing entities while keeping the text readable, using token.ent_iob_ and token.text_with_ws so multi- word names are replaced once. Testing for names the model missed.</p><p><strong>Day 28: Rule-Based Matching.</strong> Building patterns from token attributes such as {&quot;LOWER&quot;: &quot;hello&quot;}, {&quot;IS_PUNCT&quot;: True}, and {&quot;POS&quot;: &quot;NOUN&quot;}. Using Matcher, matcher.add(), and matches as (match_id, start, end).</p><p><strong>Day 29: Teaching spaCy New Entities.</strong> Adding an entity ruler with nlp.add_pipe(&quot;entity_ruler&quot;, before=&quot;ner&quot;), writing patterns for custom labels like FOOD or PET, and seeing how rules and the model work together.</p><p><strong>Day 30: Lab: Fantasy Map Finder.</strong> Recognizing invented places, heroes, and creatures with entity ruler patterns, then highlighting them with displaCy. Testing what happens when a rule and the model disagree.</p></blockquote>
@@ -7021,7 +7007,7 @@ MONEY hidden: 0</pre>
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p19').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p19-title">Project 19: KidBot Brain</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 31–32 of 40</span><span>118 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>KidBot Brain is Project 19, across Days 31 and 32 of Year 3: a rule-based chatbot. Students list intents (greeting, joke, weather), write spaCy <code>Matcher</code> patterns for each, use named entities to pull out the city in "what's the weather in Paris", and add a fallback reply for everything else.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 7: Chatbots &amp; Responsible NLP</p><blockquote class="kc-quote"><p><strong>Day 31: Lab: KidBot Brain I.</strong> Project 6. Designing a rule-based chatbot: listing intents (greeting, joke, weather), writing Matcher patterns for each, and sketching the conversation loop.</p><p><strong>Day 32: Lab: KidBot Brain II.</strong> Using entities to pull out places and dates so &quot;What&#x27;s the weather in Paris tomorrow?&quot; gets a pretend forecast. Adding a friendly fallback reply and testing with classmates.</p><p><strong>Day 33: How Models Learn.</strong> How spaCy&#x27;s model learned from labeled examples, why training data shapes what a model gets right, and how mistakes and bias appear. Students annotate 20 sentences and compare with the model.</p><p><strong>Day 34: Responsible NLP: Bias &amp; Privacy.</strong> Fairness, privacy, and knowing when not to use NLP. Class roundtable: &quot;Should a school use NLP to read student essays?&quot; Writing a &quot;Limitations&quot; card for a personal project.</p><p><strong>Day 35: Capstone Pitch &amp; Plan.</strong> Choosing a project: &quot;Story Explorer&quot;, &quot;KidBot Pro&quot;, &quot;Privacy Shield Pro&quot;, &quot;Time Traveler&#x27;s News Desk&quot;, or an approved original idea. A one-page plan with goals, test texts, and a feature checklist.</p></blockquote>
@@ -7103,7 +7089,7 @@ Conversation summary: {&#x27;GREETING&#x27;: 1, &#x27;JOKE&#x27;: 1, &#x27;WEATH
 						<button class="modal-close" onclick="document.getElementById('modal-kidcode-p20').classList.remove('open')" aria-label="Close">&times;</button>
 						<h1 id="modal-kidcode-p20-title">Project 20: NLP Capstone</h1>
 						<div class="post-meta"><span>2026 · Year 3</span><span>KidCode · Classes 36–39 of 40</span><span>55 published programs</span><span>Deeptanshu Devatha</span></div>
-						<p class="kc-retro"><em>Written in September 2026 from the curriculum document and the published programs, not during the class. It describes the design and the published work; no dated record of the class itself survives.</em></p>
+						<p class="kc-retro"><em>Written in September 2026, looking back at this project through the curriculum and the programs students wrote.</em></p>
 						<p>The Year 3 capstone is Project 20, the last numbered project in KidCode, across Days 36 to 39. Students pitch a project from a short list (Story Explorer, KidBot Pro, Privacy Shield Pro, Time Traveler's News Desk) or an approved idea of their own, then build it over four days, with a beta test, an NER audit, and "How It Works" and "Limitations" cards.</p>
 						<h2>What I taught that week</h2>
 						<p class="kc-label">From the Year 3 curriculum, Week 8: Capstone &amp; Showcase</p><blockquote class="kc-quote"><p><strong>Day 36: Capstone Build I.</strong> Project 7. Loading text from a file, running the spaCy pipeline, and organizing code into functions or classes. Daily stand-up check-ins: what I did, what is next, and what is blocking me.</p><p><strong>Day 37: Capstone Build II.</strong> Adding features: Counter charts, a displaCy HTML export, Matcher or entity ruler rules, and try/except for missing files. Writing a comment header that explains how to run the program.</p><p><strong>Day 38: Beta Test &amp; NER Audit.</strong> Swapping projects so testers can try to break them with tricky texts. Running an NER audit on each tool and logging every wrong guess in a bug list.</p><p><strong>Day 39: Polish &amp; Demo Rehearsal.</strong> Fixing bugs, cleaning up code, and writing &quot;How It Works&quot; and &quot;Limitations&quot; cards. Rehearsing a three-minute demo with a partner.</p><p><strong>Day 40: Showcase Day &amp; What&#x27;s Next.</strong> Presenting projects to classmates, families, and guests, and celebrating three years of KidCode with certificates. Next steps: machine learning with scikit-learn, web apps with Flask, and games with pygame.</p></blockquote>
@@ -7188,7 +7174,7 @@ Score: 7/8</pre>
 						<h1 id="modal-kidcode-student-code-title">1,214 Programs Later: What Three Years of Student Code Showed</h1>
 						<div class="post-meta"><span>September 2026</span><span>KidCode</span><span>Deeptanshu Devatha</span></div>
 						<p>I have a folder with every numbered project KidCode students have turned in over three years: 1,214 Python files from 124 students, across the 20 projects in the curriculum. With their families' permission, the whole collection is now <a href="https://github.com/ddevatha1/kidcode/tree/main/programs" target="_blank" rel="noopener">public on GitHub</a>, anonymized. For a long time I treated it as an archive. This fall I treated it as data. I ran every program and looked at what was actually in them: which ideas students used, how long their programs got, and how that changed from one year to the next. This post is what I found, along with what my students' test scores showed.</p>
-						<p><strong>One thing to know before the numbers:</strong> the programs in the collection are normalized, anonymized versions of what students submitted. Comments were removed, a standard header line was added, programs were edited so each one runs, and personal details were removed. The originals are not published and the files carry no dates. So everything below describes the published files, not exactly what each student first typed. The repository explains this in <a href="https://github.com/ddevatha1/kidcode/blob/main/docs/project-corpus.md" target="_blank" rel="noopener">docs/project-corpus.md</a> and lists what the evidence does not show in <a href="https://github.com/ddevatha1/kidcode/blob/main/docs/limitations.md" target="_blank" rel="noopener">docs/limitations.md</a>.</p>
+						<p><strong>One thing to know before the numbers:</strong> the programs in the collection are normalized, anonymized versions of what students submitted. Comments were removed, a standard header line was added, programs were edited so each one runs, and personal details were removed. The originals are not published and the files carry no dates. So everything below describes the published files, not exactly what each student first typed. The repository explains this in <a href="https://github.com/ddevatha1/kidcode/blob/main/docs/project-corpus.md" target="_blank" rel="noopener">how the programs were prepared</a>, and the <a href="https://github.com/ddevatha1/kidcode/blob/main/docs/limitations.md" target="_blank" rel="noopener">notes and context</a> cover what the numbers can and can't tell you.</p>
 						<h2>The count</h2>
 						<div class="kc-stats"><div><b>124</b><span>students with at least one project</span></div><div><b>1,214</b><span>working programs, one per student per project</span></div><div><b>3 / 10 / 18</b><span>fewest / median / most projects per student</span></div><div><b>20</b><span>projects across three curriculum years</span></div></div>
 						<p>Every one of the 1,214 programs runs, as long as it gets the kind of answer it asks for. A number-guessing game that calls <code>int()</code> on your answer doesn't cope with being told "dragon", which is fair enough.</p>

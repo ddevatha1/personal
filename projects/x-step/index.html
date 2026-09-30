@@ -16,7 +16,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/site.css">
+	<link rel="stylesheet" href="/assets/site.css?v=20260929">
 </head>
 <body class="s-page">
 <a class="s-skip" href="#main">Skip to content</a>
@@ -44,6 +44,11 @@
 		</div>
 	</header>
 
+<div class="p-wrap p-visual" style="padding-top:36px">
+<div class="p-gallery"><figure><img src="/img/x-step/xstep-slide-how-it-works.jpg" alt="Team slide describing how the X-Step app works" loading="lazy"><figcaption>How the insole and app work.</figcaption></figure><figure><img src="/img/x-step/xstep-slide-technology.jpg" alt="Team slide listing the technology" loading="lazy"><figcaption>The app stack.</figcaption></figure><figure><img src="/img/x-step/xstep-slide-challenges.jpg" alt="Team slide on software and hardware challenges" loading="lazy"><figcaption>Software and hardware challenges. Slides from the team's Congressional App Challenge presentation.</figcaption></figure></div>
+</div>
+
+
 	<div class="s-wrap s-layout">
 		<aside class="s-toc" aria-label="On this page">
 			<ol>
@@ -69,7 +74,7 @@
 			<section class="s-block" id="ml">
 				<h2 class="s-h2">ML pipeline</h2>
 				<p>My main technical contribution is the feature pipeline and model. Per site, the pipeline computes peak and mean pressure, the coefficient of variation and the pressure–time integral. Per window, it computes cadence, stance ratio and anterior load share. A 540-parameter logistic-regression head runs on these features. The whole path takes well under a millisecond per window, so it fits between 40 ms samples.</p>
-				<p>We've kept the claims deliberately narrow. The team's paper evaluates the insole as a measurement instrument: calibration error, which features survive sensor drift, and what four sensors can and can't recover compared with a 32-sensor insole. It makes no ulcer-prediction claim. That analysis is on the <a href="/research/x-step/">X-Step research page</a>.</p>
+				<p>We've kept the scope deliberately narrow. The team's paper evaluates the insole as a measurement instrument: calibration error, which features survive sensor drift, and what four sensors can and can't recover compared with a 32-sensor insole. It does not include ulcer prediction. That analysis is on the <a href="/research/x-step/">X-Step research page</a>.</p>
 			</section>
 
 			<section class="s-block" id="status">
