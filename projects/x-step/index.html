@@ -54,6 +54,7 @@
 			<ol>
 				<li><a href="#system">System</a></li>
 				<li><a href="#ml">ML pipeline</a></li>
+				<li><a href="#product">Product and app</a></li>
 				<li><a href="#status">Status</a></li>
 				<li><a href="#recognition">Recognition</a></li>
 			</ol>
@@ -77,6 +78,31 @@
 				<p>We've kept the scope deliberately narrow. The team's paper evaluates the insole as a measurement instrument: calibration error, which features survive sensor drift, and what four sensors can and can't recover compared with a 32-sensor insole. It does not include ulcer prediction. That analysis is on the <a href="/research/x-step/">X-Step research page</a>.</p>
 			</section>
 
+
+			<section class="s-block" id="product">
+				<h2 class="s-h2">The product: insole, app and assistant</h2>
+				<p>The problem is that diabetic foot ulcers form where pressure builds up unnoticed, often under a foot that has lost sensation. X-Step is the team's attempt at an inexpensive way to see that pressure: an insole worn in an ordinary shoe, an app that turns the readings into something a person can act on, and an assistant that answers care questions in plain language.</p>
+				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-prototype-components.jpg" alt="Prototype parts on a table: an insole, force-sensing resistors, wires and a microcontroller board" loading="lazy"><figcaption>The first prototype: an insole, force-sensing resistors and a microcontroller.</figcaption></figure><figure><img src="/img/x-step/xstep-video-sensor-and-serial.jpg" alt="A force sensor held in front of a laptop showing serial output" loading="lazy"><figcaption>Reading a sensor over the serial port while testing the firmware.</figcaption></figure><figure><img src="/img/x-step/xstep-video-serial-monitor-readings.jpg" alt="Serial monitor showing rows of sensor readings" loading="lazy"><figcaption>Raw readings from the four sensors, before any filtering.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-insole-mesh.jpg" alt="3D model of an insole in CAD software" loading="lazy"><figcaption>The insole shape, modeled in CAD for printing.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-enclosure.jpg" alt="3D model of a cylindrical enclosure in CAD software" loading="lazy"><figcaption>An enclosure for the electronics, also modeled in CAD.</figcaption></figure></div>
+				<p class="p-muted" style="font-size:14px">Frames from the team's Blue Ocean 2026 pitch video, posted on Arjun Subramanian's YouTube channel: <a href="https://www.youtube.com/watch?v=bW6WN7RGwRE">Blue Ocean 2026 pitch video</a>.</p>
+				<h3 class="s-h3">The app</h3>
+				<p>The app is React Native with Expo. It connects to each insole over Bluetooth Low Energy, streams the four pressure channels into a live heatmap, and keeps a daily risk score, alerts, trends and a guided care routine. Onboarding collects the health context the score needs (diabetes type and duration, neuropathy, footwear and activity), and a short calibration records a resting baseline before walking. I wrote this app and the earlier Flask backend behind its health assistant.</p>
+				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-app-lifestyle-screen.jpg" alt="App onboarding screen asking about work activity and typical footwear" loading="lazy"><figcaption>Onboarding: activity and footwear.</figcaption></figure><figure><img src="/img/x-step/xstep-video-app-calibration.jpg" alt="App calibration screen showing a pair of feet" loading="lazy"><figcaption>Calibration: a resting baseline before walking.</figcaption></figure><figure><img src="/img/x-step/xstep-video-app-recommendations.jpg" alt="App screen listing lifestyle recommendations" loading="lazy"><figcaption>Care recommendations and the live foot pressure map.</figcaption></figure><figure><img src="/img/x-step/xstep-video-app-assistant.jpg" alt="App chat screen with a health assistant answering a question about foot care" loading="lazy"><figcaption>The assistant, which is told not to diagnose and to send people to their clinicians.</figcaption></figure></div>
+				<h3 class="s-h3">The CNN prototypes</h3>
+				<p>Two image models were trained as prototypes on public data. An EfficientNet-B2 classifies foot-pressure heatmaps into nine posture classes (98.3% on a random 80/20 split of a public dataset). A ResNet-50 grades wound photos into four severity levels. The team's design is that a photo's severity grade, together with a person's care habits, goes to a language model that drafts routines.</p>
+				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-app-ulcer-assessment.jpg" alt="App screen showing an ulcer assessment result" loading="lazy"><figcaption>The ulcer-assessment screen shown in the pitch video.</figcaption></figure></div>
+				<h3 class="s-h3">What is implemented and what is validated</h3>
+				<ul>
+					<li><b>Implemented:</b> the insole hardware and firmware, the Bluetooth frame format, the app, the health-assistant backend, the feature pipeline and the two CNN prototypes.</li>
+					<li><b>Not validated:</b> no walking data from wearers of the insole exist yet, the CNN results come from public datasets rather than X-Step data, and the ulcer-photo-to-routine flow is a design shown in a demo. No clinical efficacy is claimed for any of it.</li>
+				</ul>
+				<h3 class="s-h3">The pitches</h3>
+				<p>The team presented X-Step in the Congressional App Challenge (video posted October 30, 2025) and in the 2026 Blue Ocean competition, where the pitch used strategy tools such as a red-ocean/blue-ocean value graph and an eliminate-reduce-raise-create grid. Only participation is stated here; neither is a placed result.</p>
+				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-blue-ocean-graph.jpg" alt="Value-curve graph comparing X-Step with existing products" loading="lazy"><figcaption>The value-curve graph from the Blue Ocean pitch.</figcaption></figure><figure><img src="/img/x-step/xstep-video-errc-grid.jpg" alt="Eliminate, reduce, raise, create grid for X-Step" loading="lazy"><figcaption>The eliminate-reduce-raise-create grid.</figcaption></figure></div>
+				<p class="p-muted" style="font-size:14px">Videos: <a href="https://www.youtube.com/watch?v=XXYlXYy7PIM">Congressional App Challenge presentation</a> and <a href="https://www.youtube.com/watch?v=bW6WN7RGwRE">Blue Ocean 2026 pitch video</a>. Both are on Arjun Subramanian's YouTube channel; the frames above are screenshots from them.</p>
+				<h3 class="s-h3">Who did what</h3>
+				<p>X-Step is a team project. The hardware, firmware and production inference code were largely written by my teammates. I built the machine-learning pipeline described below, the mobile app, and the early backend and CNN prototypes. The research paper on the insole is a separate piece of work from this product, described on the <a href="/research/x-step/">research page</a>.</p>
+			</section>
+
 			<section class="s-block" id="status">
 				<h2 class="s-h2">Status</h2>
 				<p>X-Step is a working prototype. No walking data from X-Step wearers have been collected yet. A prospective study under ethics approval is the step between this prototype and any clinical use.</p>
@@ -87,8 +113,7 @@
 				<p>These are team results for the X-Step product and pitch in entrepreneurship competitions. They are not awards for the research paper.</p>
 				<ul>
 					<li>Texas High School Ideas Challenge (Texas A&amp;M McFerrin Center), 2026 finalist: <a href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">official finalist list</a></li>
-					<li>Diamond Challenge, 2025 semifinalist</li>
-				</ul>
+									</ul>
 			</section>
 		</div>
 	</div>
@@ -98,7 +123,7 @@
 	<div class="s-wrap">
 		<span>Deeptanshu Devatha · Frisco, Texas</span>
 		<ul>
-			<li><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a></li>
+			<li><a href="mailto:deeptanshu.devatha@gmail.com">deeptanshu.devatha@gmail.com</a></li>
 			<li><a href="https://github.com/ddevatha1">GitHub</a></li>
 		</ul>
 	</div>

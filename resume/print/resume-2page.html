@@ -92,6 +92,7 @@ h2 + .entry { margin-top: 0; }
 .r p { hyphens: manual; }
 
 /* evidence links: ink text + oxblood hairline underline (survives grayscale); linked titles get an arrow */
+a.u { font-size: 7.6pt; color: var(--accent); white-space: nowrap; }
 a.ev { text-decoration: underline; text-decoration-color: var(--accent-soft); text-decoration-thickness: 0.55pt; text-underline-offset: 1.6pt; }
 a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font-size: 0.7em; color: var(--accent); padding-left: 0.18em; vertical-align: 0.3em; }
 
@@ -112,7 +113,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 
 <header>
   <h1>DEEPTANSHU DEVATHA</h1>
-  <div class="contact">Frisco, TX<span class="dot">·</span><a href="mailto:deeptanshudevatha@gmail.com">deeptanshudevatha@gmail.com</a><br><a href="https://www.deeptanshudevatha.com">deeptanshudevatha.com</a><span class="dot">·</span><a href="https://github.com/ddevatha1">github.com/ddevatha1</a></div>
+  <div class="contact">Frisco, TX<span class="dot">·</span><a href="mailto:deeptanshu.devatha@gmail.com">deeptanshu.devatha@gmail.com</a><br><a href="https://www.deeptanshudevatha.com">deeptanshudevatha.com</a><span class="dot">·</span><a href="https://github.com/ddevatha1">github.com/ddevatha1</a></div>
 </header>
 
 <section class="edu">
@@ -122,8 +123,9 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="title">Heritage High School, Frisco, TX</div>
       <div class="date">Class of 2027</div>
     </div>
-    <p><span class="k">GPA</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>Nine AP scores of <span class="m">5</span><span class="dot">·</span>AP Scholar with Distinction</p>
-    <p><span class="k">Senior coursework:</span> AP Calculus BC, AP Physics 2, Computer Science III, Mobile App Programming</p>
+    <p><span class="k">GPA</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>AP Scholar with Distinction</p>
+    <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Human Geography, World History, Seminar, Psychology, U.S. History, English Language &amp; Composition, Statistics, Physics 1, Computer Science A</p>
+    <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 1 and 2, AP Computer Science A, Computer Science III, Mobile App Programming; AP English Language and Literature, AP Government, AP Economics, Spanish 2</p>
     <p><span class="k">UT Dallas NLP with Python Workshop, Summer 2025</span> — Implemented rule-based text simplification using dependency parsing, frequency-based lexical substitution, clause splitting, and passive-to-active transformation.</p>
   </div>
 </section>
@@ -138,7 +140,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="date">May 2025–Present</div>
     </div>
     <p class="meta"><b>First Author</b><span class="dot">·</span>Mentor: Joe Xiao (PhD student)<span class="dot">·</span>CRediT: conceptualization, methodology, software, formal analysis, validation, original draft</p>
-    <p class="meta"><b><a class="ev" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint (Aug. 2026)</a></b><span class="dot">·</span><b><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-25">Under review, Frontiers in Aging Neuroscience</a></b><span class="dot">·</span><a class="ev" href="https://github.com/ddevatha1/dementia-mmse-prediction">Public code</a><span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-01">26-entry research log</a></p>
+    <p class="meta"><b><a class="ev" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint (Aug. 2026)</a></b> <a class="u" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medrxiv.org/content/10.64898/2026.08.04.26359730v1</a><span class="dot">·</span><b><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-25">Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</a></b><span class="dot">·</span><a class="ev" href="https://github.com/ddevatha1/dementia-mmse-prediction">Public code</a> <a class="u" href="https://github.com/ddevatha1/dementia-mmse-prediction">github.com/ddevatha1/dementia-mmse-prediction</a><span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-01">26-entry research log</a></p>
     <div class="rows">
       <div class="r"><span class="l">Question</span><p>Can transcribed speech plus the clinical history already on file forecast a patient’s <span class="k">next-visit MMSE</span> (0–30)? Framed as longitudinal, patient-level supervised regression — forecasting, where most prior speech work does single-visit classification.</p></div>
       <div class="r"><span class="l">Data</span><p>DementiaBank Pitt Corpus (controlled access): <span class="m">126 patients</span> (69 dementia, 57 control), 2–5 visits each → <span class="m">173 prediction samples</span>, each mapping 1–4 prior visits to a later-visit MMSE.</p></div>
@@ -156,7 +158,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     <div class="kicker">Paper 2 · X-Step research paper · Biomedical sensing</div>
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/#research">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking</a></div>
-      <div class="date">2025–Present</div>
+      <div class="date">Aug. 2025–Present</div>
     </div>
     <p class="meta"><b>2nd of 5 authors · ML lead</b><span class="dot">·</span>MIT CSAIL first author; <a class="ev" href="https://aiea-lab.github.io/">UC Santa Cruz AIEA Lab</a> (Prof. Leilani Gilpin)<span class="dot">·</span><b>Under review, IEEE-EMBS IECBES 2026</b></p>
     <div class="rows">
@@ -185,7 +187,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/kidcode/">KidCode</a> <span class="role">— Founder &amp; Lead Instructor</span> <span class="where"><span class="dot">·</span>Frisco, TX</span></div>
       <div class="date">Jun. 2024–Present</div>
     </div>
-    <p class="meta"><b>124 students</b><span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/projects/kidcode/about/">3 annual cohorts</a> (35 / 53 / 36 new)<span class="dot">·</span>10 Frisco neighborhoods<span class="dot">·</span><b>120-class-day curriculum</b><span class="dot">·</span><b>20 projects</b><span class="dot">·</span>median 10 per student (max 18)</p>
+    <p class="meta"><b>124 students</b><span class="dot">·</span><a class="ev" href="https://www.deeptanshudevatha.com/projects/kidcode/about/">3-year program</a> <a class="u" href="https://www.deeptanshudevatha.com/projects/kidcode/about/">deeptanshudevatha.com/projects/kidcode</a><span class="dot">·</span>10 Frisco neighborhoods<span class="dot">·</span><b>120-class-day curriculum</b><span class="dot">·</span><b>20 projects</b><span class="dot">·</span>median 10 per student (max 18)</p>
     <div class="rows">
       <div class="r key"><span class="l">Curriculum</span><p>Designed a <a class="ev" href="https://www.deeptanshudevatha.com/projects/kidcode/curriculum/">three-year, 120-class-day, 20-project (6 + 7 + 7) curriculum</a>: Year 1 Python foundations; Year 2 assert-based unit tests, file I/O, JSON, exception handling, classes and inheritance, libraries; Year 3 spaCy NLP — tokenization, lemmatization, sentence segmentation, POS tagging, NER, Matcher rule patterns, and a rule-based chatbot.</p></div>
       <div class="r"><span class="l">Spiral design</span><p>Earlier projects return at a higher level: Mad Libs becomes Auto Mad Libs with spaCy choosing the blanks; the trivia quiz returns JSON-backed with error handling; Year 2 ends by breaking students’ own text-cleaning code, which Year 3 opens by testing against spaCy.</p></div>
@@ -214,11 +216,11 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     <div class="kicker">X-Step startup · product built on the Paper 2 insole</div>
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/#engineering">X-Step</a> <span class="role">— Co-Founder &amp; ML/Mobile Lead</span> <span class="where"><span class="dot">·</span>student startup team<span class="dot">·</span>working prototype, no wearer data yet</span></div>
-      <div class="date">2025–Present</div>
+      <div class="date">Aug. 2025–Present</div>
     </div>
     <div class="rows">
       <div class="r"><span class="l">Product</span><p>A plantar-pressure insole for people at risk of diabetic foot problems, built by the team: four FSR402 sensors per foot on an ESP32 at 25 Hz, streaming sequence-numbered 28-byte BLE frames to a React Native (Expo) app with live pressure, trends, alerts and a clinician view.</p></div>
-      <div class="r key"><span class="l">My role</span><p>Designed the ML pipeline that turns the stream into alerts: rolling 4 s windows → 59 pressure and gait features → 540-parameter logistic-regression head, fast enough to run between 40 ms samples.</p></div>
+      <div class="r key"><span class="l">My role</span><p>Wrote the React Native/Expo app (BLE client, live pressure heatmap, alerts, trends, guided routine; earlier Flask + LLM health-assistant backend) and trained two CNN prototypes on public data (heatmap postures, wound severity). Designed the ML pipeline that turns the stream into alerts: rolling 4 s windows → 59 pressure and gait features → 540-parameter logistic-regression head, fast enough to run between 40 ms samples.</p></div>
     </div>
   </div>
 
@@ -241,7 +243,8 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 <section>
   <h2>Recognition</h2>
   <div class="rows">
-    <div class="r"><span class="l">Startup</span><p><span class="where">X-Step startup team:</span> <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas A&amp;M Ideas Challenge</a> — <span class="k">Finalist</span>, 2026<span class="dot">·</span>Diamond Challenge — <span class="k">Semifinalist</span>, 2025</p></div>
+    <div class="r"><span class="l">Startup</span><p><span class="where">X-Step startup team:</span> <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge (Texas A&amp;M)</a> — <span class="k">Finalist</span>, May 2026 <a class="u" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">mcferrin.tamu.edu/program/texas-high-school-ideas-challenge</a><span class="dot">·</span></p></div>
+    <div class="r"><span class="l">Diamond Challenge</span><p><span class="where">GeneFit team:</span> Diamond Challenge 2025 — <span class="k">Semifinalist</span></p></div>
     <div class="r"><span class="l">Hackathons</span><p><span class="where"><a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a> team prototype (2025):</span> TechLit Hackathon — <span class="k">1st</span><span class="dot">·</span>PeddieHacks — <span class="k">Innovation Prize</span><span class="dot">·</span>Hack4Humanity — <span class="k">3rd</span></p></div>
   </div>
 </section>
