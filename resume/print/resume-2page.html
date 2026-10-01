@@ -59,7 +59,7 @@ h1 {
 .runhead b { font-family: "RS Display", var(--serif); font-weight: 600; font-size: 10.5pt; letter-spacing: 0.075em; color: var(--ink); }
 
 /* ---------- sections ---------- */
-section { margin-top: 9pt; }
+section { margin-top: 7.5pt; }
 h2 {
   display: flex; align-items: center; gap: 8pt;
   font-weight: 600; font-size: 8.3pt; letter-spacing: 0.15em; text-transform: uppercase; font-kerning: none;
@@ -68,9 +68,14 @@ h2 {
 h2::after { content: ""; flex: 1; border-top: 0.5pt solid var(--rule); }
 
 /* ---------- entries ---------- */
-.entry { margin-top: 7.5pt; }
+.entry { margin-top: 6.5pt; }
 h2 + .entry { margin-top: 0; }
 .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16pt; }
+.meta.acc2 { color: var(--accent); font-size: 9.4pt; margin-top: 1.5pt; }
+.meta.acc2 b { color: var(--accent); font-weight: 700; }
+.hon .head .title { font-weight: 700; font-size: 10.4pt; white-space: nowrap; }
+.hon .head .where { font-weight: 500; font-size: 8.8pt; }
+.hon .hl { margin-top: 1.5pt; font-size: 8.8pt; color: var(--ink-2); }
 .kicker.acc { font-size: 8.6pt; letter-spacing: 0.06em; margin-bottom: 1.5pt; }
 .kicker.acc .accsub { font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--ink-2); margin-left: 0.9em; }
 .kicker { font-weight: 600; font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase; font-kerning: none; color: var(--accent); margin-bottom: 1pt; }
@@ -128,8 +133,16 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     <p><span class="k">GPA</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>AP Scholar with Distinction</p>
     <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
     <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
-    <p><span class="k">Competitions:</span> Semifinalist, Diamond Challenge 2026 (X-Step)<span class="dot">·</span>Finalist, <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge</a> at Texas A&amp;M (X-Step, May 2026)<span class="dot">·</span><span class="m">1st</span>, TechLit Bridging the Gap Hackathon (<a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a>, Aug. 2025)<span class="dot">·</span>Innovation Prize, PeddieHacks (235 participants)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity <a class="u" href="https://www.deeptanshudevatha.com/projects/competitions/">deeptanshudevatha.com/projects/competitions</a></p>
   </div>
+</section>
+
+<section class="hon">
+  <h2>Honors &amp; Awards</h2>
+  <div class="head">
+    <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/research/x-step/">IEEE-EMBS IECBES 2026 — Research Paper Accepted for Presentation</a> <span class="where"><span class="dot">·</span>Kuala Lumpur, Malaysia</span></div>
+    <div class="date">Dec. 9–11, 2026</div>
+  </div>
+  <p class="hl"><span class="m">Semifinalist</span>, Diamond Challenge 2026 (X-Step)<span class="dot">·</span><span class="m">Finalist</span>, <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge</a>, Texas A&amp;M (X-Step, May 2026)<span class="dot">·</span><span class="m">1st</span>, TechLit Bridging the Gap Hackathon (<a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a>, Aug. 2025)<span class="dot">·</span><span class="m">Innovation Prize</span>, PeddieHacks (of 235 participants)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity <a class="u" href="https://www.deeptanshudevatha.com/projects/competitions/">deeptanshudevatha.com/projects/competitions</a></p>
 </section>
 
 <section>
@@ -145,7 +158,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     <p class="meta"><b><a class="ev" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint (Aug. 2026)</a></b> <a class="u" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medrxiv.org/content/10.64898/2026.08.04.26359730v1</a><span class="dot">·</span><b><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-25">Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</a></b><span class="dot">·</span><a class="ev" href="https://github.com/ddevatha1/dementia-mmse-prediction">Public code</a> <a class="u" href="https://github.com/ddevatha1/dementia-mmse-prediction">github.com/ddevatha1/dementia-mmse-prediction</a></p>
     <div class="rows">
       <div class="r"><span class="l">Question</span><p>Can transcribed speech plus the clinical history already on file forecast a patient’s <span class="k">next-visit MMSE</span> (0–30)? Framed as longitudinal, patient-level supervised regression; most prior speech work is single-visit classification.</p></div>
-      <div class="r"><span class="l">Data</span><p>DementiaBank Pitt Corpus (controlled access): <span class="m">126 patients</span> (69 dementia, 57 control), 2–5 visits each → <span class="m">173 prediction samples</span>.</p></div>
+      <div class="r"><span class="l">Data</span><p>DementiaBank Pitt Corpus (controlled access): <span class="m">126 patients</span> (69 dementia, 57 control), 2–5 visits → <span class="m">173 samples</span>.</p></div>
       <div class="r"><span class="l">Features</span><p>Designed a <a class="ev" href="https://github.com/ddevatha1/dementia-mmse-prediction">53-dimensional feature vector</a>: 12 per-visit features — <a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-06">Sentence-BERT discourse coherence</a> (adjacent-sentence similarity, global coherence, semantic slope, topic drift) plus spaCy lexical/syntactic measures (filler rate, 50-token MATTR, inter-sentence repetition, POS-based fragment ratio, named-entity rate) — with 8 visit-to-visit Δ features, 4 temporal features, 20 PCA components of 384-d SBERT embeddings, and 9 clinical/demographic covariates.</p></div>
       <div class="r"><span class="l">Model</span><p>LightGBM, chosen for small mixed-type tabular data: RobustScaler → correlation pruning (|r| &gt; 0.8, clinical variables kept) → permutation-importance selection (top 15) → 3× Gaussian augmentation tagged by parent patient → <a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-11">Optuna TPE</a> over 10 hyperparameters, 200 trials, maximizing mean patient-grouped R².</p></div>
       <div class="r key"><span class="l">Validation</span><p><a class="ev" href="https://www.deeptanshudevatha.com/#modal-dementia-12">Diagnosed patient-identity leakage</a>: folds split by visit, so a model could score by recognizing a person. Rebuilt evaluation as <span class="k">5-fold GroupKFold on patient ID</span>, locking augmented copies to their parent’s fold and scoring only <span class="k">out-of-fold predictions on original samples</span>; scores fell once leaked identity was removed.</p></div>
@@ -157,14 +170,15 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
   </div>
 
   <div class="entry">
-    <div class="kicker acc">Accepted for Presentation — IEEE-EMBS IECBES 2026<span class="accsub">Kuala Lumpur · Dec. 9–11, 2026</span></div>
+    <div class="kicker">Paper 2 · Biomedical engineering / wearable sensing</div>
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/research/x-step/">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking</a></div>
       <div class="date">Jul. 2026–Present</div>
     </div>
+    <p class="meta acc2"><b>Accepted for Presentation · IEEE-EMBS IECBES 2026 · Kuala Lumpur · Dec. 9–11, 2026</b></p>
     <p class="meta"><b>2nd of 5 authors · ML lead</b><span class="dot">·</span>MIT CSAIL first author; <a class="ev" href="https://aiea-lab.github.io/">UC Santa Cruz AIEA Lab</a> (Prof. Leilani Gilpin)<span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
     <div class="rows">
-      <div class="r"><span class="l">Framing</span><p>Asks what the team’s existing four-site insole (MET1, MET2, MET5, heel; ESP32, 25 Hz) can legitimately measure — a <span class="k">measurement instrument, not a clinical classifier</span>. I did not design the hardware; my work starts from the pressure data it produces. No wearer data yet; no clinical claim.</p></div>
+      <div class="r"><span class="l">Framing</span><p>Asks what the team’s existing four-site insole (MET1, MET2, MET5, heel; ESP32, 25 Hz) can legitimately measure — a <span class="k">measurement instrument, not a clinical classifier</span>. I did not design the hardware; my work starts from its pressure data. No wearer data; no clinical claim.</p></div>
       <div class="r key"><span class="l">ML pipeline</span><p>From those readings I built the analysis pipeline: the feature map over rolling 4 s windows (100 samples × 8 channels) to <span class="m">59 features</span> — per-site peak, mean, coefficient of variation and pressure–time integral; window-level cadence, stance ratio, anterior load share, aggregate peak and total PTI — and a <span class="m">540-parameter</span> logistic-regression head (≈0.23 ms per update).</p></div>
       <div class="r key"><span class="l">Correlation study</span><p>Designed the sparse-vs-dense study against an independent 32-cell insole archive (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, 298 foot-takes), comparing the cell nearest each of the insole’s four sites with its anatomical cluster. Shape survived (<span class="m">median r 0.72–0.99</span>), magnitude did not (<span class="m">peak-to-peak r 0.43–0.74</span>); four-site center of pressure tracked anteroposterior (<span class="m">r 0.81</span>) but not mediolateral motion (<span class="m">r 0.01</span>) — a limit of the existing layout’s geometry. Descriptive only.</p></div>
       <div class="r"><span class="l">Evaluation</span><p>Quantified subject-identity leakage on a synthetic 24-subject, 9-class cohort: <span class="m">macro-F1 0.885</span> subject-grouped vs <span class="m">0.931</span> ungrouped (majority baseline 0.040) — a gap larger than the spread across classifiers.</p></div>
@@ -212,7 +226,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
   </div>
 
   <div class="entry">
-    <div class="kicker">X-Step startup · product built on the Paper 2 insole</div>
+    <div class="kicker">X-Step startup · product built on IEEE-EMBS IECBES 2026 accepted research</div>
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/x-step/">X-Step</a> <span class="role">— Co-Founder &amp; ML/Mobile Lead</span> <span class="where"><span class="dot">·</span>student startup team<span class="dot">·</span>working prototype, no wearer data yet</span></div>
       <div class="date">Aug. 2025–Present</div>
