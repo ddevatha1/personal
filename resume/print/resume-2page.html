@@ -71,6 +71,8 @@ h2::after { content: ""; flex: 1; border-top: 0.5pt solid var(--rule); }
 .entry { margin-top: 7.5pt; }
 h2 + .entry { margin-top: 0; }
 .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16pt; }
+.kicker.acc { font-size: 8.6pt; letter-spacing: 0.06em; margin-bottom: 1.5pt; }
+.kicker.acc .accsub { font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--ink-2); margin-left: 0.9em; }
 .kicker { font-weight: 600; font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase; font-kerning: none; color: var(--accent); margin-bottom: 1pt; }
 .title { font-family: var(--serif); font-weight: 600; font-size: 10.6pt; line-height: 1.2; }
 .title .role { font-family: var(--sans); font-weight: 400; font-style: italic; font-size: 9.6pt; color: var(--ink); }
@@ -155,16 +157,16 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
   </div>
 
   <div class="entry">
-    <div class="kicker">Paper 2 · X-Step research paper · Biomedical sensing</div>
+    <div class="kicker acc">Accepted for Presentation — IEEE-EMBS IECBES 2026<span class="accsub">Kuala Lumpur · Dec. 9–11, 2026</span></div>
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/research/x-step/">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking</a></div>
-      <div class="date">Aug. 2025–Present</div>
+      <div class="date">Jul. 2026–Present</div>
     </div>
-    <p class="meta"><b>2nd of 5 authors · ML lead</b><span class="dot">·</span>MIT CSAIL first author; <a class="ev" href="https://aiea-lab.github.io/">UC Santa Cruz AIEA Lab</a> (Prof. Leilani Gilpin)<span class="dot">·</span><b>Under review, IEEE-EMBS IECBES 2026</b><span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
+    <p class="meta"><b>2nd of 5 authors · ML lead</b><span class="dot">·</span>MIT CSAIL first author; <a class="ev" href="https://aiea-lab.github.io/">UC Santa Cruz AIEA Lab</a> (Prof. Leilani Gilpin)<span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
     <div class="rows">
-      <div class="r"><span class="l">Framing</span><p>Evaluates the team’s four-FSR402 insole (MET1, MET2, MET5, heel; ESP32, 25 Hz, BLE) as a <span class="k">measurement instrument, not a clinical classifier</span>. My contributions: the ML pipeline and the sparse-vs-dense correlation study; the hardware was team work. No wearer data yet; no ulcer-prediction or clinical claim.</p></div>
-      <div class="r key"><span class="l">ML pipeline</span><p>Designed the feature map from rolling 4 s windows (100 samples × 8 channels) to <span class="m">59 features</span> — per-site peak, mean, coefficient of variation and pressure–time integral; window-level cadence, stance ratio, anterior load share, aggregate peak and total PTI — feeding a <span class="m">540-parameter</span> logistic-regression head (531 multiply–accumulates; ≈0.23 ms per update at 25 Hz).</p></div>
-      <div class="r key"><span class="l">Correlation study</span><p>Designed a sparse-vs-dense study on an independent 32-cell insole archive (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, 298 foot-takes), comparing the cell nearest each X-Step site with its anatomical cluster maximum. Shape survived (<span class="m">median r 0.72–0.99</span>), magnitude did not (<span class="m">peak-to-peak r 0.43–0.74</span>); four-site center of pressure tracked anteroposterior (<span class="m">r 0.81</span>) but not mediolateral motion (<span class="m">r 0.01</span>) — a limit of a layout with no medial–lateral pair. Descriptive only.</p></div>
+      <div class="r"><span class="l">Framing</span><p>Asks what the team’s existing four-site insole (MET1, MET2, MET5, heel; ESP32, 25 Hz) can legitimately measure — a <span class="k">measurement instrument, not a clinical classifier</span>. I did not design the hardware; my work starts from the pressure data it produces. No wearer data yet; no clinical claim.</p></div>
+      <div class="r key"><span class="l">ML pipeline</span><p>From those readings I built the analysis pipeline: the feature map over rolling 4 s windows (100 samples × 8 channels) to <span class="m">59 features</span> — per-site peak, mean, coefficient of variation and pressure–time integral; window-level cadence, stance ratio, anterior load share, aggregate peak and total PTI — and a <span class="m">540-parameter</span> logistic-regression head (≈0.23 ms per update).</p></div>
+      <div class="r key"><span class="l">Correlation study</span><p>Designed the sparse-vs-dense study against an independent 32-cell insole archive (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, 298 foot-takes), comparing the cell nearest each of the insole’s four sites with its anatomical cluster. Shape survived (<span class="m">median r 0.72–0.99</span>), magnitude did not (<span class="m">peak-to-peak r 0.43–0.74</span>); four-site center of pressure tracked anteroposterior (<span class="m">r 0.81</span>) but not mediolateral motion (<span class="m">r 0.01</span>) — a limit of the existing layout’s geometry. Descriptive only.</p></div>
       <div class="r"><span class="l">Evaluation</span><p>Quantified subject-identity leakage on a synthetic 24-subject, 9-class cohort: <span class="m">macro-F1 0.885</span> subject-grouped vs <span class="m">0.931</span> ungrouped (majority baseline 0.040) — a gap larger than the spread across classifiers.</p></div>
     </div>
   </div>

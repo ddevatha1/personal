@@ -41,6 +41,7 @@
 			<h1 class="s-h1">X-Step: a plantar-pressure insole and app</h1>
 			<p class="s-lede">X-Step is a student team's four-sensor insole for people at risk of diabetic foot problems. It streams foot pressure over Bluetooth to a phone app that shows live loading, trends and alerts.</p>
 			<p class="s-meta"><b>My role:</b> co-founder; machine-learning and mobile lead</p>
+			<p class="s-meta" style="margin-top:10px">Read the research evaluating what the four-site sensing configuration actually preserves, <b>accepted for presentation at IEEE-EMBS IECBES 2026</b>: <a href="/research/x-step/">X-Step research →</a></p>
 		</div>
 	</header>
 
@@ -64,11 +65,11 @@
 			<section class="s-block" id="system">
 				<h2 class="s-h2">System, end to end</h2>
 				<ul class="s-pipeline">
-					<li><b>Insole.</b> Four FSR402 force sensors under the first, second and fifth metatarsal heads and the heel, one board per foot.</li>
-					<li><b>Firmware.</b> An ESP32 samples each sensor at 25 Hz and advertises as <code>XSTEP-L</code> or <code>XSTEP-R</code>.</li>
-					<li><b>Link.</b> A 28-byte Bluetooth Low Energy frame carries four ADC readings, a timestamp and a sequence counter, so dropped packets are detected rather than hidden.</li>
+					<li><b>Insole (team hardware).</b> Four FSR402 force sensors under the first, second and fifth metatarsal heads and the heel, one board per foot.</li>
+					<li><b>Firmware (team).</b> An ESP32 samples each sensor at 25 Hz and advertises as <code>XSTEP-L</code> or <code>XSTEP-R</code>.</li>
+					<li><b>Link (team).</b> A 28-byte Bluetooth Low Energy frame carries four ADC readings, a timestamp and a sequence counter, so dropped packets are detected rather than hidden.</li>
 					<li><b>Features and model.</b> On the host side, rolling 4-second windows are turned into 59 pressure and gait features and scored by a logistic-regression model.</li>
-					<li><b>App.</b> A React Native (Expo) app pairs with both insoles and shows live pressure, cadence, trends and alerts, with a separate clinician view.</li>
+					<li><b>App (mine).</b> A React Native (Expo) app pairs with both insoles and shows live pressure, cadence, trends and alerts, with a separate clinician view.</li>
 				</ul>
 			</section>
 
@@ -82,7 +83,7 @@
 			<section class="s-block" id="product">
 				<h2 class="s-h2">The product: insole, app and assistant</h2>
 				<p>The problem is that diabetic foot ulcers form where pressure builds up unnoticed, often under a foot that has lost sensation. X-Step is the team's attempt at an inexpensive way to see that pressure: an insole worn in an ordinary shoe, an app that turns the readings into something a person can act on, and an assistant that answers care questions in plain language.</p>
-				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-prototype-components.jpg" alt="Prototype parts on a table: an insole, force-sensing resistors, wires and a microcontroller board" loading="lazy"><figcaption>The first prototype: an insole, force-sensing resistors and a microcontroller.</figcaption></figure><figure><img src="/img/x-step/xstep-video-sensor-and-serial.jpg" alt="A force sensor held in front of a laptop showing serial output" loading="lazy"><figcaption>Reading a sensor over the serial port while testing the firmware.</figcaption></figure><figure><img src="/img/x-step/xstep-video-serial-monitor-readings.jpg" alt="Serial monitor showing rows of sensor readings" loading="lazy"><figcaption>Raw readings from the four sensors, before any filtering.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-insole-mesh.jpg" alt="3D model of an insole in CAD software" loading="lazy"><figcaption>The insole shape, modeled in CAD for printing.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-enclosure.jpg" alt="3D model of a cylindrical enclosure in CAD software" loading="lazy"><figcaption>An enclosure for the electronics, also modeled in CAD.</figcaption></figure></div>
+				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-prototype-components.jpg" alt="Prototype parts on a table: an insole, force-sensing resistors, wires and a microcontroller board" loading="lazy"><figcaption>The team's first prototype: an insole, force-sensing resistors and a microcontroller.</figcaption></figure><figure><img src="/img/x-step/xstep-video-sensor-and-serial.jpg" alt="A force sensor held in front of a laptop showing serial output" loading="lazy"><figcaption>The team reading a sensor over the serial port while testing the firmware.</figcaption></figure><figure><img src="/img/x-step/xstep-video-serial-monitor-readings.jpg" alt="Serial monitor showing rows of sensor readings" loading="lazy"><figcaption>Raw readings from the four sensors, before any filtering.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-insole-mesh.jpg" alt="3D model of an insole in CAD software" loading="lazy"><figcaption>The team's insole shape, modeled in CAD for printing.</figcaption></figure><figure><img src="/img/x-step/xstep-video-cad-enclosure.jpg" alt="3D model of a cylindrical enclosure in CAD software" loading="lazy"><figcaption>An enclosure for the team's electronics, also modeled in CAD.</figcaption></figure></div>
 				<p class="p-muted" style="font-size:14px">Frames from the team's Blue Ocean 2026 pitch video, posted on Arjun Subramanian's YouTube channel: <a href="https://www.youtube.com/watch?v=bW6WN7RGwRE">Blue Ocean 2026 pitch video</a>.</p>
 				<h3 class="s-h3">The app</h3>
 				<p>The app is React Native with Expo. It connects to each insole over Bluetooth Low Energy, streams the four pressure channels into a live heatmap, and keeps a daily risk score, alerts, trends and a guided care routine. Onboarding collects the health context the score needs (diabetes type and duration, neuropathy, footwear and activity), and a short calibration records a resting baseline before walking. I wrote this app and the earlier Flask backend behind its health assistant.</p>
@@ -92,7 +93,7 @@
 				<div class="p-gallery" style="margin:20px 0"><figure><img src="/img/x-step/xstep-video-app-ulcer-assessment.jpg" alt="App screen showing an ulcer assessment result" loading="lazy"><figcaption>The ulcer-assessment screen shown in the pitch video.</figcaption></figure></div>
 				<h3 class="s-h3">What is implemented and what is validated</h3>
 				<ul>
-					<li><b>Implemented:</b> the insole hardware and firmware, the Bluetooth frame format, the app, the health-assistant backend, the feature pipeline and the two CNN prototypes.</li>
+					<li><b>Implemented by the team:</b> the insole hardware, firmware and Bluetooth frame format. <b>Implemented by me:</b> the app, the health-assistant backend, the feature pipeline and the two CNN prototypes.</li>
 					<li><b>Not validated:</b> no walking data from wearers of the insole exist yet, the CNN results come from public datasets rather than X-Step data, and the ulcer-photo-to-routine flow is a design shown in a demo. No clinical efficacy is claimed for any of it.</li>
 				</ul>
 				<h3 class="s-h3">The pitches</h3>

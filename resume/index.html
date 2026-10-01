@@ -28,6 +28,7 @@
 		.r-sec { margin-top: 6.5pt; }
 		.r-sec > h2 { font-size: 8.4pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1a3f73; margin: 0 0 3pt; border-bottom: 0.6pt solid #c9ced8; padding-bottom: 1.5pt; }
 		.r-entry { margin-top: 4pt; }
+		.r-acc { font-size: 9pt; color: #7a2230; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 1pt; }
 		.r-u { font-size: 7.6pt; color: #2b5a8a; word-break: break-all; }
 		.r-sub { color:#333; }
 		.r-line { display: flex; justify-content: space-between; gap: 10pt; align-items: baseline; }
@@ -104,11 +105,12 @@
   </div>
 
   <div class="r-entry">
-    <div class="r-line"><span class="r-t">X-Step: Four-Site Plantar-Pressure Insole — ML Lead, 2nd of 5 Authors</span><span class="r-d">Aug. 2025–Present</span></div>
-    <p class="r-sub">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="r-u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a> · MIT CSAIL co-authors · <b>Under review, IEEE-EMBS IECBES 2026</b> · <a class="r-u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
+    <p class="r-acc"><b>Accepted for Presentation — IEEE-EMBS IECBES 2026</b> · Kuala Lumpur, Dec. 9–11, 2026</p>
+    <div class="r-line"><span class="r-t">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking — 2nd of 5 Authors, ML Lead</span><span class="r-d">Jul. 2026–Present</span></div>
+    <p class="r-sub">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="r-u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a> · MIT CSAIL co-authors · <a class="r-u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
     <ul>
-      <li><b>Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can a cheap four-sensor insole measure? The paper evaluates X-Step as a measurement instrument, not a clinical classifier. I implemented the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) from four FSR402 sensors at 25 Hz over BLE from an ESP32, with a 540-parameter logistic-regression head.</li>
-      <li>Designed a sparse-vs-dense study (<b>149 recordings</b>, <b>15 adults</b>, public 32-cell insole): four sites keep waveform shape (<b>median r = 0.72–0.99</b>) but not magnitude (<b>peak-to-peak r = 0.43–0.74</b>); center-of-pressure tracking keeps anteroposterior motion (<b>r = 0.81</b>) but loses mediolateral (<b>r = 0.01</b>).</li>
+      <li><b>Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can the team’s existing four-site insole legitimately measure? The paper treats X-Step as a measurement instrument, not a clinical classifier. I did not design the hardware; starting from its pressure readings I built the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression head.</li>
+      <li>Designed the sparse-vs-dense study (<b>149 recordings</b>, <b>15 adults</b>, public 32-cell insole): four sites keep waveform shape (<b>median r = 0.72–0.99</b>) but not magnitude (<b>peak-to-peak r = 0.43–0.74</b>); center-of-pressure tracking keeps anteroposterior motion (<b>r = 0.81</b>) but loses mediolateral (<b>r = 0.01</b>).</li>
       <li>Quantified subject-identity leakage on a synthetic 24-subject cohort (<b>macro-F1 0.885</b> subject-grouped vs <b>0.931</b> ungrouped) and documented the generalization limit.</li>
     </ul>
   </div>
@@ -133,7 +135,7 @@
 <div class="r-entry">
     <div class="r-line"><span class="r-t">X-Step — Co-Founder, ML &amp; Mobile Lead</span><span class="r-d">Aug. 2025–Present</span></div>
     <ul>
-      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32-C3 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
+      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
       <li>Trained two CNN prototypes on public data: EfficientNet-B2 on 9 foot-pressure heatmap postures (<b>98.3%</b>, random 80/20 split) and ResNet-50 on four wound-severity grades. Intended flow: an ulcer photo's severity score plus care habits go to an LLM that drafts routines. Bench-stage prototype; no wearer data, no clinical validation.</li>
     </ul>
   </div>
@@ -152,7 +154,7 @@
 <section class="r-sec r-skills">
   <h2>Technical Skills</h2>
   <p><b>ML/NLP:</b> LightGBM, scikit-learn, Optuna, Sentence-BERT, spaCy, PyTorch, PCA, GroupKFold, permutation importance · <b>Languages:</b> Python, TypeScript/JavaScript, Java, SQL</p>
-  <p><b>Systems:</b> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx · <b>Embedded:</b> ESP32, BLE, FSR sensing</p>
+  <p><b>Systems:</b> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx</p>
 </section>
 
 </article>

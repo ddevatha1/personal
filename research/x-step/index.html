@@ -4,19 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>X-Step Insole: What Four Sensors Can Measure · Deeptanshu Devatha</title>
-	<meta name="description" content="Research paper on a four-site plantar-pressure insole: transducer error budget, a 59-feature pressure map, and a sparse-versus-dense sensing study. Second of five authors.">
+	<meta name="description" content="Accepted for presentation at IEEE-EMBS IECBES 2026: a research chronicle of what a four-site plantar-pressure insole can and cannot measure, from first draft to peer review and acceptance.">
 	<link rel="canonical" href="https://www.deeptanshudevatha.com/research/x-step/">
 	<meta property="og:type" content="article">
 	<meta property="og:site_name" content="Deeptanshu Devatha">
 	<meta property="og:title" content="X-Step Insole: What Four Sensors Can Measure">
-	<meta property="og:description" content="Treating a four-sensor plantar-pressure insole as a measurement instrument: calibration, feature equivariance, and sparse-vs-dense agreement.">
+	<meta property="og:description" content="Accepted for Presentation at IEEE-EMBS IECBES 2026: what a four-site plantar-pressure insole can and cannot measure, from first draft to acceptance.">
 	<meta property="og:url" content="https://www.deeptanshudevatha.com/research/x-step/">
 	<meta name="twitter:card" content="summary">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/site.css?v=20260929">
+	<link rel="stylesheet" href="/assets/site.css?v=20260930">
 </head>
 <body class="s-page">
 <a class="s-skip" href="#main">Skip to content</a>
@@ -37,90 +37,208 @@
 	<header class="s-page-head">
 		<div class="s-wrap">
 			<p class="s-back"><a href="/#research">← Research</a></p>
-			<span class="s-kicker">Research · Biomedical sensing · 2025 – present</span>
+			<span class="s-kicker">Research · Biomedical sensing · July 2026 – present</span>
 			<h1 class="s-h1">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking</h1>
 			<p class="s-meta">Arjun Subramanian, <b>Deeptanshu Devatha</b>, Hrudhai Lothumalla, Arnav Katewale, Leilani Gilpin</p>
-			<p class="s-meta">Author affiliations listed in the paper: AIEA Lab, UC Santa Cruz (Prof. Leilani Gilpin); MIT CSAIL (first author)</p>
-			<span class="s-status">Submitted to IEEE-EMBS IECBES 2026 · under review</span>
-			<p class="s-meta s-muted" style="margin-top:12px">The manuscript isn't public while it's under review. This page summarizes it. The product built on the same insole is described separately on the <a href="/projects/x-step/">X-Step project page</a>.</p>
+			<p class="s-meta">MIT CSAIL (first and corresponding author) · AIEA Lab, UC Santa Cruz (Prof. Leilani Gilpin) · I am the second of five authors</p>
+			<span class="s-accepted"><b>Accepted for Presentation — IEEE-EMBS IECBES 2026</b>2026 IEEE-EMBS Conference on Biomedical Engineering and Sciences · Kuala Lumpur, Malaysia · December 9–11, 2026. Accepted September 30, 2026. Revisions and the final manuscript are due October 15, 2026; the final paper has not been submitted or published yet.</span>
+			<p class="s-meta s-muted" style="margin-top:12px">This page follows the paper from its first draft to acceptance. The product built around the same insole is a separate story: <a href="/projects/x-step/">X-Step engineering and product →</a></p>
 		</div>
 	</header>
-
-<div class="p-wrap p-visual" style="padding-top:36px">
-<div class="p-gallery" style="grid-template-columns:1fr 1fr"><figure><img src="/img/x-step/xstep-slide-problem.jpg" alt="Team slide on the scale of diabetic foot ulcers" loading="lazy"><figcaption>The problem the insole is aimed at.</figcaption></figure><figure><img src="/img/x-step/xstep-slide-challenges.jpg" alt="Team slide on software and hardware challenges" loading="lazy"><figcaption>Design challenges, from the team's presentation.</figcaption></figure></div>
-</div>
-
 
 	<div class="s-wrap s-layout">
 		<aside class="s-toc" aria-label="On this page">
 			<ol>
-				<li><a href="#approach">Approach</a></li>
-				<li><a href="#instrument">The instrument</a></li>
-				<li><a href="#features">Feature map</a></li>
-				<li><a href="#sparse">Sparse vs dense</a></li>
-				<li><a href="#sweep">Grouped evaluation</a></li>
-				<li><a href="#limits">Limitations</a></li>
-				<li><a href="#role">My part</a></li>
+				<li><a href="#question">The question</a></li>
+				<li><a href="#start">Where my work starts</a></li>
+				<li><a href="#chronicle">Chronicle</a></li>
+				<li><a href="#not">What it doesn't show</a></li>
+				<li><a href="#reflection">Reflection</a></li>
+				<li><a href="#dating">How this was dated</a></li>
 			</ol>
 		</aside>
 
 		<div class="s-prose">
-			<section class="s-block" id="approach">
-				<h2 class="s-h2">Approach</h2>
-				<p>Dense in-shoe pressure arrays are expensive and mostly stay in the lab. X-Step uses four force-sensitive resistors, at the first, second and fifth metatarsal heads and the heel. The paper deliberately evaluates it as a <em>measurement instrument</em> rather than a clinical classifier. Before any classification score could mean anything, three questions had to be answered: how accurately the sensors recover force, what a four-point sample of a continuous pressure field keeps and loses, and which downstream features survive the errors the device itself makes.</p>
+			<section class="s-block" id="question">
+				<h2 class="s-h2">The question</h2>
+				<p>The interesting problem was never "can a shoe sense pressure?" Cheap force sensors have done that for years. The interesting problem is what a very sparse sample of the foot can honestly say. A dense in-shoe array records the whole plantar surface, but it is expensive and mostly stays in gait laboratories. A four-sensor insole could be worn every day, but four points are not a pressure map. Before anyone trains a model to flag risk, three prior questions have to be answered in measurement terms:</p>
+				<ol>
+					<li>How accurately do the sensors recover force, and where in their range are they least trustworthy?</li>
+					<li>What does a four-point sample of a continuous pressure field keep, and what does it structurally destroy?</li>
+					<li>Which downstream features survive the systematic errors the device makes on its own?</li>
+				</ol>
+				<p>None of these needs a diagnosis label, and all of them limit what any label-based result could later mean. That is why the paper treats X-Step as a <em>measurement instrument</em> and not a classifier.</p>
 			</section>
 
-			<section class="s-block" id="instrument">
-				<h2 class="s-h2">The instrument</h2>
-				<ul class="s-pipeline">
-					<li><b>Sensing:</b> 4 × FSR402 in 10 kΩ dividers on an ESP32's 12-bit ADC, sampled at 25 Hz.</li>
-					<li><b>Radio:</b> a 28-byte Bluetooth Low Energy frame per foot with a monotonic sequence counter, so packet loss is measured rather than assumed.</li>
-					<li><b>Calibration:</b> 480 bench observations across 12 loads from 0 to 30 N. In-sample error is 1.69 N MAE and 2.95 N RMSE, with a 2.02 N load–unload hysteresis.</li>
-					<li><b>Host path:</b> a rolling 4 s window (100 samples) over both feet. Feature extraction and inference average 0.23 ms per update on the development machine, against a 40 ms sample period.</li>
-				</ul>
-			</section>
-
-			<section class="s-block" id="features">
-				<h2 class="s-h2">Feature map</h2>
-				<p>Each window becomes 59 named features. Per site, these are peak pressure, mean pressure, coefficient of variation and the pressure–time integral. Per window, they are cadence, stance ratio, anterior pressure share, aggregate peak and total pressure–time integral. The features feed a logistic-regression head with 540 parameters.</p>
-				<p>The paper shows analytically that these features react differently to sensor error. Threshold-occupancy features are sensitive to a constant sensor offset, while zero-mean noise of the same size does much less damage. Clipped per-window quantile re-baselining removes any constant additive offset before features are computed.</p>
-			</section>
-
-			<section class="s-block" id="sparse">
-				<h2 class="s-h2">Sparse versus dense</h2>
-				<p>How much of a pressure field can four points capture? To test this, the study used an independent public archive: 149 recordings from 15 healthy adults, made with a 32-cell instrumented insole. For each of X-Step's four sites, the nearest single cell was compared with its surrounding dense cluster.</p>
-				<div class="s-table-wrap">
-					<table class="s-table">
-						<caption>Agreement between a single anatomical cell and its dense cluster, and a four-site centre-of-pressure estimate</caption>
-						<thead><tr><th>Quantity</th><th class="n">Correlation</th><th>Reading</th></tr></thead>
-						<tbody>
-							<tr><td>Waveform shape (median per site)</td><td class="n">r 0.72–0.99</td><td>preserved</td></tr>
-							<tr><td>Peak-to-peak magnitude</td><td class="n">r 0.43–0.74</td><td>not reliably preserved</td></tr>
-							<tr><td>Centre of pressure, heel-to-toe</td><td class="n">r 0.81</td><td>tracked</td></tr>
-							<tr><td>Centre of pressure, side-to-side</td><td class="n">r 0.01</td><td>not tracked</td></tr>
-						</tbody>
-					</table>
+			<section class="s-block" id="start">
+				<h2 class="s-h2">Where my work starts</h2>
+				<p>I did not design the sensing hardware. The X-Step team had already built the insole, chosen its four sensing sites, and written the firmware before the questions in this paper existed. <b>My research begins downstream of those decisions, with the pressure readings the system produces.</b> The question I was working on was: given these readings, what do they actually preserve?</p>
+				<div class="s-flow" role="img" aria-label="Diagram: team hardware produces pressure readings, which feed my computational and machine-learning pipeline">
+					<div class="s-flow-box is-team"><small>X-Step team hardware</small>4 force sensors · ESP32<br>firmware · BLE frames<em>not my work</em></div>
+					<div class="s-flow-arrow" aria-hidden="true">→</div>
+					<div class="s-flow-box is-data"><small>The starting point</small>pressure readings</div>
+					<div class="s-flow-arrow" aria-hidden="true">→</div>
+					<div class="s-flow-box is-mine"><small>My computational / ML work</small>windowing · 59-feature map · model<br>grouped vs ungrouped evaluation<br>sparse-vs-dense correlation study</div>
 				</div>
-				<p>The side-to-side failure is geometric, not a matter of sensor accuracy. With only these four sites, the estimated centre of pressure is a weighted average of points that barely span the foot's width, so no amount of transducer accuracy can recover mediolateral motion. The 298 foot-takes come from only 15 people, so these correlations are descriptive and no p-values are claimed.</p>
+				<div class="s-split">
+					<div>
+						<h4>The team's work</h4>
+						<ul>
+							<li>The insole and its four sensing sites (MET1, MET2, MET5, heel)</li>
+							<li>Electronics, ESP32 firmware, 25 Hz sampling, the BLE frame</li>
+							<li>The sensor-site rationale, and the other authors' parts of the paper</li>
+						</ul>
+					</div>
+					<div>
+						<h4>My part</h4>
+						<ul>
+							<li>Processing the pressure data into rolling 4-second windows</li>
+							<li>The 59-feature map and the 540-parameter logistic-regression head</li>
+							<li>Grouped versus ungrouped evaluation of that pipeline</li>
+							<li>The sparse-versus-dense correlation study</li>
+						</ul>
+					</div>
+				</div>
+				<figure class="s-fig">
+					<img src="/img/x-step/xstep-video-serial-monitor-readings.jpg" alt="A laptop serial monitor listing rows of sensor readings" loading="lazy">
+					<figcaption>Raw readings from the team's four-site prototype (frame from the team's pitch video). My work began with this kind of data: the question was what it keeps and what it loses.</figcaption>
+				</figure>
+				<p>The paper also contains work I did not do and do not claim: the bench calibration of the transducers, the error budget built from it, and the synthetic cohort generator and its fault experiments. I describe them below where the story needs them, as the team's.</p>
 			</section>
 
-			<section class="s-block" id="sweep">
-				<h2 class="s-h2">Grouped evaluation</h2>
-				<p>The design choices were explored on a synthetic four-sensor cohort: 24 virtual subjects, 9 overload-pattern classes, 2,592 windows. With subject-grouped evaluation, the logistic head reached macro-F1 0.885 (bootstrap interval 0.861–0.907), against 0.040 for a majority-class baseline. Without grouping it reached 0.931. That 0.046 gap is the cost of transferring to an unseen wearer, and it is larger than the whole spread between the best and worst classifiers tested. Peak-only features scored about the same as all 59 (0.886 vs 0.885), which says the synthetic labels are close to peak-separable. It does not show that the full feature map is needed.</p>
+			<section class="s-block" id="chronicle">
+				<h2 class="s-h2">Chronicle</h2>
+				<p>This chronology is reconstructed from dated files: manuscript PDFs and their metadata, the team's repository history, my own model repository, and the conference system's records. It places milestones, not thoughts. Where the files don't date an individual analysis, I give the month the manuscript reached that form, and I say so.</p>
+
+				<ol class="s-chron">
+					<li>
+						<p class="s-when">August 2025 – February 2026</p>
+						<h3>Before the paper: a product, not a research question</h3>
+						<p>X-Step began as a student startup (August 2025). Its first software was an app, submitted to the Congressional App Challenge in October 2025. On February 15, 2026 I started a repository for two image-classification prototypes (foot-pressure heatmaps and wound photographs) and saved published smart-insole papers to read alongside them. All of this belongs to the product. None of it was yet a paper about what four sensors can measure.</p>
+						<p class="s-evid">Dated from: first app commits (Oct. 30, 2025); repository creation and file timestamps (Feb. 15, 2026). The product is described on the <a href="/projects/x-step/">X-Step page</a>.</p>
+					</li>
+
+					<li>
+						<p class="s-when">July 2026</p>
+						<h3>First manuscript: "does the whole system work?"</h3>
+						<div class="s-q"><b>Question at this stage</b>Can an insole, an app, and two image classifiers be written up as one framework, and how well does each part perform?</div>
+						<p>The first full draft in this lineage, compiled July 6, was a systems paper. It presented a multimodal framework with two machine-learning components and reported headline accuracies of 99.45% and 87.66%. It framed the work as establishing feasibility for pre-ulcer surveillance. The team's repository also began its shared machine-learning package that day.</p>
+						<p class="s-evid">Dated from: manuscript PDF metadata (July 6, 2026); first commit of the shared ML package (July 6, 2026).</p>
+					</li>
+
+					<li>
+						<p class="s-when">August 2026</p>
+						<h3>The numbers looked too good, so the evaluation became the subject</h3>
+						<div class="s-q"><b>New question</b>Would these results survive a stricter split, and which of them were measuring the wearer instead of the physics?</div>
+						<p>In mid-August, the team's repository gained grouped evaluation splits, sensor-ablation and perturbation experiments, calibration analysis, and written audits, including one on subject leakage and one on any metric that looked suspiciously high. The audit rule was blunt: a score near 0.98 on a wearable task is treated as suspect until explained. Its entries record that a 0.931 macro-F1 came from a protocol that let windows from the same subject land on both sides of the split, and that the honest figure was the grouped 0.885.</p>
+						<figure class="s-fig is-narrow">
+							<img src="/img/x-step/paper-fig1-layout-and-path.jpg" alt="Left: foot outline with four sensor sites MET1, MET2, MET5 and heel. Right: a flow from on-insole sensing and BLE frames to host-side windowing, feature map, logistic regression and a deterministic alert." loading="lazy">
+							<figcaption>Figure 1 of the paper. The boxes marked "on-insole" are the team's hardware. From the 4-second window down (windowing, the 59-feature map, the 540-parameter model) is the pipeline I built and evaluated.</figcaption>
+						</figure>
+						<p class="s-evid">Dated from: repository history, August 18–19, 2026, and the audit documents committed with it.</p>
+					</li>
+
+					<li>
+						<p class="s-when">September 1, 2026</p>
+						<h3>A claim-by-claim check against the code, and a smaller paper</h3>
+						<div class="s-q"><b>Methodological problem</b>Which sentences in the July draft could actually be traced to code and data?</div>
+						<p>On September 1 the team checked the July manuscript against the repository line by line. Several details did not hold: some hardware specifics did not match the firmware, a claimed calibration improvement could not be reproduced, sample sizes were wrong, and the two image classifiers had been described as something they were not. The long draft was corrected: the classifiers were renamed for what they actually were, their headline accuracies were re-verified from the trained models, and the clinical-feasibility language came out. The check also surfaced the observation that mattered most for this paper: neither classifier reads the insole's own pressure signal, so neither could be evidence about what the insole measures. The paper that was eventually submitted contains neither of them; they belong to the product.</p>
+						<p>The same day also produced a shorter, blind-review version of the paper with a new framing: not "does the system work?" but "how much information do four sites retain, and do the models survive subject-independent evaluation and sensor faults?"</p>
+						<p class="s-evid">Dated from: the correction map and revision report committed Sept. 1, 2026; the blind-review PDF (Sept. 1, 2026).</p>
+					</li>
+
+					<li>
+						<p class="s-when">September 2–14, 2026</p>
+						<h3>The paper's questions take their final form</h3>
+						<p>The dated files show the manuscript reaching its final shape between September 1 and 14: the title became the one above, and the argument settled into four questions. They don't date the individual analyses, so each is described by what it asked.</p>
+
+						<div class="s-q"><b>Sparse versus dense: what does "reproduce" mean?</b>Can one sensor stand in for a whole region? That depends on what you ask the sensor to reproduce.</div>
+						<p>The study compared the cell of a dense 32-cell insole nearest each of the four sites with the dense cluster around it, across 149 recordings from 15 healthy adults in an independent public archive. These are not X-Step recordings: no human walking data from X-Step exist yet, and the paper says so. Median correlation of the waveforms was high: 0.986 at MET2, 0.885 at the heel, 0.879 at MET1, and 0.717 at MET5. Read naively, that looks like near-perfect recovery.</p>
+						<p>It isn't, and the distinction is the point. Pearson correlation ignores scale: a sensor reading half the pressure still correlates perfectly. These numbers certify <b>shape</b>, meaning that the sparse site rises and falls when the region does. They say nothing about <b>magnitude</b>. The device's alert, however, is a threshold in kilopascals, so the number that matters is how well peak-to-peak amplitude agrees, and it falls to 0.43–0.74. A sparse site tells you reliably <em>when</em> a region loads and unreliably <em>how hard</em>. (The archive reports raw ADC counts, not calibrated pressure, so the paper declines to convert either figure into a limits-of-agreement interval.)</p>
+						<figure class="s-fig">
+							<img src="/img/x-step/paper-fig3-sparse-vs-dense.jpg" alt="Left: bar chart of median waveform correlation at MET2, heel, MET1 and MET5 from 0.986 to 0.717, with a shaded band showing the lower peak-to-peak agreement. Right: bars for anteroposterior center-of-pressure correlation 0.805 and mediolateral 0.005." loading="lazy">
+							<figcaption>Figure 3 of the paper. Left: the bars show waveform shape, which survives; the shaded band shows peak-to-peak amplitude, which does not. Right: the four-site center of pressure tracks heel-to-toe motion (0.805) and loses side-to-side motion (0.005). The correlations come from one study I designed.</figcaption>
+						</figure>
+
+						<div class="s-q"><b>New question: what is impossible to recover?</b>Is there something four sites can never reproduce, however accurate they are?</div>
+						<p>The center of pressure is a pressure-weighted average of the sensor positions. A weighted average can never leave the region spanned by the points being averaged. With three sites clustered across the forefoot, one at the heel, and none across the midfoot, there is almost no width to average over. The reconstruction tracked heel-to-toe motion (r = 0.805) and lost side-to-side motion (r = 0.005). This is a finding about the existing layout's geometry, not about sensor accuracy: no calibration improvement could repair it. It is also not an impossibility theorem. A learned model with priors could extrapolate; what the geometry rules out is direct reconstruction.</p>
+
+						<div class="s-q"><b>Which features break when the sensor is wrong?</b>The team's bench calibration showed errors on the same scale as the 30 kPa contact threshold. Would every feature suffer equally?</div>
+						<p>Not equally, and this can be shown without data. Adding a constant offset to every reading, as a drifting sensor would, shifts peaks and means by that offset, which a downstream linear model can partly absorb. But features that count the fraction of time above a threshold are different: a lightly loaded site spends its time close to the threshold, which is also where the transducer is least trustworthy, so a small offset flips many samples. Zero-mean noise of the same size does not shift that count to first order. Subtracting a low quantile of each window removes any constant offset before features are computed. A synthetic test agreed with the prediction: 12 kPa of noise cost 0.206 in macro-F1, while a constant +15 kPa offset cost 0.666, three times as much for a comparable disturbance. I describe this as the paper's finding; the analysis of the error budget and the synthetic generator were not my work.</p>
+						<figure class="s-fig">
+							<img src="/img/x-step/paper-fig2-error-budget.jpg" alt="Horizontal bars on a pressure axis: calibration error 13.3, hysteresis 15.9, calibration RMSE 23.3 kPa, then the 30 kPa contact threshold and the 75 kPa alert cut-off" loading="lazy">
+							<figcaption>Figure 2 of the paper (the team's bench analysis). The 30 kPa contact threshold sits barely above the calibration error, which is why threshold-counting features are the fragile ones.</figcaption>
+						</figure>
+
+						<div class="s-q"><b>Does the evaluation let the model recognize people?</b>If a random split puts windows from the same person in both training and test, what is the model actually learning?</div>
+						<p>In the synthetic cohort, each of the 24 virtual subjects contributes 108 windows. Split at random, a model sees some of each subject during training and is then tested on more of the same subject, so it can score by recognizing the individual's signature instead of learning anything general. Split by subject, so that test subjects are entirely unseen, the same pipeline reaches macro-F1 0.885 (against 0.040 for always guessing the majority class); with the leaky random split it reaches 0.931. The 0.046 gap is the price of meeting a new wearer, and it is larger than the whole spread between the best and worst classifiers tried. In other words, how the data were split mattered more than which model was used.</p>
+						<p>One result I do not want read as more than it is: peak-only features scored 0.886 against 0.885 for all 59. That does not show the full feature map is unnecessary. It shows that the synthetic generator's labels are close to separable by peak pressure alone, which is why the paper confines all synthetic results to one section and states that no claim elsewhere depends on them.</p>
+						<figure class="s-fig">
+							<img src="/img/x-step/paper-fig4-synthetic-sweep.jpg" alt="Left: bars of macro-F1 for layouts with sensors removed. Right: bars showing the effect of noise, packet loss, a dead heel channel, constant bias and rate reduction." loading="lazy">
+							<figcaption>Figure 4 of the paper, from the synthetic cohort only. Left: removing MET1 or MET2 alone costs little, but the two substitute for each other, and the forefoot-only pair does worse than any pair with a rear or lateral site. Right: a constant bias hurts about three times as much as noise of similar size.</figcaption>
+						</figure>
+						<p class="s-evid">Dated from: the manuscript PDF versions of Sept. 1, Sept. 8 and Sept. 14, 2026. Between the last two, only small changes appear: a section was renamed from "threats to validity" to "limitations", and the data-availability statement now points to a public repository of the calibration table and analysis code.</p>
+					</li>
+
+					<li>
+						<p class="s-when">Mid-September 2026</p>
+						<h3>Submission</h3>
+						<p>The version held in the conference system, as paper #132, is the September 14 manuscript. The system ran its similarity check on September 16. The submitted paper says what it is: engineering-level evidence, no X-Step walking data, no ulcer-prediction or clinical-benefit claim.</p>
+						<p class="s-evid">Dated from: manuscript file (Sept. 14) and the conference system's similarity record (Sept. 16). The exact submission day is not recorded in the files I have, so I give the month.</p>
+					</li>
+
+					<li>
+						<p class="s-when">Peer review · between submission and September 30, 2026</p>
+						<h3>What the reviewers asked</h3>
+						<p>Two reviewers read the paper; both rated every criterion, from technical contribution to presentation, as agree. They also asked for specific changes. I am summarizing, not quoting.</p>
+						<ul>
+							<li><b>The title promised more than the validation.</b> One reviewer pointed out that the title says "overground walking" while the validation rests on an archive of movement recordings and on a synthetic analysis, and asked for the title to say so. That is a fair point: the paper itself states that no X-Step walking data exist, so the title should not suggest otherwise.</li>
+							<li><b>Compare four sites against the full 32 directly.</b> The same reviewer asked for a direct comparison of the four sensor locations against the full 32-sensor data, to show how much pressure information is lost. The paper's own discussion names this as its obvious next analysis: subsample the 32-cell array to the four anatomical sites and ask what is lost in peak pressure, pressure–time integral and center-of-pressure excursion. It would also remove the problem of comparing across two different pieces of hardware, which is why the current study can only speak about four-point sampling in general.</li>
+							<li><b>Clarity.</b> The second reviewer called the study well executed and technically sound, and asked for abbreviations to be defined at first use, citations to match the conference format, an incomplete sentence to be fixed, parameters to be defined where they appear, and a fuller explanation of the sensitivity equation (Equation 2).</li>
+						</ul>
+					</li>
+
+					<li class="is-end">
+						<p class="s-when">September 30, 2026</p>
+						<h3>Accepted for presentation</h3>
+						<p>The conference notified the authors on the evening of September 30 that the paper was accepted for presentation at IECBES 2026, with the review comments attached.</p>
+						<figure class="s-fig">
+							<img src="/img/x-step/iecbes-accepted-edas.jpg" alt="Conference system record showing the paper title, the conference and track, and the status Accepted" loading="lazy">
+							<figcaption>The conference system's record for the paper (cropped to the title, conference and status).</figcaption>
+						</figure>
+						<figure class="s-fig">
+							<img src="/img/x-step/iecbes-acceptance-email.jpg" alt="Excerpt from the notification stating that the submission has been accepted for presentation at the conference" loading="lazy">
+							<figcaption>The notification's acceptance sentence.</figcaption>
+						</figure>
+						<h3 style="margin-top:22px">Next: revisions and the final manuscript</h3>
+						<p>The notification asks the authors to revise the paper according to the reviewers' comments, format the final manuscript to the IEEE template, register, and upload it by October 15, 2026, before presenting in Kuala Lumpur on December 9–11. None of that is done yet, and I will add the final-manuscript milestone here only once it is. Acceptance for presentation is not publication: nothing has been published in the proceedings.</p>
+					</li>
+				</ol>
 			</section>
 
-			<section class="s-block" id="limits">
-				<h2 class="s-h2">Limitations</h2>
+			<section class="s-block" id="not">
+				<h2 class="s-h2">What the paper does not show</h2>
 				<ul>
-					<li>No human walking data from the X-Step device itself exist yet. The findings are engineering-level and establish neither ulcer prediction nor clinical benefit.</li>
-					<li>The sparse-versus-dense comparison uses someone else's insole, so it characterizes four-point sampling of a pressure field in general, not X-Step specifically.</li>
-					<li>The fault analysis is applied to synthetic pressures. Moving toward any patient-facing use requires a prospective walking study under ethics approval.</li>
+					<li>It contains no X-Step walking data. The sparse-versus-dense study uses someone else's insole, so it describes four-point sampling in general, not this device.</li>
+					<li>The 149 recordings come from 15 people, so they are not independent subjects. The correlations are descriptive, with no p-values.</li>
+					<li>The synthetic cohort comes from a generator whose labels are close to separable by peak pressure. Its results say nothing about real wearers.</li>
+					<li>The bench calibration errors are in-sample, not held-out. Drift, creep, radio airtime and battery life were not measured.</li>
+					<li>Nothing in it establishes ulcer prediction or clinical benefit. The paper separates physical engineering evidence, algorithmic evidence on a stated dataset, and clinical evidence, and contributes only to the first two.</li>
 				</ul>
 			</section>
 
-			<section class="s-block" id="role">
-				<h2 class="s-h2">My part</h2>
-				<p>I built the machine-learning component: the 59-feature pressure map and the logistic-regression model. I also designed the sparse-versus-dense study above, which asks whether four sites can stand in for a dense array. The first author is Arjun Subramanian. The hardware, firmware and other analyses were team work.</p>
+			<section class="s-block" id="reflection">
+				<h2 class="s-h2">Reflection</h2>
+				<p>Three results changed how I think about sensing and machine learning.</p>
+				<p><b>A strong correlation can answer a weaker question than the one you care about.</b> A waveform correlation of 0.986 looks like success until you ask what it is invariant to: it says nothing about how hard a region is loaded, which is exactly what a thresholded alert depends on. The statistic has to match the decision.</p>
+				<p><b>Geometry sets limits that modeling cannot remove.</b> Side-to-side center of pressure fails because of where the sensors are, not how well they are read. This reframes sparse sensing: how widely the sites are spread can matter more than how many there are, and a negative result like this says what a redesign would have to add.</p>
+				<p><b>The evaluation design can matter more than the model.</b> The gap between a leaky split and a grouped one was larger than the gap between the best and worst classifiers. A high score on samples that are not independent answers a different question from the one a new wearer poses. Underneath all three is an ordering that this project made concrete: validate the measurement before you predict anything clinical.</p>
+			</section>
+
+			<section class="s-block" id="dating">
+				<h2 class="s-h2">How this page was dated</h2>
+				<p>Dates come from manuscript PDF metadata and file timestamps, commit dates in the team's repository and in mine, and the conference system's records. They show when documents reached a form, not when an idea occurred, and I have not written diary entries I did not keep. Where a date isn't in the files, I give a month. The start of this research is set at July 2026, when the first manuscript in this lineage was compiled; the product work that preceded it started in August 2025.</p>
+				<p>Read next: <a href="/projects/x-step/">how the same sensing system fits into the X-Step product, my app and the machine-learning prototypes →</a></p>
 			</section>
 		</div>
 	</div>

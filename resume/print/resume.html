@@ -68,6 +68,8 @@ h2 + .entry { margin-top: 0; }
 .title .role { font-family: var(--sans); font-weight: 400; font-style: italic; font-size: 8.8pt; color: var(--ink); }
 .title .where { font-family: var(--sans); font-weight: 400; font-size: 8.6pt; color: var(--ink-2); }
 .date { flex: none; white-space: nowrap; font-size: 8.4pt; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.acc { font-weight: 700; font-size: 8.6pt; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5pt; }
+.acc .accsub { font-weight: 500; font-size: 7.2pt; letter-spacing: 0.08em; color: var(--ink-2); margin-left: 0.9em; }
 .meta { font-size: 8.3pt; color: var(--ink-2); margin-top: 0.3pt; }
 .meta b { font-weight: 600; color: var(--ink); }
 
@@ -128,14 +130,15 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
   </div>
 
   <div class="entry major">
+    <div class="acc">Accepted for Presentation — IEEE-EMBS IECBES 2026<span class="accsub">Kuala Lumpur · Dec. 9–11, 2026</span></div>
     <div class="head">
-      <div class="title">X-Step: Four-Site Plantar-Pressure Insole <span class="role">— ML Lead, 2nd of 5 Authors</span></div>
-      <div class="date">Aug. 2025–Present</div>
+      <div class="title">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking <span class="role">— 2nd of 5 Authors, ML Lead</span></div>
+      <div class="date">Jul. 2026–Present</div>
     </div>
-    <p class="meta">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a><span class="dot">·</span>MIT CSAIL co-authors<span class="dot">·</span><b>Under review, IEEE-EMBS IECBES 2026</b><span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
+    <p class="meta">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a><span class="dot">·</span>MIT CSAIL co-authors<span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
     <ul>
-      <li><b class="k">Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can a cheap four-sensor insole measure? The paper evaluates X-Step as a measurement instrument, not a clinical classifier. I implemented the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) from four FSR402 sensors at 25 Hz over BLE from an ESP32, with a 540-parameter logistic-regression head.</li>
-      <li>Designed a sparse-vs-dense study (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, public 32-cell insole): four sites keep waveform shape (<span class="m">median r = 0.72–0.99</span>) but not magnitude (<span class="m">peak-to-peak r = 0.43–0.74</span>); center-of-pressure tracking keeps anteroposterior motion (<span class="m">r = 0.81</span>) but loses mediolateral (<span class="m">r = 0.01</span>).</li>
+      <li><b class="k">Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can the team’s existing four-site insole legitimately measure? The paper treats X-Step as a measurement instrument, not a clinical classifier. I did not design the hardware; starting from its pressure readings I built the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression head.</li>
+      <li>Designed the sparse-vs-dense study (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, public 32-cell insole): four sites keep waveform shape (<span class="m">median r = 0.72–0.99</span>) but not magnitude (<span class="m">peak-to-peak r = 0.43–0.74</span>); center-of-pressure tracking keeps anteroposterior motion (<span class="m">r = 0.81</span>) but loses mediolateral (<span class="m">r = 0.01</span>).</li>
       <li>Quantified subject-identity leakage on a synthetic 24-subject cohort (<span class="m">macro-F1 0.885</span> subject-grouped vs <span class="m">0.931</span> ungrouped) and documented the generalization limit.</li>
     </ul>
   </div>
@@ -169,7 +172,7 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
       <div class="date">Aug. 2025–Present</div>
     </div>
     <ul>
-      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32-C3 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
+      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
       <li>Trained two CNN prototypes on public data: EfficientNet-B2 on 9 foot-pressure heatmap postures (<span class="m">98.3%</span>, random 80/20 split) and ResNet-50 on four wound-severity grades. Intended flow: an ulcer photo's severity score plus care habits go to an LLM that drafts routines. Bench-stage prototype; no wearer data, no clinical validation.</li>
     </ul>
   </div>
@@ -191,7 +194,7 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
 <section class="skills">
   <h2>Technical Skills</h2>
   <p><span class="k">ML/NLP:</span> LightGBM, scikit-learn, Optuna, Sentence-BERT, spaCy, PyTorch, PCA, GroupKFold, permutation importance<span class="dot">·</span><span class="k">Languages:</span> Python, TypeScript/JavaScript, Java, SQL</p>
-  <p><span class="k">Systems:</span> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx<span class="dot">·</span><span class="k">Embedded:</span> ESP32, BLE, FSR sensing</p>
+  <p><span class="k">Systems:</span> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx</p>
 </section>
 
 </div>
