@@ -21,9 +21,9 @@
   --rule: #cbc8c3;
   --sans: "RS Sans", "Helvetica Neue", Arial, sans-serif;
   --serif: "RS Serif", Georgia, serif;
-  --body: 9.1pt;
-  --lead: 1.2;
-  --lab: 0.74in;              /* width of the row-label column */
+  --body: 9.6pt;
+  --lead: 1.36;
+  --lab: 0.86in;              /* width of the row-label column */
 }
 
 @page { size: 8.5in 11in; margin: 0; }
@@ -34,7 +34,7 @@ body {
   color: var(--ink); font-kerning: normal;
   -webkit-print-color-adjust: exact; print-color-adjust: exact;
 }
-.page { width: 8.5in; height: 11in; overflow: hidden; padding: 0.42in 0.52in 0.4in; position: relative; break-after: page; }
+.page { width: 8.5in; height: 11in; overflow: hidden; padding: 0.5in 0.62in 0.5in; position: relative; break-after: page; }
 .page:last-child { break-after: auto; }
 a { color: inherit; text-decoration: none; }
 p { margin: 0; }
@@ -49,7 +49,7 @@ h1 {
   font-family: "RS Display", var(--serif); font-weight: 600;
   font-size: 22pt; line-height: 1; margin: 0; letter-spacing: 0.075em; white-space: nowrap;
 }
-.contact { font-size: 9pt; line-height: 1.35; color: var(--ink-2); text-align: right; white-space: nowrap; }
+.contact { font-size: 9.6pt; line-height: 1.35; color: var(--ink-2); text-align: right; white-space: nowrap; }
 .contact a { color: var(--ink); }
 .runhead {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -59,47 +59,47 @@ h1 {
 .runhead b { font-family: "RS Display", var(--serif); font-weight: 600; font-size: 10.5pt; letter-spacing: 0.075em; color: var(--ink); }
 
 /* ---------- sections ---------- */
-section { margin-top: 7.5pt; }
+section { margin-top: 12pt; }
 h2 {
   display: flex; align-items: center; gap: 8pt;
-  font-weight: 600; font-size: 8.3pt; letter-spacing: 0.15em; text-transform: uppercase; font-kerning: none;
-  color: var(--accent); margin: 0 0 4pt; line-height: 1.1;
+  font-weight: 600; font-size: 8.8pt; letter-spacing: 0.15em; text-transform: uppercase; font-kerning: none;
+  color: var(--accent); margin: 0 0 8pt; line-height: 1.1;
 }
 h2::after { content: ""; flex: 1; border-top: 0.5pt solid var(--rule); }
 
 /* ---------- entries ---------- */
-.entry { margin-top: 6.5pt; }
+.entry { margin-top: 11pt; }
 h2 + .entry { margin-top: 0; }
 .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16pt; }
-.meta.acc2 { color: var(--accent); font-size: 9.4pt; margin-top: 1.5pt; }
+.meta.acc2 { color: var(--accent); font-size: 10pt; margin-top: 3pt; }
 .meta.acc2 b { color: var(--accent); font-weight: 700; }
-.hon .head .title { font-weight: 700; font-size: 10.4pt; white-space: nowrap; }
-.hon .head .where { font-weight: 500; font-size: 8.8pt; }
-.hon .hl { margin-top: 1.5pt; font-size: 8.8pt; color: var(--ink-2); }
+.hon .head .title { font-weight: 700; font-size: 11.4pt; }
+.hon .head .where { font-weight: 500; font-size: 9.6pt; }
+.hon .hl { margin-top: 4pt; font-size: 9.6pt; color: var(--ink-2); line-height: 1.5; }
 .kicker.acc { font-size: 8.6pt; letter-spacing: 0.06em; margin-bottom: 1.5pt; }
 .kicker.acc .accsub { font-weight: 500; font-size: 7pt; letter-spacing: 0.1em; color: var(--ink-2); margin-left: 0.9em; }
-.kicker { font-weight: 600; font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase; font-kerning: none; color: var(--accent); margin-bottom: 1pt; }
-.title { font-family: var(--serif); font-weight: 600; font-size: 10.6pt; line-height: 1.2; }
-.title .role { font-family: var(--sans); font-weight: 400; font-style: italic; font-size: 9.6pt; color: var(--ink); }
-.title .where { font-family: var(--sans); font-weight: 400; font-size: 9.3pt; color: var(--ink-2); }
-.date { flex: none; white-space: nowrap; font-size: 9pt; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.meta { font-size: 9pt; color: var(--ink-2); margin-top: 1pt; }
+.kicker { font-weight: 600; font-size: 7.4pt; letter-spacing: 0.14em; text-transform: uppercase; font-kerning: none; color: var(--accent); margin-bottom: 3pt; }
+.title { font-family: var(--serif); font-weight: 600; font-size: 11.6pt; line-height: 1.28; }
+.title .role { font-family: var(--sans); font-weight: 400; font-style: italic; font-size: 10.2pt; color: var(--ink); }
+.title .where { font-family: var(--sans); font-weight: 400; font-size: 9.9pt; color: var(--ink-2); }
+.date { flex: none; white-space: nowrap; font-size: 9.6pt; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.meta { font-size: 9.6pt; color: var(--ink-2); margin-top: 3pt; }
 .meta b { font-weight: 600; color: var(--ink); }
-.meta + .meta { margin-top: 0.5pt; }
+.meta + .meta { margin-top: 1.5pt; }
 
 /* labeled rows: the reader can follow question -> data -> method -> validation -> finding -> limitation */
-.rows { margin-top: 2.5pt; }
-.r { display: grid; grid-template-columns: var(--lab) 1fr; column-gap: 8pt; margin-bottom: 1.8pt; }
+.rows { margin-top: 5pt; }
+.r { display: grid; grid-template-columns: var(--lab) 1fr; column-gap: 10pt; margin-bottom: 3.6pt; }
 .r:last-child { margin-bottom: 0; }
 .l {
-  font-weight: 600; font-size: 6.6pt; line-height: 1.25; letter-spacing: 0.08em; text-transform: uppercase; font-kerning: none;
-  color: var(--ink-3); text-align: right; padding-top: 1.8pt;
+  font-weight: 600; font-size: 7pt; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; font-kerning: none;
+  color: var(--ink-3); text-align: right; padding-top: 2.6pt;
 }
 .r.key .l { color: var(--accent); }
 .r p { hyphens: manual; }
 
 /* evidence links: ink text + oxblood hairline underline (survives grayscale); linked titles get an arrow */
-a.u { font-size: 7.6pt; color: var(--accent); white-space: nowrap; }
+a.u { font-size: 8.2pt; color: var(--accent); white-space: nowrap; }
 a.ev { text-decoration: underline; text-decoration-color: var(--accent-soft); text-decoration-thickness: 0.55pt; text-underline-offset: 1.6pt; }
 a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font-size: 0.7em; color: var(--accent); padding-left: 0.18em; vertical-align: 0.3em; }
 
@@ -107,10 +107,10 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 .m { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .k { font-weight: 600; color: var(--ink); }
 .nw { white-space: nowrap; }
-.edu p + p { margin-top: 1pt; }
-.edu .head + p { margin-top: 1.5pt; }
+.edu p + p { margin-top: 4pt; }
+.edu .head + p { margin-top: 4pt; }
 
-.foot { position: absolute; left: 0.52in; right: 0.52in; bottom: 0.25in; font-size: 7.6pt; color: var(--ink-3); display: flex; justify-content: space-between; }
+.foot { position: absolute; left: 0.62in; right: 0.62in; bottom: 0.3in; font-size: 7.6pt; color: var(--ink-3); display: flex; justify-content: space-between; }
 </style>
 </head>
 <body>
@@ -139,9 +139,10 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
 <section class="hon">
   <h2>Honors &amp; Awards</h2>
   <div class="head">
-    <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/research/x-step/">IEEE-EMBS IECBES 2026 — Research Paper Accepted for Presentation</a> <span class="where"><span class="dot">·</span>Kuala Lumpur, Malaysia</span></div>
+    <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/research/x-step/">IEEE-EMBS IECBES 2026 — Research Paper Accepted for Presentation</a></div>
     <div class="date">Dec. 9–11, 2026</div>
   </div>
+  <p class="meta">Kuala Lumpur, Malaysia<span class="dot">·</span>2026 IEEE-EMBS Conference on Biomedical Engineering and Sciences</p>
   <p class="hl"><span class="m">Semifinalist</span>, Diamond Challenge 2026 (X-Step)<span class="dot">·</span><span class="m">Finalist</span>, <a class="ev" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">Texas High School Ideas Challenge</a>, Texas A&amp;M (X-Step, May 2026)<span class="dot">·</span><span class="m">1st</span>, TechLit Bridging the Gap Hackathon (<a class="ev" href="https://devpost.com/software/smartshop-gj4q59">ShopSmart</a>, Aug. 2025)<span class="dot">·</span><span class="m">Innovation Prize</span>, PeddieHacks (of 235 participants)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity <a class="u" href="https://www.deeptanshudevatha.com/projects/competitions/">deeptanshudevatha.com/projects/competitions</a></p>
 </section>
 
@@ -169,6 +170,19 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     </div>
   </div>
 
+</section>
+
+<div class="foot"><span>Underlined text and ↗ link to the paper, code, data or write-up behind each claim.</span><span>1 / 3</span></div>
+</div>
+
+<!-- ============================== PAGE 2 ============================== -->
+<div class="page">
+
+<div class="runhead"><b>DEEPTANSHU DEVATHA</b><span>deeptanshudevatha.com<span class="dot">·</span>github.com/ddevatha1</span></div>
+
+<section style="margin-top:14pt">
+  <h2>Research <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3)">(continued)</span></h2>
+
   <div class="entry">
     <div class="kicker">Paper 2 · Biomedical engineering / wearable sensing</div>
     <div class="head">
@@ -185,14 +199,6 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
     </div>
   </div>
 </section>
-
-<div class="foot"><span>Underlined text and ↗ link to the paper, code, data or write-up behind each claim.</span><span>1 / 2</span></div>
-</div>
-
-<!-- ============================== PAGE 2 ============================== -->
-<div class="page">
-
-<div class="runhead"><b>DEEPTANSHU DEVATHA</b><span>deeptanshudevatha.com<span class="dot">·</span>github.com/ddevatha1</span></div>
 
 <section>
   <h2>Projects &amp; Leadership</h2>
@@ -211,6 +217,19 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="r"><span class="l">Production</span><p>Debugged a Node.js setTimeout overflow in a 30-day location cache that stalled the event loop (≈1.5 s → 27 s searches) by capping the sweep interval; shipped by feature-flagging off unfinished meal planning, AI assistant, OCR and barcode scanning.</p></div>
     </div>
   </div>
+</section>
+
+<div class="foot"><span></span><span>2 / 3</span></div>
+</div>
+
+<!-- ====== PAGE 3 ====== -->
+<div class="page">
+
+<div class="runhead"><b>DEEPTANSHU DEVATHA</b><span>deeptanshudevatha.com<span class="dot">·</span>github.com/ddevatha1</span></div>
+
+<section style="margin-top:2pt">
+  <h2>Projects &amp; Leadership <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3)">(continued)</span></h2>
+
   <div class="entry">
     <div class="head">
       <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/kidcode/">KidCode</a> <span class="role">— Founder &amp; Lead Instructor</span> <span class="where"><span class="dot">·</span>Frisco, TX</span></div>
@@ -228,10 +247,10 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
   <div class="entry">
     <div class="kicker">X-Step startup · product built on IEEE-EMBS IECBES 2026 accepted research</div>
     <div class="head">
-      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/x-step/">X-Step</a> <span class="role">— Co-Founder &amp; ML/Mobile Lead</span> <span class="where"><span class="dot">·</span>student startup team<span class="dot">·</span>working prototype, no wearer data yet</span></div>
+      <div class="title"><a class="tl" href="https://www.deeptanshudevatha.com/projects/x-step/">X-Step</a> <span class="role">— Co-Founder &amp; ML/Mobile Lead</span> <span class="where"></span></div>
       <div class="date">Aug. 2025–Present</div>
     </div>
-    <p class="meta"><a class="u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></p>
+    <p class="meta">Student startup team<span class="dot">·</span>working prototype, no wearer data yet<span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></p>
     <div class="rows">
       <div class="r"><span class="l">Product</span><p>A plantar-pressure insole for people at risk of diabetic foot problems, built by the team: four FSR402 sensors per foot on an ESP32 at 25 Hz, streaming sequence-numbered 28-byte BLE frames to a React Native (Expo) app with live pressure, trends, alerts and a clinician view.</p></div>
       <div class="r key"><span class="l">My role</span><p>Wrote the React Native/Expo app (BLE client, live pressure heatmap, alerts, trends, guided routine; earlier Flask + LLM health-assistant backend) and trained two CNN prototypes on public data (heatmap postures, wound severity). Designed the ML pipeline that turns the stream into alerts: rolling 4 s windows → 59 pressure and gait features → 540-parameter logistic-regression head, fast enough to run between 40 ms samples.</p></div>
@@ -255,7 +274,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
       <div class="title">UT Dallas NLP with Python Workshop <span class="role">— Participant</span></div>
       <div class="date">Summer 2025</div>
     </div>
-    <p class="meta">Instructor: Dr. Chris Davis<span class="dot">·</span>Built a rule-based text simplifier: dependency parsing, lexical substitution, clause splitting, passive-to-active rewriting.</p>
+    <p class="meta">Dr. Chris Davis<span class="dot">·</span>Rule-based text simplifier: dependency parsing, lexical substitution, clause splitting, passive-to-active rewriting.</p>
   </div>
 </section>
 
@@ -268,7 +287,7 @@ a.tl::after { content: "\2197"; font-family: var(--sans); font-weight: 400; font
   </div>
 </section>
 
-<div class="foot"><span></span><span>2 / 2</span></div>
+<div class="foot"><span></span><span>3 / 3</span></div>
 </div>
 
 <script>
