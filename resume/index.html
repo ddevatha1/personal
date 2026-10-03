@@ -75,7 +75,7 @@
 
 	<article class="r-sheet" aria-label="Resume">
 
-<header class="r-head"><h1>Deeptanshu Devatha</h1><p class="r-contact">Frisco, TX · <a href="mailto:deeptanshu.devatha@gmail.com">deeptanshu.devatha@gmail.com</a> · <a href="https://www.deeptanshudevatha.com">deeptanshudevatha.com</a> · <a href="https://github.com/ddevatha1">github.com/ddevatha1</a></p></header>
+<header class="r-head"><h1>Deeptanshu Devatha</h1><p class="r-contact">Frisco, TX · deeptanshu.devatha@gmail.com · deeptanshudevatha.com · github.com/ddevatha1</p></header>
 
 <!-- ================= EDUCATION / ACADEMICS ================= -->
 <section class="r-sec">
@@ -85,7 +85,7 @@
     <p><b>GPA:</b> <b>4.00 UW / 5.361 W</b> · Rank <b>11/481</b> · ACT <b>36</b> · AP Scholar with Distinction</p>
     <p><b>AP exams:</b> <b>9 taken, a 5 on all 9</b> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
     <p><b>Coursework:</b> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
-    <p><b>Competitions:</b> Semifinalist, Diamond Challenge 2026 (X-Step) · Finalist, Texas High School Ideas Challenge at Texas A&amp;M (X-Step, May 2026) <a class="r-u" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">mcferrin.tamu.edu/program/texas-high-school-ideas-challenge</a> · <b>1st</b>, TechLit Bridging the Gap Hackathon (ShopSmart, Aug. 2025) · Innovation Prize, PeddieHacks (235 participants) · <b>3rd</b>, Hack4Humanity
+    <p><b>Honors:</b> IEEE-EMBS IECBES 2026 paper accepted for presentation  ·  X-Step startup: Conrad Innovator 2025–2026 — Health &amp; Nutrition; Texas A&amp;M McFerrin Center for Entrepreneurship Texas Ideas Challenge — Top 40 Finalist; Diamond Challenge 2026 — Semifinalist  ·  ShopAI (as ShopSmart): TechLit Bridging the Gap Hackathon — 1st Place (Aug. 2025); PeddieHacks — Best Innovation Award, 1st/250 (Aug. 2025); Hack4Humanity — 3rd Place, 3/500 (Oct. 2025); AsterHacks — 5th Place, 5/250 (Oct. 2025)</p>
   </div>
 </section>
 
@@ -95,22 +95,22 @@
 
   <div class="r-entry">
     <div class="r-line"><span class="r-t">Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features — First Author</span><span class="r-d">May 2025–Present</span></div>
-    <p class="r-sub">Mentor: Joe Xiao (PhD student) · <b>Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</b> · Preprint <a class="r-u" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medrxiv.org/content/10.64898/2026.08.04.26359730v1</a></p>
+    <p class="r-sub">Mentor: Joe Xiao (PhD student) · <b>Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</b> · Preprint <span class="r-u">medrxiv.org/content/10.64898/2026.08.04.26359730v1</span></p>
     <ul>
       <li><b>Question:</b> can a patient's speech across clinic visits forecast their next Mini-Mental State Exam (MMSE) score? Framed as supervised regression on the DementiaBank Pitt Corpus (<b>173</b> longitudinal samples, <b>126</b> patients) using only earlier visits.</li>
       <li><b>Representation:</b> to capture how discourse organization changes with decline, extracted 12 per-visit linguistic features (POS fragment ratio, named-entity rate, 50-token MATTR, filler rate, perseveration) and Sentence-BERT coherence features (adjacent-sentence cosine similarity, global coherence, semantic slope, topic drift, embedding variance), plus visit-to-visit Δ features.</li>
       <li><b>Model:</b> reduced 384-d SBERT embeddings to 20 PCA components, added 9 clinical/demographic covariates (53 dimensions), and tuned LightGBM with Optuna/TPE over 200 trials (RobustScaler, correlation pruning, permutation-importance selection).</li>
-      <li><b>Evaluation:</b> found patient-level leakage (one patient on both sides of a split) and rebuilt evaluation with patient-grouped 5-fold GroupKFold, augmented copies kept in their patient's fold, original samples only scored: <b>R² 0.840 ± 0.015</b>, <b>RMSE 2.75</b>, <b>MAE 2.02</b> MMSE points. Ablation: clinical history carries most of the signal (clinical-only <b>R² 0.72</b>, SBERT-only <b>0.46</b>, linguistic-only <b>0.12</b>); speech adds a smaller gain (<b>0.76</b> combined); non-nested tuning is disclosed as an optimism limit. Code <a class="r-u" href="https://github.com/ddevatha1/dementia-mmse-prediction">github.com/ddevatha1/dementia-mmse-prediction</a></li>
+      <li><b>Evaluation:</b> found patient-level leakage (one patient on both sides of a split) and rebuilt evaluation with patient-grouped 5-fold GroupKFold, augmented copies kept in their patient's fold, original samples only scored: <b>R² 0.840 ± 0.015</b>, <b>RMSE 2.75</b>, <b>MAE 2.02</b> MMSE points. Ablation: clinical history carries most of the signal (clinical-only <b>R² 0.72</b>, SBERT-only <b>0.46</b>, linguistic-only <b>0.12</b>); speech adds a smaller gain (<b>0.76</b> combined); non-nested tuning is disclosed as an optimism limit. Code <span class="r-u">github.com/ddevatha1/dementia-mmse-prediction</span></li>
     </ul>
   </div>
 
   <div class="r-entry">
     <p class="r-acc"><b>Accepted for Presentation — IEEE-EMBS IECBES 2026</b> · Kuala Lumpur, Dec. 9–11, 2026</p>
     <div class="r-line"><span class="r-t">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking — 2nd of 5 Authors, ML Lead</span><span class="r-d">Jul. 2026–Present</span></div>
-    <p class="r-sub">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="r-u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a> · <a class="r-u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
+    <p class="r-sub">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <span class="r-u">aiea-lab.github.io</span> · <span class="r-u">deeptanshudevatha.com/research/x-step</span></p>
     <ul>
-      <li><b>Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can the team’s existing four-site insole legitimately measure? The paper treats X-Step as a measurement instrument, not a clinical classifier. I did not design the hardware; starting from its pressure readings I built the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression head.</li>
-      <li>Designed the sparse-vs-dense study (<b>149 recordings</b>, <b>15 adults</b>, public 32-cell insole): four sites keep waveform shape (<b>median r = 0.72–0.99</b>) but not magnitude (<b>peak-to-peak r = 0.43–0.74</b>); center-of-pressure tracking keeps anteroposterior motion (<b>r = 0.81</b>) but loses mediolateral (<b>r = 0.01</b>).</li>
+      <li><b>Question:</b> can <b>four strategically placed sensing sites</b> capture regional pressure trends comparable to a <b>32-sensor insole</b>? I engineered the machine-learning component: a 59-feature representation of the team’s four-site plantar-pressure readings (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression framework that classifies biomechanical risk.</li>
+      <li>Designed the correlation study (<b>149 recordings</b>, <b>15 adults</b>, public 32-cell insole): four sites keep waveform shape (<b>median r = 0.72–0.99</b>) but not magnitude (<b>peak-to-peak r = 0.43–0.74</b>); center-of-pressure tracking keeps anteroposterior motion (<b>r = 0.81</b>) but loses mediolateral (<b>r = 0.01</b>).</li>
       <li>Quantified subject-identity leakage on a synthetic 24-subject cohort (<b>macro-F1 0.885</b> subject-grouped vs <b>0.931</b> ungrouped) and documented the generalization limit.</li>
     </ul>
   </div>
@@ -119,30 +119,30 @@
 <section class="r-sec">
   <h2>Projects &amp; Leadership</h2>
 <div class="r-entry">
-    <div class="r-line"><span class="r-t">ShopAI — Creator &amp; Sole Developer</span><span class="r-d">2025–Present</span></div>
+    <div class="r-line"><span class="r-t">ShopAI — Creator &amp; Sole Developer <span class="where"> · renamed from ShopSmart; extends its core idea</span></span><span class="r-d">2025–Present</span></div>
     <ul>
-      <li>Prices differ by store and no retailer offers an API built for comparison, so ShopAI searches nine chains at once and plans the trip. Built end to end: React Native/Expo client and an Express/TypeScript backend on AWS EC2 behind Nginx, with adapters that turn unlike sources (OAuth2 REST, cookie-session GraphQL, Playwright, server-rendered HTML) into one product schema. Live on the App Store. <a class="r-u" href="https://apps.apple.com/app/shopai/id6797083809">apps.apple.com/app/shopai/id6797083809</a></li>
-      <li>Concurrent fan-out search under a shared response budget with per-store failure states, query-correction/relevance/ranking, and a per-ZIP auth warm-up state machine. A deterministic planner enumerates all <b>127</b> non-empty subsets of the 7 live-data stores (exhaustive search is cheap, so no heuristic) for cheapest, fastest, fewest-stop and weighted plans, with <b>zero</b> LLM calls. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/shopai/">deeptanshudevatha.com/projects/shopai</a></li>
+      <li>Prices differ by store and no retailer offers an API built for comparison, so ShopAI searches nine chains at once and plans the trip. Built end to end: React Native/Expo client and an Express/TypeScript backend on AWS EC2 behind Nginx, with adapters that turn unlike sources (OAuth2 REST, cookie-session GraphQL, Playwright, server-rendered HTML) into one product schema. Live on the App Store. <span class="r-u">apps.apple.com/app/shopai/id6797083809</span></li>
+      <li>Concurrent fan-out search under a shared response budget with per-store failure states, query-correction/relevance/ranking, and a per-ZIP auth warm-up state machine. A deterministic planner enumerates all <b>127</b> non-empty subsets of the 7 live-data stores (exhaustive search is cheap, so no heuristic) for cheapest, fastest, fewest-stop and weighted plans, with <b>zero</b> LLM calls. <span class="r-u">deeptanshudevatha.com/projects/shopai</span></li>
     </ul>
   </div>
 <div class="r-entry">
     <div class="r-line"><span class="r-t">KidCode — Founder &amp; Lead Instructor <span class="where"> · Frisco, TX</span></span><span class="r-d">2024–Present</span></div>
     <ul>
-      <li>Founded a 3-year Python workshop serving <b>124 students</b> across 10 Frisco neighborhoods; recruited peers to help teach. Wrote the <b>120-class-day</b>, <b>20-project</b> curriculum: control flow, file I/O, JSON, exceptions, OOP/inheritance and assert-based tests, then spaCy NLP (tokenization, lemmatization, POS tagging, sentence segmentation, NER, Matcher patterns, a rule-based chatbot). <a class="r-u" href="https://www.deeptanshudevatha.com/projects/kidcode/">deeptanshudevatha.com/projects/kidcode</a></li>
-      <li>To test learning, wrote 13 pre/post assessment pairs (same skills, different code): across <b>104</b> students the mean score rose <b>41.7% → 58.8%</b> (<b>+17.1 pp</b>; <b>99</b> improved, 4 unchanged, 1 declined; no comparison group). Students completed <b>1,214</b> working programs, <b>572</b> using spaCy. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/kidcode/assessment/">deeptanshudevatha.com/projects/kidcode/assessment</a></li>
+      <li>Founded a 3-year Python workshop serving <b>124 students</b> across 10 Frisco neighborhoods; recruited peers to help teach. Wrote the curriculum, <b>120 one-hour classes</b> (5 per week for 8 weeks each summer) and <b>20 projects</b>: control flow, file I/O, JSON, exceptions, OOP/inheritance and assert-based tests, then spaCy NLP (tokenization, lemmatization, POS tagging, sentence segmentation, NER, Matcher patterns, a rule-based chatbot). <span class="r-u">deeptanshudevatha.com/projects/kidcode</span></li>
+      <li>To test learning, wrote 13 pre/post assessment pairs (same skills, different code): across <b>104</b> students the mean score rose <b>41.7% → 58.8%</b> (<b>+17.1 pp</b>; <b>99</b> improved, 4 unchanged, 1 declined; no comparison group). Students completed <b>1,214</b> working programs, <b>572</b> using spaCy. <span class="r-u">deeptanshudevatha.com/projects/kidcode/assessment</span></li>
     </ul>
   </div>
 <div class="r-entry">
     <div class="r-line"><span class="r-t">X-Step — Co-Founder, ML &amp; Mobile Lead</span><span class="r-d">Aug. 2025–Present</span></div>
     <ul>
-      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
+      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <span class="r-u">deeptanshudevatha.com/projects/x-step</span></li>
       <li>Trained two CNN prototypes on public data: EfficientNet-B2 on 9 foot-pressure heatmap postures (<b>98.3%</b>, random 80/20 split) and ResNet-50 on four wound-severity grades. Intended flow: an ulcer photo's severity score plus care habits go to an LLM that drafts routines. Bench-stage prototype; no wearer data, no clinical validation.</li>
     </ul>
   </div>
 <div class="r-entry">
-    <div class="r-line"><span class="r-t">Ayusha Nilayam — Programming &amp; Math Instructor <span class="where"> · Hyderabad, India (remote)</span></span><span class="r-d">Nov. 2025–Jul. 2026</span></div>
+    <div class="r-line"><span class="r-t">Ayusha Nilayam — Programming &amp; Math Instructor <span class="where"> · Hyderabad, India</span></span><span class="r-d">Nov. 2025–Jul. 2026</span></div>
     <ul>
-      <li>Taught <b>38</b> weekly Zoom sessions of Python and math to <b>11</b> children at a Hyderabad children's home, adapting to one shared laptop, unreliable internet and a Telugu–English language gap; then two weeks in person. <a class="r-u" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">deeptanshudevatha.com/projects/ayusha-nilayam</a></li>
+      <li>Taught <b>38</b> weekly Zoom sessions of Python and math to <b>11</b> children at the Ayusha Nilayam orphanage in the Alwal/Kompally area of Hyderabad, adapting to one shared laptop, unreliable internet and a Telugu–English language gap; then two weeks in person. <span class="r-u">deeptanshudevatha.com/projects/ayusha-nilayam</span></li>
     </ul>
   </div><div class="r-entry">
     <div class="r-line"><span class="r-t">UT Dallas NLP with Python Workshop — Participant</span><span class="r-d">Summer 2025</span></div>

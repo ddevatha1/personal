@@ -23,7 +23,7 @@
   --sans: "RS Sans", "Helvetica Neue", Arial, sans-serif;
   --serif: "RS Serif", Georgia, serif;
   --body: 8.45pt;
-  --lead: 1.14;
+  --lead: 1.12;
 }
 
 @page { size: 8.5in 11in; margin: 0; }
@@ -73,8 +73,9 @@ h2 + .entry { margin-top: 0; }
 .meta { font-size: 8.3pt; color: var(--ink-2); margin-top: 0.3pt; }
 .meta b { font-weight: 600; color: var(--ink); }
 
-/* explicit URLs: the address itself is printed (and clickable), in a smaller face so it never crowds the sentence */
-a.u { font-size: 7.4pt; color: var(--accent); letter-spacing: 0.005em; white-space: nowrap; }
+/* explicit URLs: the address itself is printed , in a smaller face so it never crowds the sentence */
+a[href^="http"]::after { content: ""; display: inline-block; width: 0.75em; height: 0.75em; margin-left: 0.25em; vertical-align: -0.04em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%237a2230' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 2.5H2.5v7h7V7'/%3E%3Cpath d='M7 1.5h3.5V5M10.5 1.5L5.5 6.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.u { font-size: 7.4pt; color: var(--ink-2); letter-spacing: 0.005em; white-space: nowrap; }
 
 ul { margin: 1pt 0 0; padding: 0 0 0 10pt; list-style: none; }
 li { position: relative; margin: 0 0 0.45pt; }
@@ -107,7 +108,7 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
     <p class="stats"><span class="k">GPA:</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/481</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>AP Scholar with Distinction</p>
     <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
     <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
-    <p><span class="k">Competitions:</span> Semifinalist, Diamond Challenge 2026 (X-Step)<span class="dot">·</span>Finalist, Texas High School Ideas Challenge at Texas A&amp;M (X-Step, May 2026) <a class="u" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge/">mcferrin.tamu.edu/program/texas-high-school-ideas-challenge</a><span class="dot">·</span><span class="m">1st</span>, TechLit Bridging the Gap Hackathon (ShopSmart, Aug. 2025)<span class="dot">·</span>Innovation Prize, PeddieHacks (235 participants)<span class="dot">·</span><span class="m">3rd</span>, Hack4Humanity
+    <p><span class="k">Honors:</span> IEEE-EMBS IECBES 2026 paper accepted for presentation <span class="dot">·</span> X-Step startup: Conrad Innovator 2025–2026 — Health &amp; Nutrition; Texas A&amp;M McFerrin Center for Entrepreneurship Texas Ideas Challenge — Top 40 Finalist; Diamond Challenge 2026 — Semifinalist <span class="dot">·</span> ShopAI (as ShopSmart): TechLit Bridging the Gap Hackathon — 1st Place (Aug. 2025); PeddieHacks — Best Innovation Award, 1st/250 (Aug. 2025); Hack4Humanity — 3rd Place, 3/500 (Oct. 2025); AsterHacks — 5th Place, 5/250 (Oct. 2025)</p>
   </div>
 </section>
 
@@ -120,7 +121,7 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
       <div class="title">Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features <span class="role">— First Author</span></div>
       <div class="date">May 2025–Present</div>
     </div>
-    <p class="meta">Mentor: Joe Xiao (PhD student)<span class="dot">·</span><b>Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</b><span class="dot">·</span>Preprint <a class="u" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medrxiv.org/content/10.64898/2026.08.04.26359730v1</a></p>
+    <p class="meta">Mentor: Joe Xiao (PhD student)<span class="dot">·</span><b>Under peer review, Frontiers in Aging Neuroscience — submitted August 04, 2026</b><span class="dot">·</span>Preprint <a class="u" href="https://medrxiv.org/content/10.64898/2026.08.04.26359730v1">medrxiv.org/content/10.64898/2026.08.04.26359730v1</a></p>
     <ul>
       <li><b class="k">Question:</b> can a patient's speech across clinic visits forecast their next Mini-Mental State Exam (MMSE) score? Framed as supervised regression on the DementiaBank Pitt Corpus (<span class="m">173</span> longitudinal samples, <span class="m">126</span> patients) using only earlier visits.</li>
       <li><b class="k">Representation:</b> to capture how discourse organization changes with decline, extracted 12 per-visit linguistic features (POS fragment ratio, named-entity rate, 50-token MATTR, filler rate, perseveration) and Sentence-BERT coherence features (adjacent-sentence cosine similarity, global coherence, semantic slope, topic drift, embedding variance), plus visit-to-visit Δ features.</li>
@@ -135,10 +136,10 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
       <div class="title">A Four-Site Plantar-Pressure Insole: Transducer Error Budget, Feature Equivariance, and Sparse-Versus-Dense Agreement in Overground Walking <span class="role">— 2nd of 5 Authors, ML Lead</span></div>
       <div class="date">Jul. 2026–Present</div>
     </div>
-    <p class="meta">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a><span class="dot">·</span><a class="u" href="https://www.deeptanshudevatha.com/research/x-step/">deeptanshudevatha.com/research/x-step</a></p>
+    <p class="meta">UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin) <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a><span class="dot">·</span><a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></p>
     <ul>
-      <li><b class="k">Question:</b> dense in-shoe pressure arrays are costly and lab-bound; what can the team’s existing four-site insole legitimately measure? The paper treats X-Step as a measurement instrument, not a clinical classifier. I did not design the hardware; starting from its pressure readings I built the 59-feature representation (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression head.</li>
-      <li>Designed the sparse-vs-dense study (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, public 32-cell insole): four sites keep waveform shape (<span class="m">median r = 0.72–0.99</span>) but not magnitude (<span class="m">peak-to-peak r = 0.43–0.74</span>); center-of-pressure tracking keeps anteroposterior motion (<span class="m">r = 0.81</span>) but loses mediolateral (<span class="m">r = 0.01</span>).</li>
+      <li><b class="k">Question:</b> can <span class="k">four strategically placed sensing sites</span> capture regional pressure trends comparable to a <span class="k">32-sensor insole</span>? I engineered the machine-learning component: a 59-feature representation of the team’s four-site plantar-pressure readings (per-site peak/mean/CV, pressure–time integral, cadence, stance ratio, anterior load share) and a 540-parameter logistic-regression framework that classifies biomechanical risk.</li>
+      <li>Designed the correlation study (<span class="m">149 recordings</span>, <span class="m">15 adults</span>, public 32-cell insole): four sites keep waveform shape (<span class="m">median r = 0.72–0.99</span>) but not magnitude (<span class="m">peak-to-peak r = 0.43–0.74</span>); center-of-pressure tracking keeps anteroposterior motion (<span class="m">r = 0.81</span>) but loses mediolateral (<span class="m">r = 0.01</span>).</li>
       <li>Quantified subject-identity leakage on a synthetic 24-subject cohort (<span class="m">macro-F1 0.885</span> subject-grouped vs <span class="m">0.931</span> ungrouped) and documented the generalization limit.</li>
     </ul>
   </div>
@@ -148,12 +149,12 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
   <h2>Projects &amp; Leadership</h2>
 <div class="entry major">
     <div class="head">
-      <div class="title">ShopAI <span class="role">— Creator &amp; Sole Developer</span></div>
+      <div class="title">ShopAI <span class="role">— Creator &amp; Sole Developer</span> <span class="where"><span class="dot">·</span>renamed from ShopSmart; extends its core idea</span></div>
       <div class="date">2025–Present</div>
     </div>
     <ul>
       <li>Prices differ by store and no retailer offers an API built for comparison, so ShopAI searches nine chains at once and plans the trip. Built end to end: React Native/Expo client and an Express/TypeScript backend on AWS EC2 behind Nginx, with adapters that turn unlike sources (OAuth2 REST, cookie-session GraphQL, Playwright, server-rendered HTML) into one product schema. Live on the App Store. <a class="u" href="https://apps.apple.com/app/shopai/id6797083809">apps.apple.com/app/shopai/id6797083809</a></li>
-      <li>Concurrent fan-out search under a shared response budget with per-store failure states, query-correction/relevance/ranking, and a per-ZIP auth warm-up state machine. A deterministic planner enumerates all <span class="m">127</span> non-empty subsets of the 7 live-data stores (exhaustive search is cheap, so no heuristic) for cheapest, fastest, fewest-stop and weighted plans, with <span class="m">zero</span> LLM calls. <a class="u" href="https://www.deeptanshudevatha.com/projects/shopai/">deeptanshudevatha.com/projects/shopai</a></li>
+      <li>Concurrent fan-out search under a shared response budget with per-store failure states, query-correction/relevance/ranking, and a per-ZIP auth warm-up state machine. A deterministic planner enumerates all <span class="m">127</span> non-empty subsets of the 7 live-data stores (exhaustive search is cheap, so no heuristic) for cheapest, fastest, fewest-stop and weighted plans, with <span class="m">zero</span> LLM calls. <a class="u" href="https://deeptanshudevatha.com/projects/shopai">deeptanshudevatha.com/projects/shopai</a></li>
     </ul>
   </div>
 <div class="entry major">
@@ -162,8 +163,8 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
       <div class="date">2024–Present</div>
     </div>
     <ul>
-      <li>Founded a 3-year Python workshop serving <span class="m">124 students</span> across 10 Frisco neighborhoods; recruited peers to help teach. Wrote the <span class="m">120-class-day</span>, <span class="m">20-project</span> curriculum: control flow, file I/O, JSON, exceptions, OOP/inheritance and assert-based tests, then spaCy NLP (tokenization, lemmatization, POS tagging, sentence segmentation, NER, Matcher patterns, a rule-based chatbot). <a class="u" href="https://www.deeptanshudevatha.com/projects/kidcode/">deeptanshudevatha.com/projects/kidcode</a></li>
-      <li>To test learning, wrote 13 pre/post assessment pairs (same skills, different code): across <span class="m">104</span> students the mean score rose <span class="m">41.7% → 58.8%</span> (<span class="m">+17.1 pp</span>; <span class="m">99</span> improved, 4 unchanged, 1 declined; no comparison group). Students completed <span class="m">1,214</span> working programs, <span class="m">572</span> using spaCy. <a class="u" href="https://www.deeptanshudevatha.com/projects/kidcode/assessment/">deeptanshudevatha.com/projects/kidcode/assessment</a></li>
+      <li>Founded a 3-year Python workshop serving <span class="m">124 students</span> across 10 Frisco neighborhoods; recruited peers to help teach. Wrote the curriculum, <span class="m">120 one-hour classes</span> (5/week, 8 weeks each summer) and <span class="m">20 projects</span>: control flow, file I/O, JSON, exceptions, OOP/inheritance and assert-based tests, then spaCy NLP (tokenization, lemmatization, POS tagging, sentence segmentation, NER, Matcher patterns, a rule-based chatbot). <a class="u" href="https://deeptanshudevatha.com/projects/kidcode">deeptanshudevatha.com/projects/kidcode</a></li>
+      <li>To test learning, wrote 13 pre/post assessment pairs (same skills, different code): across <span class="m">104</span> students the mean score rose <span class="m">41.7% → 58.8%</span> (<span class="m">+17.1 pp</span>; <span class="m">99</span> improved, 4 unchanged, 1 declined; no comparison group). Students completed <span class="m">1,214</span> working programs, <span class="m">572</span> using spaCy. <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/assessment">deeptanshudevatha.com/projects/kidcode/assessment</a></li>
     </ul>
   </div>
 <div class="entry major">
@@ -172,17 +173,17 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
       <div class="date">Aug. 2025–Present</div>
     </div>
     <ul>
-      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="u" href="https://www.deeptanshudevatha.com/projects/x-step/">deeptanshudevatha.com/projects/x-step</a></li>
+      <li>X-Step is a student startup building a smart insole for people at risk of diabetic foot ulcers, which form where pressure builds up unnoticed. The team's ESP32 insole streams four pressure sensors over BLE; I wrote the software: the React Native/Expo app (BLE client, live pressure heatmap, daily risk score, alerts, trends, guided routine) and the earlier Flask/SQLite + LLM health-assistant backend. <a class="u" href="https://deeptanshudevatha.com/projects/x-step">deeptanshudevatha.com/projects/x-step</a></li>
       <li>Trained two CNN prototypes on public data: EfficientNet-B2 on 9 foot-pressure heatmap postures (<span class="m">98.3%</span>, random 80/20 split) and ResNet-50 on four wound-severity grades. Intended flow: an ulcer photo's severity score plus care habits go to an LLM that drafts routines. Bench-stage prototype; no wearer data, no clinical validation.</li>
     </ul>
   </div>
 <div class="entry">
     <div class="head">
-      <div class="title">Ayusha Nilayam <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India (remote)</span></div>
+      <div class="title">Ayusha Nilayam <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India</span></div>
       <div class="date">Nov. 2025–Jul. 2026</div>
     </div>
     <ul>
-      <li>Taught <span class="m">38</span> weekly Zoom sessions of Python and math to <span class="m">11</span> children at a Hyderabad children's home, adapting to one shared laptop, unreliable internet and a Telugu–English language gap; then two weeks in person. <a class="u" href="https://www.deeptanshudevatha.com/projects/ayusha-nilayam/">deeptanshudevatha.com/projects/ayusha-nilayam</a></li>
+      <li>Taught <span class="m">38</span> weekly Zoom sessions of Python and math to <span class="m">11</span> children at the Ayusha Nilayam orphanage in the Alwal/Kompally area of Hyderabad, adapting to one shared laptop, unreliable internet and a Telugu–English language gap; then two weeks in person. <a class="u" href="https://deeptanshudevatha.com/projects/ayusha-nilayam">deeptanshudevatha.com/projects/ayusha-nilayam</a></li>
     </ul>
   </div>  <div class="entry">
     <div class="head"><div class="title">UT Dallas NLP with Python Workshop <span class="role">— Participant</span></div><div class="date">Summer 2025</div></div>
@@ -193,8 +194,8 @@ li::before { content: ""; position: absolute; left: -7.5pt; top: 0.47em; width: 
 <!-- ================= SKILLS ================= -->
 <section class="skills">
   <h2>Technical Skills</h2>
-  <p><span class="k">ML/NLP:</span> LightGBM, scikit-learn, Optuna, Sentence-BERT, spaCy, PyTorch, PCA, GroupKFold, permutation importance<span class="dot">·</span><span class="k">Languages:</span> Python, TypeScript/JavaScript, Java, SQL</p>
-  <p><span class="k">Systems:</span> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx</p>
+  <p><span class="k">ML/NLP:</span> LightGBM, scikit-learn, Optuna, Sentence-BERT, spaCy, PyTorch, PCA, GroupKFold, permutation importance<span class="dot">·</span><span class="k">Languages:</span> Python, Java, TypeScript/JavaScript, SQL</p>
+  <p><span class="k">Technologies:</span> React Native/Expo, Node.js/Express, Flask, REST, GraphQL, OAuth2, Playwright, AWS EC2, Nginx</p>
 </section>
 
 </div>
