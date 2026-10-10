@@ -684,6 +684,39 @@
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
 
 					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-10-09" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-27').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2026</span></div>
+						<h3>Auditing My Own Pipeline: What a Baseline and a Nested Rerun Showed</h3>
+						<p>
+							Went back to the paper's limitations list and ran the checks I could: a do-nothing baseline, a nested rerun of the paper's protocol, and a hunt for data bugs. One bug turned up.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-10-09" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-28').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2026</span></div>
+						<h3>Does Speech Add Anything Beyond the Last MMSE?</h3>
+						<p>
+							A pre-planned comparison of models with and without speech, with intervals that resample patients. The honest answer on this data is: nothing I can detect.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-10-09" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-29').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2026</span></div>
+						<h3>External Validation: What Is Missing and What Is Ready</h3>
+						<p>
+							I looked for an independent cohort to test the model on. I didn't find one I can use today, so this post is a plan, not a result.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
+
+					<!-- DM:CARD -->
 					<article class="blog-card reveal" data-category="research" data-sortdate="2026-09-26" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-26').classList.add('open')">
 						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">September 2026</span></div>
 						<h3>Where the Paper Stands</h3>
@@ -3987,6 +4020,76 @@
 					<p>
 						The limitations section is effectively a list of the next experiments. Refitting feature selection and tuning inside nested folds would show how much of the cross-validated score depends on those choices. A simple baseline, such as linear regression on the clinical features alone, would show how much the full pipeline adds over the obvious approach. And the question that matters most can't be answered with this dataset: whether the model holds up on a different cohort of patients, recorded differently. That needs a longitudinal speech dataset I don't have access to yet.
 					</p>
+
+					</div>
+				</div>
+
+				<!-- Auditing My Own Pipeline: What a Baseline and a Nested Rerun Showed -->
+				<div class="modal-overlay" id="modal-dementia-27" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-27-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-27').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-27-title">Auditing My Own Pipeline: What a Baseline and a Nested Rerun Showed</h1>
+						<div class="post-meta">
+							<span>October 9, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>The limitations section of the paper is effectively a to-do list, so in October I started working through it. A caveat first: the raw Pitt transcripts and clinical spreadsheet weren't on the machine I was using, only the derived per-visit files. That means I couldn't regenerate the paper's 0.840, and I couldn't rebuild its exact 53 features. What I could do is test the paper's <em>question</em> on a simpler version of the same data. I'll say "simpler representation" whenever a number below comes from that.</p>
+<h2>A baseline that needs no model</h2>
+<p>The simplest forecast of a patient's next MMSE is their last MMSE. On the same 173 samples that "persistence" forecast scores R² 0.686 and an average error of 2.4 points. I'd listed a baseline like this as future work in the paper; seeing it makes the 0.840 easier to read, because most of the score is the previous MMSE showing through.</p>
+<h2>Nested versus all-at-once</h2>
+<p>The paper selects features and tunes hyperparameters using every patient, then cross-validates. Because those choices depend on the labels, that can flatter the score. I re-implemented the protocol on the simpler features and ran it both ways. Doing everything on all patients gave R² 0.768; redoing every step inside each training fold gave 0.742. The gap is +0.025, but its 95% interval (−0.004 to +0.052) includes zero, so I read it as "probably a bit optimistic, size uncertain", not as a measured correction to the paper.</p>
+<h2>A bug I didn't know about</h2>
+<p>In the file I'd used to train the LSTM, all 173 samples had exactly the same speech features. The data-prep script failed to parse numpy-formatted arrays and silently carried on, and it also used per-patient visit positions as if they were row numbers in the whole table. The LightGBM model builds its features another way and isn't affected, and I can't yet say which version of the file the paper's LSTM comparison used. The loader I wrote for the follow-up refuses to run if the patient, date or MMSE don't line up, and there are tests for both failures.</p>
+<p>The paper's numbers are unchanged. These are notes about how far to trust them. The full list, with severity and what was already disclosed, is in the <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/AUDIT.md" target="_blank" rel="noopener">audit</a>.</p>
+
+					</div>
+				</div>
+
+				<!-- Does Speech Add Anything Beyond the Last MMSE? -->
+				<div class="modal-overlay" id="modal-dementia-28" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-28-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-28').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-28-title">Does Speech Add Anything Beyond the Last MMSE?</h1>
+						<div class="post-meta">
+							<span>October 9, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>This is the question the whole project turns on. If you already know a patient's last MMSE, does their speech tell you anything more about the next one?</p>
+<h2>Setup</h2>
+<p>I wrote the comparison down before running it. Models: persistence, ridge regression and LightGBM, each on MMSE history alone and on history plus speech (handcrafted discourse features and a Sentence-BERT summary). Cross-validation was patient-grouped and repeated 20 times; scaling, PCA and the ridge penalty were fitted only on training folds; the LightGBM settings were fixed beforehand, so nothing was tuned on test data; and confidence intervals come from resampling patients, because a patient's visits aren't independent.</p>
+<h2>What came out</h2>
+<p>Adding speech to the ridge model moved the average error by −0.008 MMSE points (95% CI −0.157 to +0.132). With LightGBM it got slightly worse. Speech alone predicted MMSE reasonably (R² 0.41), but the information was already there once the last MMSE was known. Predicting the <em>change</em> in MMSE was hard for every model.</p>
+<h2>How to read it</h2>
+<p>This isn't proof that speech is uninformative. With 126 patients I can only rule out improvements bigger than about 0.15 points, and my "clinical" baseline was just MMSE history, thinner than the paper's. What it does say is that the paper's speech increment (0.716 to 0.759 in the ablation) shouldn't be treated as established, which is where the paper already sits ("directional evidence"). A null I can defend is more useful to me than a positive I can't. Details are on the <a href="/research/speech-cognition/#extension">research page</a>.</p>
+
+					</div>
+				</div>
+
+				<!-- External Validation: What Is Missing and What Is Ready -->
+				<div class="modal-overlay" id="modal-dementia-29" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-29-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-29').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-29-title">External Validation: What Is Missing and What Is Ready</h1>
+						<div class="post-meta">
+							<span>October 9, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p><b>Status: pending.</b> No external validation has been run. This post is about why, and what is prepared.</p>
+<h2>What counts</h2>
+<p>The paper forecasts a <em>later</em> MMSE from <em>earlier</em> speech. Testing that on a new cohort needs participants with speech at one visit and MMSE at a later one. Classifying dementia versus control on a new dataset, however well it works, is a different task and wouldn't validate this one.</p>
+<h2>What I found</h2>
+<p>ADReSS and ADReSSo are built from the Pitt corpus I trained on, so they're not independent. Delaware, Lu and TAUKADIAL look like single-session collections (I couldn't confirm follow-up visits from public documentation), so at best they'd support a cross-sectional experiment that I'd have to name as such. The Wisconsin Longitudinal Study is longitudinal but doesn't use the MMSE. All require DementiaBank membership, and a student has to be sponsored by a faculty member, so the next step isn't mine alone: it's a conversation with my mentor.</p>
+<h2>What is ready</h2>
+<p>A <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/EXTERNAL_VALIDATION_PROTOCOL.md" target="_blank" rel="noopener">protocol</a> written before touching any outside data: the model is frozen, the main comparison is paired and uses patient-level intervals, and the rules for calling it a success, a failure or inconclusive are fixed in advance. Given the previous post, inconclusive is the most likely outcome, and that would be fine to report. The full <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/DATASET_FEASIBILITY.md" target="_blank" rel="noopener">dataset report</a> lists sources and what I couldn't verify.</p>
 
 					</div>
 				</div>

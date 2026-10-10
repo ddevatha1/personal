@@ -49,7 +49,8 @@
 			<ul class="s-links">
 				<li><a class="s-primary" href="https://www.medrxiv.org/content/10.64898/2026.08.04.26359730v1">medRxiv preprint</a></li>
 				<li><a href="https://github.com/ddevatha1/dementia-mmse-prediction">Code</a></li>
-				<li><a href="#log">Research log (26 posts)</a></li>
+				<li><a href="#extension">Follow-up audit (Oct 2026)</a></li>
+				<li><a href="#log">Research log (29 posts)</a></li>
 			</ul>
 		</div>
 	</header>
@@ -69,6 +70,7 @@
 				<li><a href="#evaluation">Evaluation and leakage</a></li>
 				<li><a href="#results">Results</a></li>
 				<li><a href="#ablation">Ablation</a></li>
+				<li><a href="#extension">Follow-up audit</a></li>
 				<li><a href="#limitations">Limitations</a></li>
 				<li><a href="#log">Research log</a></li>
 			</ol>
@@ -190,13 +192,63 @@
 				<p>Clinical history is the strongest single source by a wide margin. SBERT embeddings carry far more signal than the handcrafted linguistic features, and combining the two speech sources doesn't beat SBERT alone. Adding SBERT to the clinical features gives the best subset (0.759 against 0.716), but the standard deviations overlap, so this is directional evidence of complementary signal, not a demonstrated gain. Removing the visit-to-visit change features changed nothing (0.740 both ways). A January 2026 conclusion that depended on them did not survive this controlled rerun (<a href="/#modal-dementia-24">write-up</a>).</p>
 			</section>
 
+			<section class="s-block" id="extension">
+				<h2 class="s-h2">Follow-up audit (October 2026)</h2>
+				<p><span class="s-status">In-cohort analysis complete · External validation pending</span></p>
+				<p>The limitations above are really a list of experiments. In October 2026 I ran the ones that the existing data allow, and tried to find an independent cohort for the one they don't. Everything in this section is <b>new work, separate from the submitted paper</b>; the paper's numbers are unchanged.</p>
+				<div class="s-callout">
+					<p><b>Important caveat.</b> The raw Pitt transcripts and clinical spreadsheet were not available for this follow-up, only derived per-visit features. So these analyses use a <em>simpler representation</em> than the paper (five informative handcrafted discourse features plus a 384-dimensional Sentence-BERT vector, and "clinical" means MMSE history and visit timing only, not CDR, Blessed or diagnosis). They test the paper's <em>question</em>, not its exact model, and they can neither confirm nor refute 0.840.</p>
+				</div>
+
+				<h3 class="s-h3">1. How much does speech add beyond knowing the last MMSE?</h3>
+				<p>The prediction target is a patient's next MMSE. The simplest possible forecast is "same as last time" (<i>persistence</i>). I compared it with models of increasing information under 20 repeats of patient-grouped 5-fold cross-validation. Every learned step (scaling, PCA, ridge penalty) was fitted inside the training fold only, the LightGBM settings were fixed in advance rather than tuned, and uncertainty comes from resampling <em>patients</em>, not visits. The analysis plan was frozen before the comparison was run.</p>
+				<figure class="s-figure">
+					<img src="/img/dementia/ext-01-incremental-value.png" alt="Left: dot-and-interval chart of out-of-fold mean absolute error for persistence, ridge and LightGBM models with and without speech features. Right: paired change in error when speech is added; every interval spans zero." loading="lazy" width="2200" height="760">
+					<figcaption>Left: error of each model (95% patient-bootstrap intervals). Right: change in error from adding speech to the MMSE-history model; all intervals include zero. Figure generated from <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/extension/results/incremental_value/incremental_value.json">the aggregate results file</a>.</figcaption>
+				</figure>
+				<div class="s-table-wrap">
+					<table class="s-table">
+						<caption>126 patients, 173 samples; repeat-averaged out-of-fold metrics</caption>
+						<thead><tr><th>Model</th><th class="n">R²</th><th class="n">MAE</th><th class="n">95% CI of MAE</th></tr></thead>
+						<tbody>
+							<tr><td>Persistence (last observed MMSE)</td><td class="n">0.686</td><td class="n">2.37</td><td class="n">1.93–2.85</td></tr>
+							<tr><td>Ridge, MMSE history</td><td class="n">0.750</td><td class="n">2.37</td><td class="n">2.00–2.77</td></tr>
+							<tr><td>Ridge, speech only</td><td class="n">0.409</td><td class="n">4.02</td><td class="n">3.51–4.56</td></tr>
+							<tr class="s-hl"><td>Ridge, MMSE history + speech</td><td class="n">0.758</td><td class="n">2.36</td><td class="n">2.00–2.73</td></tr>
+							<tr><td>LightGBM, MMSE history</td><td class="n">0.764</td><td class="n">2.33</td><td class="n">1.98–2.71</td></tr>
+							<tr><td>LightGBM, MMSE history + speech</td><td class="n">0.737</td><td class="n">2.45</td><td class="n">2.10–2.82</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p><b>Result.</b> Adding speech to the MMSE-history ridge model changed the error by −0.008 points (95% CI −0.157 to +0.132) and R² by +0.008 (−0.015 to +0.035): no detectable gain. For LightGBM, adding speech made R² slightly <em>worse</em> (−0.027, −0.052 to −0.002). Speech alone does carry signal (R² 0.41, in line with the paper's SBERT-only 0.46), but that signal is redundant once the previous MMSE is known. Predicting the <em>change</em> in MMSE is hard for every model (R² on change at most 0.10).</p>
+				<p><b>What this does and doesn't establish.</b> With 126 patients the design can rule out gains larger than roughly 0.15 MMSE points; smaller benefits are not excluded, and a richer clinical baseline might shrink or change the picture. It is a null-to-inconclusive result, consistent in direction with the paper's own ablation (0.716 → 0.759 with overlapping spreads), and it is not evidence that speech is useless for dementia.</p>
+
+				<h3 class="s-h3">2. How optimistic is fitting feature selection and tuning on all patients?</h3>
+				<p>I re-implemented the paper's protocol on the same features and ran it two ways: with selection, scaling, augmentation and tuning done once on all patients (as in the paper), and with all of them re-done inside every training fold ("nested", 40 tuning trials, 6 repeats). The all-patients version scored R² 0.768 and the nested version 0.742, a difference of +0.025 (95% CI −0.004 to +0.052). The direction matches the paper's own warning, but the interval includes zero and the size applies to this simpler representation, not to the paper's headline.</p>
+
+				<h3 class="s-h3">3. A bug in the LSTM input file</h3>
+				<p>While loading the archived derived files, I found that the LSTM input file (<code>training_samples.json</code>) holds the <em>same</em> speech matrix for all 173 samples. Two defects in the data-prep script were responsible: numpy-formatted arrays could not be parsed and a silent fallback hid the failure, and per-patient visit positions were used as global row numbers. The LightGBM pipeline builds its features differently and is not affected. I have not verified which version of the file the paper's LSTM comparison used. The new loader checks alignment and has regression tests.</p>
+
+				<h3 class="s-h3">4. External validation: not done, and why</h3>
+				<p>A real external validation needs an independent cohort with speech at an earlier visit <em>and</em> MMSE at a later one. I surveyed the candidates from primary sources (<a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/DATASET_FEASIBILITY.md">full report</a>):</p>
+				<ul>
+					<li><b>ADReSS / ADReSSo</b> are drawn from the Pitt corpus itself, so they are not independent.</li>
+					<li><b>Delaware, Lu, TAUKADIAL</b> appear to be single-session (follow-up visits unverified), so at best they support a different, cross-sectional experiment, which would have to be labelled that way.</li>
+					<li><b>WLS</b> is longitudinal but does not use the MMSE.</li>
+				</ul>
+				<p>All of these require DementiaBank membership, and students must be sponsored by a faculty member. I haven't requested access and haven't run anything on an external cohort, so <b>external validation is pending, not done</b>. A <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/EXTERNAL_VALIDATION_PROTOCOL.md">prespecified protocol</a> (frozen model, paired participant-level intervals, explicit success/failure/inconclusive rules) is ready so the evaluation can't be tuned after the fact. Given result 1, I expect it to be inconclusive or null, which would still be worth reporting.</p>
+
+				<h3 class="s-h3">Code, tests and my role</h3>
+				<p>Audit, code, tests and aggregate results are in the repository: <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/AUDIT.md">audit</a>, <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/extension">evaluation code</a>, <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/MODEL_CARD.md">model card</a>, <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/LIMITATIONS.md">limitations</a>. Eleven unit tests use synthetic fixtures and pass; the experiments need the licensed data and are not runnable by outsiders without it. The repository holds no patient data. I directed this follow-up and am responsible for its claims; the analysis code was written with AI assistance (Claude Code). The model is a research prototype, not a diagnostic tool.</p>
+			</section>
+
 			<section class="s-block" id="limitations">
 				<h2 class="s-h2">Limitations</h2>
 				<ul>
 					<li><b>Non-nested selection and tuning.</b> Correlation pruning, permutation-importance selection, PCA and the Optuna search were each run once on the full dataset, not refit inside the folds. Selection and tuning depend on the labels, so the reported cross-validation metrics may be optimistic.</li>
 					<li><b>Small, single cohort.</b> The study has 126 patients and 173 samples from one corpus, with no external validation. Very few patients score below 10, and the model over-predicts for them.</li>
 					<li><b>Speech's contribution is modest.</b> Most of the accuracy comes from clinical history. The case for speech rests on the SBERT increment in the ablation.</li>
-					<li><b>Missing data sources.</b> The data include no imaging, biomarkers or medication history. The paper also lists benchmarking against simpler baselines, such as linear regression on clinical features, as future work.</li>
+					<li><b>Missing data sources.</b> The data include no imaging, biomarkers or medication history. The paper lists benchmarking against simpler baselines as future work; a first version of that is in the <a href="#extension">follow-up audit</a>.</li>
 				</ul>
 			</section>
 
@@ -234,6 +286,10 @@
 					<li><time datetime="2026-08-01">Aug 1, 2026</time><a href="/#modal-dementia-24">Rerunning the Ablation for the Paper</a></li>
 					<li><time datetime="2026-08-04">Aug 4, 2026</time><a href="/#modal-dementia-25">Submitting to Frontiers in Aging Neuroscience</a></li>
 					<li><time datetime="2026-09-26">Sep 26, 2026</time><a href="/#modal-dementia-26">Where the Paper Stands</a></li>
+					<li class="s-phase">Follow-up audit</li>
+					<li><time datetime="2026-10-09">Oct 9, 2026</time><a href="/#modal-dementia-27">Auditing My Own Pipeline: What a Baseline and a Nested Rerun Showed</a></li>
+					<li><time datetime="2026-10-09">Oct 9, 2026</time><a href="/#modal-dementia-28">Does Speech Add Anything Beyond the Last MMSE?</a></li>
+					<li><time datetime="2026-10-09">Oct 9, 2026</time><a href="/#modal-dementia-29">External Validation: What Is Missing and What Is Ready</a></li>
 				</ul>
 			</section>
 		</div>
