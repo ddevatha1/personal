@@ -578,11 +578,11 @@
 					<div class="p-work">
 						<a class="p-card" href="/research/speech-cognition/">
 							<div class="p-card-img p-contain"><img src="/img/dementia/paper-trajectories-by-group.jpg" alt="Chart of average MMSE scores across visits for control and dementia groups" loading="lazy"></div>
-						<div class="p-card-body"><span class="p-tag">First author &middot; 2025&ndash;present</span>
+						<div class="p-card-body"><span class="p-tag">First author &middot; Frontiers in Aging Neuroscience &middot; 2025&ndash;present</span>
 							<h3>Forecasting cognitive function from speech</h3>
-							<p>The model predicts a patient's MMSE score at a later visit from Sentence-BERT features of their earlier speech, plus clinical history (DementiaBank Pitt Corpus, 126 patients). Along the way I found and fixed leakage in my own cross-validation, and an ablation showed that clinical history does most of the work while speech adds a smaller, complementary signal.</p>
-							<p class="p-muted" style="font-family:var(--sans);font-size:14px">R&sup2; 0.840 &plusmn; 0.015 &middot; MAE 2.02 MMSE points &middot; patient-grouped 5-fold CV &middot; with Joe Xiao (PhD student, mentor)</p>
-							<span class="p-more">Research page, preprint and code &rarr;</span></div>
+							<p>The model predicts a patient's MMSE score at a later visit from Sentence-BERT features of their earlier speech, plus clinical history (DementiaBank Pitt Corpus, 125 patients). Along the way I found and fixed leakage in my own cross-validation, and an ablation showed that clinical history does most of the work while speech adds a smaller, complementary signal.</p>
+							<p class="p-muted" style="font-family:var(--sans);font-size:14px">R&sup2; 0.796 &middot; MAE 2.10 MMSE points &middot; patient-grouped evaluation &middot; accepted, Frontiers in Aging Neuroscience &middot; with PhD Scholar Joe Xiao (mentor)</p>
+							<span class="p-more">Research page, paper and code &rarr;</span></div>
 						</a>
 						<a class="p-card" href="/research/x-step/">
 							<div class="p-card-img"><img src="/img/x-step/xstep-slide-technology.jpg" alt="An X-Step team slide listing the technology: React Native, JavaScript and TypeScript, Tailwind CSS" loading="lazy"></div>
@@ -682,6 +682,17 @@
 				<p class="blog-empty-state" id="blog-empty-state" hidden>No posts in this category yet.</p>
 
 				<div class="blog-grid" style="grid-template-columns: 1fr;">
+
+					<!-- DM:CARD -->
+					<article class="blog-card reveal" data-category="research" data-sortdate="2026-10-31" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-30').classList.add('open')">
+						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">October 2026</span></div>
+						<h3>The Paper Is Accepted</h3>
+						<p>
+							The dementia paper has been accepted by Frontiers in Aging Neuroscience, under a new title and with numbers that came out of the audit.
+						</p>
+						<div class="arrow">Read full post →</div>
+					</article>
+					<!-- /DM:CARD -->
 
 					<!-- DM:CARD -->
 					<article class="blog-card reveal" data-category="research" data-sortdate="2026-10-09" style="cursor:pointer;" onclick="document.getElementById('modal-dementia-27').classList.add('open')">
@@ -1529,7 +1540,7 @@
 						<div class="meta"><span class="cat-pill cat-research">Research</span><span class="meta-date">May 2025</span></div>
 						<h3>Narrowing In: Why Speech, and Why Dementia</h3>
 						<p>
-							I started meeting regularly with Joe Xiao, a PhD student who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
+							I started meeting regularly with PhD Scholar Joe Xiao, who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
 						</p>
 						<div class="arrow">Read full post →</div>
 					</article>
@@ -3981,7 +3992,7 @@
 
 					<h2>The Submission</h2>
 					<p>
-						On August 4, 2026, the manuscript, "Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features," was submitted to <em>Frontiers in Aging Neuroscience</em> as an Original Research Article in the Alzheimer's Disease and Related Dementias section. Joe Xiao, the PhD scholar who has mentored this project since <a href="#modal-dementia-02">May 2025</a>, is the co-author, and the author contributions credit him, among other roles, with supervision.
+						On August 4, 2026, the manuscript, "Predicting Cognitive Function Using Transformer-Derived Speech Representations and Longitudinal Coherence Features," was submitted to <em>Frontiers in Aging Neuroscience</em> as an Original Research Article in the Alzheimer's Disease and Related Dementias section. PhD Scholar Joe Xiao, who has mentored this project since <a href="#modal-dementia-02">May 2025</a>, is the co-author, and the author contributions credit him, among other roles, with supervision.
 					</p>
 					<p>
 						The same day, the code went public in a <a href="https://github.com/ddevatha1/dementia-mmse-prediction" target="_blank" rel="noopener">GitHub repository</a>: the feature extraction, the evaluation pipeline, the ablation script, and aggregate results. The DementiaBank transcripts themselves are not in it. Access to the Pitt Corpus is restricted, and anyone reproducing the work needs to request it from DementiaBank directly.
@@ -4090,6 +4101,38 @@
 <p>ADReSS and ADReSSo are built from the Pitt corpus I trained on, so they're not independent. Delaware, Lu and TAUKADIAL look like single-session collections (I couldn't confirm follow-up visits from public documentation), so at best they'd support a cross-sectional experiment that I'd have to name as such. The Wisconsin Longitudinal Study is longitudinal but doesn't use the MMSE. All require DementiaBank membership, and a student has to be sponsored by a faculty member, so the next step isn't mine alone: it's a conversation with my mentor.</p>
 <h2>What is ready</h2>
 <p>A <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/EXTERNAL_VALIDATION_PROTOCOL.md" target="_blank" rel="noopener">protocol</a> written before touching any outside data: the model is frozen, the main comparison is paired and uses patient-level intervals, and the rules for calling it a success, a failure or inconclusive are fixed in advance. Given the previous post, inconclusive is the most likely outcome, and that would be fine to report. The full <a href="https://github.com/ddevatha1/dementia-mmse-prediction/blob/main/docs/DATASET_FEASIBILITY.md" target="_blank" rel="noopener">dataset report</a> lists sources and what I couldn't verify.</p>
+
+					</div>
+				</div>
+
+				<!-- The Paper Is Accepted -->
+				<div class="modal-overlay" id="modal-dementia-30" role="dialog" aria-modal="true" aria-labelledby="modal-dementia-30-title">
+					<div class="modal-box">
+						<button class="modal-close" onclick="document.getElementById('modal-dementia-30').classList.remove('open')" aria-label="Close">&times;</button>
+
+						<h1 id="modal-dementia-30-title">The Paper Is Accepted</h1>
+						<div class="post-meta">
+							<span>October 31, 2026</span>
+							<span>Dementia Research Project</span>
+							<span>Deeptanshu Devatha</span>
+						</div>
+
+					<p>
+						The paper has been accepted by <em>Frontiers in Aging Neuroscience</em>. It is now titled <a href="https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2026.1958694/abstract" target="_blank" rel="noopener">&ldquo;Predicting Next-Visit MMSE Scores From Speech Transcripts and Clinical History: A Patient-Grouped Evaluation&rdquo;</a>, with Joe Xiao as co-author and mentor. It started as a question in May 2025 and was <a href="#modal-dementia-25">submitted</a> on August 4, 2026.
+					</p>
+
+					<h2>What the Accepted Paper Says</h2>
+					<p>
+						The data is 125 patients and 172 samples from the DementiaBank Pitt Corpus, evaluated with patient-grouped folds so that no patient appears on both sides of a split. A LightGBM model on clinical features plus MMSE history reaches R&sup2; 0.796 and a mean absolute error of 2.10 MMSE points. Carrying the last MMSE forward scores R&sup2; 0.742 and 2.20, so the model beats the do-nothing forecast, but by a modest margin. Speech alone reaches R&sup2; 0.414 (MAE 3.90). Adding speech to the clinical history changes the error by +0.01 points, with an interval of &minus;0.08 to +0.10.
+					</p>
+					<p>
+						The older R&sup2; of 0.840 is no longer the headline. The abstract describes it as non-nested and not comparable, and the numbers above come from the <a href="#modal-dementia-27">audit I ran in October</a> and the <a href="#modal-dementia-28">comparison with and without speech</a>.
+					</p>
+
+					<h2>What I Take From It</h2>
+					<p>
+						The result is narrower than the one I set out to show, and I think it's the more useful one: on this cohort, a patient's clinical history does nearly all of the forecasting, and speech doesn't add anything I can detect. The title now says what was done, a patient-grouped evaluation of next-visit MMSE, rather than what I hoped would work. Whether speech helps on a different cohort is still open, and the <a href="#modal-dementia-29">external validation plan</a> is the next step for that.
+					</p>
 
 					</div>
 				</div>
@@ -5429,7 +5472,7 @@
 						</div>
 
 					<p>
-						I started meeting regularly with Joe Xiao, a PhD student who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
+						I started meeting regularly with PhD Scholar Joe Xiao, who agreed to mentor me on this project, and that alone has changed the pace of things. Having someone to push back on half-formed ideas in real time is worth more than another week of solo reading. This week's conversations helped me go from "healthcare NLP, broadly" to something much more specific.
 					</p>
 
 					<p>
