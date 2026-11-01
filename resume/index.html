@@ -63,6 +63,16 @@
 		.r-sheet .r.key .l { color: #7a2230; }
 		.r-sheet .r p { margin: 0; }
 		.r-sheet .r-head h1 { font-size: 19pt; }
+		.r-sheet .links { font-size: 7.6pt; margin-top: 2pt; line-height: 1.4; color: #333; }
+		.r-sheet .hon .entry { margin-top: 3pt; }
+		.r-sheet .hon .head .title { font-weight: 700; }
+		.r-sheet .hon .hlinks { margin-top: 5pt; }
+		.r-sheet .kicker.acc { font-size: 8.6pt; }
+		.r-sheet .kicker { margin-top: 0; }
+		.r-sheet section > .entry:first-of-type { margin-top: 0; }
+		.r-sheet .r.key .l { color: #7a2230; }
+		.r-sheet .links b, .r-sheet .meta b { font-weight: 600; }
+		.r-sheet a[href^="http"]::after { content: none; }
 		@media (max-width: 700px) { .r-sheet .r { grid-template-columns: 1fr; } .r-sheet .r .l { text-align: left; } .r-sheet { padding: 20px 16px; font-size: 13px; } .r-line { flex-wrap: wrap; } .r-contact { text-align: left; } }
 		@media print {
 			@page { size: letter; margin: 0; }
@@ -96,35 +106,36 @@
 	</div>
 
 	<article class="r-sheet" aria-label="Resume">
-
 <header class="r-head">
   <h1>Deeptanshu Devatha</h1>
   <div class="r-contact">Frisco, TX<span class="dot">·</span><a href="mailto:deeptanshu.devatha@gmail.com">deeptanshu.devatha@gmail.com</a><br><a href="https://www.deeptanshudevatha.com">deeptanshudevatha.com</a><span class="dot">·</span><a href="https://github.com/ddevatha1">github.com/ddevatha1</a></div>
 </header>
 
-<section class="r-sec">
+<section class="r-sec edu">
   <h2>Education</h2>
-  <div class="r-entry">
-    <div class="r-line"><span class="r-t">Heritage High School, Frisco, TX</span><span class="r-d">Class of 2027</span></div>
-    <p><b>GPA:</b> <b>4.00 UW / 5.361 W</b> · Rank <b>11/481</b> · ACT <b>36</b> · AP Scholar with Distinction</p>
-    <p><b>AP exams:</b> <b>9 taken, a 5 on all 9</b> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
-    <p><b>Coursework:</b> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
-    <p><b>Honors:</b> Frontiers in Aging Neuroscience paper accepted for publication  ·  IEEE-EMBS IECBES 2026 paper accepted for presentation  ·  X-Step startup: Texas A&amp;M McFerrin Center for Entrepreneurship Texas Ideas Challenge — Top 40 Finalist; Diamond Challenge 2026 — Semifinalist; Conrad Innovator 2025–2026 — Health &amp; Nutrition  ·  ShopAI (as ShopSmart): TechLit Bridging the Gap Hackathon — 1st Place (Aug. 2025); PeddieHacks — Best Innovation Award, 1st/250 (Aug. 2025); Hack4Humanity — 3rd Place, 3/500 (Oct. 2025); AsterHacks — 5th Place, 5/250 (Oct. 2025)</p>
+  <div class="entry">
+    <div class="head">
+      <div class="title">Heritage High School, Frisco, TX</div>
+      <div class="date">Class of 2027</div>
+    </div>
+    <p><span class="k">GPA</span> <span class="m">4.00 UW / 5.361 W</span><span class="dot">·</span>Rank <span class="m">11/486</span><span class="dot">·</span>ACT <span class="m">36</span><span class="dot">·</span>AP Scholar with Distinction</p>
+    <p><span class="k">AP exams:</span> <span class="m">9 taken, a 5 on all 9</span> — Computer Science A, Statistics, Physics 1, Seminar, English Language &amp; Composition, U.S. History, World History, Psychology, Human Geography</p>
+    <p><span class="k">Coursework:</span> AP Calculus BC, AP Physics 2, AP Physics 1, AP Computer Science A, AP English Language, AP English Literature, AP Government, AP Economics, Computer Science III, Mobile App Programming, Spanish 2</p>
   </div>
 </section>
 
-<section class="r-sec">
+<section class="r-sec hon">
   <h2>Honors &amp; Awards</h2>
   <div class="entry">
     <div class="head">
-      <div class="title">IEEE-EMBS IECBES 2026 — Research Paper Accepted for Presentation</div>
-      <div class="date">Dec. 9–11, 2026</div>
+      <div class="title">Frontiers in Aging Neuroscience — Research Paper Accepted for Publication</div>
+      <div class="date">Oct. 2026</div>
     </div>
   </div>
   <div class="entry">
     <div class="head">
-      <div class="title">Conrad Innovator 2025–2026 — Health &amp; Nutrition <span class="where"><span class="dot">·</span>X-Step startup</span></div>
-      <div class="date">2025–2026</div>
+      <div class="title">IEEE-EMBS IECBES 2026 — Research Paper Accepted for Presentation</div>
+      <div class="date">Dec. 9–11, 2026</div>
     </div>
   </div>
   <div class="entry">
@@ -137,6 +148,12 @@
     <div class="head">
       <div class="title">Diamond Challenge 2026 — Semifinalist <span class="where"><span class="dot">·</span>X-Step startup</span></div>
       <div class="date">2026</div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="head">
+      <div class="title">Conrad Innovator 2025–2026 — Health &amp; Nutrition <span class="where"><span class="dot">·</span>X-Step startup</span></div>
+      <div class="date">2025–2026</div>
     </div>
   </div>
   <div class="entry">
@@ -163,22 +180,30 @@
       <div class="date">Oct. 2025</div>
     </div>
   </div>
-  <p class="meta hlinks"><span class="nw"><b>Competitions:</b> <a class="u" href="https://deeptanshudevatha.com/projects/competitions">deeptanshudevatha.com/projects/competitions</a></span><span class="dot">·</span><span class="nw"><b>Texas A&amp;M list:</b> <a class="u" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge">mcferrin.tamu.edu/program/texas-high-school-ideas-challenge</a></span><span class="dot">·</span><span class="nw"><b>TechLit submission:</b> <a class="u" href="https://devpost.com/software/smartshop-gj4q59">devpost.com/software/smartshop-gj4q59</a></span><span class="dot">·</span><span class="nw"><b>IECBES paper:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span></p>
+  <p class="meta hlinks"><span class="nw"><b>Competitions:</b> <a class="u" href="https://deeptanshudevatha.com/projects/competitions">deeptanshudevatha.com/projects/competitions</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Texas A&amp;M list:</b> <a class="u" href="https://mcferrin.tamu.edu/program/texas-high-school-ideas-challenge">mcferrin.tamu.edu/program/texas-high-school-ideas-challenge</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>TechLit submission:</b> <a class="u" href="https://devpost.com/software/smartshop-gj4q59">devpost.com/software/smartshop-gj4q59</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>IECBES paper:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span></p>
 </section>
 
 <section class="r-sec">
   <h2>Research</h2>
 
-  <div class="r-entry">
-    <p class="r-acc"><b>Accepted for Publication — Frontiers in Aging Neuroscience</b> · October 2026</p>
-    <div class="r-line"><span class="r-t">Predicting Next-Visit MMSE Scores From Speech Transcripts and Clinical History: A Patient-Grouped Evaluation — First Author</span><span class="r-d">May 2025–Present</span></div>
-    <p class="r-sub">Mentor: PhD Scholar Joe Xiao · Paper <a class="r-u" href="https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2026.1958694/abstract">frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2026.1958694/abstract</a></p>
-    <ul>
-      <li><b>Question:</b> can a patient's speech across clinic visits forecast their next Mini-Mental State Exam (MMSE) score? Framed as supervised regression on the DementiaBank Pitt Corpus (<b>172</b> prediction samples, <b>125</b> patients) using only information available before the target visit.</li>
-      <li><b>Representation:</b> to capture how discourse organization changes with decline, extracted per-visit linguistic features (lexical diversity, filler rate, sentence fragments, named-entity rate) and Sentence-BERT coherence features (topic continuity, drift, semantic slope), plus visit-to-visit change features.</li>
-      <li><b>Model:</b> compressed SBERT embeddings with PCA, combined them with clinical and demographic covariates, and tuned a LightGBM model with Optuna, with feature selection and data augmentation.</li>
-      <li><b>Evaluation:</b> found patient-level leakage (one patient on both sides of a split) and rebuilt evaluation as repeated patient-grouped nested cross-validation, so every learned step sees only training patients, with an automated train/test overlap check and simple baselines for comparison. The model forecasts next-visit MMSE to within about 2 points on average (<b>R² 0.80</b>), outperforming a carry-forward-the-last-score baseline; speech alone reaches <b>R² 0.41</b>. Code <span class="r-u">github.com/ddevatha1/dementia-mmse-prediction</span></li>
-    </ul>
+  <div class="entry">
+    <div class="kicker">Paper 1 · Computational linguistics / clinical ML</div>
+    <div class="head">
+      <div class="title">Predicting Next-Visit MMSE Scores From Speech Transcripts and Clinical History: A Patient-Grouped Evaluation</div>
+      <div class="date">May 2025–Present</div>
+    </div>
+    <p class="meta acc2"><b>Accepted for Publication · Frontiers in Aging Neuroscience · <span class="nw">October 2026</span></b></p>
+    <p class="meta"><b>First Author</b><span class="dot">·</span>Mentor: PhD Scholar Joe Xiao</p>
+    <p class="links"><span class="nw"><b>Paper:</b> <a class="u" href="https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2026.1958694/abstract">frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2026.1958694/abstract</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Code:</b> <a class="u" href="https://github.com/ddevatha1/dementia-mmse-prediction">github.com/ddevatha1/dementia-mmse-prediction</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Write-up:</b> <a class="u" href="https://deeptanshudevatha.com/research/speech-cognition">deeptanshudevatha.com/research/speech-cognition</a></span></p>
+    <p class="links"><span class="nw"><b>Submission post:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-dementia-25">deeptanshudevatha.com/#modal-dementia-25</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>leakage fix:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-dementia-12">deeptanshudevatha.com/#modal-dementia-12</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>data-join bugs:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-dementia-14">deeptanshudevatha.com/#modal-dementia-14</a></span></p>
+    <div class="rows">
+      <div class="r"><span class="l">Question</span><p>Can transcribed speech plus the clinical history already on file forecast a patient’s <span class="k">next-visit MMSE</span> (0–30)? Framed as longitudinal, patient-level supervised regression; most prior speech work is single-visit classification.</p></div>
+      <div class="r"><span class="l">Data</span><p>DementiaBank Pitt Corpus (controlled access): rebuilt the longitudinal cohort from clinical records and speech transcripts into <span class="m">172 prediction samples from 125 patients</span>, using only information available before each target visit.</p></div>
+      <div class="r"><span class="l">Features</span><p>Designed a speech feature set that captures how a patient’s discourse changes across visits: Sentence-BERT coherence measures (topic continuity, drift, semantic slope), lexical and syntactic measures (filler rate, lexical diversity, sentence fragments, named entities), visit-to-visit change features, and compressed SBERT embeddings (PCA), combined with clinical and demographic covariates.</p></div>
+      <div class="r"><span class="l">Model</span><p>LightGBM, chosen for small mixed-type tabular data, with feature selection, data augmentation, and Optuna hyperparameter tuning.</p></div>
+      <div class="r key"><span class="l">Validation</span><p>Diagnosed patient-identity leakage in the original evaluation and rebuilt it as <span class="k">repeated patient-grouped nested cross-validation</span>, so every learned step sees only training patients. Added an automated train/test overlap check and compared the model against simple baselines.</p></div>
+      <div class="r key"><span class="l">Results</span><p>Forecasts next-visit MMSE to within about <span class="m">2 points</span> on average (<span class="m">R² 0.80</span>), outperforming a carry-forward-the-last-score baseline; speech alone, with no clinical data, reaches <span class="m">R² 0.41</span>.</p></div>
+    </div>
   </div>
 
 </section>
@@ -187,17 +212,9 @@
 
 
 
-<section class="r-sec">
-  <h2>Research <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3)">(continued)</span></h2>
 
-  <div class="entry" style="margin-top:0">
-    <div class="rows" style="margin-top:0">
-      <div class="r key"><span class="l">Results</span><p><span class="m">R² 0.840 ± 0.015</span><span class="dot">·</span><span class="m">RMSE 2.75</span><span class="dot">·</span><span class="m">MAE 2.02</span> MMSE points<span class="dot">·</span><span class="m">Pearson r 0.917</span>. Entry MMSE, baseline diagnosis and Blessed score lead permutation importance.</p></div>
-      <div class="r key"><span class="l">Ablation</span><p>Controlled feature-source ablation: linguistic-only <span class="m">R² 0.118</span>, SBERT-only <span class="m">0.458</span>, clinical-only <span class="m">0.716</span>, clinical + SBERT <span class="m">0.759</span>. Clinical history dominates; SBERT beats handcrafted features and adds complementary signal.</p></div>
-      <div class="r"><span class="l">Integrity &amp; limits</span><p>Audited the manuscript against the code, removing six unused features. Limits: non-nested selection and tuning (CV may be optimistic); one cohort, no external validation; over-prediction below MMSE 10.</p></div>
-    </div>
-  </div>
-
+<section class="r-sec" style="margin-top:0">
+  
   <div class="entry">
     <div class="kicker">Paper 2 · Biomedical engineering / wearable sensing</div>
     <div class="head">
@@ -206,7 +223,7 @@
     </div>
     <p class="meta acc2"><b>Accepted for Presentation · 2026 IEEE-EMBS Conference on Biomedical Engineering and Sciences (IECBES) · <span class="nw">Kuala Lumpur · Dec. 9–11, 2026</span></b></p>
     <p class="meta"><b>2nd of 5 authors · ML lead</b><span class="dot">·</span>UC Santa Cruz AIEA Lab (Prof. Leilani Gilpin)</p>
-    <p class="links"><span class="nw"><b>Paper page:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span><span class="dot">·</span><span class="nw"><b>Lab:</b> <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a></span></p>
+    <p class="links"><span class="nw"><b>Paper page:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Lab:</b> <a class="u" href="https://aiea-lab.github.io/">aiea-lab.github.io</a></span></p>
     <div class="rows">
       <div class="r"><span class="l">Question</span><p>Can <span class="k">four strategically placed sensing sites</span> (MET1, MET2, MET5, heel; ESP32, 25 Hz) capture regional pressure trends comparable to a <span class="k">32-sensor insole</span>? I engineered the machine-learning component and designed the correlation study that tests it, working from the pressure measurements our team’s four-site system generates.</p></div>
       <div class="r key"><span class="l">ML pipeline</span><p>Built the analysis pipeline for this question: the feature map over rolling 4 s windows (100 samples × 8 channels) to <span class="m">59 features</span> — per-site peak, mean, coefficient of variation and pressure–time integral; window-level cadence, stance ratio, anterior load share, aggregate peak and total PTI — and a <span class="m">540-parameter</span> logistic-regression framework that classifies biomechanical risk from them (≈0.23 ms per update).</p></div>
@@ -226,7 +243,7 @@
     </div>
     <p class="meta">One grocery search across nine retailers, plus multi-store trip planning<span class="dot">·</span>live on the Apple App Store</p>
     <p class="meta">New name for ShopSmart, the team hackathon prototype; ShopAI extends its core idea as a solo rebuild. Won TechLit (1st), PeddieHacks (Best Innovation), Hack4Humanity (3rd) and AsterHacks (5th) as ShopSmart.</p>
-    <p class="links"><span class="nw"><b>App Store:</b> <a class="u" href="https://apps.apple.com/app/shopai/id6797083809">apps.apple.com/app/shopai/id6797083809</a></span><span class="dot">·</span><span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/shopai">deeptanshudevatha.com/projects/shopai</a></span><span class="dot">·</span><span class="nw"><b>Architecture:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-shopai-architecture">deeptanshudevatha.com/#modal-shopai-architecture</a></span><span class="dot">·</span><span class="nw"><b>Hackathon page:</b> <a class="u" href="https://devpost.com/software/smartshop-gj4q59">devpost.com/software/smartshop-gj4q59</a></span></p>
+    <p class="links"><span class="nw"><b>App Store:</b> <a class="u" href="https://apps.apple.com/app/shopai/id6797083809">apps.apple.com/app/shopai/id6797083809</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/shopai">deeptanshudevatha.com/projects/shopai</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Architecture:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-shopai-architecture">deeptanshudevatha.com/#modal-shopai-architecture</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Hackathon page:</b> <a class="u" href="https://devpost.com/software/smartshop-gj4q59">devpost.com/software/smartshop-gj4q59</a></span></p>
     <div class="rows">
       <div class="r"><span class="l">Architecture</span><p>React Native/Expo client over a standalone Express/TypeScript backend on <span class="k">AWS EC2 behind Nginx</span>; the client holds no search logic — every search, plan and warm-up check runs server-side through a four-layer, one-direction pipeline.</p></div>
       <div class="r key"><span class="l">Adapters</span><p>Designed a <span class="k">retailer-adapter abstraction</span> normalizing <span class="m">nine chains</span> (seven with live data) into one schema via four integration strategies: OAuth2 client-credentials REST (Kroger, Harris Teeter), anonymous-session GraphQL (Aldi, Sprouts, Publix via Instacart), headless Playwright (Trader Joe’s), server-rendered HTML (Whole Foods). Target excluded (terms of service).</p></div>
@@ -240,9 +257,9 @@
 
 
 
-<section class="r-sec">
-  <h2>Projects &amp; Leadership <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-3)">(continued)</span></h2>
 
+<section class="r-sec" style="margin-top:0">
+  
   <div class="entry" style="margin-top:0">
     <div class="rows" style="margin-top:0">
       <div class="r"><span class="l">Production</span><p>Debugged a Node.js setTimeout overflow in a 30-day location cache that stalled the event loop (≈1.5 s → 27 s searches) by capping the sweep interval; shipped by feature-flagging off unfinished meal planning, AI assistant, OCR and barcode scanning.</p></div>
@@ -255,7 +272,7 @@
       <div class="date">Jun. 2024–Present</div>
     </div>
     <p class="meta"><b>124 students</b><span class="dot">·</span>3-year program<span class="dot">·</span>10 Frisco neighborhoods<span class="dot">·</span><b>120 one-hour classes</b><span class="dot">·</span><b>20 projects</b><span class="dot">·</span>median 10 per student (max 18)</p>
-    <p class="links"><span class="nw"><b>Program:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode">deeptanshudevatha.com/projects/kidcode</a></span><span class="dot">·</span><span class="nw"><b>Curriculum:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/curriculum">deeptanshudevatha.com/projects/kidcode/curriculum</a></span><span class="dot">·</span><span class="nw"><b>Assessment:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/assessment">deeptanshudevatha.com/projects/kidcode/assessment</a></span><span class="dot">·</span><span class="nw"><b>Student programs:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/projects">deeptanshudevatha.com/projects/kidcode/projects</a></span></p>
+    <p class="links"><span class="nw"><b>Program:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode">deeptanshudevatha.com/projects/kidcode</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Curriculum:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/curriculum">deeptanshudevatha.com/projects/kidcode/curriculum</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Assessment:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/assessment">deeptanshudevatha.com/projects/kidcode/assessment</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Student programs:</b> <a class="u" href="https://deeptanshudevatha.com/projects/kidcode/projects">deeptanshudevatha.com/projects/kidcode/projects</a></span></p>
     <div class="rows">
       <div class="r key"><span class="l">Curriculum</span><p>Designed a three-year curriculum of 120 one-hour classes (8 weeks each summer, 5 per week) and 20 projects (6 + 7 + 7): Year 1 Python foundations; Year 2 assert-based unit tests, file I/O, JSON, exception handling, classes and inheritance, libraries; Year 3 spaCy NLP — tokenization, lemmatization, sentence segmentation, POS tagging, NER, Matcher rule patterns, and a rule-based chatbot.</p></div>
       <div class="r"><span class="l">Spiral design</span><p>Earlier projects return at a higher level: Mad Libs becomes Auto Mad Libs with spaCy choosing the blanks; the trivia quiz returns JSON-backed with error handling; Year 2 ends by breaking students’ own text-cleaning code, which Year 3 opens by testing against spaCy.</p></div>
@@ -271,7 +288,7 @@
       <div class="date">Aug. 2025–Present</div>
     </div>
     <p class="meta">Student startup team<span class="dot">·</span>working prototype, no wearer data yet<span class="dot">·</span>Conrad Innovator 2025–2026, Texas A&amp;M Texas Ideas Challenge Top 40 Finalist, Diamond Challenge 2026 Semifinalist</p>
-    <p class="links"><span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/x-step">deeptanshudevatha.com/projects/x-step</a></span><span class="dot">·</span><span class="nw"><b>Paper page:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span></p>
+    <p class="links"><span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/x-step">deeptanshudevatha.com/projects/x-step</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Paper page:</b> <a class="u" href="https://deeptanshudevatha.com/research/x-step">deeptanshudevatha.com/research/x-step</a></span></p>
     <div class="rows">
       <div class="r"><span class="l">Product</span><p>A plantar-pressure insole for people at risk of diabetic foot problems, built by the team: four FSR402 sensors per foot on an ESP32 at 25 Hz, streaming sequence-numbered 28-byte BLE frames to a React Native (Expo) app with live pressure, trends, alerts and a clinician view.</p></div>
       <div class="r key"><span class="l">My role</span><p>Wrote the React Native/Expo app (BLE client, live pressure heatmap, alerts, trends, guided routine; earlier Flask + LLM health-assistant backend) and trained two CNN prototypes on public data (heatmap postures, wound severity). Designed the ML pipeline that turns the stream into alerts: rolling 4 s windows → 59 pressure and gait features → 540-parameter logistic-regression head, fast enough to run between 40 ms samples.</p></div>
@@ -283,7 +300,7 @@
       <div class="title">Ayusha Nilayam <span class="role">— Programming &amp; Math Instructor</span> <span class="where"><span class="dot">·</span>Hyderabad, India</span></div>
       <div class="date">Nov. 2025–Jul. 2026</div>
     </div>
-    <p class="links"><span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/ayusha-nilayam">deeptanshudevatha.com/projects/ayusha-nilayam</a></span><span class="dot">·</span><span class="nw"><b>Zoom sessions post:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-india-01">deeptanshudevatha.com/#modal-india-01</a></span></p>
+    <p class="links"><span class="nw"><b>Project page:</b> <a class="u" href="https://deeptanshudevatha.com/projects/ayusha-nilayam">deeptanshudevatha.com/projects/ayusha-nilayam</a></span><span class="dot">·</span>&#8203;<span class="nw"><b>Zoom sessions post:</b> <a class="u" href="https://deeptanshudevatha.com/#modal-india-01">deeptanshudevatha.com/#modal-india-01</a></span></p>
     <div class="rows">
       <div class="r"><span class="l">Scope</span><p>Taught <span class="m">38</span> weekly Zoom sessions of Python and math to <span class="m">11 children</span> at the Ayusha Nilayam orphanage in the Alwal/Kompally area of Hyderabad, plus two weeks in person.</p></div>
       <div class="r"><span class="l">Content</span><p>Python from <span class="nw">print()</span> through conditionals, loops and functions to independent projects (calculator, number-guessing game); math from equations and inequalities through the unit circle, and statistics through standard deviation.</p></div>
